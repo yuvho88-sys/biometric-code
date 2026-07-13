@@ -213,6 +213,12 @@
   .bc input:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,162,75,.18); }
   .bc form .cta { width:100%; margin-top:6px; font-size:16px; }
   .bc .no-commit { text-align:center; color:var(--muted-d); font-size:13px; margin-top:12px; }
+  .bc .err { display:none; color:#d33; font-size:13px; margin-top:6px; }
+  .bc .field.bad input { border-color:#e56; background:#fff6f6; }
+  .bc .field.bad .err { display:block; }
+  .bc .form-err { display:none; color:#c0392b; background:#fdecea; border-radius:9px; padding:10px 12px; font-size:14px; text-align:center; margin-top:12px; }
+  .bc .form-err.show { display:block; }
+  .bc form .cta[disabled] { opacity:.65; cursor:default; }
   .bc .side-quote { align-self:center; }
   .bc .side-quote .ph { min-height:150px; }
   .bc .thankyou { display:none; text-align:center; padding:18px; background:#fff; border-radius:20px; }
@@ -413,11 +419,12 @@
       <h2 class="fade">רוצה להבטיח אירוע חברה מוצלח, בטוח ויוצא דופן שיקצור מחמאות מההנהלה ומהעובדים?</h2>
       <p class="fs-lead fade">מלאי את הפרטים כאן לבדיקת זמינות תאריכים ותיאום שיחת אפיון קצרה, והסילבוס המלא של ההרצאה יישלח אלייך מיידית:</p>
       <form id="bcForm" novalidate>
-        <div class="field"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" required></div>
-        <div class="field"><label for="f-company">שם החברה / הארגון</label><input id="f-company" name="company" type="text" required></div>
-        <div class="field"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="05X-XXXXXXX" required></div>
-        <div class="field"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" placeholder="name@company.co.il" required></div>
+        <div class="field" data-f="name"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם מלא</div></div>
+        <div class="field" data-f="company"><label for="f-company">שם החברה / הארגון</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם חברה או ארגון</div></div>
+        <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
+        <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
         <button type="submit" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס בוואטסאפ ובמייל</button>
+        <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לנו וואטסאפ.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת – נחזור אלייך עם סילבוס והצעה, וההחלטה כולה שלך.</p>
       </form>
       <div class="thankyou" id="thankyou"><h3 style="color:var(--navy);font-size:22px;margin-bottom:8px">הפרטים התקבלו!</h3><p style="color:#465067">הסילבוס בדרך אלייך למייל ולוואטסאפ, וניצור קשר בהקדם לתיאום שיחת אפיון.</p></div>
@@ -468,8 +475,40 @@
   });
 
   // skeleton form: no webhook yet (technical later) — just show thank-you
-  var form=scope.querySelector('#bcForm'), thanks=scope.querySelector('#thankyou');
-  if(form){ form.addEventListener('submit',function(ev){ ev.preventDefault(); form.style.display='none'; if(thanks){thanks.classList.add('show');thanks.scrollIntoView({behavior:'smooth',block:'center'});} }); }
+  var WEBHOOK = 'https://hook.eu2.make.com/lhr4r9b9cn4k69or7m0edfdq53oo10xe';
+  var form = scope.querySelector('#bcForm'), thanks = scope.querySelector('#thankyou'), formErr = scope.querySelector('#formErr');
+  function isMobileIL(v){ var d=(v||'').replace(/\D/g,''); return /^0(5\d)\d{7}$/.test(d); }
+  function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((v||'').trim()); }
+  function toIntl(v){ return (v||'').replace(/\D/g,'').replace(/^0/,'972'); }
+  if(form){
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      if(formErr) formErr.classList.remove('show');
+      var f = { name:scope.querySelector('#f-name'), company:scope.querySelector('#f-company'), phone:scope.querySelector('#f-phone'), email:scope.querySelector('#f-email') };
+      var ok = true;
+      function mark(key, valid){ var w=scope.querySelector('.field[data-f="'+key+'"]'); if(w) w.classList.toggle('bad', !valid); if(!valid) ok=false; }
+      mark('name', f.name.value.trim().length>1);
+      mark('company', f.company.value.trim().length>1);
+      mark('phone', isMobileIL(f.phone.value));
+      mark('email', isEmail(f.email.value));
+      if(!ok){ var bad=scope.querySelector('.field.bad input'); if(bad) bad.focus(); return; }
+      var btn = form.querySelector('button[type=submit]');
+      var orig = btn.textContent;
+      btn.disabled = true; btn.textContent = 'שולח…';
+      var payload = { name:f.name.value.trim(), company:f.company.value.trim(), phone:toIntl(f.phone.value), email:f.email.value.trim(), source:'biometric-code-landing', page:location.href };
+      var done = false;
+      function success(){ if(done) return; done=true; form.style.display='none'; if(thanks){ thanks.classList.add('show'); thanks.scrollIntoView({behavior:'smooth', block:'center'}); } }
+      function fail(){ if(done) return; done=true; btn.disabled=false; btn.textContent=orig; if(formErr) formErr.classList.add('show'); }
+      fetch(WEBHOOK, { method:'POST', mode:'no-cors', keepalive:true, body:new URLSearchParams(payload) })
+        .then(success).catch(fail);
+      // no-cors gives an opaque response; treat as sent after a short grace period
+      setTimeout(success, 1200);
+    });
+    // clear error state on typing
+    ['#f-name','#f-company','#f-phone','#f-email'].forEach(function(sel){
+      var i=scope.querySelector(sel); if(i){ i.addEventListener('input', function(){ var w=i.closest('.field'); if(w) w.classList.remove('bad'); }); }
+    });
+  }
 
   // YouTube facade: load real iframe only on click (no YT scripts on page load)
   scope.querySelectorAll('.yt-facade').forEach(function(btn){
