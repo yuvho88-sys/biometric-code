@@ -121,18 +121,15 @@
 
   /* BENEFITS */
   .bc .benes h2 { text-align:center; font-size:clamp(24px,3.4vw,34px); margin-bottom:44px; }
-  .bc .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-  .bc .card { background:#fff; border:1px solid #e7e1d3; border-radius:18px; padding:32px 26px; box-shadow:0 10px 30px rgba(27,36,54,.06); }
+  .bc .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
+  .bc .card { background:#fff; border:1px solid #e7e1d3; border-radius:18px; padding:28px; box-shadow:0 10px 30px rgba(27,36,54,.06); }
   .bc .s-navy .card { background: rgba(255,255,255,.04); border-color: rgba(201,162,75,.22); }
-  .bc .card .ic { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; background: rgba(201,162,75,.14); margin-bottom:18px; }
-  .bc .card .ic svg { width:30px; height:30px; stroke: var(--gold-2); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
   .bc .card h3 { font-size:19px; margin-bottom:10px; color:var(--navy); }
   .bc .card p { color:#465067; font-size:15.5px; }
   /* cards sit on dark navy in the benefits section -> text must be light (fixes invisible dark/gold text) */
-  .bc .s-navy .card h3 { color:#F5F1E8; font-weight:700; font-size:1.25rem; }
-  .bc .s-navy .card p { color:#E8E2D4; font-size:16px; }
-  .bc .s-navy .card .ic { background: rgba(201,162,75,.2); }
-  .bc .s-navy .card .ic svg { stroke: var(--gold); }
+  .bc .s-navy .card h3 { color:#F5F1E8; font-weight:700; font-size:1.3rem; margin-bottom:0; }
+  .bc .s-navy .card h3::after { content:''; display:block; width:40px; height:2px; background:var(--gold); border-radius:2px; margin-top:14px; }
+  .bc .s-navy .card p { color:#E8E2D4; font-size:16px; margin-top:14px; }
   .bc .center-cta { text-align:center; margin-top:46px; }
 
   /* OBJECTION */
@@ -274,17 +271,14 @@
       <h2 class="fade">מה העובדים והמנהלים לוקחים מההרצאה</h2>
       <div class="grid3">
         <div class="card fade">
-          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M4 19a5 5 0 0 1 10 0"/><path d="M15.5 6.5a3 3 0 0 1 0 5"/><path d="M17 19a4.6 4.6 0 0 0-2.5-4"/></svg></div>
           <h3>חוויה אינטראקטיבית שוברת דיסטנס</h3>
           <p>זו לא עוד הרצאה פרונטלית משעממת. במהלך המפגש, העובדים והמנהלים לומדים להביט בכפות הידיים שלהם ושל הקולגות שלהם, מה שמייצר שיח ער, צחוק וגיבוש מטורף בתוך האולם.</p>
         </div>
         <div class="card fade">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/><path d="M8.5 10.5h7M8.5 13.5h4"/></svg></div>
           <h3>כלי מעשי לתקשורת בינאישית בשניות</h3>
           <p>המשתתפים יקבלו כלים חדים לזהות מיד מי עומד מולם – קולגה לצוות, מנהל או לקוח – ואיך להתאים את המסר אליו כדי למנוע חיכוכים ולשפר ביצועים בארגון.</p>
         </div>
         <div class="card fade">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.3 4.7 5.2.8-3.8 3.6.9 5.1L12 15.9 7.4 17.3l.9-5.1L4.5 8.5l5.2-.8z"/></svg></div>
           <h3>גילוי עצמי וזיהוי חוזקות</h3>
           <p>איך לזהות סימנים פיזיולוגיים המעידים על כושר מנהיגות, יכולת עבודה תחת לחץ, ירידה לפרטים או חשיבה אסטרטגית מחוץ לקופסה.</p>
         </div>
