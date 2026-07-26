@@ -340,6 +340,18 @@ function measure(lm){
   return {thumb_angle, finger_ratio, spread_ratio};
 }
 
+/* quality gate — demands a close, straight, open hand before capture (upload + live) */
+function handQuality(lm){
+  const w=lm[0], iBase=lm[5], pBase=lm[17], mBase=lm[9], mTip=lm[12];
+  const palmW=dist(iBase,pBase);
+  if(palmW<0.16) return {ok:false, msg:'📏 קרבו את היד למצלמה — רחוק מדי'};
+  if(palmW>0.62) return {ok:false, msg:'📏 הרחיקו מעט את היד'};
+  if((w.y-mTip.y)<0.12) return {ok:false, msg:'✋ יישרו את כף היד — אצבעות כלפי מעלה'};
+  const tilt=Math.atan2(Math.abs(mBase.x-w.x), Math.abs(mBase.y-w.y))*180/Math.PI;
+  if(tilt>22) return {ok:false, msg:'↕️ יישרו את היד מול המצלמה'};
+  return {ok:true, msg:'מצוין'};
+}
+
 /* static fallback typing (thresholds: angle 38°, ratio 0.82). TODO: replace texts with Reut's knowledge base. */
 function fallbackReading(m){
   const hiAngle=m.thumb_angle>=38, hiRatio=m.finger_ratio>=0.82;
@@ -403,6 +415,7 @@ async function runDecode(m, mode){
   lastMeasure=m; lastType=typeOf(m);
   dl('decode_started',{mode});
   startProc();
+  const procStart=performance.now();
   let reading=null, usedFallback=false;
   try{
     const ctrl=new AbortController(); const to=setTimeout(()=>ctrl.abort(), DECODE_TIMEOUT_MS);
@@ -413,6 +426,9 @@ async function runDecode(m, mode){
     const j=await r.json(); reading=(j&&j.reading)?j.reading:null;
     if(!reading) throw 0;
   }catch(e){ reading=fallbackReading(m); usedFallback=true; }
+  const MIN_PROC_MS=3200;   // keep the deliberate "measuring…" animation on screen — never snap instantly
+  const el=performance.now()-procStart;
+  if(el<MIN_PROC_MS) await new Promise(r=>setTimeout(r, MIN_PROC_MS-el));
   stopProc();
   $('metrics').innerHTML =
     '<div class="metric">זווית אגודל<b>'+m.thumb_angle+'°</b></div>'+
@@ -439,7 +455,11 @@ fileInput.addEventListener('change', async ()=>{
     }
     try{
       const res=lm.detect(img);
-      if(res && res.landmarks && res.landmarks.length){ await runDecode(measure(res.landmarks[0]),'upload'); }
+      if(res && res.landmarks && res.landmarks.length){
+        const q=handQuality(res.landmarks[0]);
+        if(!q.ok){ stopProc(); decodeMsg.textContent=q.msg.replace(/^[^ ]+ /,'')+' — צלמו את כף היד קרוב, פתוחה וישרה, ונסו שוב.'; }
+        else { await runDecode(measure(res.landmarks[0]),'upload'); }
+      }
       else { noHand(); }
     }catch(e){ noHand(); }
     URL.revokeObjectURL(img.src);
@@ -461,16 +481,26 @@ btnCamera.addEventListener('click', async ()=>{
   const lm=await getVidLandmarker();
   if(!lm){ stopCamera(); decodeMsg.textContent='המנוע לא נטען — נסו "העלאת תמונה".'; return; }
   camWrap.style.display='block'; cam.srcObject=camStream; await cam.play();
-  let stable=0, lastVideoTime=-1;
+  let goodSince=0, lastVideoTime=-1;
+  const HOLD_MS=2500;   // must hold a good, straight, close hand for 2.5s before capture
   const loop=()=>{
     if(!camStream){ return; }
     if(cam.currentTime!==lastVideoTime){
       lastVideoTime=cam.currentTime;
       try{
         const res=lm.detectForVideo(cam, performance.now());
-        if(res && res.landmarks && res.landmarks.length){ stable++; decodeMsg.textContent='זוהתה כף יד — החזיקו יציב…';
-          if(stable>=12){ const m=measure(res.landmarks[0]); stopCamera(); runDecode(m,'camera'); return; }
-        } else { stable=Math.max(0,stable-1); }
+        if(res && res.landmarks && res.landmarks.length){
+          const q=handQuality(res.landmarks[0]);
+          if(q.ok){
+            if(!goodSince) goodSince=performance.now();
+            const held=performance.now()-goodSince;
+            if(held>=HOLD_MS){ const m=measure(res.landmarks[0]); stopCamera(); runDecode(m,'camera'); return; }
+            const remain=Math.max(1,Math.ceil((HOLD_MS-held)/1000));
+            decodeMsg.textContent='✓ מצוין — אל תזוזו… '+remain;
+          } else {
+            goodSince=0; decodeMsg.textContent=q.msg;   // resets the hold — imprecise capture won't proceed
+          }
+        } else { goodSince=0; decodeMsg.textContent='✋ כף יד פתוחה מול המצלמה'; }
       }catch(e){}
     }
     camRAF=requestAnimationFrame(loop);
