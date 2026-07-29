@@ -346,6 +346,13 @@
   .bc select{width:100%;font-family:inherit;font-size:16px;color:var(--ink);padding:13px 15px;border:1.5px solid #e2ddcf;border-radius:11px;background:#fbfaf6}
   .bc .thankyou .ty-sign{margin-top:12px;color:var(--gold-2);font-weight:700;font-size:14.5px}
   .bc footer .legal{color:rgba(245,241,232,.55);font-size:12.5px;line-height:1.6;max-width:760px;margin:14px auto 10px}
+  /* closing task 4: engine-load notice + camera flip */
+  .bc .engine-load{display:none;align-items:center;justify-content:center;gap:10px;color:var(--muted-l);font-size:14px;margin-top:12px}
+  .bc .engine-load .spinner{width:18px;height:18px;border:2.5px solid rgba(201,162,75,.3);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;flex:0 0 18px}
+  .bc #camWrap{position:relative}
+  .bc .cam-flip{position:absolute;top:10px;left:10px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,162,75,.5);background:rgba(20,27,42,.72);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .bc .cam-flip:hover{border-color:var(--gold)}
+  .bc .cam-flip svg{width:20px;height:20px}
 </style>
 
 <div class="bc">
@@ -441,9 +448,11 @@
       <input type="file" id="fileInput" accept="image/*" hidden>
       <div id="camWrap">
         <video id="cam" playsinline muted></video>
+        <button type="button" class="cam-flip" id="camFlip" aria-label="החלפת מצלמה" title="החלפת מצלמה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3"/><path d="M22 12.5a10 10 0 0 1-18.8 4.3"/></svg></button>
         <div class="cam-hint">כף יד פתוחה מול המצלמה — נזהה אוטומטית</div>
       </div>
       <div class="decode-msg" id="decodeMsg"></div>
+      <div class="engine-load" id="engineLoad"><div class="spinner"></div><div>טוען את מנוע הזיהוי — פעם ראשונה בלבד, כמה שניות…</div></div>
       <div class="ef-qs" id="efsharQs" style="display:none"></div>
       <div class="proc" id="proc">
         <div class="spinner"></div>
@@ -938,6 +947,11 @@ const consent=$('consentChk'), btnUpload=$('btnUpload'), btnCamera=$('btnCamera'
       fileInput=$('fileInput'), camWrap=$('camWrap'), cam=$('cam'),
       decodeMsg=$('decodeMsg'), proc=$('proc'), procText=$('procText'), result=$('result');
 let camStream=null, camRAF=null;
+let camFacing = (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'environment' : 'user';   // מובייל: אחורית · דסקטופ: קדמית
+const engineLoadEl=$('engineLoad');
+const ENGINE_FAIL_MSG='לא הצלחנו לטעון את מנוע הזיהוי — בדקו את החיבור ונסו שוב, או עברו לשאלון המודרך (בלי מצלמה).';
+function engineNoticeShow(){ if(vision || mpFailed) return; engineLoadEl.style.display='flex'; }
+function engineNoticeHide(){ engineLoadEl.style.display='none'; }
 
 consent.addEventListener('change', ()=>{ const on=consent.checked; btnUpload.disabled=!on; btnCamera.disabled=!on; const bm=$('btnManual'); if(bm) bm.disabled=!on; });
 
@@ -968,13 +982,12 @@ function noHand(){ stopProc(); decodeMsg.textContent='לא הצלחנו לזהו
 btnUpload.addEventListener('click', ()=>{ if(!consent.checked) return; stopCamera(); fileInput.click(); });
 fileInput.addEventListener('change', async ()=>{
   const f=fileInput.files&&fileInput.files[0]; if(!f) return;
-  decodeMsg.textContent='טוען את המנוע…'; startProc();
+  engineNoticeShow(); startProc();
   const lm=await getImgLandmarker();
+  engineNoticeHide();
   const img=new Image();
   img.onload=async ()=>{
-    if(!lm){ // MediaPipe failed to load → cannot measure; use neutral fallback measures
-      stopProc(); noHand(); return;
-    }
+    if(!lm){ stopProc(); decodeMsg.textContent=ENGINE_FAIL_MSG; return; }
     try{
       const res=lm.detect(img);
       if(res && res.landmarks && res.landmarks.length){
@@ -996,12 +1009,14 @@ btnCamera.addEventListener('click', async ()=>{
   if(!consent.checked) return;
   decodeMsg.textContent='';
   try{
-    camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false});
+    camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:camFacing},audio:false});
   }catch(e){
     decodeMsg.textContent='אין גישה למצלמה — נסו "העלאת תמונה" במקום.'; return;
   }
+  engineNoticeShow();
   const lm=await getVidLandmarker();
-  if(!lm){ stopCamera(); decodeMsg.textContent='המנוע לא נטען — נסו "העלאת תמונה".'; return; }
+  engineNoticeHide();
+  if(!lm){ stopCamera(); decodeMsg.textContent=ENGINE_FAIL_MSG; return; }
   camWrap.style.display='block'; cam.srcObject=camStream; await cam.play();
   let goodSince=0, lastVideoTime=-1;
   const HOLD_MS=2500;   // must hold a good, straight, close hand for 2.5s before capture
@@ -1028,6 +1043,18 @@ btnCamera.addEventListener('click', async ()=>{
     camRAF=requestAnimationFrame(loop);
   };
   camRAF=requestAnimationFrame(loop);
+});
+
+/* החלפת מצלמה קדמית/אחורית — מקור וידאו בלבד, המדידה לא משתנה */
+$('camFlip').addEventListener('click', async (e)=>{
+  e.stopPropagation();
+  camFacing = camFacing==='user' ? 'environment' : 'user';
+  if(!camStream) return;
+  camStream.getTracks().forEach(t=>t.stop());
+  try{
+    camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:camFacing},audio:false});
+    cam.srcObject=camStream; await cam.play();
+  }catch(err){ stopCamera(); decodeMsg.textContent='אין גישה למצלמה — נסו "העלאת תמונה" במקום.'; }
 });
 
 /* ================= EFSHAR — שאלות ותוצאה ================= */
