@@ -125,6 +125,13 @@
   .bc .pain h2 { font-size: clamp(24px,3.4vw,34px); margin-bottom:20px; }
   .bc .pain p { color:#3a4560; margin-bottom:16px; }
   .bc .pain .kick { font-weight:700; color:var(--navy); font-size:19px; }
+  .bc .obj-stat { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--gold); font-weight:700; font-size:22px; margin-top:18px; }
+  .bc .trial .trial-steps { list-style:none; padding:0; margin:18px auto 20px; max-width:520px; text-align:right; }
+  .bc .trial .trial-steps li { padding:10px 34px 10px 0; position:relative; font-size:17px; color:var(--ink); border-bottom:1px solid var(--line-gold); }
+  .bc .trial .trial-steps li:last-child { border-bottom:none; }
+  .bc .trial .trial-steps li::before { content:'←'; position:absolute; right:0; color:var(--gold-2); font-weight:700; }
+  .bc .trial .kick { font-weight:700; color:var(--navy); font-size:18px; }
+  .bc .trial .cta.ghost.trial-cta { color:var(--gold-2); border-color:var(--gold-2); }
 
   /* BENEFITS */
   .bc .benes h2 { text-align:center; font-size:clamp(24px,3.4vw,34px); margin-bottom:44px; }
@@ -161,6 +168,8 @@
   .bc .tests h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); margin-bottom:44px; max-width:26ch; margin-inline:auto; }
   .bc .tcard { background: rgba(255,255,255,.04); border:1px solid rgba(201,162,75,.22); border-radius:18px; padding:26px; display:flex; flex-direction:column; gap:16px; }
   .bc .tcard .quote-ph { min-height:78px; }
+  .bc .tcard .tquote { color:var(--ivory); font-size:17px; line-height:1.75; margin:0; min-height:78px; }
+  .bc .tcard .tname { color:var(--gold); font-weight:700; font-size:14.5px; }
   .bc .tcard .who { display:flex; align-items:center; gap:12px; }
   .bc .tcard .avatar-ph { width:52px; height:52px; border-radius:50%; flex:0 0 52px; }
   .bc .tcard .who .meta .name-ph { width:120px; height:12px; }
@@ -421,7 +430,8 @@
     <div class="wrap"><div class="text-col">
       <span class="badge fade">חשוב שתדעי</span>
       <h2 class="fade">בלי מיסטיקה, בלי רוחניות. נטו מדע ופרקטיקה ארגונית.</h2>
-      <p class="fade">ההרצאה מבוססת באופן מלא על שיטת <span class="ltr">P.D.A</span> (ביומטריה של כפות ידיים) של ד"ר ארנולד הולצמן. מדובר בכלי אבחוני, פיזיולוגי ומדעי מוכח לניתוח דפוסי התנהגות ואישיות, ללא שום קשר לקריאת עתידות או "רוחניות". שפה עסקית, נקייה ומקצועית שמתאימה בול לחברות הייטק, בנקים וארגונים רציניים.</p>
+      <p class="fade">שיטת <span class="ltr">H.I.P</span> — פותחה על ידי רעות ביטון על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן ו-17 שנות ניסיון באבחון התנהגות אנושית. מדובר בכלי אבחוני פיזיולוגי לניתוח דפוסי התנהגות ואישיות, ללא שום קשר לקריאת עתידות או "רוחניות". שפה עסקית, נקייה ומקצועית שמתאימה בול לחברות הייטק, בנקים וארגונים רציניים.</p>
+      <p class="obj-stat fade">מאות אבחונים. אפס מגע פיזי.</p>
     </div></div>
   </section>
 
@@ -457,13 +467,27 @@
     </div>
   </section>
 
+  <!-- 6b. TRIAL DIAGNOSIS -->
+  <section class="s-ivory trial">
+    <div class="wrap"><div class="text-col">
+      <h2 class="fade">לא מאמינים? אל תאמינו. תבדקו.</h2>
+      <ul class="trial-steps fade">
+        <li>בחרו עובד ותיק שאתם מכירים היטב</li>
+        <li>אבחון <span class="ltr">H.I.P</span> מלא מתמונת כפות ידיים</li>
+        <li>דוח מפורט להשוואה מול מה שאתם כבר יודעים</li>
+      </ul>
+      <p class="kick fade">אם הדיוק לא יפתיע אתכם — לא שילמתם שקל ולא נמשיך. אם כן? נדבר על ההרצאה והמשך הדרך.</p>
+      <div class="center-cta fade"><a href="#lead-form" class="cta ghost trial-cta">אני רוצה אבחון ניסיון</a></div>
+    </div></div>
+  </section>
+
   <!-- 7. TESTIMONIALS -->
   <section class="s-navy tests">
     <div class="wrap">
       <h2 class="fade">מה אומרות מנהלות <span class="ltr">HR</span> ורווחה שכבר הזמינו את ההרצאה</h2>
       <div class="grid3">
-        <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 1</span><span class="hint">2–4 שורות · על ההרצאה לארגון</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div></div>
-        <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 2</span><span class="hint">שם מלא · תפקיד + חברה</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div></div>
+        <div class="tcard fade"><p class="tquote">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר — חבל למי שפספסו."</p><div class="who"><div class="meta"><div class="tname">המועצה המקומית קדימה-צורן</div></div></div></div>
+        <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 2</span><span class="hint">בכפוף לאישור</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div></div>
         <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 3</span><span class="hint">בכפוף לאישור</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div></div>
       </div>
       <div class="center-cta fade"><a href="#lead-form" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס</a></div>
@@ -526,7 +550,8 @@
         <details><summary>זה לא משהו מיסטי? איך זה יתקבל אצל ההנהלה?</summary><div class="ans">ממש לא. ההרצאה מבוססת על שיטת <span class="ltr">P.D.A</span> המדעית של ד"ר ארנולד הולצמן — כלי אבחוני פיזיולוגי, בלי שום קשר לרוחניות או קריאת עתידות. השפה עסקית ונקייה, ומתקבלת מצוין בחברות הייטק, בנקים וארגונים רציניים.</div></details>
         <details><summary>מה צריך להכין מבחינה לוגיסטית?</summary><div class="ans">מעט מאוד — חלל עם מקרן/מסך, מיקרופון, וכיסאות לקהל. רעות מגיעה עם כל השאר. <span class="todo">[לאישור רעות]</span></div></details>
         <details><summary>האם ההרצאה מתאימה גם לזום/היברידי?</summary><div class="ans">כן. ניתן להעביר את ההרצאה גם בפורמט מקוון או היברידי, עם התאמת ההדגמות האינטראקטיביות למדיה. <span class="todo">[לאישור רעות]</span></div></details>
-        <details><summary>כמה זה עולה?</summary><div class="ans">המחיר תלוי בגודל הקהל ובמיקום – מלאי פרטים בטופס ונחזור אלייך עם הצעה מסודרת תוך יום עסקים.</div></details>
+        <details><summary>כמה זה עולה?</summary><div class="ans">עזיבה אחת של עובד עולה עשרות אלפי שקלים. ההרצאה עולה פחות מזה — משמעותית. מלאי פרטים ונחזור אלייך עם הצעה מסודרת תוך יום עסקים.</div></details>
+        <details><summary>זה מתאים גם כאירוע גיבוש?</summary><div class="ans">זה בדיוק המקום שבו זה מצטיין: הרמת כוסית, יום עיון, אופסייט — ההרצאה היא החלק שכולם משתתפים בו, צוחקים בו, ומדברים עליו אחר כך. ההבדל: נשארים ממנה גם עם כלים.</div></details>
       </div>
     </div>
   </section>
