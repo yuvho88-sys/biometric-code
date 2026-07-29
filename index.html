@@ -170,6 +170,9 @@
   .bc .tcard .quote-ph { min-height:78px; }
   .bc .tcard .tquote { color:var(--ivory); font-size:17px; line-height:1.75; margin:0; min-height:78px; }
   .bc .tcard .tname { color:var(--gold); font-weight:700; font-size:14.5px; }
+  .bc .tsingle { display:flex; justify-content:center; }
+  .bc .tsingle .tcard { max-width:720px; width:100%; padding:34px 38px; }
+  .bc .tsingle .tquote { font-size:19px; line-height:1.8; min-height:0; }
   .bc .tcard .who { display:flex; align-items:center; gap:12px; }
   .bc .tcard .avatar-ph { width:52px; height:52px; border-radius:50%; flex:0 0 52px; }
   .bc .tcard .who .meta .name-ph { width:120px; height:12px; }
@@ -528,11 +531,13 @@
   <!-- 7. TESTIMONIALS -->
   <section class="s-navy tests">
     <div class="wrap">
-      <h2 class="fade">מה אומרות מנהלות <span class="ltr">HR</span> ורווחה שכבר הזמינו את ההרצאה</h2>
-      <div class="grid3">
+      <h2 class="fade">מה אומרים ארגונים שכבר אירחו את ההרצאה</h2>
+      <div class="tsingle">
         <div class="tcard fade"><p class="tquote">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר — חבל למי שפספסו."</p><div class="who"><div class="meta"><div class="tname">המועצה המקומית קדימה-צורן</div></div></div></div>
+        <!-- כרטיסי המלצה נוספים, מוסתרים עד שיהיו המלצות אמיתיות:
         <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 2</span><span class="hint">בכפוף לאישור</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div></div>
-        <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 3</span><span class="hint">בכפוף לאישור</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div></div>
+        <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 3</span><span class="hint">בכפוף לאישור</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div>
+        --></div>
       </div>
       <div class="center-cta fade"><a href="#lead-form" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס</a></div>
     </div>
@@ -616,7 +621,7 @@
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לנו וואטסאפ.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת – נחזור אלייך עם סילבוס והצעה, וההחלטה כולה שלך.</p>
       </form>
-      <div class="thankyou" id="thankyou"><h3 style="color:var(--navy);font-size:22px;margin-bottom:8px">תודה! קיבלתי את הפרטים שלך.</h3><p style="color:#465067">אחזור אליך אישית תוך יום-יומיים. בינתיים — הסריקה שעשית היא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו. נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235 · WWW.REUTBITTON.COM</p></div>
+      <div class="thankyou" id="thankyou"><h3 style="color:var(--navy);font-size:22px;margin-bottom:8px">תודה! קיבלתי את הפרטים שלך.</h3><p style="color:#465067">אחזור אליך אישית תוך יום-יומיים. <span id="tyMid">בינתיים — הסריקה שעשית היא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235 · WWW.REUTBITTON.COM</p></div>
     </div>
   </section>
 
@@ -695,7 +700,10 @@
       }
       if (window.__scanMode) payload.scan_mode = window.__scanMode;
       var done = false;
-      function success(){ if(done) return; done=true; form.style.display='none'; if(thanks){ thanks.classList.add('show'); thanks.scrollIntoView({behavior:'smooth', block:'center'}); } }
+      function success(){ if(done) return; done=true;
+        var mid=document.getElementById('tyMid');
+        if(mid && !window.__efshar){ mid.textContent='בינתיים — הרגע שבו אדם מרגיש שראו אותו באמת: זה בדיוק מה שאני יוצרת בהרצאות.'; }
+        form.style.display='none'; if(thanks){ thanks.classList.add('show'); thanks.scrollIntoView({behavior:'smooth', block:'center'}); } }
       function fail(){ if(done) return; done=true; btn.disabled=false; btn.textContent=orig; if(formErr) formErr.classList.add('show'); }
       fetch(WEBHOOK, { method:'POST', mode:'no-cors', keepalive:true, body:new URLSearchParams(payload) })
         .then(success).catch(fail);
