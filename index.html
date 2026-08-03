@@ -74,19 +74,23 @@
   /* משמעת זהב בהירו: הכפתור המשני נשאר נראה אך מפסיק להתחרות בראשי — מסגרת דקה, טקסט שנהב */
   .bc .hero .cta.ghost { color:var(--text-on-dark); border-width:1px; }
   /* משמעת זהב: תת-הכותרת היא כותרת-משנה, לא הדגשה. הזהב שמור לכפתור הראשי */
-  .bc .hero-kick { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--text-on-dark); font-weight:700; font-size:clamp(22px,3.2vw,30px); margin:6px 0 14px; }
+    /* יחידה 1: כותרת + שורה פואטית. 55-65% מגודל הכותרת */
+  .bc .hero-kick { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--text-on-dark); font-weight:700; font-size:clamp(20px,3.2vw,30px); margin:0 0 1.4rem; }
+  /* יחידה 2: שורת ההסבר — יורדת מדרגה, טקסט ולא כותרת */
+  /* מינימום 0.95rem (הרצפה המאושרת): במובייל הפסקה יורדת ל-16px, וההסבר חייב להישאר מתחתיה בשרשרת ההיררכיה */
+  .bc .hero-bio { color:var(--text-on-dark); font-weight:450; font-size:clamp(.95rem,1.35vw,1.12rem); line-height:1.6; margin:0 0 1.5rem; }
   .bc .hero-aud { color:var(--muted-l); font-size:14.5px; font-weight:600; letter-spacing:.3px; margin-bottom:14px; }
   /* Hero: eyebrow קהל יעד — שורת טקסט נקייה, בלי רקע ובלי מסגרת */
   .bc .hero-eyebrow { color:var(--gold-text-on-dark); font-size:.9rem; font-weight:600; letter-spacing:1.4px; margin-bottom:10px; }
   /* Hero: שאלת גשר בין הכאב לקריאה לפעולה */
-  .bc .hero-bridge { color:var(--gold-text-on-dark); font-weight:600; font-size:clamp(16.8px,2.2vw,21px); margin:1rem 0 1.4rem; }
+  .bc .hero-bridge { color:var(--gold-text-on-dark); font-weight:600; font-size:clamp(16.8px,2.2vw,21px); margin:1.5rem 0 .85rem; }
   /* Hero: קישור טקסטואלי במקום כפתור משני — נשאר נראה בלי להתחרות בראשי */
   .bc .hero-alt { margin-top:14px; font-size:.95rem; }
   .bc .hero-alt a { color:var(--text-on-dark); text-decoration:none; }
   .bc .hero-alt a:hover, .bc .hero-alt a:focus-visible { text-decoration:underline; text-underline-offset:4px; }
   /* Hero: שורת אמון דקה */
   .bc .hero-trust { margin-top:18px; font-size:.83rem; color:rgba(245,241,232,.7); }
-  .bc .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
+  .bc .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; margin-top:0; }
   @media (max-width:720px){ .bc .hero-ctas{ flex-direction:column; } .bc .hero-ctas .cta{ width:100%; text-align:center; } }
 
   /* fade */
@@ -137,7 +141,7 @@
   .bc .about .portrait img { width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; filter: sepia(.1) saturate(.92) brightness(1.02); }
   @media (max-width:900px){ .bc .about .portrait{ max-width:300px; margin:0 auto 6px; } }
   @media (max-width:720px){ .bc .logo{ height:46px; } }
-  .bc .hero h1 { color:#fff; font-size: clamp(31px,5.4vw,54px); max-width:17ch; margin-bottom:22px; margin-top:8px; }
+  .bc .hero h1 { color:#fff; font-size: clamp(31px,5.4vw,54px); max-width:17ch; margin-bottom:.5rem; margin-top:8px; }
   .bc .hero .sub { color:#d7ddea; font-size:clamp(16px,2.1vw,20px); max-width:62ch; margin-bottom:0; }
   .bc .hero .sub .ltr { color:#fff; font-weight:600; }
 
@@ -419,8 +423,8 @@
       <div class="hero-copy">
         <p class="hero-eyebrow fade">למנהלות <span class="ltr">HR</span>, גיוס ורווחה בארגונים</p>
         <h1 class="fade">כל אדם הוא שני סיפורים.</h1>
-        <p class="hero-kick fade">ניתוח אישיות מבוסס-מדע מתוך כפות הידיים — הביולוגיה מספרת את הסיפור שהראיון מפספס.</p>
-        <p class="hero-aud fade">ההרצאה שמלמדת את הצוות שלך לקרוא את הסיפור השני</p>
+        <p class="hero-kick fade">הסיפור שהוא מספר — ומי שהוא באמת.</p>
+        <p class="hero-bio fade">ניתוח אישיות שיטתי מתוך כפות הידיים — הביולוגיה מספרת את הסיפור שהראיון מפספס.</p>
         <p class="sub fade">את הפער בין שני הסיפורים מגלים תמיד מאוחר מדי — בגיוס שהתגלה כטעות, או בעובד מצוין שכבר מזמן במקום אחר בראש.</p>
         <p class="hero-bridge fade">מה אם הצוות שלך היה יודע לזהות את זה בראיון — לא שנה אחריו?</p>
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
