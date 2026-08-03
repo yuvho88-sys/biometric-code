@@ -24,10 +24,31 @@
     direction: rtl; text-align: right;
     font-family: 'Heebo','Assistant','Segoe UI',Arial,sans-serif;
     line-height: 1.7; -webkit-font-smoothing: antialiased;
-    --navy:#1B2436; --navy-2:#212c42; --navy-deep:#141b2a;
-    --ivory:#F5F1E8; --ivory-2:#efe9db; --gold:#C9A24B; --gold-2:#b68e39;
-    --ink:#2a3348; --muted-l:#a9b4c9; --muted-d:#6a7385; --line-gold: rgba(201,162,75,.35);
-    --gold-light:#E3CE96; --card:#fbf9f3; --ease:cubic-bezier(.22,.61,.36,1);
+    /* ══ חוקת צבע ══
+       1. --gold-fill לעולם לא משמש כצבע טקסט על רקע כהה.
+       2. טקסט על נייבי: --text-on-dark או --gold-text-on-dark בלבד.
+       3. מקסימום 2 אלמנטים זהובים בולטים לכל viewport.
+       4. --confirm שמור לאישור/הצלחה/זמינות בלבד — לא לקישוט. */
+
+    /* רקעים */
+    --bg-dark:#1B2436; --bg-dark-elevated:#212c42; --bg-dark-deep:#141b2a;
+    --bg-light:#F5F1E8; --bg-light-2:#efe9db; --bg-card:#fbf9f3;
+    /* טקסט */
+    --text-on-dark:#F5F1E8; --text-on-dark-muted:#AFBACF;
+    --text-on-light:#2a3348; --text-on-light-muted:#5F6878;
+    /* זהב — מילוי מול טקסט, הפרדה מוחלטת */
+    --gold-fill:#C9A24B; --gold-fill-deep:#b68e39;
+    --gold-text-on-dark:#E3CE96; --gold-text-on-light:#7D6126;
+    --gold-border:#C9A24B; --gold-line:rgba(201,162,75,.35);
+    /* צבע חיים — אישור, הצלחה, זמינות. שלושה מקומות בלבד */
+    --confirm:#1FA855;
+
+    /* שמות מדור קודם — ממופים לתפקידים. לא לשימוש בקוד חדש */
+    --navy:var(--bg-dark); --navy-2:var(--bg-dark-elevated); --navy-deep:var(--bg-dark-deep);
+    --ivory:var(--bg-light); --ivory-2:var(--bg-light-2); --card:var(--bg-card);
+    --gold:var(--gold-fill); --gold-2:var(--gold-fill-deep); --gold-light:var(--gold-text-on-dark);
+    --ink:var(--text-on-light); --muted-l:var(--text-on-dark-muted); --muted-d:var(--text-on-light-muted);
+    --line-gold:var(--gold-line); --ease:cubic-bezier(.22,.61,.36,1);
     color: var(--ink); background: var(--ivory); overflow-x: hidden;
   }
   .bc .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
@@ -48,9 +69,12 @@
   .bc .cta { display:inline-block; background: linear-gradient(180deg,var(--gold),var(--gold-2)); color:#1a1408; font-weight:700; font-size:16.5px; padding:15px 30px; border-radius:11px; text-decoration:none; border:none; cursor:pointer; box-shadow:0 8px 22px rgba(201,162,75,.3); transition:transform .18s ease, box-shadow .18s ease; }
   .bc .cta:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(201,162,75,.42); }
   .bc .cta:focus-visible { outline:3px solid #e7cf95; outline-offset:3px; }
-  .bc .cta.ghost { background:transparent; color:var(--gold); border:1.5px solid var(--gold); box-shadow:none; }
+  .bc .cta.ghost { background:transparent; color:var(--gold-text-on-dark); border:1.5px solid var(--gold-border); box-shadow:none; }
   .bc .cta.ghost:hover { background:rgba(201,162,75,.12); box-shadow:none; }
-  .bc .hero-kick { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--gold); font-weight:700; font-size:clamp(22px,3.2vw,30px); margin:6px 0 14px; }
+  /* משמעת זהב בהירו: הכפתור המשני נשאר נראה אך מפסיק להתחרות בראשי — מסגרת דקה, טקסט שנהב */
+  .bc .hero .cta.ghost { color:var(--text-on-dark); border-width:1px; }
+  /* משמעת זהב: תת-הכותרת היא כותרת-משנה, לא הדגשה. הזהב שמור לכפתור הראשי */
+  .bc .hero-kick { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--text-on-dark); font-weight:700; font-size:clamp(22px,3.2vw,30px); margin:6px 0 14px; }
   .bc .hero-aud { color:var(--muted-l); font-size:14.5px; font-weight:600; letter-spacing:.3px; margin-bottom:14px; }
   .bc .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
   @media (max-width:720px){ .bc .hero-ctas{ flex-direction:column; } .bc .hero-ctas .cta{ width:100%; text-align:center; } }
@@ -66,8 +90,8 @@
   .bc .s-navy h2,.bc .s-navy h3 { color: var(--ivory); }
   .bc .s-ivory { background: var(--ivory); }
   .bc .s-deep { background: linear-gradient(180deg,var(--navy-2),var(--navy-deep)); color: var(--ivory); }
-  .bc .eyebrow { color: var(--gold-2); font-weight:700; font-size:13.5px; letter-spacing:.7px; margin-bottom:12px; }
-  .bc .s-navy .eyebrow,.bc .s-deep .eyebrow { color: var(--gold); }
+  .bc .eyebrow { color: var(--gold-text-on-light); font-weight:700; font-size:13.5px; letter-spacing:.7px; margin-bottom:12px; }
+  .bc .s-navy .eyebrow,.bc .s-deep .eyebrow { color: var(--gold-text-on-dark); }
   /* faint compass motif */
   .bc .compass-bg { position:absolute; inset:0; pointer-events:none; opacity:.05; background-repeat:no-repeat; background-position: -60px center; background-size: 460px; }
 
@@ -125,13 +149,13 @@
   .bc .pain h2 { font-size: clamp(24px,3.4vw,34px); margin-bottom:20px; }
   .bc .pain p { color:#3a4560; margin-bottom:16px; }
   .bc .pain .kick { font-weight:700; color:var(--navy); font-size:19px; }
-  .bc .obj-stat { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--gold); font-weight:700; font-size:22px; margin-top:18px; }
+  .bc .obj-stat { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--gold-text-on-dark); font-weight:700; font-size:22px; margin-top:18px; }
   .bc .trial .trial-steps { list-style:none; padding:0; margin:18px auto 20px; max-width:520px; text-align:right; }
   .bc .trial .trial-steps li { padding:10px 34px 10px 0; position:relative; font-size:17px; color:var(--ink); border-bottom:1px solid var(--line-gold); }
   .bc .trial .trial-steps li:last-child { border-bottom:none; }
-  .bc .trial .trial-steps li::before { content:'←'; position:absolute; right:0; color:var(--gold-2); font-weight:700; }
+  .bc .trial .trial-steps li::before { content:'←'; position:absolute; right:0; color:var(--gold-text-on-light); font-weight:700; }
   .bc .trial .kick { font-weight:700; color:var(--navy); font-size:18px; }
-  .bc .trial .cta.ghost.trial-cta { color:var(--gold-2); border-color:var(--gold-2); }
+  .bc .trial .cta.ghost.trial-cta { color:var(--gold-text-on-light); border-color:var(--gold-text-on-light); }
   /* שורת הזמינות: משנית (13px, מעומעמת) אך עוברת AA על רקע שנהב.
      --muted-d נותן רק 4.23:1 בגודל הזה, לכן גוון כהה מעט יותר: 4.98:1 */
   .bc .trial .no-commit { color:#5F6878; }
@@ -159,7 +183,7 @@
   .bc .about .cols { display:grid; grid-template-columns: 340px 1fr; gap:44px; align-items:center; }
   .bc .portrait-ph { aspect-ratio: 4/5; width:100%; }
   .bc .about h2 { font-size:clamp(26px,3.4vw,36px); margin-bottom:8px; }
-  .bc .about .sub-gold { color:var(--gold-2); font-weight:700; font-size:16px; margin-bottom:18px; }
+  .bc .about .sub-gold { color:var(--gold-text-on-light); font-weight:700; font-size:16px; margin-bottom:18px; }
   .bc .about .letter { max-width:62ch; }
   .bc .about .letter p { margin:0 0 14px; line-height:1.78; color:var(--ink); }
   .bc .about .letter .sign { margin-top:20px; }
@@ -167,7 +191,7 @@
   .bc .about .letter .letter-punch { font-weight:700; margin:21px 0; color:var(--ink); }
   /* "מדברות?" — שורת סיום ממורכזת עם אוויר משני הצדדים */
   .bc .about .letter .letter-ask { text-align:center; margin:30px 0 8px; }
-  .bc .about .letter .letter-link { color:var(--gold-2); font-weight:700; font-size:19px; text-decoration:underline; text-underline-offset:4px; }
+  .bc .about .letter .letter-link { color:var(--gold-text-on-light); font-weight:700; font-size:19px; text-decoration:underline; text-underline-offset:4px; }
   .bc .about .cols { align-items:start; }
   .bc .about p { color:#3a4560; font-size:16.5px; }
 
@@ -176,7 +200,7 @@
   .bc .tcard { background: rgba(255,255,255,.04); border:1px solid rgba(201,162,75,.22); border-radius:18px; padding:26px; display:flex; flex-direction:column; gap:16px; }
   .bc .tcard .quote-ph { min-height:78px; }
   .bc .tcard .tquote { color:var(--ivory); font-size:17px; line-height:1.75; margin:0; min-height:78px; }
-  .bc .tcard .tname { color:var(--gold); font-weight:700; font-size:14.5px; }
+  .bc .tcard .tname { color:var(--gold-text-on-dark); font-weight:700; font-size:14.5px; }
   .bc .tsingle { display:flex; justify-content:center; }
   .bc .tsingle .tcard { max-width:720px; width:100%; padding:34px 38px; }
   .bc .tsingle .tquote { font-size:19px; line-height:1.8; min-height:0; }
@@ -208,11 +232,13 @@
   .bc .wa-back{ font-size:19px; line-height:1; opacity:.9; }
   .bc .wa-av { width:30px;height:30px;border-radius:50%; background:#cdbba1; flex:0 0 30px; }
   .bc .wa-name { font-size:13px; font-weight:700; display:flex; flex-direction:column; line-height:1.2; }
-  .bc .wa-name small { font-size:10.5px; font-weight:400; opacity:.85; }
+  /* צבע חיים 2/3: נקודת "מחוברת" — נוצרת ב-CSS בלבד, בלי לגעת ב-HTML */
+  .bc .wa-name small { font-size:10.5px; font-weight:400; opacity:.85; display:flex; align-items:center; gap:5px; }
+  .bc .wa-name small::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--confirm); flex:0 0 auto; }
   .bc .wa-body { flex:1; padding:14px 12px; display:flex; flex-direction:column; gap:9px; overflow:hidden; background-image: radial-gradient(rgba(0,0,0,.035) 1px, transparent 1px); background-size:16px 16px; }
   .bc .wa-in { position:relative; align-self:flex-start; max-width:84%; background:#fff; border-radius:9px; border-top-right-radius:2px; padding:8px 11px 17px; box-shadow:0 1px 1px rgba(0,0,0,.12); }
   .bc .wa-in p { color:#111b21; font-size:12.5px; line-height:1.45; margin:0; }
-  .bc .wa-in .t { position:absolute; bottom:4px; left:9px; font-size:9.5px; color:#8a9199; }
+  .bc .wa-in .t { position:absolute; bottom:4px; left:9px; font-size:9.5px; color:#71777D; }
   .bc .wa-in::before { content:''; position:absolute; top:0; right:-6px; border:6px solid transparent; border-top-color:#fff; border-right-width:0; }
 
   /* WHO */
@@ -220,7 +246,7 @@
   .bc .who2 h2 { font-size:clamp(22px,3vw,30px); margin-bottom:26px; }
   .bc .chips { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:24px; }
   .bc .chip { background:#fff; border:1px solid #e7e1d3; color:var(--navy); font-weight:600; font-size:15.5px; padding:11px 20px; border-radius:11px; }
-  .bc .who2 .format { color:var(--muted-d); max-width:64ch; margin:0 auto; }
+  .bc .who2 .format { color:var(--text-on-light); max-width:64ch; margin:0 auto; }
 
   /* FAQ */
   .bc .faq h2 { text-align:center; font-size:clamp(24px,3.2vw,34px); margin-bottom:40px; }
@@ -228,10 +254,10 @@
   .bc details { background:#fff; border:1px solid #e7e1d3; border-radius:13px; margin-bottom:12px; overflow:hidden; }
   .bc summary { list-style:none; cursor:pointer; padding:19px 22px; font-weight:700; color:var(--navy); font-size:17px; display:flex; justify-content:space-between; align-items:center; gap:14px; }
   .bc summary::-webkit-details-marker{ display:none; }
-  .bc summary::after { content:'+'; color:var(--gold-2); font-size:22px; font-weight:400; flex:0 0 auto; }
+  .bc summary::after { content:'+'; color:var(--gold-text-on-light); font-size:22px; font-weight:400; flex:0 0 auto; }
   .bc details[open] summary::after { content:'–'; }
   .bc details .ans { padding:0 22px 20px; color:#465067; font-size:16px; }
-  .bc .todo { color:var(--gold-2); font-size:13px; font-weight:600; }
+  .bc .todo { color:var(--gold-text-on-light); font-size:13px; font-weight:600; }
 
   /* FORM */
   .bc .formsec h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); max-width:28ch; margin:0 auto 16px; }
@@ -241,7 +267,8 @@
   .bc .field { margin-bottom:17px; }
   .bc label { display:block; font-weight:600; color:var(--navy); font-size:14.5px; margin-bottom:7px; }
   .bc input { width:100%; font-family:inherit; font-size:16px; color:var(--ink); padding:13px 15px; border:1.5px solid #e2ddcf; border-radius:11px; background:#fbfaf6; }
-  .bc input:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,162,75,.18); }
+  /* צבע חיים 3/3: השדה הפעיל מגיב — הטופס מרגיש חי בדיוק ברגע ההקלדה */
+  .bc input:focus, .bc select:focus { outline:none; border-color:var(--confirm); box-shadow:0 0 0 3px rgba(31,168,85,.22); }
   .bc form .cta { width:100%; margin-top:6px; font-size:16px; }
   .bc .no-commit { text-align:center; color:var(--muted-d); font-size:13px; margin-top:12px; }
   .bc .err { display:none; color:#d33; font-size:13px; margin-top:6px; }
@@ -252,7 +279,11 @@
   .bc form .cta[disabled] { opacity:.65; cursor:default; }
   .bc .side-quote { align-self:center; }
   .bc .side-quote .ph { min-height:150px; }
-  .bc .thankyou { display:none; text-align:center; padding:18px; background:#fff; border-radius:20px; }
+  /* צבע חיים 1/3: רגע ההצלחה — פס אישור עליון + וי. הטקסט נשאר בצבעי הטקסט הרגילים */
+  .bc .thankyou { display:none; text-align:center; padding:18px; background:#fff; border-radius:20px; border-top:4px solid var(--confirm); }
+  .bc .thankyou::before { content:''; display:block; width:44px; height:44px; margin:4px auto 14px; border-radius:50%;
+    background:var(--confirm) no-repeat center/22px 22px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"); }
   .bc .thankyou.show { display:block; }
 
   /* FOOTER */
@@ -312,7 +343,7 @@
   .rcard h3{font-size:22px;color:var(--navy);margin-bottom:16px}
   .metrics{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
   .metric{background:#fff;border:1px solid #e7e1d3;border-radius:12px;padding:10px 14px;font-size:14px;color:var(--muted-d);flex:1 1 auto;text-align:center}
-  .metric b{display:block;font-family:'Frank Ruhl Libre',serif;font-size:22px;color:var(--gold);font-weight:800;margin-top:2px}
+  .metric b{display:block;font-family:'Frank Ruhl Libre',serif;font-size:22px;color:var(--gold-text-on-dark);font-weight:800;margin-top:2px}
   .reading{font-size:17px;line-height:1.7;color:var(--ink)}
   .rdisc{font-size:12.5px;color:var(--muted-d);margin-top:16px;padding-top:14px;border-top:1px solid #e7e1d3}
   .locked{position:relative;margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line-gold)}
@@ -329,9 +360,9 @@
   @media(max-width:640px){ .bc .decode .entries{grid-template-columns:1fr} }
   .bc .ef-qs{margin-top:16px}
   .bc .ef-intro{color:var(--muted-l);font-size:14.5px;line-height:1.7;margin-bottom:6px}
-  .bc .ef-lenses{color:var(--gold);font-weight:700;font-size:14.5px;margin-bottom:14px}
+  .bc .ef-lenses{color:var(--gold-text-on-dark);font-weight:700;font-size:14.5px;margin-bottom:14px}
   .bc .ef-q{border:1px solid rgba(201,162,75,.25);border-radius:14px;padding:16px;margin-bottom:12px;background:rgba(255,255,255,.03)}
-  .bc .ef-qname{color:var(--gold);font-weight:700;font-size:13.5px;letter-spacing:.5px;margin-bottom:4px}
+  .bc .ef-qname{color:var(--gold-text-on-dark);font-weight:700;font-size:13.5px;letter-spacing:.5px;margin-bottom:4px}
   .bc .ef-qtext{color:var(--ivory);font-weight:700;font-size:16.5px;margin-bottom:4px}
   .bc .ef-qhow{color:var(--muted-l);font-size:13.5px;margin-bottom:10px}
   .bc .ef-measured{color:var(--gold-light);font-size:13.5px;margin-bottom:8px}
@@ -344,14 +375,14 @@
   .bc .ef-show[disabled]{opacity:.5;cursor:default}
   .bc .ef-opener{color:var(--navy);font-weight:700;margin:0 0 10px}
   .bc .ef-snip{color:var(--ink);line-height:1.75;margin:0 0 10px}
-  .bc .ef-combo{color:var(--gold-2);font-weight:600;line-height:1.75;margin:0 0 10px}
+  .bc .ef-combo{color:var(--gold-text-on-dark);font-weight:600;line-height:1.75;margin:0 0 10px}
   .bc .ef-cross{color:var(--navy);margin:14px 0 0;border-top:1px solid rgba(201,162,75,.35);padding-top:12px}
   .bc .ef-ctas{display:grid;gap:14px;margin-top:16px}
   .bc .ef-cta{border:1px solid rgba(201,162,75,.4);border-radius:14px;padding:18px;background:rgba(201,162,75,.06)}
-  .bc .ef-cta h4{color:var(--gold-2);font-size:18px;margin:0 0 8px;font-family:'Frank Ruhl Libre','David Libre',serif}
+  .bc .ef-cta h4{color:var(--gold-text-on-dark);font-size:18px;margin:0 0 8px;font-family:'Frank Ruhl Libre','David Libre',serif}
   .bc .ef-cta p{color:#465067;font-size:14.5px;line-height:1.7;margin:0 0 12px}
   .bc select{width:100%;font-family:inherit;font-size:16px;color:var(--ink);padding:13px 15px;border:1.5px solid #e2ddcf;border-radius:11px;background:#fbfaf6}
-  .bc .thankyou .ty-sign{margin-top:12px;color:var(--gold-2);font-weight:700;font-size:14.5px}
+  .bc .thankyou .ty-sign{margin-top:12px;color:var(--gold-text-on-light);font-weight:700;font-size:14.5px}
   .bc footer .legal{color:rgba(245,241,232,.55);font-size:12.5px;line-height:1.6;max-width:760px;margin:14px auto 10px}
   /* closing task 4: engine-load notice + camera flip */
   .bc .engine-load{display:none;align-items:center;justify-content:center;gap:10px;color:var(--muted-l);font-size:14px;margin-top:12px}
