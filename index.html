@@ -90,6 +90,10 @@
   .bc .s-navy h2,.bc .s-navy h3 { color: var(--ivory); }
   .bc .s-ivory { background: var(--ivory); }
   .bc .s-deep { background: linear-gradient(180deg,var(--navy-2),var(--navy-deep)); color: var(--ivory); }
+  /* רקע כהה-מוגבה: מפריד ויזואלית בין סקשנים כהים סמוכים בלי לשבור את הרצף */
+  .bc .s-dark-2 { background: var(--bg-dark-elevated); color: var(--text-on-dark); }
+  .bc .s-dark-2 h2, .bc .s-dark-2 h3 { color: var(--text-on-dark); }
+  .bc .s-dark-2 .eyebrow { color: var(--gold-text-on-dark); }
   .bc .eyebrow { color: var(--gold-text-on-light); font-weight:700; font-size:13.5px; letter-spacing:.7px; margin-bottom:12px; }
   .bc .s-navy .eyebrow,.bc .s-deep .eyebrow { color: var(--gold-text-on-dark); }
   /* faint compass motif */
@@ -218,15 +222,15 @@
   @media (max-width:600px){ .bc .wa-slide{ flex:0 0 78%; } }
   @media (prefers-reduced-motion: reduce){ .bc .wa-track{ transition:none; } }
   .bc .wa-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:24px; }
-  .bc .wa-arrow { width:44px;height:44px;border-radius:50%; border:1px solid var(--line-gold); background:transparent; color:var(--navy); cursor:pointer; font-size:20px; line-height:1; display:flex;align-items:center;justify-content:center; transition:background .18s ease; }
+  .bc .wa-arrow { width:44px;height:44px;border-radius:50%; border:1px solid var(--line-gold); background:transparent; color:var(--text-on-dark-muted); cursor:pointer; font-size:20px; line-height:1; display:flex;align-items:center;justify-content:center; transition:background .18s ease; }
   .bc .wa-arrow:hover{ background:rgba(201,162,75,.14); }
   .bc .wa-arrow:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
   .bc .wa-dots{ display:flex; gap:9px; }
   .bc .wa-dot{ width:9px;height:9px;border-radius:50%; background:rgba(201,162,75,.32); border:none; padding:0; cursor:pointer; transition:transform .15s ease, background .15s ease; }
   .bc .wa-dot.active{ background:var(--gold); transform:scale(1.18); }
-  .bc .wa-demo-note{ text-align:center; color:var(--muted-d); font-size:13px; margin-top:16px; }
+  .bc .wa-demo-note{ text-align:center; color:var(--text-on-dark-muted); font-size:13px; margin-top:16px; }
   /* phone frame + WhatsApp chat mock (demo-slides) */
-  .bc .wa-phone { border:9px solid #0f1622; background:#0f1622; border-radius:32px; aspect-ratio:9/17.6; overflow:hidden; box-shadow:0 18px 44px rgba(0,0,0,.3); }
+  .bc .wa-phone { border:9px solid var(--bg-dark-deep); background:var(--bg-dark-deep); border-radius:32px; aspect-ratio:9/17.6; overflow:hidden; box-shadow:0 18px 44px rgba(0,0,0,.3); }
   .bc .wa-chat { height:100%; display:flex; flex-direction:column; background:#e5ddd3; }
   .bc .wa-head { display:flex; align-items:center; gap:8px; background:#075e54; color:#fff; padding:9px 10px; }
   .bc .wa-back{ font-size:19px; line-height:1; opacity:.9; }
@@ -245,8 +249,9 @@
   .bc .who2 { text-align:center; }
   .bc .who2 h2 { font-size:clamp(22px,3vw,30px); margin-bottom:26px; }
   .bc .chips { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:24px; }
-  .bc .chip { background:#fff; border:1px solid #e7e1d3; color:var(--navy); font-weight:600; font-size:15.5px; padding:11px 20px; border-radius:11px; }
-  .bc .who2 .format { color:var(--text-on-light); max-width:64ch; margin:0 auto; }
+  /* צ'יפים on-dark: רקע לבן שקוף, מסגרת בגוון הטקסט המשני, בלי צל */
+  .bc .chip { background:rgba(255,255,255,.07); border:1px solid rgba(175,186,207,.25); color:var(--text-on-dark); font-weight:600; font-size:15.5px; padding:11px 20px; border-radius:11px; }
+  .bc .who2 .format { color:var(--text-on-dark-muted); max-width:64ch; margin:0 auto; }
 
   /* FAQ */
   .bc .faq h2 { text-align:center; font-size:clamp(24px,3.2vw,34px); margin-bottom:40px; }
@@ -594,7 +599,7 @@
   </section>
 
   <!-- 8. WHATSAPP CAROUSEL (skeleton) -->
-  <section class="s-ivory wac">
+  <section class="s-dark-2 wac">
     <div class="wrap">
       <h2 class="fade">ככה זה נשמע יום אחרי ההרצאה</h2>
       <div class="wa-viewport fade" id="waViewport">
@@ -629,7 +634,7 @@
   </section>
 
   <!-- 9. WHO -->
-  <section class="s-ivory who2" style="padding-top:0">
+  <section class="s-dark-2 who2" style="padding-top:0">
     <div class="wrap">
       <h2 class="fade">למי זה מתאים</h2>
       <div class="chips fade">
