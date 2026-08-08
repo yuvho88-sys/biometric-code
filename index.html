@@ -236,6 +236,23 @@
   @media (max-width:600px){ .bc .wa-slide{ flex:0 0 78%; } }
   @media (prefers-reduced-motion: reduce){ .bc .wa-track{ transition:none; } }
   .bc .wa-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:24px; }
+  /* קרוסלת צילומי וואטסאפ: כרטיס בגובה אחיד, ראש השיחה תמיד גלוי, לחיצה מגדילה */
+  .bc .wac-sub { text-align:center; color:var(--text-on-dark-muted); font-size:15px; margin:-26px auto 30px; }
+  .bc .wa-shot { display:block; width:100%; padding:0; border:1px solid var(--gold-line); border-radius:16px;
+    overflow:hidden; background:var(--bg-dark-deep); cursor:zoom-in; transition:transform .18s var(--ease), border-color .18s ease; }
+  .bc .wa-shot:hover { transform:translateY(-3px); border-color:var(--gold-border); }
+  .bc .wa-shot:focus-visible { outline:3px solid var(--gold-text-on-dark); outline-offset:3px; }
+  .bc .wa-shot img { display:block; width:100%; height:430px; object-fit:cover; object-position:top center; }
+  @media (max-width:600px){ .bc .wa-shot img { height:380px; } }
+  /* לייטבוקס */
+  .bc .wa-lb { position:fixed; inset:0; z-index:70; background:rgba(10,15,26,.94); display:none;
+    align-items:center; justify-content:center; padding:26px 16px; }
+  .bc .wa-lb.on { display:flex; }
+  .bc .wa-lb img { max-width:min(520px,94vw); max-height:88vh; border-radius:14px; box-shadow:0 24px 60px rgba(0,0,0,.5); }
+  .bc .wa-lb-x { position:absolute; top:16px; left:16px; width:46px; height:46px; border-radius:50%;
+    border:1px solid var(--gold-line); background:rgba(20,27,42,.8); color:var(--text-on-dark);
+    font-size:26px; line-height:1; cursor:pointer; }
+  .bc .wa-lb-x:hover { border-color:var(--gold-border); }
   .bc .wa-arrow { width:44px;height:44px;border-radius:50%; border:1px solid var(--line-gold); background:transparent; color:var(--text-on-dark-muted); cursor:pointer; font-size:20px; line-height:1; display:flex;align-items:center;justify-content:center; transition:background .18s ease; }
   .bc .wa-arrow:hover{ background:rgba(201,162,75,.14); }
   .bc .wa-arrow:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
@@ -624,45 +641,29 @@
     </div>
   </section>
 
-  <!-- קרוסלת וואטסאפ — הוסרה מהרינדור עד קבלת צילומים אמיתיים. המנגנון: אוטו-דיטקציה של קבצים ב-public/whatsapp/
-       (בפועל הקרוסלה סטטית — השקופיות מקודדות קשיח; להחליף את בלוק demo-slides ידנית כשמגיעים צילומים).
-       תגובות פנימיות סומנו [[ ]] כדי שלא ישברו את העטיפה — להחזיר לתחביר תגובה רגיל בעת השחזור. -->
-  <!--
-  [[ 8. WHATSAPP CAROUSEL (skeleton) ]]
+  <!-- 8. WHATSAPP CAROUSEL — צילומי מסך אמיתיים. נחתכו כדי להסיר מקלדת, שורת סטטוס, שמות לקוחות וקישורי חשבונית. מקור: wa-src/ ; חתוכים: wa-clean/ ; מוגשים: deploy/wa/ -->
   <section class="s-dark-2 wac">
     <div class="wrap">
-      <h2 class="fade">ככה זה נשמע יום אחרי ההרצאה</h2>
+      <h2 class="fade">ההודעות שמגיעות אחרי</h2>
+      <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
       <div class="wa-viewport fade" id="waViewport">
         <div class="wa-track" id="waTrack">
-          [[ demo-slides START — תצוגת דמו זמנית. כשמעלים צילומים אמיתיים ל-public/whatsapp/ מחליפים את הבלוק הזה. ]]
-          <div class="wa-slide"><div class="wa-phone"><div class="wa-chat">
-            <div class="wa-head"><span class="wa-back">‹</span><span class="wa-av"></span><span class="wa-name">מנהלת משאבי אנוש<small>מחוברת</small></span></div>
-            <div class="wa-body"><div class="wa-in"><p>כאן תוצג המלצת וואטסאפ אמיתית ממנהלת HR</p><span class="t">09:41</span></div><div class="wa-in"><p>הצילומים יעלו בקרוב ✨</p><span class="t">09:42</span></div></div>
-          </div></div></div>
-          <div class="wa-slide"><div class="wa-phone"><div class="wa-chat">
-            <div class="wa-head"><span class="wa-back">‹</span><span class="wa-av"></span><span class="wa-name">מנהלת משאבי אנוש<small>מחוברת</small></span></div>
-            <div class="wa-body"><div class="wa-in"><p>כאן תוצג המלצת וואטסאפ אמיתית ממנהלת HR</p><span class="t">11:20</span></div><div class="wa-in"><p>הצילומים יעלו בקרוב ✨</p><span class="t">11:21</span></div></div>
-          </div></div></div>
-          <div class="wa-slide"><div class="wa-phone"><div class="wa-chat">
-            <div class="wa-head"><span class="wa-back">‹</span><span class="wa-av"></span><span class="wa-name">מנהלת משאבי אנוש<small>מחוברת</small></span></div>
-            <div class="wa-body"><div class="wa-in"><p>כאן תוצג המלצת וואטסאפ אמיתית ממנהלת HR</p><span class="t">14:05</span></div><div class="wa-in"><p>הצילומים יעלו בקרוב ✨</p><span class="t">14:06</span></div></div>
-          </div></div></div>
-          <div class="wa-slide"><div class="wa-phone"><div class="wa-chat">
-            <div class="wa-head"><span class="wa-back">‹</span><span class="wa-av"></span><span class="wa-name">מנהלת משאבי אנוש<small>מחוברת</small></span></div>
-            <div class="wa-body"><div class="wa-in"><p>כאן תוצג המלצת וואטסאפ אמיתית ממנהלת HR</p><span class="t">16:30</span></div><div class="wa-in"><p>הצילומים יעלו בקרוב ✨</p><span class="t">16:31</span></div></div>
-          </div></div></div>
-          [[ demo-slides END ]]
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
         </div>
       </div>
       <div class="wa-nav">
         <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">›</button>
-        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת וואטסאפ"></div>
+        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
         <button class="wa-arrow" type="button" data-dir="1" aria-label="השקופית הבאה">‹</button>
       </div>
-      [[ הערה תפעולית (לא לתצוגה): כשמעלים צילומי וואטסאפ אמיתיים ל-public/whatsapp/ מחליפים את בועות הדמו. ]]
     </div>
   </section>
-  -->
 
   <!-- 9. WHO -->
   <!-- padding-top:0 הוסר עם הקרוסלה — הוא היה קיים רק כדי להיצמד אליה. להחזיר אם הקרוסלה חוזרת. -->
@@ -864,6 +865,41 @@
     }, { passive:true });
     window.addEventListener('resize', function(){ goTo(idx); });
     goTo(0); start();
+  }
+
+  // לייטבוקס לצילומי הוואטסאפ: נבנה בלחיצה ראשונה, נסגר ב-Esc, בלחיצה על הרקע או על הכפתור
+  var waShots = scope.querySelectorAll('.wa-shot');
+  if(waShots.length){
+    var lb = null, lbImg = null, lastFocus = null;
+    function buildLb(){
+      lb = document.createElement('div');
+      lb.className = 'wa-lb';
+      lb.innerHTML = '<button class="wa-lb-x" type="button" aria-label="סגירה">×</button><img alt="">';
+      lbImg = lb.querySelector('img');
+      lb.addEventListener('click', function(e){ if(e.target === lb || e.target.closest('.wa-lb-x')) closeLb(); });
+      scope.appendChild(lb);
+    }
+    function openLb(src, alt){
+      if(!lb) buildLb();
+      lastFocus = document.activeElement;
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.classList.add('on');
+      document.body.style.overflow = 'hidden';
+      lb.querySelector('.wa-lb-x').focus();
+    }
+    function closeLb(){
+      if(!lb) return;
+      lb.classList.remove('on');
+      document.body.style.overflow = '';
+      if(lastFocus) lastFocus.focus();
+    }
+    waShots.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var img = btn.querySelector('img');
+        openLb(btn.getAttribute('data-full') || img.src, img.getAttribute('alt'));
+      });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
   }
 
   // sticky CTA (mobile): show only after 25% scroll; hide over the form & footer
