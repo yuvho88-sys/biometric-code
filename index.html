@@ -158,7 +158,7 @@
   @media (prefers-reduced-motion: reduce){ .bc .fade{ opacity:1!important; transform:none!important; transition:none; } }
 
   /* section shells */
-  .bc section { position:relative; padding:clamp(2.9rem,8vw,8rem) 0; overflow:hidden; }
+  .bc section { position:relative; padding:clamp(2.1rem,4vw,3.5rem) 0; overflow:hidden; }
   .bc .s-navy { background: var(--navy); color: var(--text-on-dark); }
   .bc .s-navy h2,.bc .s-navy h3 { color: var(--text-on-dark); }
   .bc .s-ivory { background: var(--ivory); }
@@ -215,7 +215,7 @@
   .bc .compass-bg { position:absolute; inset:0; pointer-events:none; opacity:.05; background-repeat:no-repeat; background-position: -60px center; background-size: 460px; }
 
   /* HERO */
-  .bc .hero { position:relative; padding:56px 0 92px; color:var(--text-on-dark);
+  .bc .hero { position:relative; padding:40px 0 56px; color:var(--text-on-dark);
     background:
       radial-gradient(120% 90% at 80% 0%, var(--bg-dark-elevated) 0%, var(--bg-dark) 55%, var(--bg-dark-deep) 100%);
   }
@@ -233,60 +233,53 @@
   @media (max-width:900px){ .bc .constellation { max-width:250px; } }
   .bc .cn-silh path { fill:none; stroke:var(--text-on-dark); stroke-width:22;
     stroke-linecap:round; stroke-linejoin:round; }
+  /* pathLength=100 על כל קו, כדי שהמקף יהיה מספר קבוע ולא משתנה שספארי צריך לפענח בתוך keyframes */
   .bc .cn-links line { stroke:var(--measure-on-dark); stroke-width:1.4; opacity:.55;
-    stroke-dasharray:var(--len,300); stroke-dashoffset:var(--len,300); }
-  .bc .cn-dots circle { fill:var(--measure-on-dark); opacity:0; }
+    stroke-dasharray:100; stroke-dashoffset:0; }
+  .bc .cn-dots circle { fill:var(--measure-on-dark); opacity:.55; }
   .bc .cn-meas path { fill:none; stroke:var(--accent-text-on-dark); stroke-width:1.2;
-    stroke-dasharray:4 4; stroke-dashoffset:var(--len,300); opacity:.9; }
+    stroke-dasharray:1.2 1.2; stroke-dashoffset:0; opacity:.9; }
   .bc .cn-tick { fill:var(--accent-text-on-dark); opacity:0; }
 
   /* ── לופ מדידה: מחזור 7 שניות, נשימה של מכשיר ──
      1. הדלקה 1.6s (רצף אנטומי, stagger 60ms) · 2. מתיחה 1.4s
      3. שהייה 2.5s עם פולס נשימה · 4. דעיכה 1.5s ל-0.25, לא ל-0
      קו המתאר והתוויות סטטיים — רק הנקודות והקווים חיים. */
-  .bc .constellation { --cycle:3.5s; --step:165ms; }
+  .bc .constellation { --cycle:3.5s; }
   .bc .cn-silh { opacity:.17; }
   .bc .cn-tick { opacity:1; }
 
+  /* ההשהיה נכתבת ישירות על כל אלמנט מה-JS (animation-delay בפיקסלים של זמן),
+     ולא דרך calc על משתנה, כי זו נקודת כשל ידועה בספארי במובייל */
   .bc .cn-dots circle {
-    opacity:.25; transform-box:fill-box; transform-origin:center;
-    animation:cnDotLoop var(--cycle) cubic-bezier(.4,0,.2,1) infinite;
-    animation-delay:calc(var(--i) * var(--step));
+    animation:cnDotLoop var(--cycle) linear infinite;
+    transform-box:fill-box; transform-origin:center;
   }
-  .bc .cn-links line {
-    opacity:.55;
-    animation:cnLinkLoop var(--cycle) cubic-bezier(.4,0,.2,1) infinite;
-    animation-delay:calc(var(--i) * var(--step));
-  }
-  .bc .cn-meas path {
-    opacity:.9;
-    animation:cnMeasLoop var(--cycle) cubic-bezier(.4,0,.2,1) infinite;
-    animation-delay:calc(.6s + var(--i) * .1s);
-  }
+  .bc .cn-links line { animation:cnLinkLoop var(--cycle) linear infinite; }
+  .bc .cn-meas path  { animation:cnMeasLoop var(--cycle) linear infinite; }
 
+  /* גל רציף: לכל נקודה יש רגע שיא ודעיכה מתמדת, כך שבכל רגע נתון
+     חלק מהנקודות בולטות וחלק עמומות — התנועה נראית גם במבט חטוף */
   @keyframes cnDotLoop {
-    0%   { opacity:.14; transform:scale(1); }
-    5%   { opacity:1;   transform:scale(1.4); }
-    9%   { opacity:1;   transform:scale(1); }
-    42%  { opacity:1; }
-    56%  { opacity:.88; }
-    70%  { opacity:1; }
-    85%  { opacity:1;   transform:scale(1); }
-    100% { opacity:.14; transform:scale(1); }
+    0%   { opacity:.18; transform:scale(1); }
+    8%   { opacity:1;   transform:scale(1.5); }
+    18%  { opacity:.95; transform:scale(1); }
+    55%  { opacity:.55; transform:scale(1); }
+    100% { opacity:.18; transform:scale(1); }
   }
   @keyframes cnLinkLoop {
-    0%   { stroke-dashoffset:var(--len,300); opacity:.12; }
-    14%  { stroke-dashoffset:var(--len,300); opacity:.2; }
-    32%  { stroke-dashoffset:0; opacity:.7; }
-    85%  { stroke-dashoffset:0; opacity:.7; }
-    100% { stroke-dashoffset:0; opacity:.12; }
+    0%   { stroke-dashoffset:100; opacity:.14; }
+    12%  { stroke-dashoffset:100; opacity:.22; }
+    34%  { stroke-dashoffset:0;   opacity:.7; }
+    82%  { stroke-dashoffset:0;   opacity:.55; }
+    100% { stroke-dashoffset:100; opacity:.14; }
   }
   @keyframes cnMeasLoop {
-    0%   { stroke-dashoffset:var(--len,300); opacity:.14; }
-    18%  { stroke-dashoffset:var(--len,300); opacity:.2; }
-    38%  { stroke-dashoffset:0; opacity:1; }
-    85%  { stroke-dashoffset:0; opacity:1; }
-    100% { stroke-dashoffset:0; opacity:.14; }
+    0%   { stroke-dashoffset:100; opacity:.14; }
+    18%  { stroke-dashoffset:100; opacity:.22; }
+    40%  { stroke-dashoffset:0;   opacity:1; }
+    82%  { stroke-dashoffset:0;   opacity:.85; }
+    100% { stroke-dashoffset:100; opacity:.14; }
   }
 
   /* מחוץ למסך — עוצרים, חוסך סוללה */
@@ -294,23 +287,25 @@
   .bc .constellation.cn-paused .cn-links line,
   .bc .constellation.cn-paused .cn-meas path { animation-play-state:paused; }
 
-  /* ללא תנועה: אין לופ, הכל דלוק במלואו */
+  /* מכשיר שביקש פחות תנועה: בלי הגדלה ובלי ציור קווים, רק נשימה איטית של אור.
+     היד לא קופאת, אבל גם לא זזה במרחב */
   @media (prefers-reduced-motion: reduce){
-    .bc .cn-dots circle, .bc .cn-links line, .bc .cn-meas path { animation:none; opacity:1; }
-    .bc .cn-links line, .bc .cn-meas path { stroke-dashoffset:0 !important; }
+    .bc .cn-dots circle { animation:cnDotCalm 7s ease-in-out infinite; transform:none; }
+    .bc .cn-links line, .bc .cn-meas path { animation:none; stroke-dashoffset:0; opacity:.6; }
   }
+  @keyframes cnDotCalm { 0%,100% { opacity:.4; } 50% { opacity:1; } }
 
   .bc .hero-copy { max-width: 600px; position:relative; }
   .bc .hero h1, .bc .hero .sub { text-shadow: 0 2px 14px rgba(10,15,26,.42); }
   @media (max-width: 720px){
-    .bc .hero { padding:34px 0 66px;
+    .bc .hero { padding:22px 0 40px;
       background: radial-gradient(140% 70% at 70% 0%, var(--bg-dark-elevated) 0%, var(--bg-dark) 60%, var(--bg-dark-deep) 100%);
     }
     .bc .hero-copy { max-width:100%; }
     .bc .hero h1 { font-size:clamp(2.15rem,8.2vw,2.9rem); }
     .bc .hero .cta { width:100%; text-align:center; }
   }
-  .bc .hero .topbar { display:flex; justify-content:flex-start; padding: 22px 0 40px; }
+  .bc .hero .topbar { display:flex; justify-content:flex-start; padding: 14px 0 26px; }
   /* ── wordmark: פתרון ביניים עד לוגו מעוצב ── */
   .bc .wordmark { display:inline-flex; align-items:center; gap:11px; text-decoration:none; line-height:1; }
   .bc .wordmark .wm-hand { width:26px; height:33px; flex:0 0 auto; color:var(--measure-on-dark); }
@@ -364,7 +359,7 @@
   .bc .trial .no-commit { color:var(--text-on-light-muted); }
 
   /* BENEFITS */
-  .bc .benes h2 { text-align:center; font-size:clamp(24px,3.4vw,34px); margin-bottom:44px; }
+  .bc .benes h2 { text-align:center; font-size:clamp(24px,3.4vw,34px); margin-bottom:28px; }
   .bc .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
   .bc .card { background:transparent; border:1px solid var(--measure-hairline); border-radius:4px; padding:30px 28px; box-shadow:none; }
   .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
@@ -374,7 +369,7 @@
   .bc .s-navy .card h3 { color:var(--text-on-dark); font-weight:700; font-size:1.3rem; margin-bottom:0; }
   .bc .s-navy .card h3::after { content:''; display:block; width:40px; height:2px; background:var(--gold); border-radius:2px; margin-top:14px; }
   .bc .s-navy .card p { color:var(--text-on-dark); font-size:16px; margin-top:14px; }
-  .bc .center-cta { text-align:center; margin-top:46px; }
+  .bc .center-cta { text-align:center; margin-top:30px; }
 
   /* OBJECTION */
   .bc .obj .badge { display:inline-block; font-size:12.5px; font-weight:700; color:var(--accent-on-fill); background:var(--accent-fill); padding:6px 14px; border-radius:30px; margin-bottom:20px; }
@@ -389,10 +384,9 @@
   .bc .about .sub-gold { color:var(--gold-text-on-light); font-weight:700; font-size:16px; margin-bottom:18px; }
   /* ── המכתב: הסקשן שצריך להרגיש הכי "מכתב" בדף ── */
   .bc .about .letter { max-width:62ch; }
-  .bc .about .letter > p:first-of-type::first-letter {
-    font-family:'Frank Ruhl Libre','David Libre',serif; font-weight:700;
-    font-size:2.9em; line-height:.86; float:right; margin:6px 0 0 8px; color:var(--accent-text-on-light);
-  }
+  /* בלי אות פתיחה מוגדלת: לעברית אין גובה־גדולות, ואות כמו יוד יושבת בראש השורה
+     ומרחפת מעל הטקסט כמו גרש. במקומה, פסקת הפתיחה עצמה גדולה מעט */
+  .bc .about .letter > p:first-of-type { font-size:1.08em; line-height:1.66; }
   /* ── כרטיסים ממוספרים בסגנון תווית מדידה ── */
   .bc .benes .grid3 { counter-reset:bene; }
   .bc .benes .card { counter-increment:bene; position:relative; padding-top:44px; }
@@ -408,7 +402,11 @@
   .bc .scan-art { display:flex; justify-content:center; margin:-6px 0 26px; }
   .bc .scan-art .constellation { max-width:230px; }
   @media (max-width:600px){ .bc .scan-art .constellation { max-width:190px; } .bc .scan-art { margin:0 0 18px; } }
-  .bc .hero-copy { max-width:640px; }
+  /* ראש הדף ממורכז: העמודה עצמה במרכז, וכל שורה בתוכה מיושרת למרכז */
+  .bc .hero-copy { max-width:640px; margin-inline:auto; text-align:center; }
+  .bc .hero-copy h1, .bc .hero-copy .sub, .bc .hero-copy .hero-bio,
+  .bc .hero-copy .hero-kick, .bc .hero-copy .hero-bridge { margin-inline:auto; }
+  .bc .hero-copy .hero-ctas { justify-content:center; }
 
   /* ══ ויזרד תלת-שלבי ══ נבנה ב-JS בזמן ריצה. בלי JS הטופס המלא מוצג כרגיל. */
   .bc .wz-bar { display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:34px; }
@@ -452,18 +450,18 @@
 
   /* ── טופס: שדות עם מסגרת דקה, בלי מילויים כבדים ── */
   .bc input, .bc select { border-radius:4px; }
-  .bc .about .letter p { margin:0 0 12px; line-height:1.7; color:var(--ink); }
+  .bc .about .letter p { margin:0 0 10px; line-height:1.66; color:var(--ink); }
   .bc .about .letter .sign { margin-top:20px; }
   /* שורות מפתח במכתב: פסקה עצמאית, מודגשת, נושמת פי 1.5 מפסקה רגילה (14px -> 21px) */
-  .bc .about .letter .letter-punch { font-weight:700; margin:17px 0; color:var(--ink); }
+  .bc .about .letter .letter-punch { font-weight:700; margin:13px 0; color:var(--ink); }
   /* "מדברות?" — שורת סיום ממורכזת עם אוויר משני הצדדים */
-  .bc .about .letter .letter-ask { text-align:center; margin:30px 0 8px; }
+  .bc .about .letter .letter-ask { text-align:center; margin:20px 0 6px; }
   .bc .about .letter .letter-link { color:var(--gold-text-on-light); font-weight:700; font-size:19px; text-decoration:underline; text-underline-offset:4px; }
   .bc .about .cols { align-items:start; }
   .bc .about p { color:var(--text-on-light); font-size:16.5px; }
 
   /* TESTIMONIALS */
-  .bc .tests h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); margin-bottom:44px; max-width:26ch; margin-inline:auto; }
+  .bc .tests h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); margin-bottom:28px; max-width:26ch; margin-inline:auto; }
   .bc .tcard { background: rgba(255,255,255,.04); border:1px solid color-mix(in srgb, var(--accent-border) 22%, transparent); border-radius:18px; padding:26px; display:flex; flex-direction:column; gap:16px; }
   .bc .tcard .quote-ph { min-height:78px; }
   .bc .tcard .tquote { color:var(--text-on-dark); font-size:17px; line-height:1.75; margin:0; min-height:78px; }
@@ -476,23 +474,24 @@
   .bc .tcard .who .meta .name-ph { width:120px; height:12px; }
 
   /* WHATSAPP CAROUSEL (skeleton) */
-  .bc .wac h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); margin-bottom:40px; }
+  .bc .wac h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); margin-bottom:24px; }
   /* WhatsApp carousel */
-  .bc .wa-viewport { overflow:hidden; margin-top:34px; }
+  .bc .wa-viewport { overflow:hidden; margin-top:20px; }
   .bc .wa-track { display:flex; direction:ltr; transition:transform .45s ease; will-change:transform; }
   .bc .wa-slide { flex:0 0 32%; padding:0 9px; box-sizing:border-box; direction:rtl; }
   @media (max-width:900px){ .bc .wa-slide{ flex:0 0 52%; } }
   @media (max-width:600px){ .bc .wa-slide{ flex:0 0 78%; } }
   @media (prefers-reduced-motion: reduce){ .bc .wa-track{ transition:none; } }
-  .bc .wa-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:24px; }
-  /* קרוסלת צילומי וואטסאפ: כרטיס בגובה אחיד, ראש השיחה תמיד גלוי, לחיצה מגדילה */
-  .bc .wac-sub { text-align:center; color:var(--text-on-dark-muted); font-size:15px; margin:-26px auto 30px; }
+  .bc .wa-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:16px; }
+  /* קרוסלת צילומי וואטסאפ: הצילום מוצג במלואו ביחס המקורי שלו, בלי חיתוך.
+     גובה אחיד היה חותך את צידי ההודעות ומשאיר טקסט חתוך */
+  .bc .wac-sub { text-align:center; color:var(--text-on-dark-muted); font-size:15px; margin:-14px auto 6px; }
   .bc .wa-shot { display:block; width:100%; padding:0; border:1px solid var(--gold-line); border-radius:16px;
     overflow:hidden; background:var(--bg-dark-deep); cursor:zoom-in; transition:transform .18s var(--ease), border-color .18s ease; }
   .bc .wa-shot:hover { transform:translateY(-3px); border-color:var(--gold-border); }
   .bc .wa-shot:focus-visible { outline:3px solid var(--gold-text-on-dark); outline-offset:3px; }
-  .bc .wa-shot img { display:block; width:100%; height:430px; object-fit:cover; object-position:top center; }
-  @media (max-width:600px){ .bc .wa-shot img { height:380px; } }
+  .bc .wa-shot img { display:block; width:100%; height:430px; object-fit:contain; object-position:center; }
+  @media (max-width:600px){ .bc .wa-shot img { height:400px; } }
   /* לייטבוקס */
   .bc .wa-lb { position:fixed; inset:0; z-index:70; background:rgba(10,15,26,.94); display:none;
     align-items:center; justify-content:center; padding:26px 16px; }
@@ -534,7 +533,7 @@
   .bc .who2 .format { color:var(--text-on-dark-muted); max-width:64ch; margin:0 auto; }
 
   /* FAQ */
-  .bc .faq h2 { text-align:center; font-size:clamp(24px,3.2vw,34px); margin-bottom:40px; }
+  .bc .faq h2 { text-align:center; font-size:clamp(24px,3.2vw,34px); margin-bottom:26px; }
   .bc .faq .list { max-width:800px; margin:0 auto; }
   .bc details { background:var(--bg-card); border:1px solid var(--measure-hairline); border-radius:13px; margin-bottom:12px; overflow:hidden; }
   .bc summary { list-style:none; cursor:pointer; padding:19px 22px; font-weight:700; color:var(--text-on-light); font-size:17px; display:flex; justify-content:space-between; align-items:center; gap:14px; }
@@ -572,7 +571,7 @@
   .bc .thankyou.show { display:block; }
 
   /* FOOTER */
-  .bc footer { background: var(--navy-deep); color:var(--muted-l); padding:36px 0; text-align:center; font-size:14px; }
+  .bc footer { background: var(--navy-deep); color:var(--muted-l); padding:26px 0; text-align:center; font-size:14px; }
   .bc footer .logo-ph { width:180px; height:56px; margin:0 auto 14px; }
   .bc footer a { color:#dcd3bf; text-decoration:underline; }
   .bc footer .links { display:flex; gap:20px; justify-content:center; margin-top:6px; }
@@ -596,7 +595,7 @@
   }
   @media (prefers-reduced-motion: reduce){ .bc .sticky, .bc .wa { transition:none; } }
 
-  @media (max-width: 900px){ .bc .grid3{ grid-template-columns:1fr; } .bc .about .cols{ grid-template-columns:1fr; } .bc .form-grid{ grid-template-columns:1fr; } .bc section{ padding:58px 0; } .bc .sticky{ display:block; } }
+  @media (max-width: 900px){ .bc .grid3{ grid-template-columns:1fr; } .bc .about .cols{ grid-template-columns:1fr; } .bc .form-grid{ grid-template-columns:1fr; } .bc section{ padding:34px 0; } .bc .sticky{ display:block; } }
   /* ===== decode component (copied verbatim from /giyus/) ===== */
   /* decode */
   .decode h2{font-size:clamp(25px,4.2vw,38px);color:#fff;text-align:center;margin-bottom:10px}
@@ -687,7 +686,6 @@
         <a href="#top" class="wordmark" aria-label="רעות ביטון, לראש הדף"><svg class="wm-hand" viewBox="0 0 100 126" aria-hidden="true" focusable="false"><g class="wm-l" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="50" y1="114" x2="30" y2="98"/><line x1="30" y1="98" x2="20" y2="84"/><line x1="20" y1="84" x2="14" y2="70"/><line x1="14" y1="70" x2="10" y2="56"/><line x1="50" y1="114" x2="40" y2="66"/><line x1="40" y1="66" x2="37" y2="46"/><line x1="37" y1="46" x2="35" y2="32"/><line x1="35" y1="32" x2="34" y2="20"/><line x1="40" y1="66" x2="51" y2="62"/><line x1="51" y1="62" x2="51" y2="40"/><line x1="51" y1="40" x2="51" y2="25"/><line x1="51" y1="25" x2="51" y2="12"/><line x1="51" y1="62" x2="62" y2="66"/><line x1="62" y1="66" x2="64" y2="44"/><line x1="64" y1="44" x2="65" y2="31"/><line x1="65" y1="31" x2="66" y2="20"/><line x1="62" y1="66" x2="73" y2="72"/><line x1="73" y1="72" x2="77" y2="56"/><line x1="77" y1="56" x2="79" y2="46"/><line x1="79" y1="46" x2="81" y2="36"/><line x1="50" y1="114" x2="73" y2="72"/></g><g class="wm-d" fill="currentColor"><circle cx="50" cy="114" r="3.4"/><circle cx="30" cy="98" r="2.6"/><circle cx="20" cy="84" r="2.6"/><circle cx="14" cy="70" r="2.6"/><circle cx="10" cy="56" r="2.6"/><circle cx="40" cy="66" r="2.6"/><circle cx="37" cy="46" r="2.6"/><circle cx="35" cy="32" r="2.6"/><circle cx="34" cy="20" r="2.6"/><circle cx="51" cy="62" r="2.6"/><circle cx="51" cy="40" r="2.6"/><circle cx="51" cy="25" r="2.6"/><circle cx="51" cy="12" r="2.6"/><circle cx="62" cy="66" r="2.6"/><circle cx="64" cy="44" r="2.6"/><circle cx="65" cy="31" r="2.6"/><circle cx="66" cy="20" r="2.6"/><circle cx="73" cy="72" r="2.6"/><circle cx="77" cy="56" r="2.6"/><circle cx="79" cy="46" r="2.6"/><circle cx="81" cy="36" r="2.6"/></g></svg><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></a>
       </div>
       <div class="hero-copy">
-        <p class="hero-eyebrow fade">למנהלות <span class="ltr">HR</span>, גיוס ורווחה בארגונים</p>
         <h1 class="fade">כל אדם הוא שני סיפורים.</h1>
         <p class="hero-kick fade">הסיפור שהוא מספר, ומי שהוא באמת.</p>
         <p class="hero-bio fade">ניתוח אישיות שיטתי מתוך כפות הידיים. הביולוגיה מספרת את הסיפור שהראיון מפספס.</p>
@@ -714,8 +712,8 @@
         <div class="hero-art">
     <svg class="constellation" viewBox="0 0 420 520" role="img" aria-hidden="true" focusable="false">
         <g class="cn-silh"><path d="M210,418L142,363L108,316L88,268L74,220"/><path d="M210,418L176,254L166,186L159,139L156,98"/><path d="M176,254L213,241L213,166L213,115L213,71"/><path d="M213,241L251,254L258,180L261,135L264,98"/><path d="M251,254L288,275L302,220L309,186L315,152"/><path d="M210,418L288,275"/></g>
-        <g class="cn-links"><line x1="210" y1="418" x2="142" y2="363" style="--i:1"/><line x1="142" y1="363" x2="108" y2="316" style="--i:6"/><line x1="108" y1="316" x2="88" y2="268" style="--i:11"/><line x1="88" y1="268" x2="74" y2="220" style="--i:16"/><line x1="210" y1="418" x2="176" y2="254" style="--i:2"/><line x1="176" y1="254" x2="166" y2="186" style="--i:7"/><line x1="166" y1="186" x2="159" y2="139" style="--i:12"/><line x1="159" y1="139" x2="156" y2="98" style="--i:17"/><line x1="176" y1="254" x2="213" y2="241" style="--i:3"/><line x1="213" y1="241" x2="213" y2="166" style="--i:8"/><line x1="213" y1="166" x2="213" y2="115" style="--i:13"/><line x1="213" y1="115" x2="213" y2="71" style="--i:18"/><line x1="213" y1="241" x2="251" y2="254" style="--i:4"/><line x1="251" y1="254" x2="258" y2="180" style="--i:9"/><line x1="258" y1="180" x2="261" y2="135" style="--i:14"/><line x1="261" y1="135" x2="264" y2="98" style="--i:19"/><line x1="251" y1="254" x2="288" y2="275" style="--i:5"/><line x1="288" y1="275" x2="302" y2="220" style="--i:10"/><line x1="302" y1="220" x2="309" y2="186" style="--i:15"/><line x1="309" y1="186" x2="315" y2="152" style="--i:20"/><line x1="210" y1="418" x2="288" y2="275" style="--i:5"/></g>
-        <g class="cn-meas"><path class="cn-m" d="M74,220L176,254" style="--i:0"/><path class="cn-m" d="M156,98L315,152" style="--i:1"/><path class="cn-m" d="M247,241L247,71" style="--i:2"/><circle class="cn-tick" cx="74" cy="220" r="3" style="--i:0"/><circle class="cn-tick" cx="176" cy="254" r="3" style="--i:0"/><circle class="cn-tick" cx="156" cy="98" r="3" style="--i:1"/><circle class="cn-tick" cx="315" cy="152" r="3" style="--i:1"/><circle class="cn-tick" cx="247" cy="241" r="3" style="--i:2"/><circle class="cn-tick" cx="247" cy="71" r="3" style="--i:2"/></g>
+        <g class="cn-links"><line pathLength="100" x1="210" y1="418" x2="142" y2="363" style="--i:1"/><line pathLength="100" x1="142" y1="363" x2="108" y2="316" style="--i:6"/><line pathLength="100" x1="108" y1="316" x2="88" y2="268" style="--i:11"/><line pathLength="100" x1="88" y1="268" x2="74" y2="220" style="--i:16"/><line pathLength="100" x1="210" y1="418" x2="176" y2="254" style="--i:2"/><line pathLength="100" x1="176" y1="254" x2="166" y2="186" style="--i:7"/><line pathLength="100" x1="166" y1="186" x2="159" y2="139" style="--i:12"/><line pathLength="100" x1="159" y1="139" x2="156" y2="98" style="--i:17"/><line pathLength="100" x1="176" y1="254" x2="213" y2="241" style="--i:3"/><line pathLength="100" x1="213" y1="241" x2="213" y2="166" style="--i:8"/><line pathLength="100" x1="213" y1="166" x2="213" y2="115" style="--i:13"/><line pathLength="100" x1="213" y1="115" x2="213" y2="71" style="--i:18"/><line pathLength="100" x1="213" y1="241" x2="251" y2="254" style="--i:4"/><line pathLength="100" x1="251" y1="254" x2="258" y2="180" style="--i:9"/><line pathLength="100" x1="258" y1="180" x2="261" y2="135" style="--i:14"/><line pathLength="100" x1="261" y1="135" x2="264" y2="98" style="--i:19"/><line pathLength="100" x1="251" y1="254" x2="288" y2="275" style="--i:5"/><line pathLength="100" x1="288" y1="275" x2="302" y2="220" style="--i:10"/><line pathLength="100" x1="302" y1="220" x2="309" y2="186" style="--i:15"/><line pathLength="100" x1="309" y1="186" x2="315" y2="152" style="--i:20"/><line pathLength="100" x1="210" y1="418" x2="288" y2="275" style="--i:5"/></g>
+        <g class="cn-meas"><path class="cn-m" pathLength="100" d="M74,220L176,254" style="--i:0"/><path class="cn-m" pathLength="100" d="M156,98L315,152" style="--i:1"/><path class="cn-m" pathLength="100" d="M247,241L247,71" style="--i:2"/><circle class="cn-tick" cx="74" cy="220" r="3" style="--i:0"/><circle class="cn-tick" cx="176" cy="254" r="3" style="--i:0"/><circle class="cn-tick" cx="156" cy="98" r="3" style="--i:1"/><circle class="cn-tick" cx="315" cy="152" r="3" style="--i:1"/><circle class="cn-tick" cx="247" cy="241" r="3" style="--i:2"/><circle class="cn-tick" cx="247" cy="71" r="3" style="--i:2"/></g>
         <g class="cn-dots"><circle cx="210" cy="418" r="6" style="--i:0"/><circle cx="142" cy="363" r="4.4" style="--i:1"/><circle cx="108" cy="316" r="4.4" style="--i:6"/><circle cx="88" cy="268" r="4.4" style="--i:11"/><circle cx="74" cy="220" r="4.4" style="--i:16"/><circle cx="176" cy="254" r="4.4" style="--i:2"/><circle cx="166" cy="186" r="4.4" style="--i:7"/><circle cx="159" cy="139" r="4.4" style="--i:12"/><circle cx="156" cy="98" r="4.4" style="--i:17"/><circle cx="213" cy="241" r="4.4" style="--i:3"/><circle cx="213" cy="166" r="4.4" style="--i:8"/><circle cx="213" cy="115" r="4.4" style="--i:13"/><circle cx="213" cy="71" r="4.4" style="--i:18"/><circle cx="251" cy="254" r="4.4" style="--i:4"/><circle cx="258" cy="180" r="4.4" style="--i:9"/><circle cx="261" cy="135" r="4.4" style="--i:14"/><circle cx="264" cy="98" r="4.4" style="--i:19"/><circle cx="288" cy="275" r="4.4" style="--i:5"/><circle cx="302" cy="220" r="4.4" style="--i:10"/><circle cx="309" cy="186" r="4.4" style="--i:15"/><circle cx="315" cy="152" r="4.4" style="--i:20"/></g>
         
         </svg>
@@ -929,13 +927,13 @@
       <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
       <div class="wa-viewport fade" id="waViewport">
         <div class="wa-track" id="waTrack">
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="900" height="747" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
         </div>
       </div>
       <div class="wa-nav">
@@ -1220,20 +1218,45 @@
     goTo(0); start();
   }
 
-  // Hand Constellation: מודדים אורך כל קו כדי ש-stroke-dashoffset יהיה מדויק,
-  // ועוצרים את הלופ כשההירו מחוץ למסך (חיסכון בסוללה במובייל)
+  // Hand Constellation: כותבים לכל אלמנט animation-delay מפורש (בלי calc על משתנה,
+  // שנשבר בספארי במובייל), עוצרים מחוץ למסך, ואם בכל זאת ה-CSS לא רץ — מפעילים ידנית
   var cn = scope.querySelector('.constellation');
   if(cn){
-    cn.querySelectorAll('.cn-links line, .cn-meas path').forEach(function(el){
-      var len = el.getTotalLength ? el.getTotalLength() : 300;
-      el.style.setProperty('--len', Math.ceil(len));
-      el.style.strokeDasharray = Math.ceil(len);
+    var CYCLE = 3500, STEP = 165;
+    var parts = [];
+    cn.querySelectorAll('.cn-dots circle, .cn-links line, .cn-meas path').forEach(function(el){
+      var i = parseFloat(el.style.getPropertyValue('--i')) || 0;
+      var isMeas = el.parentNode.classList.contains('cn-meas');
+      var delay = isMeas ? (600 + i * 100) : (i * STEP);
+      el.style.animationDelay = '-' + (CYCLE - (delay % CYCLE)) + 'ms';
+      parts.push({ el:el, delay:delay, kind: isMeas ? 'meas' : (el.tagName === 'circle' ? 'dot' : 'link') });
     });
+
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(entries){
         entries.forEach(function(e){ cn.classList.toggle('cn-paused', !e.isIntersecting); });
       }, { rootMargin:'120px' }).observe(cn);
     }
+
+    // רשת ביטחון: אם אחרי טעינה אין אנימציית CSS רצה על הנקודות
+    // (דפדפן ישן, keyframes שלא נקלטו) — מריצים את אותו לופ דרך Web Animations API
+    setTimeout(function(){
+      var probe = cn.querySelector('.cn-dots circle');
+      var live = probe && probe.getAnimations && probe.getAnimations().length > 0;
+      if(live) return;
+      if(!probe || !probe.animate) return;
+      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var FR = {
+        dot:  calm ? [{opacity:.4},{opacity:1},{opacity:.4}]
+                   : [{opacity:.18},{opacity:1},{opacity:.95},{opacity:.55},{opacity:.18}],
+        link: [{opacity:.14},{opacity:.7},{opacity:.55},{opacity:.14}],
+        meas: [{opacity:.14},{opacity:1},{opacity:.85},{opacity:.14}]
+      };
+      parts.forEach(function(p){
+        p.el.animate(FR[p.kind], { duration: calm ? 7000 : CYCLE, iterations: Infinity,
+          delay: -(CYCLE - (p.delay % CYCLE)), easing:'linear' });
+      });
+    }, 1200);
   }
 
   // לייטבוקס לצילומי הוואטסאפ: נבנה בלחיצה ראשונה, נסגר ב-Esc, בלחיצה על הרקע או על הכפתור
