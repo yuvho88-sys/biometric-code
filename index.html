@@ -192,27 +192,64 @@
   .bc .cn-lab { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-size:13px;
     font-weight:500; letter-spacing:.06em; fill:var(--accent-text-on-dark); opacity:0; }
 
-  /* אנימציית מדידה: צללית -> קווים -> נקודות -> מדידות. ריצה אחת, עד 1.8 שניות */
-  .bc .constellation.run .cn-silh path { animation:cnFade .45s var(--ease) forwards; }
-  .bc .constellation.run .cn-links line { animation:cnDraw .6s var(--ease) forwards; animation-delay:calc(.35s + var(--i) * .012s); }
-  .bc .constellation.run .cn-dots circle { animation:cnPop .32s var(--ease) forwards; animation-delay:calc(.5s + var(--i) * .04s); }
-  .bc .constellation.run .cn-meas path { animation:cnDraw .5s var(--ease) forwards; animation-delay:calc(1.15s + var(--i) * .12s); }
-  .bc .constellation.run .cn-tick { animation:cnFade .3s var(--ease) forwards; animation-delay:calc(1.2s + var(--i) * .12s); }
-  .bc .constellation.run .cn-lab { animation:cnFade .4s var(--ease) forwards; animation-delay:calc(1.35s + var(--i) * .12s); }
-  @keyframes cnFade { to { opacity:1; } }
-  @keyframes cnPop  { from { opacity:0; transform:scale(.4); } to { opacity:1; transform:scale(1); } }
-  @keyframes cnDraw { to { stroke-dashoffset:0; } }
-  .bc .cn-dots circle { transform-box:fill-box; transform-origin:center; }
-  /* צללית תמיד גלויה חלקית גם לפני האנימציה, שלא ייראה ריק */
+  /* ── לופ מדידה: מחזור 7 שניות, נשימה של מכשיר ──
+     1. הדלקה 1.6s (רצף אנטומי, stagger 60ms) · 2. מתיחה 1.4s
+     3. שהייה 2.5s עם פולס נשימה · 4. דעיכה 1.5s ל-0.25, לא ל-0
+     קו המתאר והתוויות סטטיים — רק הנקודות והקווים חיים. */
+  .bc .constellation { --cycle:7s; --step:60ms; }
   .bc .cn-silh { opacity:.12; }
-  /* ללא תנועה: הכל סטטי וגלוי */
+  .bc .cn-lab, .bc .cn-tick { opacity:1; }
+
+  .bc .cn-dots circle {
+    opacity:.25; transform-box:fill-box; transform-origin:center;
+    animation:cnDotLoop var(--cycle) cubic-bezier(.4,0,.2,1) infinite;
+    animation-delay:calc(var(--i) * var(--step));
+  }
+  .bc .cn-links line {
+    opacity:.55;
+    animation:cnLinkLoop var(--cycle) cubic-bezier(.4,0,.2,1) infinite;
+    animation-delay:calc(var(--i) * var(--step));
+  }
+  .bc .cn-meas path {
+    opacity:.9;
+    animation:cnMeasLoop var(--cycle) cubic-bezier(.4,0,.2,1) infinite;
+    animation-delay:calc(1.35s + var(--i) * .12s);
+  }
+
+  @keyframes cnDotLoop {
+    0%   { opacity:.25; transform:scale(1); }
+    6%   { opacity:1;   transform:scale(1.25); }
+    10%  { opacity:1;   transform:scale(1); }
+    45%  { opacity:1; }
+    55%  { opacity:.85; }
+    65%  { opacity:1; }
+    78%  { opacity:1;   transform:scale(1); }
+    100% { opacity:.25; transform:scale(1); }
+  }
+  @keyframes cnLinkLoop {
+    0%   { stroke-dashoffset:var(--len,300); opacity:.25; }
+    20%  { stroke-dashoffset:var(--len,300); opacity:.3; }
+    40%  { stroke-dashoffset:0; opacity:.55; }
+    78%  { stroke-dashoffset:0; opacity:.55; }
+    100% { stroke-dashoffset:0; opacity:.25; }
+  }
+  @keyframes cnMeasLoop {
+    0%   { stroke-dashoffset:var(--len,300); opacity:.25; }
+    24%  { stroke-dashoffset:var(--len,300); opacity:.3; }
+    44%  { stroke-dashoffset:0; opacity:.9; }
+    78%  { stroke-dashoffset:0; opacity:.9; }
+    100% { stroke-dashoffset:0; opacity:.25; }
+  }
+
+  /* מחוץ למסך — עוצרים, חוסך סוללה */
+  .bc .constellation.cn-paused .cn-dots circle,
+  .bc .constellation.cn-paused .cn-links line,
+  .bc .constellation.cn-paused .cn-meas path { animation-play-state:paused; }
+
+  /* ללא תנועה: אין לופ, הכל דלוק במלואו */
   @media (prefers-reduced-motion: reduce){
-    .bc .constellation .cn-silh path,
-    .bc .constellation .cn-dots circle,
-    .bc .constellation .cn-tick,
-    .bc .constellation .cn-lab { opacity:1; animation:none; }
-    .bc .constellation .cn-links line,
-    .bc .constellation .cn-meas path { stroke-dashoffset:0; animation:none; }
+    .bc .cn-dots circle, .bc .cn-links line, .bc .cn-meas path { animation:none; opacity:1; }
+    .bc .cn-links line, .bc .cn-meas path { stroke-dashoffset:0 !important; }
   }
 
   .bc .hero-copy { max-width: 600px; position:relative; }
@@ -575,9 +612,9 @@
       <div class="hero-art">
   <svg class="constellation" viewBox="0 0 420 520" role="img" aria-hidden="true" focusable="false">
       <g class="cn-silh"><path d="M210,418L142,363L108,316L88,268L74,220"/><path d="M210,418L176,254L166,186L159,139L156,98"/><path d="M176,254L213,241L213,166L213,115L213,71"/><path d="M213,241L251,254L258,180L261,135L264,98"/><path d="M251,254L288,275L302,220L309,186L315,152"/><path d="M210,418L288,275"/></g>
-      <g class="cn-links"><line x1="210" y1="418" x2="142" y2="363" style="--i:0"/><line x1="142" y1="363" x2="108" y2="316" style="--i:1"/><line x1="108" y1="316" x2="88" y2="268" style="--i:2"/><line x1="88" y1="268" x2="74" y2="220" style="--i:3"/><line x1="210" y1="418" x2="176" y2="254" style="--i:4"/><line x1="176" y1="254" x2="166" y2="186" style="--i:5"/><line x1="166" y1="186" x2="159" y2="139" style="--i:6"/><line x1="159" y1="139" x2="156" y2="98" style="--i:7"/><line x1="176" y1="254" x2="213" y2="241" style="--i:8"/><line x1="213" y1="241" x2="213" y2="166" style="--i:9"/><line x1="213" y1="166" x2="213" y2="115" style="--i:10"/><line x1="213" y1="115" x2="213" y2="71" style="--i:11"/><line x1="213" y1="241" x2="251" y2="254" style="--i:12"/><line x1="251" y1="254" x2="258" y2="180" style="--i:13"/><line x1="258" y1="180" x2="261" y2="135" style="--i:14"/><line x1="261" y1="135" x2="264" y2="98" style="--i:15"/><line x1="251" y1="254" x2="288" y2="275" style="--i:16"/><line x1="288" y1="275" x2="302" y2="220" style="--i:17"/><line x1="302" y1="220" x2="309" y2="186" style="--i:18"/><line x1="309" y1="186" x2="315" y2="152" style="--i:19"/><line x1="210" y1="418" x2="288" y2="275" style="--i:20"/></g>
+      <g class="cn-links"><line x1="210" y1="418" x2="142" y2="363" style="--i:1"/><line x1="142" y1="363" x2="108" y2="316" style="--i:6"/><line x1="108" y1="316" x2="88" y2="268" style="--i:11"/><line x1="88" y1="268" x2="74" y2="220" style="--i:16"/><line x1="210" y1="418" x2="176" y2="254" style="--i:2"/><line x1="176" y1="254" x2="166" y2="186" style="--i:7"/><line x1="166" y1="186" x2="159" y2="139" style="--i:12"/><line x1="159" y1="139" x2="156" y2="98" style="--i:17"/><line x1="176" y1="254" x2="213" y2="241" style="--i:3"/><line x1="213" y1="241" x2="213" y2="166" style="--i:8"/><line x1="213" y1="166" x2="213" y2="115" style="--i:13"/><line x1="213" y1="115" x2="213" y2="71" style="--i:18"/><line x1="213" y1="241" x2="251" y2="254" style="--i:4"/><line x1="251" y1="254" x2="258" y2="180" style="--i:9"/><line x1="258" y1="180" x2="261" y2="135" style="--i:14"/><line x1="261" y1="135" x2="264" y2="98" style="--i:19"/><line x1="251" y1="254" x2="288" y2="275" style="--i:5"/><line x1="288" y1="275" x2="302" y2="220" style="--i:10"/><line x1="302" y1="220" x2="309" y2="186" style="--i:15"/><line x1="309" y1="186" x2="315" y2="152" style="--i:20"/><line x1="210" y1="418" x2="288" y2="275" style="--i:5"/></g>
       <g class="cn-meas"><path class="cn-m" d="M74,220L176,254" style="--i:0"/><path class="cn-m" d="M156,98L315,152" style="--i:1"/><path class="cn-m" d="M247,241L247,71" style="--i:2"/><circle class="cn-tick" cx="74" cy="220" r="3" style="--i:0"/><circle class="cn-tick" cx="176" cy="254" r="3" style="--i:0"/><circle class="cn-tick" cx="156" cy="98" r="3" style="--i:1"/><circle class="cn-tick" cx="315" cy="152" r="3" style="--i:1"/><circle class="cn-tick" cx="247" cy="241" r="3" style="--i:2"/><circle class="cn-tick" cx="247" cy="71" r="3" style="--i:2"/></g>
-      <g class="cn-dots"><circle cx="210" cy="418" r="6" style="--i:0"/><circle cx="142" cy="363" r="4.4" style="--i:1"/><circle cx="108" cy="316" r="4.4" style="--i:2"/><circle cx="88" cy="268" r="4.4" style="--i:3"/><circle cx="74" cy="220" r="4.4" style="--i:4"/><circle cx="176" cy="254" r="4.4" style="--i:5"/><circle cx="166" cy="186" r="4.4" style="--i:6"/><circle cx="159" cy="139" r="4.4" style="--i:7"/><circle cx="156" cy="98" r="4.4" style="--i:8"/><circle cx="213" cy="241" r="4.4" style="--i:9"/><circle cx="213" cy="166" r="4.4" style="--i:10"/><circle cx="213" cy="115" r="4.4" style="--i:11"/><circle cx="213" cy="71" r="4.4" style="--i:12"/><circle cx="251" cy="254" r="4.4" style="--i:13"/><circle cx="258" cy="180" r="4.4" style="--i:14"/><circle cx="261" cy="135" r="4.4" style="--i:15"/><circle cx="264" cy="98" r="4.4" style="--i:16"/><circle cx="288" cy="275" r="4.4" style="--i:17"/><circle cx="302" cy="220" r="4.4" style="--i:18"/><circle cx="309" cy="186" r="4.4" style="--i:19"/><circle cx="315" cy="152" r="4.4" style="--i:20"/></g>
+      <g class="cn-dots"><circle cx="210" cy="418" r="6" style="--i:0"/><circle cx="142" cy="363" r="4.4" style="--i:1"/><circle cx="108" cy="316" r="4.4" style="--i:6"/><circle cx="88" cy="268" r="4.4" style="--i:11"/><circle cx="74" cy="220" r="4.4" style="--i:16"/><circle cx="176" cy="254" r="4.4" style="--i:2"/><circle cx="166" cy="186" r="4.4" style="--i:7"/><circle cx="159" cy="139" r="4.4" style="--i:12"/><circle cx="156" cy="98" r="4.4" style="--i:17"/><circle cx="213" cy="241" r="4.4" style="--i:3"/><circle cx="213" cy="166" r="4.4" style="--i:8"/><circle cx="213" cy="115" r="4.4" style="--i:13"/><circle cx="213" cy="71" r="4.4" style="--i:18"/><circle cx="251" cy="254" r="4.4" style="--i:4"/><circle cx="258" cy="180" r="4.4" style="--i:9"/><circle cx="261" cy="135" r="4.4" style="--i:14"/><circle cx="264" cy="98" r="4.4" style="--i:19"/><circle cx="288" cy="275" r="4.4" style="--i:5"/><circle cx="302" cy="220" r="4.4" style="--i:10"/><circle cx="309" cy="186" r="4.4" style="--i:15"/><circle cx="315" cy="152" r="4.4" style="--i:20"/></g>
       <g class="cn-labels"><text class="cn-lab" x="105" y="203" text-anchor="middle" style="--i:0">זווית אגודל</text><text class="cn-lab" x="236" y="66" text-anchor="middle" style="--i:1">מרווח אצבעות</text><text class="cn-lab" x="262" y="158" text-anchor="start" style="--i:2">אורך גליל</text></g>
       </svg>
       </div>
@@ -996,16 +1033,20 @@
     goTo(0); start();
   }
 
-  // Hand Constellation: מודדים אורך כל קו כדי ש-stroke-dashoffset יהיה מדויק, ומריצים פעם אחת
+  // Hand Constellation: מודדים אורך כל קו כדי ש-stroke-dashoffset יהיה מדויק,
+  // ועוצרים את הלופ כשההירו מחוץ למסך (חיסכון בסוללה במובייל)
   var cn = scope.querySelector('.constellation');
   if(cn){
     cn.querySelectorAll('.cn-links line, .cn-meas path').forEach(function(el){
       var len = el.getTotalLength ? el.getTotalLength() : 300;
       el.style.setProperty('--len', Math.ceil(len));
       el.style.strokeDasharray = Math.ceil(len);
-      el.style.strokeDashoffset = Math.ceil(len);
     });
-    requestAnimationFrame(function(){ cn.classList.add('run'); });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ cn.classList.toggle('cn-paused', !e.isIntersecting); });
+      }, { rootMargin:'120px' }).observe(cn);
+    }
   }
 
   // לייטבוקס לצילומי הוואטסאפ: נבנה בלחיצה ראשונה, נסגר ב-Esc, בלחיצה על הרקע או על הכפתור
