@@ -1470,6 +1470,7 @@ window.__unlockScan = function(scrollBack){
   try{ localStorage.setItem(SCAN_KEY,'1'); }catch(e){}
   if(!sec.classList.contains('gated')) return;
   sec.classList.remove('gated');
+  if(window.__attachDecoder) window.__attachDecoder();
   if(scrollBack){
     // נותנים למסך התודה רגע להיקלט, ואז מחזירים אותם לסריקה שנפתחה
     setTimeout(function(){
@@ -1673,6 +1674,19 @@ function composeResult(){
 
 /* שתי הקריאות לפעולה בתוצאה — גלילה לטופס עם ה-interest המתאים */
 window.__efsharRender = renderQuestions;   // לבדיקה/כיול בלבד
+/* ── נעילה פיזית ──
+   ה-CSS לבדו מסתיר, אבל האלמנטים נשארים בעמוד. כאן מוציאים את הסורק מה-DOM
+   לגמרי ומשאירים במקומו סימנייה. רץ בסוף הסקריפט, אחרי שכל ההפניות לאלמנטים
+   כבר נתפסו, כך שהן נשארות תקפות וההחזרה לעמוד מחזירה מנוע עובד. */
+(function physicalGate(){
+  var sec=document.getElementById('decode'), d=document.getElementById('decoder');
+  if(!sec || !d) return;
+  var slot=document.createComment('decoder');
+  window.__attachDecoder=function(){ if(!d.isConnected && slot.parentNode) slot.parentNode.replaceChild(d,slot); };
+  window.__detachDecoder=function(){ if(d.isConnected && d.parentNode) d.parentNode.replaceChild(slot,d); };
+  if(sec.classList.contains('gated')) window.__detachDecoder();
+})();
+
 document.querySelectorAll('.ef-cta-btn').forEach(b=>b.addEventListener('click', ()=>{
   // מי שכבר השאיר פרטים בביקור הזה לא צריך למלא שוב: מחזירים אותו למסך התודה
   if(window.__leadSent){ $('lead-form').scrollIntoView({behavior:'smooth'}); return; }
