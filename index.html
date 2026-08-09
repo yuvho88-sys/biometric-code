@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" class="skin-b">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -672,6 +672,26 @@
       </div>
   </header>
 
+  <!-- 11. FORM -->
+  <section class="s-deep formsec surface-light" id="lead-form">
+    <div class="wrap">
+      <p class="fs-lead roi-line fade">עובד אחד שנשאר, וההרצאה החזירה את עצמה. בואי נבדוק תאריך.</p>
+      <h2 class="fade">הזמיני את ההרצאה שהצוות ידבר עליה, ויישאר בזכותה.</h2>
+      <p class="fs-lead fade">מלאי את הפרטים כאן לבדיקת זמינות תאריכים ותיאום שיחת אפיון קצרה, והסילבוס המלא של ההרצאה יישלח אלייך מיד:</p>
+      <form id="bcForm" novalidate>
+        <div class="field" data-f="name"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם מלא</div></div>
+        <div class="field" data-f="company"><label for="f-company">תפקיד + חברה</label><input id="f-company" name="company" type="text" autocomplete="organization"><div class="err"></div></div>
+        <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
+        <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
+        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות">הרצאה לצוות</option><option value="אבחון אישי">אבחון אישי</option><option value="שניהם">שניהם</option></select></div>
+        <button type="submit" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס בוואטסאפ ובמייל</button>
+        <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לנו וואטסאפ.</p>
+        <p class="no-commit">השארת פרטים אינה מחייבת. נחזור אלייך עם סילבוס והצעה, וההחלטה כולה שלך.</p>
+      </form>
+      <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:22px;margin-bottom:8px">תודה! קיבלתי את הפרטים שלך.</h3><p style="color:var(--text-on-light)">אחזור אליך אישית תוך יום-יומיים. <span id="tyMid">בינתיים, הסריקה שעשית היא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235 · WWW.REUTBITTON.COM</p></div>
+    </div>
+  </section>
+
   <!-- סקשן וידאו — הוסר מהרינדור 2026-08-03. סיבה: נכס B2C (טלפון אישי, reutbitton.com, סימן מים CapCut). יוחזר רק עם וידאו B2B נקי + אישור מפורש.
        המנגנון המקורי: facade של יוטיוב, ה-iframe נטען רק בלחיצה. הקוד ב-JS (querySelectorAll('.yt-facade')) וה-CSS נשארו במקומם ולא עושים כלום בלי הסקשן. -->
   <!--
@@ -689,7 +709,7 @@
   -->
 
   <!-- 3. PAIN -->
-  <section class="s-ivory pain">
+  <section class="s-ivory pain surface-dark">
     <div class="wrap"><div class="text-col">
       <h2 class="fade">את מזהה את זה לפני כולם.</h2>
       <p class="fade">העובד שנהיה שקט בישיבות. הכוכבת שפתאום "בודקת אופציות". הצוות שמתקשר פחות ומתחכך יותר. את רואה את הסימנים. אבל עד שמדברים, זה כבר מכתב התפטרות על השולחן.</p>
@@ -698,7 +718,7 @@
   </section>
 
   <!-- 4. BENEFITS -->
-  <section class="s-navy benes">
+  <section class="s-navy benes surface-light">
     <div class="wrap">
       <h2 class="fade">הרצאה אחת. שלושה דברים שנשארים אחריה.</h2>
       <div class="grid3">
@@ -781,7 +801,7 @@
 </section>
 
   <!-- 5. OBJECTION -->
-  <section class="s-deep obj">
+  <section class="s-deep obj surface-light">
     <div class="wrap"><div class="text-col">
       <span class="badge fade">חשוב שתדעי</span>
       <h2 class="fade">בלי מיסטיקה ובלי רוחניות. שיטה שאפשר למדוד ולבדוק.</h2>
@@ -826,7 +846,7 @@
   </section>
 
   <!-- 6b. TRIAL DIAGNOSIS -->
-  <section class="s-ivory trial">
+  <section class="s-ivory trial surface-dark">
     <div class="wrap"><div class="text-col">
       <h2 class="fade">לא מאמינה? אל תאמיני. תבדקי.</h2>
       <ul class="trial-steps fade">
@@ -909,25 +929,6 @@
     </div>
   </section>
 
-  <!-- 11. FORM -->
-  <section class="s-deep formsec" id="lead-form">
-    <div class="wrap">
-      <p class="fs-lead roi-line fade">עובד אחד שנשאר, וההרצאה החזירה את עצמה. בואי נבדוק תאריך.</p>
-      <h2 class="fade">הזמיני את ההרצאה שהצוות ידבר עליה, ויישאר בזכותה.</h2>
-      <p class="fs-lead fade">מלאי את הפרטים כאן לבדיקת זמינות תאריכים ותיאום שיחת אפיון קצרה, והסילבוס המלא של ההרצאה יישלח אלייך מיד:</p>
-      <form id="bcForm" novalidate>
-        <div class="field" data-f="name"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם מלא</div></div>
-        <div class="field" data-f="company"><label for="f-company">תפקיד + חברה</label><input id="f-company" name="company" type="text" autocomplete="organization"><div class="err"></div></div>
-        <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
-        <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
-        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות">הרצאה לצוות</option><option value="אבחון אישי">אבחון אישי</option><option value="שניהם">שניהם</option></select></div>
-        <button type="submit" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס בוואטסאפ ובמייל</button>
-        <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לנו וואטסאפ.</p>
-        <p class="no-commit">השארת פרטים אינה מחייבת. נחזור אלייך עם סילבוס והצעה, וההחלטה כולה שלך.</p>
-      </form>
-      <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:22px;margin-bottom:8px">תודה! קיבלתי את הפרטים שלך.</h3><p style="color:var(--text-on-light)">אחזור אליך אישית תוך יום-יומיים. <span id="tyMid">בינתיים, הסריקה שעשית היא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235 · WWW.REUTBITTON.COM</p></div>
-    </div>
-  </section>
 
   <!-- 12. FOOTER -->
   <footer>
