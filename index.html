@@ -1464,10 +1464,8 @@ async function getVidLandmarker(){
 /* ================= שער הסריקה =================
    הסריקה נעולה עד שמשאירים פרטים. הנעילה נשמרת ב-localStorage כדי שביקור חוזר
    מאותו דפדפן לא יבקש פרטים שוב. אין כאן מידע אישי, רק דגל פתיחה. */
-const SCAN_KEY='bc_scan_open';
 window.__unlockScan = function(scrollBack){
   const sec=$('decode'); if(!sec) return;
-  try{ localStorage.setItem(SCAN_KEY,'1'); }catch(e){}
   if(!sec.classList.contains('gated')) return;
   sec.classList.remove('gated');
   if(window.__attachDecoder) window.__attachDecoder();
@@ -1480,7 +1478,9 @@ window.__unlockScan = function(scrollBack){
     }, 2600);
   }
 };
-try{ if(localStorage.getItem(SCAN_KEY)==='1') $('decode').classList.remove('gated'); }catch(e){}
+// אין זיכרון בין ביקורים: כל טעינה של הדף מתחילה נעולה, בלי יוצא מן הכלל.
+// דגל שנשמר בדפדפן היה פותח את הסורק גם למי שלא מילא פרטים בביקור הזה.
+try{ localStorage.removeItem('bc_scan_open'); }catch(e){}
 
 /* ================= UI flow ================= */
 const consent=$('consentChk'), btnUpload=$('btnUpload'), btnCamera=$('btnCamera'),
