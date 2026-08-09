@@ -404,6 +404,40 @@
     font-variant-numeric:tabular-nums;
   }
   .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
+  /* ══ ויזרד תלת-שלבי ══ נבנה ב-JS בזמן ריצה. בלי JS הטופס המלא מוצג כרגיל. */
+  .bc .wz-bar { display:flex; align-items:center; gap:10px; margin-bottom:26px; }
+  .bc .wz-segs { display:flex; gap:6px; flex:1; }
+  .bc .wz-seg { flex:1; height:3px; border-radius:2px; background:var(--measure-hairline); transition:background .25s var(--ease); }
+  .bc .wz-seg.on { background:var(--accent-fill); }
+  .bc .wz-count { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-size:11.5px;
+    font-weight:500; letter-spacing:.09em; color:var(--text-on-light-muted); white-space:nowrap; }
+
+  .bc .wz-step { display:none; }
+  .bc .wz-step.on { display:block; animation:wzIn .22s var(--ease); }
+  @keyframes wzIn { from { opacity:0; transform:translateX(18px); } to { opacity:1; transform:none; } }
+
+  /* שלב 1: כרטיסי בחירה גדולים */
+  .bc .wz-cards { display:grid; gap:12px; }
+  .bc .wz-card { width:100%; text-align:right; font:inherit; font-size:17px; font-weight:600;
+    color:var(--text-on-light); background:transparent; cursor:pointer;
+    border:1px solid var(--measure-hairline); border-radius:10px; padding:20px 22px;
+    transition:border-color .18s ease, background .18s ease; }
+  .bc .wz-card:hover { border-color:var(--accent-border); }
+  .bc .wz-card:focus-visible { outline:3px solid var(--accent-border); outline-offset:2px; }
+  .bc .wz-card.sel { border-color:var(--accent-border); background:color-mix(in srgb, var(--accent-border) 9%, transparent); }
+
+  /* ניווט */
+  .bc .wz-nav { display:flex; align-items:center; gap:12px; margin-top:20px; }
+  .bc .wz-next { font:inherit; font-size:16.5px; font-weight:700; cursor:pointer;
+    background:var(--accent-fill); color:var(--accent-on-fill); border:none;
+    border-radius:11px; padding:15px 30px; transition:background .18s ease; }
+  .bc .wz-next:hover { background:var(--accent-fill-deep); }
+  .bc .wz-back { font:inherit; font-size:15px; font-weight:600; cursor:pointer;
+    background:none; border:none; color:var(--text-on-light-muted); padding:10px 4px; }
+  .bc .wz-back:hover { color:var(--accent-text-on-light); text-decoration:underline; text-underline-offset:4px; }
+  .bc .wz-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  @media (prefers-reduced-motion: reduce){ .bc .wz-step.on { animation:none; } .bc .wz-seg { transition:none; } }
+
   /* ── טופס: שדות עם מסגרת דקה, בלי מילויים כבדים ── */
   .bc input, .bc select { border-radius:4px; }
   .bc .about .letter p { margin:0 0 14px; line-height:1.78; color:var(--ink); }
@@ -1017,6 +1051,88 @@
     ['#f-name','#f-company','#f-phone','#f-email'].forEach(function(sel){
       var i=scope.querySelector(sel); if(i){ i.addEventListener('input', function(){ var w=i.closest('.field'); if(w) w.classList.remove('bad'); }); }
     });
+
+    // ── ויזרד תלת-שלבי (progressive enhancement) ──
+    // מחלק את הטופס הקיים לשלושה שלבים. ה-payload, השדות והוולידציות לא משתנים.
+    (function wizard(){
+      var fName = scope.querySelector('.field[data-f="name"]'),
+          fComp = scope.querySelector('.field[data-f="company"]'),
+          fPhone= scope.querySelector('.field[data-f="phone"]'),
+          fMail = scope.querySelector('.field[data-f="email"]'),
+          fInt  = scope.querySelector('.field[data-f="interest"]'),
+          sel   = scope.querySelector('#f-interest'),
+          btn   = form.querySelector('button[type=submit]'),
+          noCom = form.querySelector('.no-commit');
+      if(!(fName && fComp && fPhone && fMail && fInt && sel && btn)) return;
+
+      // פס התקדמות
+      var bar = document.createElement('div'); bar.className = 'wz-bar';
+      var segs = document.createElement('div'); segs.className = 'wz-segs';
+      for(var i=0;i<3;i++){ var sg=document.createElement('div'); sg.className='wz-seg'; segs.appendChild(sg); }
+      var count = document.createElement('span'); count.className = 'wz-count';
+      bar.appendChild(segs); bar.appendChild(count);
+
+      var steps = [1,2,3].map(function(n){ var d=document.createElement('div'); d.className='wz-step'; d.setAttribute('data-step',n); return d; });
+
+      // שלב 1 — כרטיסים, הטקסט נלקח מה-option הקיימים (לא נכתבות מחרוזות חדשות)
+      var cards = document.createElement('div'); cards.className='wz-cards';
+      var cardEls = [].map.call(sel.options, function(opt){
+        var b=document.createElement('button'); b.type='button'; b.className='wz-card';
+        b.textContent = opt.textContent; b.value = opt.value;
+        b.addEventListener('click', function(){
+          cardEls.forEach(function(c){ c.classList.remove('sel'); c.setAttribute('aria-pressed','false'); });
+          b.classList.add('sel'); b.setAttribute('aria-pressed','true');
+          sel.value = opt.value;
+          setTimeout(function(){ go(2); }, 250);
+        });
+        b.setAttribute('aria-pressed','false');
+        cards.appendChild(b); return b;
+      });
+      steps[0].appendChild(cards);
+      fInt.classList.add('wz-hidden');            // ה-select נשאר ב-DOM עבור ה-payload
+      steps[0].appendChild(fInt);
+
+      steps[1].appendChild(fName); steps[1].appendChild(fComp);
+      steps[2].appendChild(fPhone); steps[2].appendChild(fMail);
+      steps[2].appendChild(btn);
+      if(formErr) steps[2].appendChild(formErr);
+      if(noCom) steps[2].appendChild(noCom);
+
+      // ניווט
+      var nav = document.createElement('div'); nav.className='wz-nav';
+      var back = document.createElement('button'); back.type='button'; back.className='wz-back'; back.textContent='→ חזרה';
+      var next = document.createElement('button'); next.type='button'; next.className='wz-next'; next.textContent='המשך ←';
+      nav.appendChild(next); nav.appendChild(back);
+
+      form.insertBefore(bar, form.firstChild);
+      steps.forEach(function(s){ form.appendChild(s); });
+      form.appendChild(nav);
+
+      var cur = 1;
+      function valid(step){
+        if(step===1) return !!sel.value;
+        if(step===2){ var ok = fName.querySelector('input').value.trim().length>1; fName.classList.toggle('bad', !ok); return ok; }
+        return true;
+      }
+      function go(n){
+        if(n>cur && !valid(cur)){ var bad=form.querySelector('.field.bad input'); if(bad) bad.focus(); return; }
+        cur = Math.min(3, Math.max(1, n));
+        steps.forEach(function(s,i){ s.classList.toggle('on', i===cur-1); });
+        [].forEach.call(segs.children, function(sg,i){ sg.classList.toggle('on', i<cur); sg.setAttribute('aria-current', i===cur-1 ? 'step' : 'false'); });
+        count.textContent = 'שלב ' + cur + ' מתוך 3';
+        back.style.display = cur===1 ? 'none' : '';
+        next.style.display = cur===3 ? 'none' : '';
+        var first = steps[cur-1].querySelector('input');
+        if(first && cur>1) first.focus({preventScroll:true});
+      }
+      next.addEventListener('click', function(){ go(cur+1); });
+      back.addEventListener('click', function(){ go(cur-1); });
+      form.addEventListener('keydown', function(ev){
+        if(ev.key!=='Enter' || cur===3) return;
+        if(ev.target.tagName==='INPUT'){ ev.preventDefault(); go(cur+1); }
+      });
+      go(1);
+    })();
   }
 
   // YouTube facade: load real iframe only on click (no YT scripts on page load)
