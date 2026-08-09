@@ -42,6 +42,9 @@
     --accent-on-fill:#F5EFE4;
     --accent-border:#6E2A35; --accent-hairline:rgba(110,42,53,.30);
     --measure-line:#3E7C6F; --measure-text:#376D62; --measure-on-dark:#7FB5A6;
+    /* משטח בהיר לרגעי נשימה — נגזר מאותה משפחה צבעונית */
+    --surface-light-bg:#F5EFE4; --surface-light-card:#FBF7EF; --surface-light-text:#241B16;
+    --surface-light-muted:#5C4A3F; --surface-light-accent:#6E2A35; --surface-light-measure:#376D62;
     --measure-hairline:rgba(62,124,111,.34);
     --confirm:#1FA855;
 
@@ -69,6 +72,8 @@
     --accent-on-fill:#F7F4F5;
     --accent-border:#8A3B5C; --accent-hairline:rgba(138,59,92,.30);
     --measure-line:#C56A4A; --measure-text:#995239; --measure-on-dark:#E2A183;
+    --surface-light-bg:#F2F3F1; --surface-light-card:#FAFBFA; --surface-light-text:#1F2429;
+    --surface-light-muted:#4E565D; --surface-light-accent:#8A3B5C; --surface-light-measure:#995239;
     --measure-hairline:rgba(197,106,74,.34);
   }
 
@@ -83,6 +88,9 @@
     --accent-on-fill:#191512;
     --accent-border:#D8B072; --accent-hairline:rgba(216,176,114,.32);
     --measure-line:#7FB5A6; --measure-text:#7FB5A6; --measure-on-dark:#7FB5A6;
+    /* בסקין הכהה הרגע הבהיר דרמטי — שנהב מרוכך, ואקסנט/מדידה בוריאנט כהה */
+    --surface-light-bg:#E8DFCF; --surface-light-card:#F0E9DC; --surface-light-text:#191512;
+    --surface-light-muted:#675E52; --surface-light-accent:#6E593A; --surface-light-measure:#45625A;
     --measure-hairline:rgba(127,181,166,.34);
     color: var(--ink); background: var(--ivory); overflow-x: hidden;
   }
@@ -155,6 +163,48 @@
   .bc .s-navy h2,.bc .s-navy h3 { color: var(--text-on-dark); }
   .bc .s-ivory { background: var(--ivory); }
   .bc .s-deep { background: linear-gradient(180deg,var(--navy-2),var(--navy-deep)); color: var(--text-on-dark); }
+  /* ══ מקצב תאורה ══
+     שתי מחלקות ברמת הסקשן שממפות מחדש טוקנים מקומית. אין צבעים קשיחים.
+     .surface-light — סקשן כהה הופך למשטח בהיר (רגע נשימה)
+     .surface-dark  — סקשן בהיר הופך לכהה (רצף כהה)
+     שתיהן אינרטיות עד שמישהו מוסיף את המחלקה. */
+  .bc .surface-light { color:var(--surface-light-text);
+    --bg-dark:var(--surface-light-bg); --bg-dark-elevated:var(--surface-light-bg);
+    --bg-dark-deep:var(--surface-light-bg); --bg-card:var(--surface-light-card);
+    --text-on-dark:var(--surface-light-text); --text-on-dark-muted:var(--surface-light-muted);
+    --accent-text-on-dark:var(--surface-light-accent); --measure-on-dark:var(--surface-light-measure);
+    --bg-light:var(--surface-light-bg); --bg-light-2:var(--surface-light-card);
+    --text-on-light:var(--surface-light-text); --text-on-light-muted:var(--surface-light-muted);
+    --accent-text-on-light:var(--surface-light-accent); --measure-text:var(--surface-light-measure);
+    --measure-line:var(--surface-light-measure);
+    /* חובה לחשב מחדש את שמות המדור הקודם — הם נפתרו כבר ברמת .bc */
+    --navy:var(--bg-dark); --navy-2:var(--bg-dark-elevated); --navy-deep:var(--bg-dark-deep);
+    --ivory:var(--bg-light); --ivory-2:var(--bg-light-2); --card:var(--bg-card);
+    --ink:var(--text-on-light); --muted-l:var(--text-on-dark-muted); --muted-d:var(--text-on-light-muted);
+    --gold-text-on-dark:var(--accent-text-on-dark); --gold-text-on-light:var(--accent-text-on-light);
+    --gold:var(--accent-fill); --gold-2:var(--accent-fill-deep); --gold-light:var(--accent-text-on-dark);
+    --line-gold:var(--accent-hairline);
+  }
+  .bc .surface-light h1, .bc .surface-light h2, .bc .surface-light h3 { color:var(--surface-light-text); }
+  .bc .surface-dark h1, .bc .surface-dark h2, .bc .surface-dark h3 { color:var(--text-on-dark); }
+  .bc .surface-dark { color:var(--text-on-dark);
+    --bg-light:var(--bg-dark); --bg-light-2:var(--bg-dark-elevated); --bg-card:var(--bg-dark-elevated);
+    --text-on-light:var(--text-on-dark); --text-on-light-muted:var(--text-on-dark-muted);
+    --accent-text-on-light:var(--accent-text-on-dark); --measure-text:var(--measure-on-dark);
+    /* חובה לחשב מחדש את שמות המדור הקודם — הם נפתרו כבר ברמת .bc */
+    --navy:var(--bg-dark); --navy-2:var(--bg-dark-elevated); --navy-deep:var(--bg-dark-deep);
+    --ivory:var(--bg-light); --ivory-2:var(--bg-light-2); --card:var(--bg-card);
+    --ink:var(--text-on-light); --muted-l:var(--text-on-dark-muted); --muted-d:var(--text-on-light-muted);
+    --gold-text-on-dark:var(--accent-text-on-dark); --gold-text-on-light:var(--accent-text-on-light);
+    --gold:var(--accent-fill); --gold-2:var(--accent-fill-deep); --gold-light:var(--accent-text-on-dark);
+    --line-gold:var(--accent-hairline);
+  }
+  /* מפריד קו מדידה בכל מעבר כהה↔בהיר */
+  .bc .surface-light + section::before, .bc section + .surface-light::before {
+    content:''; position:absolute; top:0; right:50%; transform:translateX(50%);
+    width:180px; height:1px; background:var(--measure-hairline);
+  }
+
   /* רקע כהה-מוגבה: מפריד ויזואלית בין סקשנים כהים סמוכים בלי לשבור את הרצף */
   .bc .s-dark-2 { background: var(--bg-dark-elevated); color: var(--text-on-dark); }
   .bc .s-dark-2 h2, .bc .s-dark-2 h3 { color: var(--text-on-dark); }

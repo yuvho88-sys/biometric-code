@@ -16,6 +16,7 @@
   button:hover{border-color:#7a6455}
   button.on{background:#6E2A35;border-color:#6E2A35;color:#F5EFE4}
   button.w.on{background:#3E7C6F;border-color:#3E7C6F}
+  button.m.on{background:#8A6A2F;border-color:#8A6A2F;color:#F5EFE4}
   .swatch{display:inline-block;width:10px;height:10px;border-radius:50%;margin-inline-end:7px;vertical-align:-1px}
   #stage{flex:1;display:flex;align-items:flex-start;justify-content:center;overflow:auto;background:#0d0a09;padding:0}
   iframe{border:0;background:#fff;display:block;box-shadow:0 0 0 1px #332a24}
@@ -29,6 +30,11 @@
     <button data-skin="skin-a" class="on"><i class="swatch" style="background:#6E2A35"></i>A · אטלס</button>
     <button data-skin="skin-b"><i class="swatch" style="background:#8A3B5C"></i>B · חדר מדידה</button>
     <button data-skin="skin-c"><i class="swatch" style="background:#D8B072"></i>C · לילה במעבדה</button>
+  </div>
+  <div class="grp">
+    <span class="lbl">מקצב</span>
+    <button data-mode="dark" class="m on">רצף כהה</button>
+    <button data-mode="light" class="m">רגעים בהירים</button>
   </div>
   <div class="grp">
     <span class="lbl">רוחב</span>
@@ -45,7 +51,27 @@
 <script>
 (function(){
   var fr = document.getElementById('fr'), stage = document.getElementById('stage');
-  var skin = 'skin-a', width = 'full';
+  var skin = 'skin-a', width = 'full', mode = 'dark';
+
+  // ── מקצב תאורה: אילו סקשנים בהירים בכל מצב ──
+  // "רצף כהה" = הכל כהה · "רגעים בהירים" = תועלת, שקיפות, מכתב, טופס
+  var LIGHT_IN_MODE = { dark: [], light: ['benes', 'obj', 'about', 'formsec'] };
+  var NATURALLY_LIGHT = ['pain', 'about', 'trial'];   // סקשנים שבברירת המחדל בהירים
+
+  function applyMode(){
+    var doc; try { doc = fr.contentDocument; } catch(e){ return; }
+    if (!doc) return;
+    var lights = LIGHT_IN_MODE[mode];
+    doc.querySelectorAll('.bc section, .bc header, .bc footer').forEach(function(sec){
+      sec.classList.remove('surface-light', 'surface-dark');
+      var key = [...sec.classList].find(function(c){ return /^(pain|benes|obj|about|trial|tests|wac|who2|faq|formsec|decode|video)$/.test(c); });
+      if (!key) return;
+      var wantLight = lights.indexOf(key) !== -1;
+      var isLight = NATURALLY_LIGHT.indexOf(key) !== -1;
+      if (wantLight && !isLight) sec.classList.add('surface-light');
+      if (!wantLight && isLight) sec.classList.add('surface-dark');
+    });
+  }
 
   function sizeIt(){
     if (width === 'full') { fr.style.width = '100%'; fr.style.height = stage.clientHeight + 'px'; }
@@ -54,13 +80,19 @@
   function applySkin(){
     try { fr.contentDocument.documentElement.className = skin; } catch(e){}
   }
-  fr.addEventListener('load', function(){ applySkin(); sizeIt(); });
+  fr.addEventListener('load', function(){ applySkin(); applyMode(); sizeIt(); });
   window.addEventListener('resize', sizeIt);
 
   document.querySelectorAll('[data-skin]').forEach(function(b){
     b.addEventListener('click', function(){
       document.querySelectorAll('[data-skin]').forEach(function(x){ x.classList.remove('on'); });
-      b.classList.add('on'); skin = b.dataset.skin; applySkin();
+      b.classList.add('on'); skin = b.dataset.skin; applySkin(); applyMode();
+    });
+  });
+  document.querySelectorAll('[data-mode]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-mode]').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on'); mode = b.dataset.mode; applyMode();
     });
   });
   document.querySelectorAll('[data-w]').forEach(function(b){
