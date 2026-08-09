@@ -613,6 +613,7 @@
   #camWrap{margin-top:16px;display:none}
   #camWrap video{width:100%;border-radius:14px;background:#000;transform:scaleX(-1)}
   .cam-hint{font-size:13px;color:var(--muted-l);text-align:center;margin-top:8px}
+  .cam-shoot{display:none;margin:12px auto 0;width:auto;padding:12px 26px}
   .decode-msg{text-align:center;color:var(--gold-light);font-size:15px;margin-top:16px;min-height:1.4em}
   .proc{display:none;text-align:center;margin-top:22px}
   .proc .spinner{width:44px;height:44px;border:3px solid color-mix(in srgb, var(--accent-border) 20%, transparent);border-top-color:var(--gold);border-radius:50%;margin:0 auto 14px;animation:spin 1s linear infinite}
@@ -628,6 +629,16 @@
   .metric b{display:block;font-family:'Frank Ruhl Libre',serif;font-size:22px;color:var(--gold-text-on-dark);font-weight:800;margin-top:2px}
   .reading{font-size:17px;line-height:1.7;color:var(--ink)}
   .rdisc{font-size:12.5px;color:var(--muted-d);margin-top:16px;padding-top:14px;border-top:1px solid #e7e1d3}
+  /* שער הסריקה. ברירת המחדל ב-HTML היא נעול, כך שגם בלי JS לא נחשפת סריקה בלי פרטים */
+  .scan-lock{max-width:560px;margin:0 auto;text-align:center;padding:30px 24px;border-radius:20px;
+    border:1px solid var(--line-gold);background:rgba(255,255,255,.04)}
+  .scan-lock .sl-title{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.6vw,25px);
+    color:var(--text-on-dark);margin:0 0 10px}
+  .scan-lock .sl-body{color:var(--text-on-dark);font-size:16px;line-height:1.7;margin:0 0 20px}
+  .scan-lock .sl-note{color:var(--text-on-dark-muted);font-size:13px;margin:14px 0 0}
+  .scan-lock .cta{display:inline-block}
+  #decode.gated #decoder{display:none}
+  #decode:not(.gated) .scan-lock{display:none}
   .locked{position:relative;margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line-gold)}
   .locked .blurred{filter:blur(6px);opacity:.5;padding:26px;background:rgba(255,255,255,.04);font-size:15px;color:var(--muted-l);user-select:none;pointer-events:none}
   .locked .lock-cta{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px;background:linear-gradient(180deg,rgba(20,27,42,.55),rgba(20,27,42,.85))}
@@ -701,10 +712,10 @@
   </header>
 
   <!-- 4b. DECODE (moved from /giyus/, verbatim) -->
-<section class="s-deep decode" id="decode">
+<section class="s-deep decode gated" id="decode">
   <div class="wrap">
     <h2 class="fade">אל תאמיני למילים. תבדקי על עצמך.</h2>
-    <p class="sub fade">זו טעימה קטנה מהידע שבשיטה: העלאת תמונה, סריקה חיה או שאלון קצר, ותוצאה שתפתיע אותך. בהרצאה הצוות שלך מקבל את הכלים עצמם, ולומד איך לקרוא בעזרתם את האדם שיושב מולו.</p>
+    <p class="sub fade">לפני שמחליטים אם השיטה מתאימה לצוות, שווה לבדוק אותה על עצמכם. משאירים פרטים כדי לשמוע על ההרצאה לארגון, ומקבלים גישה לסריקה: העלאת תמונה, סריקה חיה או שאלון קצר, ותוצאה שתפתיע אתכם.</p>
       <div class="scan-art">
         <div class="hero-art">
     <svg class="constellation" viewBox="0 0 420 520" role="img" aria-hidden="true" focusable="false">
@@ -716,7 +727,14 @@
         </svg>
         </div>
       </div>
-    <div class="decoder fade">
+    <!-- שער הסריקה: נעול עד שמשאירים פרטים. נפתח מהטופס וגם מ-localStorage בביקור חוזר -->
+    <div class="scan-lock fade" id="scanLock">
+      <p class="sl-title">הסריקה נפתחת אחרי שנכיר.</p>
+      <p class="sl-body">השאירו פרטים כדי לשמוע על ההרצאה לארגון שלכם, ומיד אחר כך תיפתח לכם הסריקה. תבדקו את השיטה על עצמכם, לפני שאתם מחליטים להביא אותה לצוות.</p>
+      <a href="#lead-form" class="cta" id="scanLockCta">להשאיר פרטים ולפתוח את הסריקה</a>
+      <p class="sl-note">הסריקה רצה במכשיר שלכם בלבד. התמונה לא נשמרת ולא נשלחת.</p>
+    </div>
+    <div class="decoder fade" id="decoder">
       <label class="consent" for="consentChk">
         <input type="checkbox" id="consentChk">
         <span>אני מאשר/ת עיבוד תמונת כף היד. התמונה מעובדת במכשיר שלי בלבד ואינה נשמרת או נשלחת. המדידות והסימונים יצורפו לפנייה רק אם אבחר להשאיר פרטים. <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">מדיניות פרטיות</a></span>
@@ -740,6 +758,7 @@
         <video id="cam" playsinline muted></video>
         <button type="button" class="cam-flip" id="camFlip" aria-label="החלפת מצלמה" title="החלפת מצלמה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3"/><path d="M22 12.5a10 10 0 0 1-18.8 4.3"/></svg></button>
         <div class="cam-hint">כף יד פתוחה מול המצלמה, נזהה אוטומטית</div>
+        <button type="button" class="cta cam-shoot" id="camShoot">צלמו עכשיו</button>
       </div>
       <div class="decode-msg" id="decodeMsg"></div>
       <div class="engine-load" id="engineLoad"><div class="spinner"></div><div>טוען את מנוע הזיהוי. פעם ראשונה בלבד, כמה שניות…</div></div>
@@ -1043,7 +1062,10 @@
       var done = false;
       function success(){ if(done) return; done=true;
         var mid=document.getElementById('tyMid');
-        if(mid && !window.__efshar){ mid.textContent='בינתיים, הרגע שבו אדם מרגיש שראו אותו באמת: זה בדיוק מה שאני יוצרת בהרצאות.'; }
+        // מי שכבר סרק מקבל את הניסוח המקורי. מי שהגיע דרך השער מקבל הפניה לסריקה שנפתחה
+        if(mid && !window.__efshar){ mid.textContent='ובינתיים, הסריקה נפתחה לך למעלה. תבדקי את השיטה על עצמך.'; }
+        window.__leadSent = true;
+        if(window.__unlockScan) window.__unlockScan(true);
         form.style.display='none'; if(thanks){ thanks.classList.add('show'); thanks.scrollIntoView({behavior:'smooth', block:'center'}); } }
       function fail(){ if(done) return; done=true; btn.disabled=false; btn.textContent=orig; if(formErr) formErr.classList.add('show'); }
       fetch(WEBHOOK, { method:'POST', mode:'no-cors', keepalive:true, body:new URLSearchParams(payload) })
@@ -1400,11 +1422,11 @@ function measure(lm){
 function handQuality(lm){
   const w=lm[0], iBase=lm[5], pBase=lm[17], mBase=lm[9], mTip=lm[12];
   const palmW=dist(iBase,pBase);
-  if(palmW<0.16) return {ok:false, msg:'📏 קרבו את היד למצלמה, רחוק מדי'};
-  if(palmW>0.62) return {ok:false, msg:'📏 הרחיקו מעט את היד'};
-  if((w.y-mTip.y)<0.12) return {ok:false, msg:'✋ יישרו את כף היד, אצבעות כלפי מעלה'};
+  if(palmW<0.13) return {ok:false, msg:'📏 קרבו את היד למצלמה, רחוק מדי'};
+  if(palmW>0.68) return {ok:false, msg:'📏 הרחיקו מעט את היד'};
+  if((w.y-mTip.y)<0.10) return {ok:false, msg:'✋ יישרו את כף היד, אצבעות כלפי מעלה'};
   const tilt=Math.atan2(Math.abs(mBase.x-w.x), Math.abs(mBase.y-w.y))*180/Math.PI;
-  if(tilt>22) return {ok:false, msg:'↕️ יישרו את היד מול המצלמה'};
+  if(tilt>32) return {ok:false, msg:'↕️ יישרו את היד מול המצלמה'};
   return {ok:true, msg:'מצוין'};
 }
 
@@ -1439,12 +1461,33 @@ async function getVidLandmarker(){
   return landmarkerVid;
 }
 
+/* ================= שער הסריקה =================
+   הסריקה נעולה עד שמשאירים פרטים. הנעילה נשמרת ב-localStorage כדי שביקור חוזר
+   מאותו דפדפן לא יבקש פרטים שוב. אין כאן מידע אישי, רק דגל פתיחה. */
+const SCAN_KEY='bc_scan_open';
+window.__unlockScan = function(scrollBack){
+  const sec=$('decode'); if(!sec) return;
+  try{ localStorage.setItem(SCAN_KEY,'1'); }catch(e){}
+  if(!sec.classList.contains('gated')) return;
+  sec.classList.remove('gated');
+  if(scrollBack){
+    // נותנים למסך התודה רגע להיקלט, ואז מחזירים אותם לסריקה שנפתחה
+    setTimeout(function(){
+      const d=$('decoder'); if(!d) return;
+      d.scrollIntoView({behavior:'smooth', block:'center'});
+      const msg=$('decodeMsg'); if(msg) msg.textContent='הסריקה נפתחה. בחרו איך להתחיל.';
+    }, 2600);
+  }
+};
+try{ if(localStorage.getItem(SCAN_KEY)==='1') $('decode').classList.remove('gated'); }catch(e){}
+
 /* ================= UI flow ================= */
 const consent=$('consentChk'), btnUpload=$('btnUpload'), btnCamera=$('btnCamera'),
       fileInput=$('fileInput'), camWrap=$('camWrap'), cam=$('cam'),
-      decodeMsg=$('decodeMsg'), proc=$('proc'), procText=$('procText'), result=$('result');
+      decodeMsg=$('decodeMsg'), proc=$('proc'), procText=$('procText'), result=$('result'),
+      camShoot=$('camShoot');
 let camStream=null, camRAF=null;
-let camFacing = (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'environment' : 'user';   // מובייל: אחורית · דסקטופ: קדמית
+let camFacing = 'user';   // קדמית בשני המכשירים: אי אפשר למקם כף יד בלי לראות את התצוגה. כפתור ההחלפה נשאר
 const engineLoadEl=$('engineLoad');
 const ENGINE_FAIL_MSG='לא הצלחנו לטעון את מנוע הזיהוי. בדקו את החיבור ונסו שוב, או עברו לשאלון המודרך (בלי מצלמה).';
 function engineNoticeShow(){ if(vision || mpFailed) return; engineLoadEl.style.display='flex'; }
@@ -1501,7 +1544,7 @@ fileInput.addEventListener('change', async ()=>{
 });
 
 /* ---- camera path ---- */
-function stopCamera(){ if(camRAF){cancelAnimationFrame(camRAF);camRAF=null;} if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null;} camWrap.style.display='none'; }
+function stopCamera(){ if(camRAF){cancelAnimationFrame(camRAF);camRAF=null;} if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null;} camWrap.style.display='none'; if(camShoot) camShoot.style.display='none'; }
 btnCamera.addEventListener('click', async ()=>{
   if(!consent.checked) return;
   decodeMsg.textContent='';
@@ -1515,30 +1558,44 @@ btnCamera.addEventListener('click', async ()=>{
   engineNoticeHide();
   if(!lm){ stopCamera(); decodeMsg.textContent=ENGINE_FAIL_MSG; return; }
   camWrap.style.display='block'; cam.srcObject=camStream; await cam.play();
-  let goodSince=0, lastVideoTime=-1;
-  const HOLD_MS=2500;   // must hold a good, straight, close hand for 2.5s before capture
+  let goodSince=0, lastVideoTime=-1, lastGoodAt=0, lastHand=null, started=performance.now();
+  const HOLD_MS=1400;      // מספיק זמן כדי לוודא יד יציבה, בלי לייאש
+  const GRACE_MS=400;      // פריים בודד לא טוב לא מאפס את הספירה. רעד יד הוא לא כישלון
+  const MANUAL_AFTER=6000; // אם אחרי 6 שניות עוד לא נסגר אוטומטית, נותנים כפתור צילום ידני
+  camShoot.style.display='none'; camShoot.disabled=true;
   const loop=()=>{
     if(!camStream){ return; }
     if(cam.currentTime!==lastVideoTime){
       lastVideoTime=cam.currentTime;
       try{
         const res=lm.detectForVideo(cam, performance.now());
+        const now=performance.now();
         if(res && res.landmarks && res.landmarks.length){
-          const q=handQuality(res.landmarks[0]);
+          lastHand=res.landmarks[0];
+          const q=handQuality(lastHand);
           if(q.ok){
-            if(!goodSince) goodSince=performance.now();
-            const held=performance.now()-goodSince;
-            if(held>=HOLD_MS){ const m=measure(res.landmarks[0]); stopCamera(); runDecode(m,'camera'); return; }
-            const remain=Math.max(1,Math.ceil((HOLD_MS-held)/1000));
-            decodeMsg.textContent='✓ מצוין, אל תזוזו… '+remain;
+            lastGoodAt=now;
+            if(!goodSince) goodSince=now;
+            const held=now-goodSince;
+            if(held>=HOLD_MS){ const m=measure(lastHand); stopCamera(); runDecode(m,'camera'); return; }
+            decodeMsg.textContent='✓ מצוין, אל תזוזו… '+Math.max(1,Math.ceil((HOLD_MS-held)/1000));
           } else {
-            goodSince=0; decodeMsg.textContent=q.msg;   // resets the hold — imprecise capture won't proceed
+            if(now-lastGoodAt>GRACE_MS) goodSince=0;
+            decodeMsg.textContent=q.msg;
           }
-        } else { goodSince=0; decodeMsg.textContent='✋ כף יד פתוחה מול המצלמה'; }
+          camShoot.disabled=false;
+        } else {
+          lastHand=null; camShoot.disabled=true;
+          if(now-lastGoodAt>GRACE_MS) goodSince=0;
+          decodeMsg.textContent='✋ כף יד פתוחה מול המצלמה';
+        }
+        // דרך מילוט: מי שהמצלמה שלו מתקשה לא נתקע בלולאה אינסופית
+        if(now-started>MANUAL_AFTER && camShoot.style.display==='none') camShoot.style.display='block';
       }catch(e){}
     }
     camRAF=requestAnimationFrame(loop);
   };
+  camShoot.onclick=()=>{ if(!lastHand) return; const m=measure(lastHand); stopCamera(); runDecode(m,'camera'); };
   camRAF=requestAnimationFrame(loop);
 });
 
@@ -1617,8 +1674,10 @@ function composeResult(){
 /* שתי הקריאות לפעולה בתוצאה — גלילה לטופס עם ה-interest המתאים */
 window.__efsharRender = renderQuestions;   // לבדיקה/כיול בלבד
 document.querySelectorAll('.ef-cta-btn').forEach(b=>b.addEventListener('click', ()=>{
+  // מי שכבר השאיר פרטים בביקור הזה לא צריך למלא שוב: מחזירים אותו למסך התודה
+  if(window.__leadSent){ $('lead-form').scrollIntoView({behavior:'smooth'}); return; }
   const sel=$('f-interest'); if(sel && b.dataset.interest) sel.value=b.dataset.interest;
-  // הסריקה כבר ענתה על שלב 1 — פותחים את הוויזרד ישר בשלב 2
+  // הסריקה כבר ענתה על שלב 1, פותחים את הוויזרד ישר בשלב 2
   if(window.__wzPick && b.dataset.interest) window.__wzPick(b.dataset.interest);
   $('lead-form').scrollIntoView({behavior:'smooth'});
 }));
