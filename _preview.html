@@ -35,6 +35,7 @@
     <span class="lbl">מקצב</span>
     <button data-mode="dark" class="m on">רצף כהה</button>
     <button data-mode="light" class="m">רגעים בהירים</button>
+    <button data-mode="bright" class="m">רצף בהיר</button>
   </div>
   <div class="grp">
     <span class="lbl">רוחב</span>
@@ -55,7 +56,11 @@
 
   // ── מקצב תאורה: אילו סקשנים בהירים בכל מצב ──
   // "רצף כהה" = הכל כהה · "רגעים בהירים" = תועלת, שקיפות, מכתב, טופס
-  var LIGHT_IN_MODE = { dark: [], light: ['benes', 'obj', 'about', 'formsec'] };
+  var LIGHT_IN_MODE = {
+    dark:   [],
+    light:  ['benes', 'obj', 'about', 'formsec'],
+    bright: ['pain','benes','obj','about','trial','tests','wac','who2','faq','formsec']
+  };
   var NATURALLY_LIGHT = ['pain', 'about', 'trial'];   // סקשנים שבברירת המחדל בהירים
 
   function applyMode(){
