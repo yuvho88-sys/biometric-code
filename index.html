@@ -404,6 +404,12 @@
     font-variant-numeric:tabular-nums;
   }
   .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
+  /* היד עברה מההירו לסקשן הסורק: אלה בדיוק אותן 21 נקודות שהסורק מודד */
+  .bc .scan-art { display:flex; justify-content:center; margin:-6px 0 26px; }
+  .bc .scan-art .constellation { max-width:230px; }
+  @media (max-width:600px){ .bc .scan-art .constellation { max-width:190px; } .bc .scan-art { margin:0 0 18px; } }
+  .bc .hero-copy { max-width:640px; }
+
   /* ══ ויזרד תלת-שלבי ══ נבנה ב-JS בזמן ריצה. בלי JS הטופס המלא מוצג כרגיל. */
   .bc .wz-bar { display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:34px; }
   .bc .wz-count { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-size:12px;
@@ -680,7 +686,6 @@
       <div class="topbar">
         <a href="#top" class="wordmark" aria-label="רעות ביטון, לראש הדף"><svg class="wm-hand" viewBox="0 0 100 126" aria-hidden="true" focusable="false"><g class="wm-l" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="50" y1="114" x2="30" y2="98"/><line x1="30" y1="98" x2="20" y2="84"/><line x1="20" y1="84" x2="14" y2="70"/><line x1="14" y1="70" x2="10" y2="56"/><line x1="50" y1="114" x2="40" y2="66"/><line x1="40" y1="66" x2="37" y2="46"/><line x1="37" y1="46" x2="35" y2="32"/><line x1="35" y1="32" x2="34" y2="20"/><line x1="40" y1="66" x2="51" y2="62"/><line x1="51" y1="62" x2="51" y2="40"/><line x1="51" y1="40" x2="51" y2="25"/><line x1="51" y1="25" x2="51" y2="12"/><line x1="51" y1="62" x2="62" y2="66"/><line x1="62" y1="66" x2="64" y2="44"/><line x1="64" y1="44" x2="65" y2="31"/><line x1="65" y1="31" x2="66" y2="20"/><line x1="62" y1="66" x2="73" y2="72"/><line x1="73" y1="72" x2="77" y2="56"/><line x1="77" y1="56" x2="79" y2="46"/><line x1="79" y1="46" x2="81" y2="36"/><line x1="50" y1="114" x2="73" y2="72"/></g><g class="wm-d" fill="currentColor"><circle cx="50" cy="114" r="3.4"/><circle cx="30" cy="98" r="2.6"/><circle cx="20" cy="84" r="2.6"/><circle cx="14" cy="70" r="2.6"/><circle cx="10" cy="56" r="2.6"/><circle cx="40" cy="66" r="2.6"/><circle cx="37" cy="46" r="2.6"/><circle cx="35" cy="32" r="2.6"/><circle cx="34" cy="20" r="2.6"/><circle cx="51" cy="62" r="2.6"/><circle cx="51" cy="40" r="2.6"/><circle cx="51" cy="25" r="2.6"/><circle cx="51" cy="12" r="2.6"/><circle cx="62" cy="66" r="2.6"/><circle cx="64" cy="44" r="2.6"/><circle cx="65" cy="31" r="2.6"/><circle cx="66" cy="20" r="2.6"/><circle cx="73" cy="72" r="2.6"/><circle cx="77" cy="56" r="2.6"/><circle cx="79" cy="46" r="2.6"/><circle cx="81" cy="36" r="2.6"/></g></svg><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></a>
       </div>
-      <div class="hero-grid">
       <div class="hero-copy">
         <p class="hero-eyebrow fade">למנהלות <span class="ltr">HR</span>, גיוס ורווחה בארגונים</p>
         <h1 class="fade">כל אדם הוא שני סיפורים.</h1>
@@ -697,18 +702,80 @@
         <p class="hero-alt fade"><a href="#decode">או: נסי את הפענוח על עצמך, חינם ←</a></p>
         <p class="hero-trust fade">מבוסס על מתודולוגיית <span class="ltr">P.D.A</span> של ד"ר ארנולד הולצמן</p>
       </div>
-      <div class="hero-art">
-  <svg class="constellation" viewBox="0 0 420 520" role="img" aria-hidden="true" focusable="false">
-      <g class="cn-silh"><path d="M210,418L142,363L108,316L88,268L74,220"/><path d="M210,418L176,254L166,186L159,139L156,98"/><path d="M176,254L213,241L213,166L213,115L213,71"/><path d="M213,241L251,254L258,180L261,135L264,98"/><path d="M251,254L288,275L302,220L309,186L315,152"/><path d="M210,418L288,275"/></g>
-      <g class="cn-links"><line x1="210" y1="418" x2="142" y2="363" style="--i:1"/><line x1="142" y1="363" x2="108" y2="316" style="--i:6"/><line x1="108" y1="316" x2="88" y2="268" style="--i:11"/><line x1="88" y1="268" x2="74" y2="220" style="--i:16"/><line x1="210" y1="418" x2="176" y2="254" style="--i:2"/><line x1="176" y1="254" x2="166" y2="186" style="--i:7"/><line x1="166" y1="186" x2="159" y2="139" style="--i:12"/><line x1="159" y1="139" x2="156" y2="98" style="--i:17"/><line x1="176" y1="254" x2="213" y2="241" style="--i:3"/><line x1="213" y1="241" x2="213" y2="166" style="--i:8"/><line x1="213" y1="166" x2="213" y2="115" style="--i:13"/><line x1="213" y1="115" x2="213" y2="71" style="--i:18"/><line x1="213" y1="241" x2="251" y2="254" style="--i:4"/><line x1="251" y1="254" x2="258" y2="180" style="--i:9"/><line x1="258" y1="180" x2="261" y2="135" style="--i:14"/><line x1="261" y1="135" x2="264" y2="98" style="--i:19"/><line x1="251" y1="254" x2="288" y2="275" style="--i:5"/><line x1="288" y1="275" x2="302" y2="220" style="--i:10"/><line x1="302" y1="220" x2="309" y2="186" style="--i:15"/><line x1="309" y1="186" x2="315" y2="152" style="--i:20"/><line x1="210" y1="418" x2="288" y2="275" style="--i:5"/></g>
-      <g class="cn-meas"><path class="cn-m" d="M74,220L176,254" style="--i:0"/><path class="cn-m" d="M156,98L315,152" style="--i:1"/><path class="cn-m" d="M247,241L247,71" style="--i:2"/><circle class="cn-tick" cx="74" cy="220" r="3" style="--i:0"/><circle class="cn-tick" cx="176" cy="254" r="3" style="--i:0"/><circle class="cn-tick" cx="156" cy="98" r="3" style="--i:1"/><circle class="cn-tick" cx="315" cy="152" r="3" style="--i:1"/><circle class="cn-tick" cx="247" cy="241" r="3" style="--i:2"/><circle class="cn-tick" cx="247" cy="71" r="3" style="--i:2"/></g>
-      <g class="cn-dots"><circle cx="210" cy="418" r="6" style="--i:0"/><circle cx="142" cy="363" r="4.4" style="--i:1"/><circle cx="108" cy="316" r="4.4" style="--i:6"/><circle cx="88" cy="268" r="4.4" style="--i:11"/><circle cx="74" cy="220" r="4.4" style="--i:16"/><circle cx="176" cy="254" r="4.4" style="--i:2"/><circle cx="166" cy="186" r="4.4" style="--i:7"/><circle cx="159" cy="139" r="4.4" style="--i:12"/><circle cx="156" cy="98" r="4.4" style="--i:17"/><circle cx="213" cy="241" r="4.4" style="--i:3"/><circle cx="213" cy="166" r="4.4" style="--i:8"/><circle cx="213" cy="115" r="4.4" style="--i:13"/><circle cx="213" cy="71" r="4.4" style="--i:18"/><circle cx="251" cy="254" r="4.4" style="--i:4"/><circle cx="258" cy="180" r="4.4" style="--i:9"/><circle cx="261" cy="135" r="4.4" style="--i:14"/><circle cx="264" cy="98" r="4.4" style="--i:19"/><circle cx="288" cy="275" r="4.4" style="--i:5"/><circle cx="302" cy="220" r="4.4" style="--i:10"/><circle cx="309" cy="186" r="4.4" style="--i:15"/><circle cx="315" cy="152" r="4.4" style="--i:20"/></g>
-      
-      </svg>
-      </div>
-      </div>
       </div>
   </header>
+
+  <!-- 4b. DECODE (moved from /giyus/, verbatim) -->
+<section class="s-deep decode" id="decode">
+  <div class="wrap">
+    <h2 class="fade">אל תאמיני למילים. תבדקי על עצמך.</h2>
+    <p class="sub fade">זו טעימה מהחוויה שהעובדים שלך יעברו: העלאת תמונה, סריקה חיה או שאלון קצר, ותוצאה שתפתיע אותך.</p>
+      <div class="scan-art">
+        <div class="hero-art">
+    <svg class="constellation" viewBox="0 0 420 520" role="img" aria-hidden="true" focusable="false">
+        <g class="cn-silh"><path d="M210,418L142,363L108,316L88,268L74,220"/><path d="M210,418L176,254L166,186L159,139L156,98"/><path d="M176,254L213,241L213,166L213,115L213,71"/><path d="M213,241L251,254L258,180L261,135L264,98"/><path d="M251,254L288,275L302,220L309,186L315,152"/><path d="M210,418L288,275"/></g>
+        <g class="cn-links"><line x1="210" y1="418" x2="142" y2="363" style="--i:1"/><line x1="142" y1="363" x2="108" y2="316" style="--i:6"/><line x1="108" y1="316" x2="88" y2="268" style="--i:11"/><line x1="88" y1="268" x2="74" y2="220" style="--i:16"/><line x1="210" y1="418" x2="176" y2="254" style="--i:2"/><line x1="176" y1="254" x2="166" y2="186" style="--i:7"/><line x1="166" y1="186" x2="159" y2="139" style="--i:12"/><line x1="159" y1="139" x2="156" y2="98" style="--i:17"/><line x1="176" y1="254" x2="213" y2="241" style="--i:3"/><line x1="213" y1="241" x2="213" y2="166" style="--i:8"/><line x1="213" y1="166" x2="213" y2="115" style="--i:13"/><line x1="213" y1="115" x2="213" y2="71" style="--i:18"/><line x1="213" y1="241" x2="251" y2="254" style="--i:4"/><line x1="251" y1="254" x2="258" y2="180" style="--i:9"/><line x1="258" y1="180" x2="261" y2="135" style="--i:14"/><line x1="261" y1="135" x2="264" y2="98" style="--i:19"/><line x1="251" y1="254" x2="288" y2="275" style="--i:5"/><line x1="288" y1="275" x2="302" y2="220" style="--i:10"/><line x1="302" y1="220" x2="309" y2="186" style="--i:15"/><line x1="309" y1="186" x2="315" y2="152" style="--i:20"/><line x1="210" y1="418" x2="288" y2="275" style="--i:5"/></g>
+        <g class="cn-meas"><path class="cn-m" d="M74,220L176,254" style="--i:0"/><path class="cn-m" d="M156,98L315,152" style="--i:1"/><path class="cn-m" d="M247,241L247,71" style="--i:2"/><circle class="cn-tick" cx="74" cy="220" r="3" style="--i:0"/><circle class="cn-tick" cx="176" cy="254" r="3" style="--i:0"/><circle class="cn-tick" cx="156" cy="98" r="3" style="--i:1"/><circle class="cn-tick" cx="315" cy="152" r="3" style="--i:1"/><circle class="cn-tick" cx="247" cy="241" r="3" style="--i:2"/><circle class="cn-tick" cx="247" cy="71" r="3" style="--i:2"/></g>
+        <g class="cn-dots"><circle cx="210" cy="418" r="6" style="--i:0"/><circle cx="142" cy="363" r="4.4" style="--i:1"/><circle cx="108" cy="316" r="4.4" style="--i:6"/><circle cx="88" cy="268" r="4.4" style="--i:11"/><circle cx="74" cy="220" r="4.4" style="--i:16"/><circle cx="176" cy="254" r="4.4" style="--i:2"/><circle cx="166" cy="186" r="4.4" style="--i:7"/><circle cx="159" cy="139" r="4.4" style="--i:12"/><circle cx="156" cy="98" r="4.4" style="--i:17"/><circle cx="213" cy="241" r="4.4" style="--i:3"/><circle cx="213" cy="166" r="4.4" style="--i:8"/><circle cx="213" cy="115" r="4.4" style="--i:13"/><circle cx="213" cy="71" r="4.4" style="--i:18"/><circle cx="251" cy="254" r="4.4" style="--i:4"/><circle cx="258" cy="180" r="4.4" style="--i:9"/><circle cx="261" cy="135" r="4.4" style="--i:14"/><circle cx="264" cy="98" r="4.4" style="--i:19"/><circle cx="288" cy="275" r="4.4" style="--i:5"/><circle cx="302" cy="220" r="4.4" style="--i:10"/><circle cx="309" cy="186" r="4.4" style="--i:15"/><circle cx="315" cy="152" r="4.4" style="--i:20"/></g>
+        
+        </svg>
+        </div>
+      </div>
+    <div class="decoder fade">
+      <label class="consent" for="consentChk">
+        <input type="checkbox" id="consentChk">
+        <span>אני מאשר/ת עיבוד תמונת כף היד. התמונה מעובדת במכשיר שלי בלבד ואינה נשמרת או נשלחת. המדידות והסימונים יצורפו לפנייה רק אם אבחר להשאיר פרטים. <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">מדיניות פרטיות</a></span>
+      </label>
+      <div class="entries">
+        <button class="entry-btn" id="btnUpload" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+          העלאת תמונה
+        </button>
+        <button class="entry-btn" id="btnCamera" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          סריקה חיה
+        </button>
+        <button class="entry-btn" id="btnManual" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          שאלון מודרך, בלי מצלמה
+        </button>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" hidden>
+      <div id="camWrap">
+        <video id="cam" playsinline muted></video>
+        <button type="button" class="cam-flip" id="camFlip" aria-label="החלפת מצלמה" title="החלפת מצלמה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3"/><path d="M22 12.5a10 10 0 0 1-18.8 4.3"/></svg></button>
+        <div class="cam-hint">כף יד פתוחה מול המצלמה, נזהה אוטומטית</div>
+      </div>
+      <div class="decode-msg" id="decodeMsg"></div>
+      <div class="engine-load" id="engineLoad"><div class="spinner"></div><div>טוען את מנוע הזיהוי. פעם ראשונה בלבד, כמה שניות…</div></div>
+      <div class="ef-qs" id="efsharQs" style="display:none"></div>
+      <div class="proc" id="proc">
+        <div class="spinner"></div>
+        <div class="ptext" id="procText">מודד את זווית האגודל…</div>
+      </div>
+      <div class="result" id="result">
+        <div class="rcard">
+          <h3>הפענוח הראשוני שלך</h3>
+          <div class="metrics" id="metrics"></div>
+          <div class="reading" id="reading"></div>
+          <div class="rdisc">פענוח ראשוני על בסיס הסימונים שלך. אינו אבחון אישי של רעות ביטון.</div>
+          <div class="ef-ctas">
+            <div class="ef-cta">
+              <h4>רוצה שהצוות שלך יחווה את זה על עצמו?</h4>
+              <p>אני מעבירה הרצאות למנהלי/ות ואנשי/נשות משאבי אנוש. חוויה שבה כל משתתף/ת מרגיש/ה שנגעתי במשהו אמיתי אצלו/ה, ולומד/ת כלי מעשי לקריאת אנשים בגיוס, בהשמה ובהחלטות. בדיוק כמו הסריקה, רק לעומק ועל כל הצוות.</p>
+              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">הביאו את רעות להרצאה ←</button>
+            </div>
+            <div class="ef-cta">
+              <h4>רוצה את המפה המלאה עלייך?</h4>
+              <p>הסריקה נתנה 5 עדשות. אבחון אישי מלא קורא את כל היד ומרכיב מפה מדויקת של איך את/ה קורא/ת אנשים, מחליט/ה, מוביל/ה ומתפקד/ת תחת לחץ. השאירו פרטים ואחזור אליכם.</p>
+              <button type="button" class="cta ghost ef-cta-btn" data-interest="אבחון אישי">השאירו פרטים לאבחון אישי ←</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- 11. FORM -->
   <section class="s-deep formsec surface-light" id="lead-form">
@@ -777,66 +844,6 @@
     </div>
   </section>
 
-  <!-- 4b. DECODE (moved from /giyus/, verbatim) -->
-<section class="s-deep decode" id="decode">
-  <div class="wrap">
-    <h2 class="fade">אל תאמיני למילים. תבדקי על עצמך.</h2>
-    <p class="sub fade">זו טעימה מהחוויה שהעובדים שלך יעברו: העלאת תמונה, סריקה חיה או שאלון קצר, ותוצאה שתפתיע אותך.</p>
-    <div class="decoder fade">
-      <label class="consent" for="consentChk">
-        <input type="checkbox" id="consentChk">
-        <span>אני מאשר/ת עיבוד תמונת כף היד. התמונה מעובדת במכשיר שלי בלבד ואינה נשמרת או נשלחת. המדידות והסימונים יצורפו לפנייה רק אם אבחר להשאיר פרטים. <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">מדיניות פרטיות</a></span>
-      </label>
-      <div class="entries">
-        <button class="entry-btn" id="btnUpload" disabled>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
-          העלאת תמונה
-        </button>
-        <button class="entry-btn" id="btnCamera" disabled>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          סריקה חיה
-        </button>
-        <button class="entry-btn" id="btnManual" disabled>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-          שאלון מודרך, בלי מצלמה
-        </button>
-      </div>
-      <input type="file" id="fileInput" accept="image/*" hidden>
-      <div id="camWrap">
-        <video id="cam" playsinline muted></video>
-        <button type="button" class="cam-flip" id="camFlip" aria-label="החלפת מצלמה" title="החלפת מצלמה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3"/><path d="M22 12.5a10 10 0 0 1-18.8 4.3"/></svg></button>
-        <div class="cam-hint">כף יד פתוחה מול המצלמה, נזהה אוטומטית</div>
-      </div>
-      <div class="decode-msg" id="decodeMsg"></div>
-      <div class="engine-load" id="engineLoad"><div class="spinner"></div><div>טוען את מנוע הזיהוי. פעם ראשונה בלבד, כמה שניות…</div></div>
-      <div class="ef-qs" id="efsharQs" style="display:none"></div>
-      <div class="proc" id="proc">
-        <div class="spinner"></div>
-        <div class="ptext" id="procText">מודד את זווית האגודל…</div>
-      </div>
-      <div class="result" id="result">
-        <div class="rcard">
-          <h3>הפענוח הראשוני שלך</h3>
-          <div class="metrics" id="metrics"></div>
-          <div class="reading" id="reading"></div>
-          <div class="rdisc">פענוח ראשוני על בסיס הסימונים שלך. אינו אבחון אישי של רעות ביטון.</div>
-          <div class="ef-ctas">
-            <div class="ef-cta">
-              <h4>רוצה שהצוות שלך יחווה את זה על עצמו?</h4>
-              <p>אני מעבירה הרצאות למנהלי/ות ואנשי/נשות משאבי אנוש. חוויה שבה כל משתתף/ת מרגיש/ה שנגעתי במשהו אמיתי אצלו/ה, ולומד/ת כלי מעשי לקריאת אנשים בגיוס, בהשמה ובהחלטות. בדיוק כמו הסריקה, רק לעומק ועל כל הצוות.</p>
-              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">הביאו את רעות להרצאה ←</button>
-            </div>
-            <div class="ef-cta">
-              <h4>רוצה את המפה המלאה עלייך?</h4>
-              <p>הסריקה נתנה 5 עדשות. אבחון אישי מלא קורא את כל היד ומרכיב מפה מדויקת של איך את/ה קורא/ת אנשים, מחליט/ה, מוביל/ה ומתפקד/ת תחת לחץ. השאירו פרטים ואחזור אליכם.</p>
-              <button type="button" class="cta ghost ef-cta-btn" data-interest="אבחון אישי">השאירו פרטים לאבחון אישי ←</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
   <!-- 5. OBJECTION -->
   <section class="s-deep obj surface-light">
@@ -1131,6 +1138,15 @@
         var first = steps[cur-1].querySelector('input');
         if(first && cur>1) first.focus({preventScroll:true});
       }
+      // מי שסרקה כבר בחרה — הסריקה מדלגת על שלב 1 ומסמנת את הכרטיס
+      window.__wzPick = function(val){
+        var hit = cardEls.filter(function(c){ return c.value === val; })[0];
+        if(!hit) return;
+        cardEls.forEach(function(c){ c.classList.remove('sel'); c.setAttribute('aria-pressed','false'); });
+        hit.classList.add('sel'); hit.setAttribute('aria-pressed','true');
+        sel.value = val;
+        go(2);
+      };
       next.addEventListener('click', function(){ go(cur+1); });
       back.addEventListener('click', function(){ go(cur-1); });
       form.addEventListener('keydown', function(ev){
@@ -1586,6 +1602,8 @@ function composeResult(){
 window.__efsharRender = renderQuestions;   // לבדיקה/כיול בלבד
 document.querySelectorAll('.ef-cta-btn').forEach(b=>b.addEventListener('click', ()=>{
   const sel=$('f-interest'); if(sel && b.dataset.interest) sel.value=b.dataset.interest;
+  // הסריקה כבר ענתה על שלב 1 — פותחים את הוויזרד ישר בשלב 2
+  if(window.__wzPick && b.dataset.interest) window.__wzPick(b.dataset.interest);
   $('lead-form').scrollIntoView({behavior:'smooth'});
 }));
 </script>
