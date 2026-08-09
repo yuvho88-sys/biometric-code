@@ -244,7 +244,7 @@
      1. הדלקה 1.6s (רצף אנטומי, stagger 60ms) · 2. מתיחה 1.4s
      3. שהייה 2.5s עם פולס נשימה · 4. דעיכה 1.5s ל-0.25, לא ל-0
      קו המתאר והתוויות סטטיים — רק הנקודות והקווים חיים. */
-  .bc .constellation { --cycle:7s; --step:330ms; }
+  .bc .constellation { --cycle:3.5s; --step:165ms; }
   .bc .cn-silh { opacity:.17; }
   .bc .cn-tick { opacity:1; }
 
@@ -261,7 +261,7 @@
   .bc .cn-meas path {
     opacity:.9;
     animation:cnMeasLoop var(--cycle) cubic-bezier(.4,0,.2,1) infinite;
-    animation-delay:calc(1.35s + var(--i) * .12s);
+    animation-delay:calc(.6s + var(--i) * .1s);
   }
 
   @keyframes cnDotLoop {
@@ -405,37 +405,43 @@
   }
   .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
   /* ══ ויזרד תלת-שלבי ══ נבנה ב-JS בזמן ריצה. בלי JS הטופס המלא מוצג כרגיל. */
-  .bc .wz-bar { display:flex; align-items:center; gap:10px; margin-bottom:26px; }
-  .bc .wz-segs { display:flex; gap:6px; flex:1; }
-  .bc .wz-seg { flex:1; height:3px; border-radius:2px; background:var(--measure-hairline); transition:background .25s var(--ease); }
+  .bc .wz-bar { display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:34px; }
+  .bc .wz-count { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-size:12px;
+    font-weight:600; letter-spacing:.22em; color:var(--accent-text-on-light); order:-1; }
+  .bc .wz-segs { display:flex; gap:8px; justify-content:center; }
+  .bc .wz-seg { width:56px; height:6px; border-radius:99px; background:var(--measure-hairline);
+    transition:background .3s var(--ease), width .3s var(--ease); }
   .bc .wz-seg.on { background:var(--accent-fill); }
-  .bc .wz-count { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-size:11.5px;
-    font-weight:500; letter-spacing:.09em; color:var(--text-on-light-muted); white-space:nowrap; }
+  .bc .wz-seg.cur { width:64px; }
 
   .bc .wz-step { display:none; }
   .bc .wz-step.on { display:block; animation:wzIn .22s var(--ease); }
   @keyframes wzIn { from { opacity:0; transform:translateX(18px); } to { opacity:1; transform:none; } }
 
   /* שלב 1: כרטיסי בחירה גדולים */
-  .bc .wz-cards { display:grid; gap:12px; }
-  .bc .wz-card { width:100%; text-align:right; font:inherit; font-size:17px; font-weight:600;
-    color:var(--text-on-light); background:transparent; cursor:pointer;
-    border:1px solid var(--measure-hairline); border-radius:10px; padding:20px 22px;
-    transition:border-color .18s ease, background .18s ease; }
-  .bc .wz-card:hover { border-color:var(--accent-border); }
+  .bc .wz-cards { display:grid; gap:14px; max-width:520px; margin-inline:auto; }
+  .bc .wz-card { width:100%; text-align:right; font:inherit; font-size:17.5px; font-weight:600;
+    color:var(--text-on-light); background:var(--bg-light-2); cursor:pointer;
+    border:1px solid var(--measure-hairline); border-radius:14px; padding:26px 26px;
+    transition:border-color .18s ease, background .18s ease, transform .18s var(--ease); }
+  .bc .wz-card:hover { border-color:var(--accent-border); transform:translateY(-2px); }
   .bc .wz-card:focus-visible { outline:3px solid var(--accent-border); outline-offset:2px; }
-  .bc .wz-card.sel { border-color:var(--accent-border); background:color-mix(in srgb, var(--accent-border) 9%, transparent); }
+  .bc .wz-card.sel { border-color:var(--accent-border); background:color-mix(in srgb, var(--accent-border) 10%, transparent); }
+
+  /* שלבים 2-3: שדות ממורכזים ברוחב אחיד עם הכרטיסים */
+  .bc .wz-step[data-step="2"], .bc .wz-step[data-step="3"] { max-width:520px; margin-inline:auto; }
 
   /* ניווט */
-  .bc .wz-nav { display:flex; align-items:center; gap:12px; margin-top:20px; }
+  .bc .wz-nav { display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:26px; }
   .bc .wz-next { font:inherit; font-size:16.5px; font-weight:700; cursor:pointer;
     background:var(--accent-fill); color:var(--accent-on-fill); border:none;
-    border-radius:11px; padding:15px 30px; transition:background .18s ease; }
+    border-radius:12px; padding:16px 44px; transition:background .18s ease; }
   .bc .wz-next:hover { background:var(--accent-fill-deep); }
-  .bc .wz-back { font:inherit; font-size:15px; font-weight:600; cursor:pointer;
-    background:none; border:none; color:var(--text-on-light-muted); padding:10px 4px; }
+  .bc .wz-back { font:inherit; font-size:14.5px; font-weight:600; cursor:pointer;
+    background:none; border:none; color:var(--text-on-light-muted); padding:4px; }
   .bc .wz-back:hover { color:var(--accent-text-on-light); text-decoration:underline; text-underline-offset:4px; }
   .bc .wz-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  @media (max-width:600px){ .bc .wz-seg { width:44px; } .bc .wz-seg.cur { width:52px; } .bc .wz-card { padding:22px 20px; } }
   @media (prefers-reduced-motion: reduce){ .bc .wz-step.on { animation:none; } .bc .wz-seg { transition:none; } }
 
   /* ── טופס: שדות עם מסגרת דקה, בלי מילויים כבדים ── */
@@ -1118,7 +1124,7 @@
         if(n>cur && !valid(cur)){ var bad=form.querySelector('.field.bad input'); if(bad) bad.focus(); return; }
         cur = Math.min(3, Math.max(1, n));
         steps.forEach(function(s,i){ s.classList.toggle('on', i===cur-1); });
-        [].forEach.call(segs.children, function(sg,i){ sg.classList.toggle('on', i<cur); sg.setAttribute('aria-current', i===cur-1 ? 'step' : 'false'); });
+        [].forEach.call(segs.children, function(sg,i){ sg.classList.toggle('on', i<cur); sg.classList.toggle('cur', i===cur-1); sg.setAttribute('aria-current', i===cur-1 ? 'step' : 'false'); });
         count.textContent = 'שלב ' + cur + ' מתוך 3';
         back.style.display = cur===1 ? 'none' : '';
         next.style.display = cur===3 ? 'none' : '';
