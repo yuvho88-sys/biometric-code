@@ -280,18 +280,23 @@
     100% { stroke-dashoffset:100; opacity:.14; }
   }
 
-  /* מחוץ למסך — עוצרים, חוסך סוללה */
-  .bc .constellation.cn-paused .cn-dots circle,
-  .bc .constellation.cn-paused .cn-links line,
-  .bc .constellation.cn-paused .cn-meas path { animation-play-state:paused; }
+  /* אין השהיה מחוץ למסך. 21 עיגולים שמשנים שקיפות הם עומס אפסי, והמנגנון
+     שהשהה אותם היה מקור אפשרי ליד שנראית קפואה. עדיף שתמיד תרוץ */
 
-  /* מכשיר שביקש פחות תנועה: בלי הגדלה ובלי ציור קווים, רק נשימה איטית של אור.
-     היד לא קופאת, אבל גם לא זזה במרחב */
+  /* מכשיר שביקש פחות תנועה (או אנדרואיד במצב חיסכון בסוללה, שמדליק את זה לבד):
+     אותו גל אור בדיוק ובאותו קצב, רק בלי הגדלה ובלי ציור קווים.
+     מה שמוסר הוא התנועה במרחב, לא הסימן שהיד חיה */
   @media (prefers-reduced-motion: reduce){
-    .bc .cn-dots circle { animation:cnDotCalm 7s ease-in-out infinite; transform:none; }
-    .bc .cn-links line, .bc .cn-meas path { animation:none; stroke-dashoffset:0; opacity:.6; }
+    .bc .cn-dots circle { animation-name:cnDotCalm; }
+    .bc .cn-links line, .bc .cn-meas path { animation:none; stroke-dashoffset:0; opacity:.55; }
   }
-  @keyframes cnDotCalm { 0%,100% { opacity:.4; } 50% { opacity:1; } }
+  @keyframes cnDotCalm {
+    0%   { opacity:.18; }
+    8%   { opacity:1; }
+    18%  { opacity:.95; }
+    55%  { opacity:.55; }
+    100% { opacity:.18; }
+  }
 
   .bc .hero-copy { max-width: 600px; position:relative; }
   .bc .hero h1, .bc .hero .sub { text-shadow: 0 2px 14px rgba(10,15,26,.42); }
@@ -398,8 +403,8 @@
   .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
   /* היד עברה מההירו לסקשן הסורק: אלה בדיוק אותן 21 נקודות שהסורק מודד */
   .bc .scan-art { display:flex; justify-content:center; margin:-6px 0 26px; }
-  .bc .scan-art .constellation { max-width:230px; }
-  @media (max-width:600px){ .bc .scan-art .constellation { max-width:190px; } .bc .scan-art { margin:0 0 18px; } }
+  .bc .scan-art .constellation { max-width:270px; }
+  @media (max-width:600px){ .bc .scan-art .constellation { max-width:240px; } .bc .scan-art { margin:0 0 18px; } }
   /* ראש הדף ממורכז: העמודה עצמה במרכז, וכל שורה בתוכה מיושרת למרכז */
   .bc .hero-copy { max-width:640px; margin-inline:auto; text-align:center; }
   .bc .hero-copy h1, .bc .hero-copy .sub, .bc .hero-copy .hero-bio,
@@ -1247,12 +1252,6 @@
       parts.push({ el:el, delay:delay, kind: isMeas ? 'meas' : (el.tagName === 'circle' ? 'dot' : 'link') });
     });
 
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ cn.classList.toggle('cn-paused', !e.isIntersecting); });
-      }, { rootMargin:'120px' }).observe(cn);
-    }
-
     // רשת ביטחון: אם אחרי טעינה אין אנימציית CSS רצה על הנקודות
     // (דפדפן ישן, keyframes שלא נקלטו) — מריצים את אותו לופ דרך Web Animations API
     setTimeout(function(){
@@ -1260,15 +1259,13 @@
       var live = probe && probe.getAnimations && probe.getAnimations().length > 0;
       if(live) return;
       if(!probe || !probe.animate) return;
-      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var FR = {
-        dot:  calm ? [{opacity:.4},{opacity:1},{opacity:.4}]
-                   : [{opacity:.18},{opacity:1},{opacity:.95},{opacity:.55},{opacity:.18}],
+        dot:  [{opacity:.18},{opacity:1},{opacity:.95},{opacity:.55},{opacity:.18}],
         link: [{opacity:.14},{opacity:.7},{opacity:.55},{opacity:.14}],
         meas: [{opacity:.14},{opacity:1},{opacity:.85},{opacity:.14}]
       };
       parts.forEach(function(p){
-        p.el.animate(FR[p.kind], { duration: calm ? 7000 : CYCLE, iterations: Infinity,
+        p.el.animate(FR[p.kind], { duration: CYCLE, iterations: Infinity,
           delay: -(CYCLE - (p.delay % CYCLE)), easing:'linear' });
       });
     }, 1200);
