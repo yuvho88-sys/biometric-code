@@ -276,7 +276,11 @@
   .bc .hero-kick { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--text-on-dark); font-weight:700; font-size:clamp(20px,3.2vw,30px); margin:0 0 1.4rem; }
   /* יחידה 2: שורת ההסבר — יורדת מדרגה, טקסט ולא כותרת */
   /* מינימום 0.95rem (הרצפה המאושרת): במובייל הפסקה יורדת ל-16px, וההסבר חייב להישאר מתחתיה בשרשרת ההיררכיה */
-  .bc .hero-bio { color:var(--text-on-dark); font-weight:450; font-size:clamp(.95rem,1.35vw,1.12rem); line-height:1.6; margin:0 0 1.5rem; }
+  /* התשובה לכותרת. היא נושאת את הרעיון, ולכן היא גדולה יותר מטקסט רץ */
+  .bc .hero-bio { color:var(--text-on-dark); font-weight:600; font-size:clamp(1.12rem,1.75vw,1.42rem); line-height:1.5; margin:0 0 .6rem; }
+  /* ההסתייגות יורדת לתווית מדידה, כך שהיא מבהירה בלי להתגונן */
+  .bc .hero-spec { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-size:13.5px;
+    letter-spacing:.05em; color:var(--measure-on-dark); margin:0 0 1.5rem; }
   .bc .hero-aud { color:var(--muted-l); font-size:14.5px; font-weight:600; letter-spacing:.3px; margin-bottom:14px; }
   /* Hero: eyebrow קהל יעד — שורת טקסט נקייה, בלי רקע ובלי מסגרת */
   .bc .hero-eyebrow { color:var(--gold-text-on-dark); font-size:.9rem; font-weight:600; letter-spacing:1.4px; margin-bottom:10px; }
@@ -551,7 +555,7 @@
   /* ראש הדף ממורכז: העמודה עצמה במרכז, וכל שורה בתוכה מיושרת למרכז */
   .bc .hero-copy { max-width:760px; margin-inline:auto; text-align:center; }
   .bc .hero-copy h1, .bc .hero-copy .sub, .bc .hero-copy .hero-bio,
-  .bc .hero-copy .hero-kick, .bc .hero-copy .hero-bridge { margin-inline:auto; }
+  .bc .hero-copy .hero-kick, .bc .hero-copy .hero-bridge, .bc .hero-copy .hero-spec { margin-inline:auto; }
   .bc .hero-copy .hero-ctas { justify-content:center; }
 
   /* ══ ויזרד תלת-שלבי ══ נבנה ב-JS בזמן ריצה. בלי JS הטופס המלא מוצג כרגיל. */
@@ -867,7 +871,8 @@
       <div class="hero-copy">
         <h1 class="fade">לכל מרואיין יש שני סיפורים.</h1>
         <p class="hero-kick fade">אחד מהם הוא הכין מראש.</p>
-        <p class="hero-bio fade">את הסיפור השני כפות הידיים כבר מספרות. ניתוח שיטתי, לא ניחוש.</p>
+        <p class="hero-bio fade">את הסיפור השני כפות הידיים כבר מספרות.</p>
+        <p class="hero-spec fade">ניתוח שיטתי, לא ניחוש.</p>
         <p class="sub fade">את הפער בין השניים בארגון תמיד מגלים באיחור. בחודש השלישי של מי שנראה מושלם, ובשיחת העזיבה של מי שכבר מזמן החליט.</p>
         <p class="hero-bridge fade">ומה אם הייתם רואים את זה כבר בפגישה הראשונה, ולא בשיחת העזיבה?</p>
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
