@@ -405,8 +405,6 @@
   .bc .hands-vid { display:block; width:100%; height:auto; border-radius:14px;
     -webkit-mask-image:radial-gradient(120% 105% at 50% 50%, #000 58%, transparent 100%);
             mask-image:radial-gradient(120% 105% at 50% 50%, #000 58%, transparent 100%); }
-  @media (prefers-reduced-motion: reduce){ .bc .hands-vid { display:none; }
-    .bc .scan-art { background:url(media/hands-poster.jpg) center/contain no-repeat; min-height:300px; } }
   .bc .scan-art { display:flex; justify-content:center; margin:-6px 0 26px; }
   .bc .scan-art .hands-vid { max-width:520px; }
   @media (max-width:600px){ .bc .scan-art .hands-vid { max-width:100%; } .bc .scan-art { margin:0 0 18px; } }
@@ -1236,6 +1234,25 @@
     }, { passive:true });
     window.addEventListener('resize', function(){ goTo(idx); });
     goTo(0); start();
+  }
+
+  // הווידאו של הידיים: דפדפני מובייל חוסמים ניגון אוטומטי בכמה מצבים
+  // (חיסכון סוללה, חוסך נתונים, הגדרת מדיה). מנסים שוב כשהוא נכנס למסך,
+  // ואם עדיין נחסם, מנסים שוב בנגיעה הראשונה של המשתמש בדף.
+  var hv = scope.querySelector('.hands-vid');
+  if(hv){
+    var tryPlay = function(){ var p = hv.play(); if(p && p.catch) p.catch(function(){}); };
+    hv.muted = true; hv.setAttribute('playsinline',''); tryPlay();
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting) tryPlay(); }); },
+        { rootMargin:'200px' }).observe(hv);
+    }
+    ['touchstart','pointerdown','scroll'].forEach(function(ev){
+      window.addEventListener(ev, function once(){ tryPlay();
+        ['touchstart','pointerdown','scroll'].forEach(function(e2){ window.removeEventListener(e2, once); });
+      }, { once:false, passive:true });
+    });
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) tryPlay(); });
   }
 
   // Hand Constellation: כותבים לכל אלמנט animation-delay מפורש (בלי calc על משתנה,
