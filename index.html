@@ -433,10 +433,10 @@
   @keyframes wzIn { from { opacity:0; transform:translateX(18px); } to { opacity:1; transform:none; } }
 
   /* שלב 1: כרטיסי בחירה גדולים */
-  .bc .wz-cards { display:grid; gap:14px; max-width:520px; margin-inline:auto; }
-  .bc .wz-card { width:100%; text-align:right; font:inherit; display:flex; flex-direction:column; gap:5px;
-    color:var(--text-on-light); background:var(--bg-light-2); cursor:pointer;
-    border:1px solid var(--measure-hairline); border-radius:14px; padding:26px 26px;
+  .bc .wz-cards { display:grid; gap:9px; max-width:520px; margin-inline:auto; }
+  .bc .wz-card { width:100%; text-align:right; font:inherit; display:flex; align-items:baseline;
+    flex-wrap:wrap; gap:4px 10px; color:var(--text-on-light); background:var(--bg-light-2); cursor:pointer;
+    border:1px solid var(--measure-hairline); border-radius:12px; padding:14px 18px;
     transition:border-color .18s ease, background .18s ease, transform .18s var(--ease); }
   .bc .wz-card:hover { border-color:var(--accent-border); transform:translateY(-2px); }
   .bc .wz-card:focus-visible { outline:3px solid var(--accent-border); outline-offset:2px; }
@@ -452,13 +452,15 @@
     border-radius:12px; padding:16px 44px; transition:background .18s ease; }
   .bc .wz-next:hover { background:var(--accent-fill-deep); }
   .bc .wz-card .wz-t { font-size:var(--fs-lg); font-weight:700; color:var(--text-on-light); line-height:1.25; }
-  .bc .wz-card .wz-d { font-size:var(--fs-sm); font-weight:400; color:var(--text-on-light-muted); line-height:1.45; }
+  .bc .wz-card .wz-d { font-size:var(--fs-xs); font-weight:400; color:var(--text-on-light-muted);
+    line-height:1.4; position:relative; padding-inline-start:12px; }
+  .bc .wz-card .wz-d::before { content:"·"; position:absolute; inset-inline-start:2px; opacity:.55; }
   .bc .wz-card.sel .wz-t { color:var(--accent-text-on-light); }
   .bc .wz-back { font:inherit; font-size:var(--fs-xs); font-weight:600; cursor:pointer;
     background:none; border:none; color:var(--text-on-light-muted); padding:4px; }
   .bc .wz-back:hover { color:var(--accent-text-on-light); text-decoration:underline; text-underline-offset:4px; }
   .bc .wz-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
-  @media (max-width:600px){ .bc .wz-seg { width:44px; } .bc .wz-seg.cur { width:52px; } .bc .wz-card { padding:22px 20px; } }
+  @media (max-width:600px){ .bc .wz-seg { width:44px; } .bc .wz-seg.cur { width:52px; } .bc .wz-card { padding:13px 15px; } }
   @media (prefers-reduced-motion: reduce){ .bc .wz-step.on { animation:none; } .bc .wz-seg { transition:none; } }
 
   /* ── טופס: שדות עם מסגרת דקה, בלי מילויים כבדים ── */
@@ -837,7 +839,7 @@
         <div class="field" data-f="role"><label for="f-role">התפקיד שלך</label><select id="f-role" name="role"><option value="">בחרי מהרשימה</option><option value="משאבי אנוש">משאבי אנוש או People</option><option value="גיוס">גיוס והשמה</option><option value="רווחה וחוויית עובד">רווחה וחוויית עובד</option><option value="הדרכה ופיתוח ארגוני">הדרכה ופיתוח ארגוני</option><option value="ניהול צוות">ניהול צוות או הנהלה</option><option value="ועד עובדים">ועד עובדים</option><option value="אחר">אחר</option></select><div class="err"></div></div>
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
-        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד מול הצוות. נקודת הכניסה.">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="חמישה מפגשים. מרגע של וואו לשפה שנשארת.">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="חמישה מפגשים אישיים. היכולת נשארת בארגון.">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד מה מתאים.">עוד לא בטוח/ה</option></select></div>
+        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="5 מפגשים">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="אחד על אחד">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד">עוד לא בטוח/ה</option></select></div>
         <button type="submit" class="cta">שליחת הפרטים</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לנו וואטסאפ.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת. נחזור אלייך עם פרטים והצעה, וההחלטה כולה שלך.</p>
