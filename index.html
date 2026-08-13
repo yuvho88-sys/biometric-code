@@ -402,9 +402,14 @@
   }
   .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
   /* היד עברה מההירו לסקשן הסורק: אלה בדיוק אותן 21 נקודות שהסורק מודד */
+  .bc .hands-vid { display:block; width:100%; height:auto; border-radius:14px;
+    -webkit-mask-image:radial-gradient(120% 105% at 50% 50%, #000 58%, transparent 100%);
+            mask-image:radial-gradient(120% 105% at 50% 50%, #000 58%, transparent 100%); }
+  @media (prefers-reduced-motion: reduce){ .bc .hands-vid { display:none; }
+    .bc .scan-art { background:url(media/hands-poster.jpg) center/contain no-repeat; min-height:300px; } }
   .bc .scan-art { display:flex; justify-content:center; margin:-6px 0 26px; }
-  .bc .scan-art .constellation { max-width:270px; }
-  @media (max-width:600px){ .bc .scan-art .constellation { max-width:240px; } .bc .scan-art { margin:0 0 18px; } }
+  .bc .scan-art .hands-vid { max-width:520px; }
+  @media (max-width:600px){ .bc .scan-art .hands-vid { max-width:100%; } .bc .scan-art { margin:0 0 18px; } }
   /* ראש הדף ממורכז: העמודה עצמה במרכז, וכל שורה בתוכה מיושרת למרכז */
   .bc .hero-copy { max-width:640px; margin-inline:auto; text-align:center; }
   .bc .hero-copy h1, .bc .hero-copy .sub, .bc .hero-copy .hero-bio,
@@ -721,16 +726,11 @@
   <div class="wrap">
     <h2 class="fade">אל תאמיני למילים. תבדקי על עצמך.</h2>
     <p class="sub fade">לפני שמחליטים אם השיטה מתאימה לצוות, שווה לבדוק אותה על עצמכם. משאירים פרטים כדי לשמוע על ההרצאה לארגון, ומקבלים גישה לסריקה: העלאת תמונה, סריקה חיה או שאלון קצר, ותוצאה שתפתיע אתכם.</p>
+      <!-- שתי כפות ידיים אמיתיות עם 21 נקודות המדידה. אותן נקודות שהסורק מודד -->
       <div class="scan-art">
-        <div class="hero-art">
-    <svg class="constellation" viewBox="0 0 420 520" role="img" aria-hidden="true" focusable="false">
-        <g class="cn-silh"><path d="M210,418L142,363L108,316L88,268L74,220"/><path d="M210,418L176,254L166,186L159,139L156,98"/><path d="M176,254L213,241L213,166L213,115L213,71"/><path d="M213,241L251,254L258,180L261,135L264,98"/><path d="M251,254L288,275L302,220L309,186L315,152"/><path d="M210,418L288,275"/></g>
-        <g class="cn-links"><line pathLength="100" x1="210" y1="418" x2="142" y2="363" style="--i:1"/><line pathLength="100" x1="142" y1="363" x2="108" y2="316" style="--i:6"/><line pathLength="100" x1="108" y1="316" x2="88" y2="268" style="--i:11"/><line pathLength="100" x1="88" y1="268" x2="74" y2="220" style="--i:16"/><line pathLength="100" x1="210" y1="418" x2="176" y2="254" style="--i:2"/><line pathLength="100" x1="176" y1="254" x2="166" y2="186" style="--i:7"/><line pathLength="100" x1="166" y1="186" x2="159" y2="139" style="--i:12"/><line pathLength="100" x1="159" y1="139" x2="156" y2="98" style="--i:17"/><line pathLength="100" x1="176" y1="254" x2="213" y2="241" style="--i:3"/><line pathLength="100" x1="213" y1="241" x2="213" y2="166" style="--i:8"/><line pathLength="100" x1="213" y1="166" x2="213" y2="115" style="--i:13"/><line pathLength="100" x1="213" y1="115" x2="213" y2="71" style="--i:18"/><line pathLength="100" x1="213" y1="241" x2="251" y2="254" style="--i:4"/><line pathLength="100" x1="251" y1="254" x2="258" y2="180" style="--i:9"/><line pathLength="100" x1="258" y1="180" x2="261" y2="135" style="--i:14"/><line pathLength="100" x1="261" y1="135" x2="264" y2="98" style="--i:19"/><line pathLength="100" x1="251" y1="254" x2="288" y2="275" style="--i:5"/><line pathLength="100" x1="288" y1="275" x2="302" y2="220" style="--i:10"/><line pathLength="100" x1="302" y1="220" x2="309" y2="186" style="--i:15"/><line pathLength="100" x1="309" y1="186" x2="315" y2="152" style="--i:20"/><line pathLength="100" x1="210" y1="418" x2="288" y2="275" style="--i:5"/></g>
-        <g class="cn-meas"><path class="cn-m" pathLength="100" d="M74,220L176,254" style="--i:0"/><path class="cn-m" pathLength="100" d="M156,98L315,152" style="--i:1"/><path class="cn-m" pathLength="100" d="M247,241L247,71" style="--i:2"/><circle class="cn-tick" cx="74" cy="220" r="3" style="--i:0"/><circle class="cn-tick" cx="176" cy="254" r="3" style="--i:0"/><circle class="cn-tick" cx="156" cy="98" r="3" style="--i:1"/><circle class="cn-tick" cx="315" cy="152" r="3" style="--i:1"/><circle class="cn-tick" cx="247" cy="241" r="3" style="--i:2"/><circle class="cn-tick" cx="247" cy="71" r="3" style="--i:2"/></g>
-        <g class="cn-dots"><circle cx="210" cy="418" r="6" style="--i:0"/><circle cx="142" cy="363" r="4.4" style="--i:1"/><circle cx="108" cy="316" r="4.4" style="--i:6"/><circle cx="88" cy="268" r="4.4" style="--i:11"/><circle cx="74" cy="220" r="4.4" style="--i:16"/><circle cx="176" cy="254" r="4.4" style="--i:2"/><circle cx="166" cy="186" r="4.4" style="--i:7"/><circle cx="159" cy="139" r="4.4" style="--i:12"/><circle cx="156" cy="98" r="4.4" style="--i:17"/><circle cx="213" cy="241" r="4.4" style="--i:3"/><circle cx="213" cy="166" r="4.4" style="--i:8"/><circle cx="213" cy="115" r="4.4" style="--i:13"/><circle cx="213" cy="71" r="4.4" style="--i:18"/><circle cx="251" cy="254" r="4.4" style="--i:4"/><circle cx="258" cy="180" r="4.4" style="--i:9"/><circle cx="261" cy="135" r="4.4" style="--i:14"/><circle cx="264" cy="98" r="4.4" style="--i:19"/><circle cx="288" cy="275" r="4.4" style="--i:5"/><circle cx="302" cy="220" r="4.4" style="--i:10"/><circle cx="309" cy="186" r="4.4" style="--i:15"/><circle cx="315" cy="152" r="4.4" style="--i:20"/></g>
-        
-        </svg>
-        </div>
+        <video class="hands-vid" src="media/hands.mp4" poster="media/hands-poster.jpg"
+               autoplay muted loop playsinline preload="metadata"
+               aria-label="שתי כפות ידיים פתוחות ועליהן 21 נקודות המדידה של השיטה, עם גל אור שעובר ביניהן"></video>
       </div>
     <!-- שער הסריקה: נעול עד שמשאירים פרטים. נפתח מהטופס וגם מ-localStorage בביקור חוזר -->
     <div class="scan-lock fade" id="scanLock">
