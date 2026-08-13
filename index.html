@@ -867,6 +867,31 @@
     </div></div>
   </section>
 
+  <!-- 8. WHATSAPP CAROUSEL — צילומי מסך אמיתיים. נחתכו כדי להסיר מקלדת, שורת סטטוס, שמות לקוחות וקישורי חשבונית. מקור: wa-src/ ; חתוכים: wa-clean/ ; מוגשים: deploy/wa/ -->
+  <section class="s-dark-2 wac">
+    <div class="wrap">
+      <h2 class="fade">ההודעות שמגיעות אחרי</h2>
+      <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
+      <div class="wa-viewport fade" id="waViewport">
+        <div class="wa-track" id="waTrack">
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="900" height="747" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
+        </div>
+      </div>
+      <div class="wa-nav">
+        <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">›</button>
+        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
+        <button class="wa-arrow" type="button" data-dir="1" aria-label="השקופית הבאה">‹</button>
+      </div>
+      <div class="center-cta fade"><a href="#lead-form" class="cta">לדבר על הצוות שלי</a></div>
+    </div>
+  </section>
+
   <!-- 4. BENEFITS -->
   <section class="s-navy benes surface-light">
     <div class="wrap">
@@ -946,46 +971,9 @@
     </div></div>
   </section>
 
-  <!-- 7. TESTIMONIALS -->
-  <section class="s-navy tests">
-    <div class="wrap">
-      <h2 class="fade">מה חוזר אליי אחרי</h2>
-      <div class="tsingle">
-        <div class="tcard fade"><p class="tquote">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר. חבל למי שפספסו."</p><div class="who"><div class="meta"><div class="tname">המועצה המקומית קדימה-צורן</div></div></div></div>
-        <!-- כרטיסי עדות 2–3 — הוסרו מהרינדור, ממתינים לעדויות אמיתיות מאושרות. להחזיר את הרשת המשולשת (tsingle→grid3) עם החזרתם.
-        
-        <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 2</span><span class="hint">בכפוף לאישור</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div></div>
-        <div class="tcard fade"><div class="ph quote-ph on-dark"><span class="lab">ציטוט המלצה 3</span><span class="hint">בכפוף לאישור</span></div><div class="who"><div class="ph avatar-ph on-dark"></div><div class="meta"><div class="ph name-ph on-dark"></div></div></div>
-        </div>
-        -->
-      </div>
-      <div class="center-cta fade"><a href="#lead-form" class="cta">לדבר על הצוות שלי</a></div>
-    </div>
-  </section>
 
-  <!-- 8. WHATSAPP CAROUSEL — צילומי מסך אמיתיים. נחתכו כדי להסיר מקלדת, שורת סטטוס, שמות לקוחות וקישורי חשבונית. מקור: wa-src/ ; חתוכים: wa-clean/ ; מוגשים: deploy/wa/ -->
-  <section class="s-dark-2 wac">
-    <div class="wrap">
-      <h2 class="fade">ההודעות שמגיעות אחרי</h2>
-      <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
-      <div class="wa-viewport fade" id="waViewport">
-        <div class="wa-track" id="waTrack">
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="900" height="747" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
-        </div>
-      </div>
-      <div class="wa-nav">
-        <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">›</button>
-        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
-        <button class="wa-arrow" type="button" data-dir="1" aria-label="השקופית הבאה">‹</button>
-      </div>
-    </div>
-  </section>
+
+
 
   <!-- 9. WHO -->
   <!-- padding-top:0 הוסר עם הקרוסלה — הוא היה קיים רק כדי להיצמד אליה. להחזיר אם הקרוסלה חוזרת. -->
