@@ -501,11 +501,12 @@
   /* קרוסלת צילומי וואטסאפ: הצילום מוצג במלואו ביחס המקורי שלו, בלי חיתוך.
      גובה אחיד היה חותך את צידי ההודעות ומשאיר טקסט חתוך */
   .bc .wac-sub { text-align:center; color:var(--text-on-dark-muted); font-size:15px; margin:-14px auto 6px; }
-  .bc .wa-shot { font:inherit; display:block; width:100%; padding:0; border:1px solid var(--gold-line); border-radius:16px;
-    overflow:hidden; background:var(--bg-dark-deep); cursor:zoom-in; transition:transform .18s var(--ease), border-color .18s ease; }
-  .bc .wa-shot:hover { transform:translateY(-3px); border-color:var(--gold-border); }
+  /* בלי כרטיס: הצילום יושב ישירות על רקע הסקשן, כך שהשוליים סביבו לא נראים כקופסה ריקה */
+  .bc .wa-shot { font:inherit; display:block; width:100%; padding:0; border:none; background:transparent;
+    cursor:zoom-in; transition:transform .18s var(--ease); }
+  .bc .wa-shot:hover { transform:translateY(-3px); }
   .bc .wa-shot:focus-visible { outline:3px solid var(--gold-text-on-dark); outline-offset:3px; }
-  .bc .wa-shot img { display:block; width:100%; height:430px; object-fit:contain; object-position:center; }
+  .bc .wa-shot img { display:block; width:100%; height:430px; object-fit:contain; object-position:center; border-radius:12px; }
   @media (max-width:600px){ .bc .wa-shot img { height:400px; } }
   /* לייטבוקס */
   .bc .wa-lb { position:fixed; inset:0; z-index:70; background:rgba(10,15,26,.94); display:none;
