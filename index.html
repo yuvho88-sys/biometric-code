@@ -20,6 +20,9 @@
   @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&family=IBM+Plex+Sans+Hebrew:wght@500;600&display=swap');
 
   .bc, .bc * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* הרקע נמתח על כל החלון, לא רק על תוכן הדף. אחרת מתחת לפוטר ומעל האזור
+     הבטוח במובייל נראה הלבן של הדפדפן */
+  html.skin-e, html.skin-e body { background:#EDE6D6; }
   .bc {
     direction: rtl; text-align: right;
     font-family: 'Assistant','Segoe UI',Arial,sans-serif;
@@ -463,9 +466,9 @@
   .bc footer .foot-wordmark { justify-content:center; margin:0 auto 14px; }
   .bc footer .foot-wordmark .wm-txt { text-align:center; align-items:center; }
   @media (max-width:720px){ .bc .wordmark .wm-name{ font-size:17px; } .bc .wordmark .wm-hand{ width:23px; height:29px; } }
-  .bc .about .portrait { width:100%; max-width:340px; aspect-ratio:4/5; border-radius:14px; border:1px solid var(--accent-hairline); box-shadow:0 0 0 rgba(20,27,42,.28); overflow:hidden; display:block; }
+  .bc .about .portrait { width:100%; max-width:260px; margin:26px auto 0; aspect-ratio:4/5; border-radius:14px; border:1px solid var(--accent-hairline); box-shadow:0 0 0 rgba(20,27,42,.28); overflow:hidden; display:block; }
   .bc .about .portrait img { width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; filter: sepia(.1) saturate(.92) brightness(1.02); }
-  @media (max-width:900px){ .bc .about .portrait{ max-width:300px; margin:0 auto 6px; } }
+  @media (max-width:600px){ .bc .about .portrait{ max-width:220px; } }
   .bc .hero h1 { color:var(--text-on-dark); font-size:clamp(2.6rem,5vw,4.2rem); line-height:1.15; max-width:17ch; margin-bottom:.5rem; margin-top:8px; }
   .bc .hero .sub { color:var(--text-on-dark); font-size:clamp(16px,2.1vw,20px); max-width:62ch; margin-bottom:0; }
   .bc .hero .sub .ltr { color:var(--text-on-dark); font-weight:600; }
@@ -523,7 +526,7 @@
   .bc .obj p .ltr { color:var(--text-on-dark); font-weight:600; }
 
   /* ABOUT */
-  .bc .about .cols { display:grid; grid-template-columns: 340px 1fr; gap:44px; align-items:center; }
+  .bc .about .cols { display:block; }
   .bc .portrait-ph { aspect-ratio: 4/5; width:100%; }
   .bc .about h2 { font-size:var(--fs-h2); margin-bottom:8px; }
   .bc .about .sub-gold { color:var(--gold-text-on-light); font-weight:700; font-size:16px; margin-bottom:18px; }
@@ -732,7 +735,7 @@
   .bc .social-row { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; margin:18px auto 16px; }
   .bc .soc-group { display:flex; gap:10px; }
   .bc .soc-divider { width:1px; height:26px; background:var(--line-gold); }
-  .bc .soc { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(245,241,232,.07); color:#e6dcc7; text-decoration:none; transition:color .18s ease, background .18s ease, transform .18s ease; }
+  .bc .soc { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(245,241,232,.07); color:var(--text-on-light-muted); text-decoration:none; transition:color .18s ease, background .18s ease, transform .18s ease; }
   .bc .soc:hover { color:var(--gold); background:color-mix(in srgb, var(--accent-border) 16%, transparent); transform:translateY(-2px); }
   .bc .soc:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
   .bc .soc svg { width:20px; height:20px; fill:currentColor; }
@@ -1074,7 +1077,6 @@
   <section class="s-ivory about">
     <div class="wrap">
       <div class="cols">
-        <div class="portrait fade"><img src="media/portrait-warm.jpg" alt="רעות ביטון, מרצה ומאבחנת בשיטת H.I.P" loading="lazy" width="440" height="537"></div>
         <!-- גיבוי: פורטרט מאויר (רישום עיפרון) שמור ב-public/images/reut-portrait-illustration.png -->
         <!-- backup illustrated portrait kept at public/images/reut-portrait-illustration.png -->
         <!--rest of about text below-->
@@ -1084,18 +1086,13 @@
           <p>יש פרק בקורות החיים שלי שאני לא מרחיבה עליו, ואספר ממנו רק דבר אחד: במשך שנים עבדתי במקום שבו טעות בקריאת אדם לא עולה כסף. היא עולה הרבה יותר.</p>
           <p>שם למדתי שאנשים הם שני סיפורים: הסיפור שהם מספרים, ומי שהם באמת. ואת ההבדל בין השניים לא שומעים במילים. רואים אותו.</p>
           <p>היום, אחרי 17 שנים של ניתוח ואבחון התנהגות אנושית, הכשרה מבית ד"ר ארנולד הולצמן, ומאות אבחונים והרצאות, אני עושה את זה בשיטה שפיתחתי, <span class="ltr">H.I.P</span>, בדרך שנשמעת מוזרה בפעם הראשונה שמספרים לכם עליה: אני קוראת אנשים מכפות הידיים שלהם.</p>
-          <p>רגע, לפני שאתם מגלגלים עיניים. תנו לי לחסוך לכם את השאלה:</p>
-          <p class="letter-punch"><strong>לא גורלות. לא אסטרולוגיה. לא "אנרגיות".</strong></p>
-          <p>כף היד היא מבנה פיזי שמתפתח יחד עם מערכת העצבים, ונושאת דפוסים שאפשר למדוד: איך אדם מחליט, איך הוא מגיב כשהלחץ עולה, ומה באמת מניע אותו.</p>
           <p class="letter-punch">כף היד לא עוברת עריכה. וזה כל היתרון שלה.</p>
-          <p>אז איך ההרצאה נראית בפועל?</p>
-          <p>60 עד 75 דקות מול הצוות. פותחים בהסבר קצר על מה היד מודדת, וממשיכים לחלק שבגללו זוכרים את זה: כל אחד מגלה מה כף היד שלו אומרת עליו. יש צחוק, יש "אין מצב, זה בדיוק אני", ויש רגע שמדברים עליו שבועות אחרי.</p>
-          <p>ואז עוברים מהאישי לעבודה: איך מזהים את אותם דפוסים באדם שיושב מולכם בריאיון, מה מסגיר לחץ, ומי צריך מרחב לעומת מי שצריך מסגרת.</p>
-          <p>ומה נשאר לצוות בסוף? שפה משותפת חדשה: מי מחליט מהראש ומי מהבטן, ואיך מזהים שחיקה לפני שהיא הופכת למכתב התפטרות. כל אחד יוצא עם הקריאה האישית שלו ביד.</p>
           <p class="letter-punch">גיבוש שמשאיר כלים.</p>
           <p>ומה אני לא מבטיחה: לא דיוק של מאה אחוז, ולא החלטה במקומכם. האבחון לא מחליף קורות חיים, בדיקת המלצות, ריאיון או תקופת ניסיון. הוא מצטרף אליהם, ומוסיף את השכבה האחת שאף אחד מהם לא רואה.</p>
           <p class="letter-ask"><a href="#lead-form" class="letter-link">מדברים?</a></p>
           <p class="sign">שלך,<br><strong>רעות ביטון</strong><br>בינה אנושית · שיטת <span class="ltr">H.I.P</span></p>
+          <div class="portrait fade"><img src="media/portrait-warm.jpg" alt="רעות ביטון, מרצה ומאבחנת בשיטת H.I.P" loading="lazy" width="440" height="537"></div>
+
           <div class="center-cta fade" style="margin-top:26px"><a href="#lead-form" class="cta">לדבר על הצוות שלי</a></div>
         </div>
       </div>
