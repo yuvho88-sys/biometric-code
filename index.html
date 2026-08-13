@@ -41,6 +41,9 @@
     --accent-text-on-dark:#F29AA7; --accent-text-on-light:#6E2A35;
     --accent-on-fill:#F5EFE4;
     --accent-border:#6E2A35; --accent-hairline:rgba(110,42,53,.30);
+  /* סולם טיפוגרפי: שמונה מדרגות עם יחסים ברורים, במקום עשרים גדלים שנוצרו לפי הצורך */
+  --fs-xs:14px; --fs-sm:15px; --fs-base:17px; --fs-lg:18.5px; --fs-xl:21px;
+  --fs-h2:clamp(24px,3.3vw,33px); --fs-h2-lead:clamp(26px,3.7vw,38px);
     --measure-line:#3E7C6F; --measure-text:#376D62; --measure-on-dark:#7FB5A6;
     /* משטח בהיר לרגעי נשימה — נגזר מאותה משפחה צבעונית */
     --surface-light-bg:#F5EFE4; --surface-light-card:#FBF7EF; --surface-light-text:#241B16;
@@ -125,7 +128,7 @@
   .bc .ph.on-dark { border-color: color-mix(in srgb, var(--accent-border) 45%, transparent); background: color-mix(in srgb, var(--accent-border) 7%, transparent); color: var(--muted-l); }
 
   /* buttons */
-  .bc .cta { display:inline-block; background:var(--accent-fill); color:var(--accent-on-fill); font-weight:700; font-size:16.5px; padding:15px 30px; border-radius:11px; text-decoration:none; border:none; cursor:pointer; box-shadow:none; transition:transform .18s ease, box-shadow .18s ease; }
+  .bc .cta { font-family:inherit; display:inline-block; background:var(--accent-fill); color:var(--accent-on-fill); font-weight:700; font-size:16.5px; padding:15px 30px; border-radius:11px; text-decoration:none; border:none; cursor:pointer; box-shadow:none; transition:transform .18s ease, box-shadow .18s ease; }
   .bc .cta:hover { transform:translateY(-2px); background:var(--accent-fill-deep); }
   .bc .cta:focus-visible { outline:3px solid #e7cf95; outline-offset:3px; }
   .bc .cta.ghost { background:transparent; color:var(--gold-text-on-dark); border:1.5px solid var(--gold-border); box-shadow:none; }
@@ -315,7 +318,7 @@
   .bc .wordmark .wm-hand .wm-l { opacity:.55; }
   .bc .wordmark .wm-txt { display:flex; flex-direction:column; gap:3px; text-align:right; }
   .bc .wordmark .wm-name { font-family:'Frank Ruhl Libre','David Libre',serif; font-weight:700;
-    font-size:19px; color:var(--text-on-dark); letter-spacing:.2px; }
+    font-size:var(--fs-lg); color:var(--text-on-dark); letter-spacing:.2px; }
   .bc .wordmark .wm-sub { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-weight:500;
     font-size:10.5px; letter-spacing:.11em; color:var(--text-on-dark-muted); }
   .bc footer .foot-wordmark { justify-content:center; margin:0 auto 14px; }
@@ -329,7 +332,7 @@
   .bc .hero .sub .ltr { color:var(--text-on-dark); font-weight:600; }
 
   /* VIDEO */
-  .bc .video h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); }
+  .bc .video h2 { text-align:center; font-size:var(--fs-h2); }
   .bc .video-wrap { position:relative; max-width:880px; margin:34px auto 0; aspect-ratio:16/9; border-radius:16px; overflow:hidden; border:1px solid var(--accent-hairline); background:var(--bg-dark-deep); }
   .bc .yt-facade { position:absolute; inset:0; width:100%; height:100%; padding:0; border:none; cursor:pointer; background:#0d1524; display:block; }
   .bc .yt-thumb { width:100%; height:100%; object-fit:cover; display:block; opacity:.94; transition:opacity .2s ease; }
@@ -347,22 +350,22 @@
   .bc .text-col p { margin-inline: auto; }
   .bc .text-col .eyebrow, .bc .text-col .badge { display:inline-block; }
   /* PAIN */
-  .bc .pain h2 { font-size: clamp(24px,3.4vw,34px); margin-bottom:20px; }
+  .bc .pain h2 { font-size: var(--fs-h2); margin-bottom:20px; }
   .bc .pain p { color:var(--text-on-light); margin-bottom:16px; }
-  .bc .pain .kick { font-weight:700; color:var(--text-on-light); font-size:19px; }
+  .bc .pain .kick { font-weight:700; color:var(--text-on-light); font-size:var(--fs-lg); }
   .bc .obj-stat { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--gold-text-on-dark); font-weight:700; font-size:22px; margin-top:18px; }
   .bc .trial .trial-steps { list-style:none; padding:0; margin:18px auto 20px; max-width:520px; text-align:right; }
   .bc .trial .trial-steps li { padding:10px 34px 10px 0; position:relative; font-size:17px; color:var(--ink); border-bottom:1px solid var(--line-gold); }
   .bc .trial .trial-steps li:last-child { border-bottom:none; }
   .bc .trial .trial-steps li::before { content:'←'; position:absolute; right:0; color:var(--gold-text-on-light); font-weight:700; }
-  .bc .trial .kick { font-weight:700; color:var(--text-on-light); font-size:18px; }
+  .bc .trial .kick { font-weight:700; color:var(--text-on-light); font-size:var(--fs-lg); }
   .bc .trial .cta.ghost.trial-cta { color:var(--gold-text-on-light); border-color:var(--gold-text-on-light); }
   /* שורת הזמינות: משנית (13px, מעומעמת) אך עוברת AA על רקע שנהב.
      --muted-d נותן רק 4.23:1 בגודל הזה, לכן גוון כהה מעט יותר: 4.98:1 */
   .bc .trial .no-commit { color:var(--text-on-light-muted); }
 
   /* BENEFITS */
-  .bc .benes h2 { text-align:center; font-size:clamp(24px,3.4vw,34px); margin-bottom:28px; }
+  .bc .benes h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:28px; }
   .bc .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
   .bc .card { background:transparent; border:1px solid var(--measure-hairline); border-radius:4px; padding:30px 28px; box-shadow:none; }
   .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
@@ -376,14 +379,14 @@
 
   /* OBJECTION */
   .bc .obj .badge { display:inline-block; font-size:12.5px; font-weight:700; color:var(--accent-on-fill); background:var(--accent-fill); padding:6px 14px; border-radius:30px; margin-bottom:20px; }
-  .bc .obj h2 { font-size:clamp(24px,3.6vw,36px); margin-bottom:22px; }
+  .bc .obj h2 { font-size:var(--fs-h2); margin-bottom:22px; }
   .bc .obj p { color:var(--text-on-dark); font-size:18px; }
   .bc .obj p .ltr { color:var(--text-on-dark); font-weight:600; }
 
   /* ABOUT */
   .bc .about .cols { display:grid; grid-template-columns: 340px 1fr; gap:44px; align-items:center; }
   .bc .portrait-ph { aspect-ratio: 4/5; width:100%; }
-  .bc .about h2 { font-size:clamp(26px,3.4vw,36px); margin-bottom:8px; }
+  .bc .about h2 { font-size:var(--fs-h2); margin-bottom:8px; }
   .bc .about .sub-gold { color:var(--gold-text-on-light); font-weight:700; font-size:16px; margin-bottom:18px; }
   /* ── המכתב: הסקשן שצריך להרגיש הכי "מכתב" בדף ── */
   .bc .about .letter { max-width:62ch; }
@@ -409,7 +412,7 @@
   .bc .scan-art .hands-vid { max-width:520px; }
   @media (max-width:600px){ .bc .scan-art .hands-vid { max-width:100%; } .bc .scan-art { margin:0 0 18px; } }
   /* ראש הדף ממורכז: העמודה עצמה במרכז, וכל שורה בתוכה מיושרת למרכז */
-  .bc .hero-copy { max-width:640px; margin-inline:auto; text-align:center; }
+  .bc .hero-copy { max-width:760px; margin-inline:auto; text-align:center; }
   .bc .hero-copy h1, .bc .hero-copy .sub, .bc .hero-copy .hero-bio,
   .bc .hero-copy .hero-kick, .bc .hero-copy .hero-bridge { margin-inline:auto; }
   .bc .hero-copy .hero-ctas { justify-content:center; }
@@ -430,7 +433,7 @@
 
   /* שלב 1: כרטיסי בחירה גדולים */
   .bc .wz-cards { display:grid; gap:14px; max-width:520px; margin-inline:auto; }
-  .bc .wz-card { width:100%; text-align:right; font:inherit; font-size:17.5px; font-weight:600;
+  .bc .wz-card { width:100%; text-align:right; font:inherit; display:flex; flex-direction:column; gap:5px;
     color:var(--text-on-light); background:var(--bg-light-2); cursor:pointer;
     border:1px solid var(--measure-hairline); border-radius:14px; padding:26px 26px;
     transition:border-color .18s ease, background .18s ease, transform .18s var(--ease); }
@@ -447,7 +450,10 @@
     background:var(--accent-fill); color:var(--accent-on-fill); border:none;
     border-radius:12px; padding:16px 44px; transition:background .18s ease; }
   .bc .wz-next:hover { background:var(--accent-fill-deep); }
-  .bc .wz-back { font:inherit; font-size:14.5px; font-weight:600; cursor:pointer;
+  .bc .wz-card .wz-t { font-size:var(--fs-lg); font-weight:700; color:var(--text-on-light); line-height:1.25; }
+  .bc .wz-card .wz-d { font-size:var(--fs-sm); font-weight:400; color:var(--text-on-light-muted); line-height:1.45; }
+  .bc .wz-card.sel .wz-t { color:var(--accent-text-on-light); }
+  .bc .wz-back { font:inherit; font-size:var(--fs-xs); font-weight:600; cursor:pointer;
     background:none; border:none; color:var(--text-on-light-muted); padding:4px; }
   .bc .wz-back:hover { color:var(--accent-text-on-light); text-decoration:underline; text-underline-offset:4px; }
   .bc .wz-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
@@ -462,25 +468,25 @@
   .bc .about .letter .letter-punch { font-weight:700; margin:13px 0; color:var(--ink); }
   /* "מדברות?" — שורת סיום ממורכזת עם אוויר משני הצדדים */
   .bc .about .letter .letter-ask { text-align:center; margin:20px 0 6px; }
-  .bc .about .letter .letter-link { color:var(--gold-text-on-light); font-weight:700; font-size:19px; text-decoration:underline; text-underline-offset:4px; }
+  .bc .about .letter .letter-link { color:var(--gold-text-on-light); font-weight:700; font-size:var(--fs-lg); text-decoration:underline; text-underline-offset:4px; }
   .bc .about .cols { align-items:start; }
   .bc .about p { color:var(--text-on-light); font-size:16.5px; }
 
   /* TESTIMONIALS */
-  .bc .tests h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); margin-bottom:28px; max-width:26ch; margin-inline:auto; }
+  .bc .tests h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:28px; max-width:26ch; margin-inline:auto; }
   .bc .tcard { background: rgba(255,255,255,.04); border:1px solid color-mix(in srgb, var(--accent-border) 22%, transparent); border-radius:18px; padding:26px; display:flex; flex-direction:column; gap:16px; }
   .bc .tcard .quote-ph { min-height:78px; }
-  .bc .tcard .tquote { color:var(--text-on-dark); font-size:17px; line-height:1.75; margin:0; min-height:78px; }
+  .bc .tcard .tquote { color:var(--text-on-dark); font-size:var(--fs-base); line-height:1.75; margin:0; min-height:78px; }
   .bc .tcard .tname { color:var(--gold-text-on-dark); font-weight:700; font-size:14.5px; }
   .bc .tsingle { display:flex; justify-content:center; }
   .bc .tsingle .tcard { max-width:720px; width:100%; padding:34px 38px; }
-  .bc .tsingle .tquote { font-size:19px; line-height:1.8; min-height:0; }
+  .bc .tsingle .tquote { font-size:var(--fs-lg); line-height:1.8; min-height:0; }
   .bc .tcard .who { display:flex; align-items:center; gap:12px; }
   .bc .tcard .avatar-ph { width:52px; height:52px; border-radius:50%; flex:0 0 52px; }
   .bc .tcard .who .meta .name-ph { width:120px; height:12px; }
 
   /* WHATSAPP CAROUSEL (skeleton) */
-  .bc .wac h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); margin-bottom:24px; }
+  .bc .wac h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:24px; }
   /* WhatsApp carousel */
   .bc .wa-viewport { overflow:hidden; margin-top:20px; }
   .bc .wa-track { display:flex; direction:ltr; transition:transform .45s ease; will-change:transform; }
@@ -492,7 +498,7 @@
   /* קרוסלת צילומי וואטסאפ: הצילום מוצג במלואו ביחס המקורי שלו, בלי חיתוך.
      גובה אחיד היה חותך את צידי ההודעות ומשאיר טקסט חתוך */
   .bc .wac-sub { text-align:center; color:var(--text-on-dark-muted); font-size:15px; margin:-14px auto 6px; }
-  .bc .wa-shot { display:block; width:100%; padding:0; border:1px solid var(--gold-line); border-radius:16px;
+  .bc .wa-shot { font:inherit; display:block; width:100%; padding:0; border:1px solid var(--gold-line); border-radius:16px;
     overflow:hidden; background:var(--bg-dark-deep); cursor:zoom-in; transition:transform .18s var(--ease), border-color .18s ease; }
   .bc .wa-shot:hover { transform:translateY(-3px); border-color:var(--gold-border); }
   .bc .wa-shot:focus-visible { outline:3px solid var(--gold-text-on-dark); outline-offset:3px; }
@@ -507,11 +513,11 @@
     border:1px solid var(--gold-line); background:rgba(20,27,42,.8); color:var(--text-on-dark);
     font-size:26px; line-height:1; cursor:pointer; }
   .bc .wa-lb-x:hover { border-color:var(--gold-border); }
-  .bc .wa-arrow { width:44px;height:44px;border-radius:50%; border:1px solid var(--line-gold); background:transparent; color:var(--text-on-dark-muted); cursor:pointer; font-size:20px; line-height:1; display:flex;align-items:center;justify-content:center; transition:background .18s ease; }
+  .bc .wa-arrow { font:inherit; width:44px;height:44px;border-radius:50%; border:1px solid var(--line-gold); background:transparent; color:var(--text-on-dark-muted); cursor:pointer; font-size:20px; line-height:1; display:flex;align-items:center;justify-content:center; transition:background .18s ease; }
   .bc .wa-arrow:hover{ background:color-mix(in srgb, var(--accent-border) 14%, transparent); }
   .bc .wa-arrow:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
   .bc .wa-dots{ display:flex; gap:9px; }
-  .bc .wa-dot{ width:9px;height:9px;border-radius:50%; background:color-mix(in srgb, var(--accent-border) 32%, transparent); border:none; padding:0; cursor:pointer; transition:transform .15s ease, background .15s ease; }
+  .bc .wa-dot{ font:inherit; width:9px;height:9px;border-radius:50%; background:color-mix(in srgb, var(--accent-border) 32%, transparent); border:none; padding:0; cursor:pointer; transition:transform .15s ease, background .15s ease; }
   .bc .wa-dot.active{ background:var(--gold); transform:scale(1.18); }
   .bc .wa-demo-note{ text-align:center; color:var(--text-on-dark-muted); font-size:13px; margin-top:16px; }
   /* phone frame + WhatsApp chat mock (demo-slides) */
@@ -532,14 +538,14 @@
 
   /* WHO */
   .bc .who2 { text-align:center; }
-  .bc .who2 h2 { font-size:clamp(22px,3vw,30px); margin-bottom:26px; }
+  .bc .who2 h2 { font-size:var(--fs-h2); margin-bottom:26px; }
   .bc .chips { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:24px; }
   /* צ'יפים on-dark: רקע לבן שקוף, מסגרת בגוון הטקסט המשני, בלי צל */
   .bc .chip { background:rgba(255,255,255,.07); border:1px solid rgba(175,186,207,.25); color:var(--text-on-dark); font-weight:600; font-size:15.5px; padding:11px 20px; border-radius:11px; }
   .bc .who2 .format { color:var(--text-on-dark-muted); max-width:64ch; margin:0 auto; }
 
   /* FAQ */
-  .bc .faq h2 { text-align:center; font-size:clamp(24px,3.2vw,34px); margin-bottom:26px; }
+  .bc .faq h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:26px; }
   .bc .faq .list { max-width:800px; margin:0 auto; }
   .bc details { background:var(--bg-card); border:1px solid var(--measure-hairline); border-radius:13px; margin-bottom:12px; overflow:hidden; }
   .bc summary { list-style:none; cursor:pointer; padding:19px 22px; font-weight:700; color:var(--text-on-light); font-size:17px; display:flex; justify-content:space-between; align-items:center; gap:14px; }
@@ -550,12 +556,12 @@
   .bc .todo { color:var(--gold-text-on-light); font-size:13px; font-weight:600; }
 
   /* FORM */
-  .bc .formsec h2 { text-align:center; font-size:clamp(23px,3.2vw,32px); max-width:28ch; margin:0 auto 16px; }
+  .bc .formsec h2 { text-align:center; font-size:var(--fs-h2-lead); max-width:28ch; margin:0 auto 16px; }
   .bc .formsec .fs-lead { text-align:center; color:var(--text-on-dark); max-width:60ch; margin:0 auto 36px; font-size:17px; }
   .bc .formsec { padding-top: 84px; }
-  .bc form { max-width:560px; margin-inline:auto; background:var(--bg-card); border-radius:20px; padding:32px 28px; box-shadow:0 24px 60px rgba(5,12,26,.4); }
+  .bc form { max-width:560px; margin-inline:auto; background:var(--bg-card); border:1px solid color-mix(in srgb, var(--text-on-light) 11%, transparent); border-radius:20px; padding:32px 28px; box-shadow:0 24px 60px rgba(5,12,26,.4); }
   .bc .field { margin-bottom:17px; }
-  .bc label { display:block; font-weight:600; color:var(--text-on-light); font-size:14.5px; margin-bottom:7px; }
+  .bc label { display:block; font-weight:600; color:var(--text-on-light); font-size:var(--fs-xs); margin-bottom:7px; }
   .bc input { width:100%; font-family:inherit; font-size:16px; color:var(--ink); padding:13px 15px; border:1px solid var(--measure-hairline); border-radius:11px; background:var(--bg-light-2); }
   /* צבע חיים 3/3: השדה הפעיל מגיב — הטופס מרגיש חי בדיוק ברגע ההקלדה */
   .bc input:focus, .bc select:focus { outline:none; border-color:var(--confirm); box-shadow:0 0 0 3px rgba(31,168,85,.22); }
@@ -592,6 +598,7 @@
   /* floating + sticky */
   .bc .wa { position:fixed; bottom:22px; left:22px; z-index:60; width:56px;height:56px;border-radius:50%; background:#25d366; display:flex;align-items:center;justify-content:center; box-shadow:0 8px 22px rgba(0,0,0,.3); transition: bottom .3s ease; }
   .bc .wa svg{ width:29px;height:29px; fill:#fff; }
+  .bc.sticky-on section:last-of-type, .bc.sticky-on footer { padding-bottom:calc(78px + env(safe-area-inset-bottom,0px)); }
   .bc .sticky { position:fixed; bottom:0; left:0; right:0; z-index:55; background:var(--navy); border-top:1px solid var(--line-gold); padding:11px 16px; padding-bottom:calc(11px + env(safe-area-inset-bottom,0px)); display:none; transform:translateY(120%); transition:transform .3s ease; }
   .bc.sticky-on .sticky { transform:translateY(0); }
   .bc .sticky a { display:block; text-align:center; }
@@ -604,7 +611,7 @@
   @media (max-width: 900px){ .bc .grid3{ grid-template-columns:1fr; } .bc .about .cols{ grid-template-columns:1fr; } .bc .form-grid{ grid-template-columns:1fr; } .bc section{ padding:34px 0; } .bc .sticky{ display:block; } }
   /* ===== decode component (copied verbatim from /giyus/) ===== */
   /* decode */
-  .decode h2{font-size:clamp(25px,4.2vw,38px);color:#fff;text-align:center;margin-bottom:10px}
+  .decode h2{font-size:var(--fs-h2-lead);color:#fff;text-align:center;margin-bottom:10px}
   .decode .sub{color:var(--muted-l);text-align:center;max-width:560px;margin:0 auto 30px}
   .decoder{max-width:620px;margin:0 auto;background:var(--navy-deep);border:1px solid var(--line-gold);
     border-radius:20px;padding:clamp(20px,4vw,32px)}
@@ -640,10 +647,15 @@
   /* שער הסריקה. ברירת המחדל ב-HTML היא נעול, כך שגם בלי JS לא נחשפת סריקה בלי פרטים */
   .scan-lock{max-width:560px;margin:0 auto;text-align:center;padding:30px 24px;border-radius:20px;
     border:1px solid var(--line-gold);background:rgba(255,255,255,.04)}
-  .scan-lock .sl-title{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.6vw,25px);
+  .scan-lock .sl-title{font-family:var(--font-display);font-weight:700;font-size:var(--fs-xl);
     color:var(--text-on-dark);margin:0 0 10px}
   .scan-lock .sl-body{color:var(--text-on-dark);font-size:16px;line-height:1.7;margin:0 0 20px}
   .scan-lock .sl-note{color:var(--text-on-dark-muted);font-size:13px;margin:14px 0 0}
+  .scan-lock .sl-spec{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-wrap:wrap;
+    justify-content:center;gap:8px 10px}
+  .scan-lock .sl-spec li{font-family:var(--font-measure,inherit);font-size:13.5px;letter-spacing:.03em;
+    color:var(--measure-on-dark);border:1px solid color-mix(in srgb, var(--measure-on-dark) 32%, transparent);
+    border-radius:999px;padding:6px 13px}
   .scan-lock .cta{display:inline-block}
   #decode.gated #decoder{display:none}
   #decode:not(.gated) .scan-lock{display:none}
@@ -714,7 +726,7 @@
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">הזמיני הרצאה לצוות שלך</a>
         </div>
-        <p class="hero-alt fade">לצוות שלך מגיע לדעת מעבר למה שהריאיון מראה.</p>
+        <p class="hero-alt fade">פחות טעויות גיוס, פחות עזיבות מפתיעות, וצוות שמדבר על אנשים באותה שפה.</p>
       </div>
       </div>
   </header>
@@ -732,8 +744,13 @@
       </div>
     <!-- שער הסריקה: נעול עד שמשאירים פרטים. נפתח מהטופס וגם מ-localStorage בביקור חוזר -->
     <div class="scan-lock fade" id="scanLock">
-      <p class="sl-title">הסריקה נפתחת אחרי שנכיר.</p>
+      <p class="sl-title">הפענוח שלך מוכן. נשאר רק להכיר.</p>
       <p class="sl-body">השאירו פרטים כדי לשמוע על ההרצאה לארגון שלכם, ומיד אחר כך תיפתח לכם הסריקה. תבדקו את השיטה על עצמכם, לפני שאתם מחליטים להביא אותה לצוות.</p>
+      <ul class="sl-spec">
+        <li>שתי דקות</li>
+        <li>חמש עדשות אישיות</li>
+        <li>התוצאה על המסך, בלי המתנה</li>
+      </ul>
       <a href="#lead-form" class="cta" id="scanLockCta">להשאיר פרטים ולפתוח את הסריקה</a>
       <p class="sl-note">הסריקה רצה במכשיר שלכם בלבד. התמונה לא נשמרת ולא נשלחת.</p>
     </div>
@@ -783,9 +800,9 @@
               <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">הביאו את רעות להרצאה ←</button>
             </div>
             <div class="ef-cta">
-              <h4>רוצה את המפה המלאה עלייך?</h4>
-              <p>הסריקה נתנה 5 עדשות. אבחון אישי מלא קורא את כל היד ומרכיב מפה מדויקת של איך את/ה קורא/ת אנשים, מחליט/ה, מוביל/ה ומתפקד/ת תחת לחץ. השאירו פרטים ואחזור אליכם.</p>
-              <button type="button" class="cta ghost ef-cta-btn" data-interest="אבחון אישי">השאירו פרטים לאבחון אישי ←</button>
+              <h4>רוצה ללמוד לקרוא את זה בעצמך?</h4>
+              <p>הסריקה נתנה 5 עדשות. בהכשרה האישית, חמישה מפגשים אחד על אחד, לומדים לזהות את הדפוסים האלה באנשים שיושבים מולכם. היכולת נשארת אצלכם בארגון.</p>
+              <button type="button" class="cta ghost ef-cta-btn" data-interest="הכשרה אישית">ללמוד את הכלי בעצמי ←</button>
             </div>
           </div>
         </div>
@@ -799,18 +816,19 @@
     <div class="wrap">
       <p class="fs-lead roi-line fade">עובד אחד שנשאר, וההרצאה החזירה את עצמה. בואי נבדוק תאריך.</p>
       <h2 class="fade">הזמיני את ההרצאה שהצוות ידבר עליה, ויישאר בזכותה.</h2>
-      <p class="fs-lead fade">מלאי את הפרטים כאן לבדיקת זמינות תאריכים ותיאום שיחת אפיון קצרה, והסילבוס המלא של ההרצאה יישלח אלייך מיד:</p>
+      <p class="fs-lead fade">מלאי את הפרטים ונקבע שיחת אפיון קצרה. נבין מה הצוות שלך צריך, ואשלח לך את הפרטים המלאים על המסלול שמתאים.</p>
       <form id="bcForm" novalidate>
         <div class="field" data-f="name"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם מלא</div></div>
-        <div class="field" data-f="company"><label for="f-company">תפקיד + חברה</label><input id="f-company" name="company" type="text" autocomplete="organization"><div class="err"></div></div>
+        <div class="field" data-f="company"><label for="f-company">ארגון או חברה</label><input id="f-company" name="company" type="text" autocomplete="organization"><div class="err"></div></div>
+        <div class="field" data-f="role"><label for="f-role">התפקיד שלך</label><select id="f-role" name="role"><option value="">בחרי מהרשימה</option><option value="משאבי אנוש">משאבי אנוש או People</option><option value="גיוס">גיוס והשמה</option><option value="רווחה וחוויית עובד">רווחה וחוויית עובד</option><option value="הדרכה ופיתוח ארגוני">הדרכה ופיתוח ארגוני</option><option value="ניהול צוות">ניהול צוות או הנהלה</option><option value="ועד עובדים">ועד עובדים</option><option value="אחר">אחר</option></select><div class="err"></div></div>
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
-        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות">הרצאה לצוות</option><option value="אבחון אישי">אבחון אישי</option><option value="שניהם">שניהם</option></select></div>
-        <button type="submit" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס בוואטסאפ ובמייל</button>
+        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד מול הצוות. נקודת הכניסה.">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="חמישה מפגשים. מרגע של וואו לשפה שנשארת.">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="חמישה מפגשים אישיים. היכולת נשארת בארגון.">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד מה מתאים.">עוד לא בטוח/ה</option></select></div>
+        <button type="submit" class="cta">שליחת הפרטים</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לנו וואטסאפ.</p>
-        <p class="no-commit">השארת פרטים אינה מחייבת. נחזור אלייך עם סילבוס והצעה, וההחלטה כולה שלך.</p>
+        <p class="no-commit">השארת פרטים אינה מחייבת. נחזור אלייך עם פרטים והצעה, וההחלטה כולה שלך.</p>
       </form>
-      <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:22px;margin-bottom:8px">תודה! קיבלתי את הפרטים שלך.</h3><p style="color:var(--text-on-light)">אחזור אליך אישית תוך יום-יומיים. <span id="tyMid">בינתיים, הסריקה שעשית היא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235 · WWW.REUTBITTON.COM</p></div>
+      <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:var(--fs-xl);margin-bottom:8px">תודה! קיבלתי את הפרטים שלך.</h3><p style="color:var(--text-on-light)">אחזור אליך אישית תוך יום-יומיים. <span id="tyMid">בינתיים, הסריקה שעשית היא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235 · WWW.REUTBITTON.COM</p></div>
     </div>
   </section>
 
@@ -857,7 +875,7 @@
           <p>מנהלים לומדים לראות את מה שהעובד לא אומר: מוטיבציה אמיתית, עומס שקט, שחיקה מתחת לפני השטח, לפני שזה הופך למכתב התפטרות. עובד אחד שנשאר, וההרצאה החזירה את עצמה.</p>
         </div>
       </div>
-      <div class="center-cta fade"><a href="#lead-form" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס</a></div>
+      <div class="center-cta fade"><a href="#lead-form" class="cta">לדבר על הצוות שלי</a></div>
     </div>
   </section>
 
@@ -914,14 +932,14 @@
       </ul>
       <p class="kick fade">אם הדיוק לא יפתיע אותך, לא שילמת שקל ולא נמשיך. אם כן? נדבר על ההרצאה והמשך הדרך.</p>
       <p class="no-commit fade">אבחוני הניסיון ניתנים בכפוף לזמינות.</p>
-      <div class="center-cta fade"><a href="#lead-form" class="cta ghost trial-cta">אני רוצה אבחון ניסיון</a></div>
+      <div class="center-cta fade"><a href="#lead-form" class="cta ghost trial-cta">לדבר על הצוות שלי</a></div>
     </div></div>
   </section>
 
   <!-- 7. TESTIMONIALS -->
   <section class="s-navy tests">
     <div class="wrap">
-      <h2 class="fade">מה אומרות מנהלות <span class="ltr">HR</span> ורווחה שכבר הזמינו את ההרצאה</h2>
+      <h2 class="fade">מה חוזר אליי אחרי</h2>
       <div class="tsingle">
         <div class="tcard fade"><p class="tquote">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר. חבל למי שפספסו."</p><div class="who"><div class="meta"><div class="tname">המועצה המקומית קדימה-צורן</div></div></div></div>
         <!-- כרטיסי עדות 2–3 — הוסרו מהרינדור, ממתינים לעדויות אמיתיות מאושרות. להחזיר את הרשת המשולשת (tsingle→grid3) עם החזרתם.
@@ -931,7 +949,7 @@
         </div>
         -->
       </div>
-      <div class="center-cta fade"><a href="#lead-form" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס</a></div>
+      <div class="center-cta fade"><a href="#lead-form" class="cta">לדבר על הצוות שלי</a></div>
     </div>
   </section>
 
@@ -978,6 +996,7 @@
       <div class="list fade">
         <details><summary>כמה זמן נמשכת ההרצאה ולאיזה גודל קהל היא מתאימה?</summary><div class="ans">ההרצאה נמשכת 60 עד 75 דקות ומותאמת לגודל הקהל שלכם, מצוות מצומצם ועד כנס חברה. בשיחת האפיון נדייק יחד את הפורמט.</div></details>
         <details><summary>זה מתאים גם לקהל מגוון של עובדים, מנהלים והייטקיסטים ציניים?</summary><div class="ans">כן. גם הציניקן של המשרד יוצא עם משהו. בדרך כלל הוא זה שצוחק הכי חזק. ההדגמות בזמן אמת עושות את העבודה במקום שכנועים, וכולם יוצאים עם כלי שאפשר להשתמש בו כבר למחרת.</div></details>
+        <details><summary>איך אני מציגה את זה להנהלה בלי שזה יישמע תלוש?</summary><div class="ans">במשפט אחד: "כלי מדידה של דפוסי התנהגות, שמוסיף שכבת מידע על אנשים בגיוס ובניהול. לא מחליף ריאיון ולא מחליף שיקול דעת." זה הניסוח שעובד, כי הוא לא מבקש מאף אחד להאמין במשהו. ואם רוצים משהו חזק מזה, אפשר לעשות אבחון ניסיון לעובד ותיק ולהראות את הדוח בישיבה.</div></details>
         <details><summary>זה לא משהו מיסטי? איך זה יתקבל אצל ההנהלה?</summary><div class="ans">ממש לא. שיטת <span class="ltr">H.I.P</span> פותחה על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן, כלי מדידה של דפוסי התנהגות, בלי שום קשר לרוחניות או קריאת עתידות. ההנהלות הכי אנליטיות הן דווקא הקהל שהכי מתחבר.</div></details>
         <details><summary>מה צריך להכין מבחינה לוגיסטית?</summary><div class="ans">מעט מאוד. חלל עם מקרן או מסך, מיקרופון וכיסאות לקהל. רעות מגיעה עם כל השאר.</div></details>
         <details><summary>האם ההרצאה מתאימה גם לזום/היברידי?</summary><div class="ans">כן. ניתן להעביר את ההרצאה גם בפורמט מקוון או היברידי, וההדגמות עובדות גם דרך המסך.</div></details>
@@ -994,7 +1013,7 @@
       <div class="wordmark foot-wordmark"><svg class="wm-hand" viewBox="0 0 100 126" aria-hidden="true" focusable="false"><g class="wm-l" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="50" y1="114" x2="30" y2="98"/><line x1="30" y1="98" x2="20" y2="84"/><line x1="20" y1="84" x2="14" y2="70"/><line x1="14" y1="70" x2="10" y2="56"/><line x1="50" y1="114" x2="40" y2="66"/><line x1="40" y1="66" x2="37" y2="46"/><line x1="37" y1="46" x2="35" y2="32"/><line x1="35" y1="32" x2="34" y2="20"/><line x1="40" y1="66" x2="51" y2="62"/><line x1="51" y1="62" x2="51" y2="40"/><line x1="51" y1="40" x2="51" y2="25"/><line x1="51" y1="25" x2="51" y2="12"/><line x1="51" y1="62" x2="62" y2="66"/><line x1="62" y1="66" x2="64" y2="44"/><line x1="64" y1="44" x2="65" y2="31"/><line x1="65" y1="31" x2="66" y2="20"/><line x1="62" y1="66" x2="73" y2="72"/><line x1="73" y1="72" x2="77" y2="56"/><line x1="77" y1="56" x2="79" y2="46"/><line x1="79" y1="46" x2="81" y2="36"/><line x1="50" y1="114" x2="73" y2="72"/></g><g class="wm-d" fill="currentColor"><circle cx="50" cy="114" r="3.4"/><circle cx="30" cy="98" r="2.6"/><circle cx="20" cy="84" r="2.6"/><circle cx="14" cy="70" r="2.6"/><circle cx="10" cy="56" r="2.6"/><circle cx="40" cy="66" r="2.6"/><circle cx="37" cy="46" r="2.6"/><circle cx="35" cy="32" r="2.6"/><circle cx="34" cy="20" r="2.6"/><circle cx="51" cy="62" r="2.6"/><circle cx="51" cy="40" r="2.6"/><circle cx="51" cy="25" r="2.6"/><circle cx="51" cy="12" r="2.6"/><circle cx="62" cy="66" r="2.6"/><circle cx="64" cy="44" r="2.6"/><circle cx="65" cy="31" r="2.6"/><circle cx="66" cy="20" r="2.6"/><circle cx="73" cy="72" r="2.6"/><circle cx="77" cy="56" r="2.6"/><circle cx="79" cy="46" r="2.6"/><circle cx="81" cy="36" r="2.6"/></g></svg><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></div>
       <p class="legal">הסריקה היא כלי היכרות עצמי המבוסס על שיטת האבחון הפסיכודיאגנוסטי בכף היד של רעות ביטון, ומבוסס גם על שיטת ד"ר ארנולד הולצמן (אינו קורס/שירות רשמי מטעמו). התכנים אינם אבחון רפואי או פסיכולוגי קליני, ואינם ייעוץ תעסוקתי פורמלי.</p>
       <div>הקוד הביומטרי · הרצאות ביומטריה עסקית לארגונים · שיטת <span class="ltr">H.I.P</span></div>
-      <div class="links"><a href="https://reutbitton.com" target="_blank" rel="noopener noreferrer">reutbitton.com</a></div>
+      <!-- הקישור לאתר הוסר: הוא מוביל מדף קמפיין חד־מטרתי לעולם מותגי אחר (קריירה, זוגיות, צמיחה אישית) -->
       <div class="social-row">
         <div class="soc-group">
           <a class="soc" href="tel:+972-50-745-9235" aria-label="חיוג לרעות ביטון" title="טלפון"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.02L6.6 10.8z"/></svg></a>
@@ -1015,7 +1034,7 @@
 
   <a class="wa" href="https://wa.me/972507459235?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%94%D7%A8%D7%A6%D7%90%D7%94%20%D7%9C%D7%90%D7%A8%D7%92%D7%95%D7%A0%D7%99%D7%9D" target="_blank" rel="noopener" aria-label="וואטסאפ"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.15-1.7-.84-2-.94-.26-.1-.46-.15-.65.15-.2.3-.75.94-.92 1.13-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.5.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.57-.9-2.15-.24-.57-.48-.5-.65-.5h-.56c-.2 0-.5.07-.77.37-.26.3-1 .98-1 2.4 0 1.4 1.03 2.76 1.17 2.95.15.2 2.03 3.1 4.9 4.35.68.3 1.22.47 1.63.6.69.22 1.3.19 1.8.11.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.2-.56-.35zM12 2.2A9.78 9.78 0 0 0 3.6 17.1L2.5 21.5l4.55-1.2A9.78 9.78 0 1 0 12 2.2z"/></svg></a>
 
-  <div class="sticky"><a href="#lead-form" class="cta">אני רוצה לבדוק זמינות ולקבל סילבוס</a></div>
+  <div class="sticky"><a href="#lead-form" class="cta">לדבר על הצוות שלי</a></div>
 
 </div>
 
@@ -1055,6 +1074,8 @@
       var payload = { name:f.name.value.trim(), company:f.company.value.trim(), phone:toIntl(f.phone.value), email:f.email.value.trim(), source:'unified-page', page:location.href };
       var intSel = scope.querySelector('#f-interest');
       if (intSel) payload.interest = intSel.value;
+      var roleSel = scope.querySelector('#f-role');
+      if (roleSel && roleSel.value) payload.role = roleSel.value;
       if (window.__efshar) payload.efshar = JSON.stringify(window.__efshar);   // {a,ayin,pe,shin,resh}
       if (window.__scanMeasure) {           // raw measurements when a camera/upload scan happened
         payload.thumb_angle = window.__scanMeasure.thumb_angle;
@@ -1107,7 +1128,11 @@
       var cards = document.createElement('div'); cards.className='wz-cards';
       var cardEls = [].map.call(sel.options, function(opt){
         var b=document.createElement('button'); b.type='button'; b.className='wz-card';
-        b.textContent = opt.textContent; b.value = opt.value;
+        b.value = opt.value;
+        var t=document.createElement('span'); t.className='wz-t'; t.textContent = opt.textContent;
+        b.appendChild(t);
+        var d=opt.getAttribute('data-desc');
+        if(d){ var sub=document.createElement('span'); sub.className='wz-d'; sub.textContent = d; b.appendChild(sub); }
         b.addEventListener('click', function(){
           cardEls.forEach(function(c){ c.classList.remove('sel'); c.setAttribute('aria-pressed','false'); });
           b.classList.add('sel'); b.setAttribute('aria-pressed','true');
@@ -1121,7 +1146,9 @@
       fInt.classList.add('wz-hidden');            // ה-select נשאר ב-DOM עבור ה-payload
       steps[0].appendChild(fInt);
 
+      var fRole = scope.querySelector('.field[data-f="role"]');
       steps[1].appendChild(fName); steps[1].appendChild(fComp);
+      if(fRole) steps[1].appendChild(fRole);
       steps[2].appendChild(fPhone); steps[2].appendChild(fMail);
       steps[2].appendChild(btn);
       if(formErr) steps[2].appendChild(formErr);
