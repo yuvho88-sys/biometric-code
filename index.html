@@ -14,6 +14,78 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&family=IBM+Plex+Sans+Hebrew:wght@500;600&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A24B' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M14.5 9.5l-2 5-3 1 2-5z'/%3E%3C/svg%3E">
+<!-- ══════════ מדידה לקמפיין ══════════
+     שלושת המזהים למטה הם כל מה שצריך כדי שהמדידה תעלה לאוויר.
+     ריק = הכלי לא נטען כלל, והדף רץ בדיוק כמו היום. -->
+<script>
+window.BC_TRACK = {
+  gtm:   '',   // GTM-XXXXXXX      מנהל תגיות גוגל
+  meta:  '',   // 15 ספרות         פיקסל מטא
+  ga4:   ''    // G-XXXXXXXXXX     גוגל אנליטיקס 4
+};
+(function(){
+  var C = window.BC_TRACK;
+  window.dataLayer = window.dataLayer || [];
+
+  // ── פרמטרי הקמפיין נלכדים פעם אחת ושורדים ניווט בתוך הדף ──
+  var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+  function readParams(){
+    var q = new URLSearchParams(location.search), out = {}, got = false;
+    KEYS.forEach(function(k){ var v = q.get(k); if(v){ out[k] = v.slice(0,120); got = true; } });
+    if(!got){
+      try { var saved = sessionStorage.getItem('bc_camp'); if(saved) return JSON.parse(saved); } catch(e){}
+      // בלי פרמטרים: מזהים לפחות מאיפה הגיעו
+      var ref = document.referrer || '';
+      out.utm_source = ref ? (ref.split('/')[2] || 'referral') : 'direct';
+      out.utm_medium = ref ? 'referral' : 'none';
+    }
+    try { sessionStorage.setItem('bc_camp', JSON.stringify(out)); } catch(e){}
+    return out;
+  }
+  window.BC_CAMPAIGN = readParams();
+
+  // ── טעינת הכלים, רק אם יש מזהה ──
+  function inject(src, attrs){
+    var s = document.createElement('script'); s.async = true; s.src = src;
+    if(attrs) Object.keys(attrs).forEach(function(k){ s.setAttribute(k, attrs[k]); });
+    document.head.appendChild(s);
+  }
+  if(C.gtm){
+    dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    inject('https://www.googletagmanager.com/gtm.js?id=' + C.gtm);
+  }
+  if(C.ga4){
+    inject('https://www.googletagmanager.com/gtag/js?id=' + C.ga4);
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', C.ga4, {send_page_view: true});
+  }
+  if(C.meta){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', C.meta); fbq('track', 'PageView');
+  }
+
+  // ── נקודת שידור אחת לכל האירועים בדף ──
+  // שמות האירועים במטא הם השמות התקניים, כדי שאפשר יהיה לבצע אופטימיזציה עליהם
+  var META_MAP = { lead_submit:'Lead', form_start:'InitiateCheckout', scan_open:'ViewContent' };
+  var GA_MAP   = { lead_submit:'generate_lead', form_start:'begin_checkout', scan_open:'view_item' };
+  var fired = {};
+  window.bcTrack = function(ev, data){
+    data = data || {};
+    var payload = Object.assign({event: ev}, window.BC_CAMPAIGN, data);
+    try { dataLayer.push(payload); } catch(e){}
+    // אירועי משפך נורים פעם אחת לביקור, כדי שהספירה תישאר נקייה
+    var once = (ev === 'form_start' || ev === 'scan_open');
+    if(once && fired[ev]) return;
+    fired[ev] = true;
+    try { if(window.fbq && META_MAP[ev]) fbq('track', META_MAP[ev], data); } catch(e){}
+    try { if(window.gtag && GA_MAP[ev]) gtag('event', GA_MAP[ev], payload); } catch(e){}
+  };
+})();
+</script>
 </head>
 <body>
 <style>
@@ -699,9 +771,16 @@
   .bc .wa-arrow { font:inherit; width:44px;height:44px;border-radius:50%; border:1px solid var(--line-gold); background:transparent; color:var(--text-on-dark-muted); cursor:pointer; font-size:20px; line-height:1; display:flex;align-items:center;justify-content:center; transition:background .18s ease; }
   .bc .wa-arrow:hover{ background:color-mix(in srgb, var(--accent-border) 14%, transparent); }
   .bc .wa-arrow:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
-  .bc .wa-dots{ display:flex; gap:9px; }
-  .bc .wa-dot{ font:inherit; width:9px;height:9px;border-radius:50%; background:color-mix(in srgb, var(--accent-border) 32%, transparent); border:none; padding:0; cursor:pointer; transition:transform .15s ease, background .15s ease; }
-  .bc .wa-dot.active{ background:var(--gold); transform:scale(1.18); }
+  /* הנקודה נשארת 9 פיקסלים, אבל אזור המגע מגיע ל-44 בגובה ול-20 ברוחב.
+     רוחב מלא של 44 היה יוצר חפיפה בין נקודות שכנות ולחיצה על השקופית הלא נכונה */
+  .bc .wa-dots{ display:flex; gap:2px; }
+  .bc .wa-dot{ font:inherit; width:20px; height:44px; background:none; border:none; padding:0; cursor:pointer; position:relative; }
+  .bc .wa-dot::before{ content:""; position:absolute; top:50%; inset-inline-start:50%; width:9px; height:9px; margin:-4.5px 0 0 -4.5px;
+    border-radius:50%; background:color-mix(in srgb, var(--accent-border) 32%, transparent); transition:transform .15s ease, background .15s ease; }
+  .bc .wa-dot.active::before{ background:var(--gold); transform:scale(1.18); }
+  .bc .skip-link{ position:absolute; inset-inline-start:-9999px; top:8px; z-index:200; background:var(--accent-fill); color:var(--accent-on-fill);
+    padding:10px 18px; border-radius:8px; font-weight:700; text-decoration:none; }
+  .bc .skip-link:focus{ inset-inline-start:8px; }
   .bc .wa-demo-note{ text-align:center; color:var(--text-on-dark-muted); font-size:13px; margin-top:16px; }
   /* phone frame + WhatsApp chat mock (demo-slides) */
   .bc .wa-phone { border:9px solid var(--bg-dark-deep); background:var(--bg-dark-deep); border-radius:32px; aspect-ratio:9/17.6; overflow:hidden; box-shadow:0 18px 44px rgba(0,0,0,.3); }
@@ -900,6 +979,8 @@
 </style>
 
 <div class="bc">
+  <a href="#top" class="skip-link">דילוג לתוכן</a>
+  <main id="content">
 
   <!-- 1. HERO -->
   <header class="hero" id="top">
@@ -997,7 +1078,7 @@
             </div>
             <div class="ef-cta">
               <h4>רוצה ללמוד לקרוא את זה בעצמך?</h4>
-              <p>האבחון נתן 5 עדשות. בהכשרה האישית, חמישה מפגשים אחד על אחד, לומדים לזהות את הדפוסים האלה באנשים שיושבים מולכם. היכולת נשארת אצלכם בארגון.</p>
+              <p>האבחון נתן 5 עדשות. בהכשרה האישית, אחד על אחד, לומדים לזהות את הדפוסים האלה באנשים שיושבים מולכם. היכולת נשארת אצלכם בארגון.</p>
               <button type="button" class="cta ghost ef-cta-btn" data-interest="הכשרה אישית">ללמוד את הכלי בעצמי ←</button>
             </div>
           </div>
@@ -1019,7 +1100,7 @@
         <div class="field" data-f="role"><label for="f-role">התפקיד שלך</label><select id="f-role" name="role"><option value="">בחרו מהרשימה</option><option value="משאבי אנוש">משאבי אנוש או People</option><option value="גיוס">גיוס והשמה</option><option value="רווחה וחוויית עובד">רווחה וחוויית עובד</option><option value="הדרכה ופיתוח ארגוני">הדרכה ופיתוח ארגוני</option><option value="ניהול צוות">ניהול צוות או הנהלה</option><option value="ועד עובדים">ועד עובדים</option><option value="אחר">אחר</option></select><div class="err"></div></div>
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
-        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="5 מפגשים">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="אחד על אחד">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד">עוד לא בטוח/ה</option></select></div>
+        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="דינמיקה, חיכוכים ותקשורת">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="אחד על אחד">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד">עוד לא בטוחים</option></select></div>
         <button type="submit" class="cta">קבלו תאריכים והצעה</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת. אחזור אליכם עם פרטים והצעה, וההחלטה כולה שלכם.</p>
@@ -1060,9 +1141,9 @@
       <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
       <div class="wa-viewport fade" id="waViewport">
         <div class="wa-track" id="waTrack">
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" decoding="async"></button></div>
           <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
           <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
           <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
@@ -1124,9 +1205,7 @@
           <p>שם למדתי שאנשים הם שני סיפורים: הסיפור שהם מספרים, ומי שהם באמת. ואת ההבדל בין השניים לא שומעים במילים. רואים אותו.</p>
           <p>היום, אחרי 17 שנים של ניתוח ואבחון התנהגות אנושית, הכשרה מבית ד"ר ארנולד הולצמן, ומאות אבחונים והרצאות, אני עושה את זה בשיטה שפיתחתי, <span class="ltr">H.I.P</span>, בדרך שנשמעת מוזרה בפעם הראשונה שמספרים לכם עליה: אני קוראת אנשים מכפות הידיים שלהם.</p>
           <p class="letter-punch">כף היד לא עוברת עריכה. וזה כל היתרון שלה.</p>
-          <p class="letter-punch">גיבוש שמשאיר כלים.</p>
           <p>ומה אני לא מבטיחה: לא דיוק של מאה אחוז, ולא החלטה במקומכם. האבחון לא מחליף קורות חיים, בדיקת המלצות, ריאיון או תקופת ניסיון. הוא מצטרף אליהם, ומוסיף את השכבה האחת שאף אחד מהם לא רואה.</p>
-          <p class="letter-ask"><a href="#lead-form" class="letter-link">מדברים?</a></p>
           <p class="sign">שלך,<br><strong>רעות ביטון</strong><br>בינה אנושית · שיטת <span class="ltr">H.I.P</span></p>
           <div class="portrait fade"><img src="media/portrait-warm.jpg" alt="רעות ביטון, מרצה ומאבחנת בשיטת H.I.P" loading="lazy" width="440" height="537"></div>
 
@@ -1160,7 +1239,7 @@
     <div class="wrap">
       <h2 class="fade">למי זה מתאים</h2>
       <div class="chips fade">
-        <span class="chip">חברות הייטק</span><span class="chip">בנקים</span><span class="chip">חברות ביטוח</span><span class="chip">משרדי עורכי דין</span><span class="chip">ארגונים בינוניים וגדולים</span>
+        <span class="chip">חברות הייטק</span><span class="chip">בנקים</span><span class="chip">חברות ביטוח</span><span class="chip">משרדי עורכי דין</span><span class="chip">ארגונים בינוניים וגדולים</span><span class="chip">ועדי עובדים</span><span class="chip">רשויות מקומיות</span><span class="chip">סמינרים וימי עיון</span>
       </div>
       <p class="format fade">פורמט: 60 עד 75 דקות, מתאים בדיוק למשבצת של ימי עיון, הרמות כוסית, ערבי צוות ופעילויות חברה.</p>
     </div>
@@ -1172,12 +1251,12 @@
       <h2 class="fade">השאלות שחוזרות לפני שמזמינים</h2>
       <div class="list fade">
         <details><summary>כמה זמן נמשכת ההרצאה ולאיזה גודל קהל היא מתאימה?</summary><div class="ans">ההרצאה נמשכת 60 עד 75 דקות ומותאמת לגודל הקהל שלכם, מצוות מצומצם ועד כנס חברה. בשיחת האפיון נדייק יחד את הפורמט.</div></details>
+        <details open><summary>כמה זה עולה?</summary><div class="ans">תעשו רגע את החשבון של עזיבה אחת אצלכם: גיוס והכשרה, וכל החודשים באמצע. ההרצאה עולה פחות מזה, משמעותית. מלאו פרטים ואחזור אליכם עם הצעה מסודרת תוך יום עסקים.</div></details>
         <details><summary>זה מתאים גם לקהל מגוון של עובדים, מנהלים והייטקיסטים ציניים?</summary><div class="ans">כן. גם הציניקן של המשרד יוצא עם משהו. בדרך כלל הוא זה שצוחק הכי חזק. ההדגמות בזמן אמת עושות את העבודה במקום שכנועים, וכולם יוצאים עם כלי שאפשר להשתמש בו כבר למחרת.</div></details>
         <details><summary>איך מציגים את זה להנהלה בלי שזה יישמע תלוש?</summary><div class="ans">במשפט אחד: "כלי מדידה של דפוסי התנהגות, שמוסיף שכבת מידע על אנשים בגיוס ובניהול. לא מחליף ריאיון ולא מחליף שיקול דעת." זה הניסוח שעובד, כי הוא לא מבקש מאף אחד להאמין במשהו. ואם רוצים משהו חזק מזה, אפשר לעשות אבחון ניסיון לעובד ותיק ולהראות את הדוח בישיבה.</div></details>
         <details><summary>זה לא משהו מיסטי? איך זה יתקבל אצל ההנהלה?</summary><div class="ans">ממש לא. שיטת <span class="ltr">H.I.P</span> פותחה על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן, כלי מדידה של דפוסי התנהגות, בלי שום קשר לרוחניות או קריאת עתידות. ההנהלות הכי אנליטיות הן דווקא הקהל שהכי מתחבר.</div></details>
         <details><summary>מה צריך להכין מבחינה לוגיסטית?</summary><div class="ans">מעט מאוד. חלל עם מקרן או מסך, מיקרופון וכיסאות לקהל. אני מגיעה עם כל השאר.</div></details>
         <details><summary>האם ההרצאה מתאימה גם לזום/היברידי?</summary><div class="ans">כן. ניתן להעביר את ההרצאה גם בפורמט מקוון או היברידי, וההדגמות עובדות גם דרך המסך.</div></details>
-        <details><summary>כמה זה עולה?</summary><div class="ans">תעשו רגע את החשבון של עזיבה אחת אצלכם: גיוס והכשרה, וכל החודשים באמצע. ההרצאה עולה פחות מזה, משמעותית. מלאו פרטים ואחזור אליכם עם הצעה מסודרת תוך יום עסקים.</div></details>
         <details><summary>זה מתאים גם כאירוע גיבוש?</summary><div class="ans">זה בדיוק המקום שבו זה מצטיין: הרמת כוסית, יום עיון, אופסייט. ההרצאה היא החלק שכולם משתתפים בו וצוחקים בו, ואחר כך מדברים עליו. רק שממנה נשארים גם עם כלים.</div></details>
       </div>
       <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
@@ -1187,6 +1266,8 @@
 
 
   <!-- 12. FOOTER -->
+  </main>
+
   <footer>
     <div class="wrap">
       <div class="wordmark foot-wordmark"><img class="wm-hand" src="media/mark.png" width="209" height="160" alt="" aria-hidden="true"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></div>
@@ -1232,6 +1313,10 @@
 
   // skeleton form: no webhook yet (technical later) — just show thank-you
   var WEBHOOK = 'https://hook.eu2.make.com/lhr4r9b9cn4k69or7m0edfdq53oo10xe';
+  // תחילת מילוי: נורה פעם אחת, בנגיעה הראשונה בטופס
+  (function(){ var f=scope.querySelector('#bcForm'); if(!f) return;
+    var hit=function(){ if(window.bcTrack) window.bcTrack('form_start'); f.removeEventListener('focusin',hit); f.removeEventListener('change',hit); };
+    f.addEventListener('focusin',hit); f.addEventListener('change',hit); })();
   var form = scope.querySelector('#bcForm'), thanks = scope.querySelector('#thankyou'), formErr = scope.querySelector('#formErr');
   function isMobileIL(v){ var d=(v||'').replace(/\D/g,''); return /^0(5\d)\d{7}$/.test(d); }
   function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((v||'').trim()); }
@@ -1250,7 +1335,7 @@
       var btn = form.querySelector('button[type=submit]');
       var orig = btn.textContent;
       btn.disabled = true; btn.textContent = 'שולח…';
-      var payload = { name:f.name.value.trim(), company:f.company.value.trim(), phone:toIntl(f.phone.value), email:f.email.value.trim(), source:'unified-page', page:location.href };
+      var payload = { name:f.name.value.trim(), company:f.company.value.trim(), phone:toIntl(f.phone.value), email:f.email.value.trim(), source:(window.BC_CAMPAIGN&&window.BC_CAMPAIGN.utm_source)||'direct', page:location.href };
       var intSel = scope.querySelector('#f-interest');
       if (intSel) payload.interest = intSel.value;
       var roleSel = scope.querySelector('#f-role');
@@ -1262,12 +1347,20 @@
         payload.spread_ratio = window.__scanMeasure.spread_ratio;
       }
       if (window.__scanMode) payload.scan_mode = window.__scanMode;
+      // פרמטרי הקמפיין נוסעים עם הליד, כדי שאפשר יהיה לדעת איזו מודעה הביאה אותו
+      if (window.BC_CAMPAIGN) {
+        payload.utm_medium   = window.BC_CAMPAIGN.utm_medium   || '';
+        payload.utm_campaign = window.BC_CAMPAIGN.utm_campaign || '';
+        payload.utm_content  = window.BC_CAMPAIGN.utm_content  || '';
+        payload.click_id     = window.BC_CAMPAIGN.gclid || window.BC_CAMPAIGN.fbclid || '';
+      }
       var done = false;
       function success(){ if(done) return; done=true;
         var mid=document.getElementById('tyMid');
         // מי שכבר סרק מקבל את הניסוח המקורי. מי שהגיע דרך השער מקבל הפניה לסריקה שנפתחה
         if(mid && !window.__efshar){ mid.textContent='ובינתיים, האבחון הדיגיטלי נפתח לכם למעלה. תבדקו את השיטה על עצמכם.'; }
         window.__leadSent = true;
+        if(window.bcTrack) window.bcTrack('lead_submit', { interest: payload.interest || '', role: payload.role || '' });
         if(window.__unlockScan) window.__unlockScan(true);
         form.style.display='none'; if(thanks){ thanks.classList.add('show'); thanks.scrollIntoView({behavior:'smooth', block:'center'}); } }
       function fail(){ if(done) return; done=true; btn.disabled=false; btn.textContent=orig; if(formErr) formErr.classList.add('show'); }
@@ -1350,6 +1443,7 @@
         return true;
       }
       function go(n){
+        if(window.bcTrack) window.bcTrack('wizard_step',{step:n});
         if(n>cur && !valid(cur)){ var bad=form.querySelector('.field.bad input'); if(bad) bad.focus(); return; }
         cur = Math.min(3, Math.max(1, n));
         steps.forEach(function(s,i){ s.classList.toggle('on', i===cur-1); });
@@ -1566,7 +1660,7 @@
 
 /* ================= helpers ================= */
 const $ = id => document.getElementById(id);
-const dl = (ev, data) => { try{ if(window.dataLayer) window.dataLayer.push({event:ev, ...(data||{})}); }catch(e){} };
+const dl = (ev, data) => { try{ if(window.bcTrack) window.bcTrack(ev, data||{}); else if(window.dataLayer) window.dataLayer.push({event:ev, ...(data||{})}); }catch(e){} };
 const nowTs = () => new Date().toISOString();
 
 /* ================= EFSHAR — בסיס הידע הרשמי של רעות (כלשונו, אין לערוך) ================= */
@@ -1695,6 +1789,7 @@ window.__unlockScan = function(scrollBack){
   const sec=$('decode'); if(!sec) return;
   if(!sec.classList.contains('gated')) return;
   sec.classList.remove('gated');
+  if(window.bcTrack) window.bcTrack('scan_open');
   if(window.__attachDecoder) window.__attachDecoder();
   if(scrollBack){
     // נותנים למסך התודה רגע להיקלט, ואז מחזירים אותם לסריקה שנפתחה
