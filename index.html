@@ -1096,7 +1096,7 @@ window.BC_TRACK = {
       <p class="fs-lead fade">מלאו את הפרטים ואחזור אליכם. נבין יחד מה הצוות שלכם צריך, ואשלח לכם תאריכים פנויים ואת כל הפרטים.</p>
       <form id="bcForm" novalidate>
         <div class="field" data-f="name"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם מלא</div></div>
-        <div class="field" data-f="company"><label for="f-company">ארגון או חברה</label><input id="f-company" name="company" type="text" autocomplete="organization"><div class="err"></div></div>
+        <div class="field" data-f="company"><label for="f-company">ארגון או חברה</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון</div></div>
         <div class="field" data-f="role"><label for="f-role">התפקיד שלך</label><select id="f-role" name="role"><option value="">בחרו מהרשימה</option><option value="משאבי אנוש">משאבי אנוש או People</option><option value="גיוס">גיוס והשמה</option><option value="רווחה וחוויית עובד">רווחה וחוויית עובד</option><option value="הדרכה ופיתוח ארגוני">הדרכה ופיתוח ארגוני</option><option value="ניהול צוות">ניהול צוות או הנהלה</option><option value="ועד עובדים">ועד עובדים</option><option value="אחר">אחר</option></select><div class="err"></div></div>
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
@@ -1329,6 +1329,8 @@ window.BC_TRACK = {
       var ok = true;
       function mark(key, valid){ var w=scope.querySelector('.field[data-f="'+key+'"]'); if(w) w.classList.toggle('bad', !valid); if(!valid) ok=false; }
       mark('name', f.name.value.trim().length>1);
+      // הארגון הוא עמודה A בגיליון והוא פותח את שורת הנושא בהתראה. ליד בלי ארגון מגיע חסר.
+      mark('company', f.company.value.trim().length>1);
       mark('phone', isMobileIL(f.phone.value));
       mark('email', isEmail(f.email.value));
       if(!ok){ var bad=scope.querySelector('.field.bad input'); if(bad) bad.focus(); return; }
@@ -1340,7 +1342,8 @@ window.BC_TRACK = {
       if (intSel) payload.interest = intSel.value;
       var roleSel = scope.querySelector('#f-role');
       if (roleSel && roleSel.value) payload.role = roleSel.value;
-      if (window.__efshar) payload.efshar = JSON.stringify(window.__efshar);   // {a,ayin,pe,shin,resh}
+      // הגיליון מקבל טקסט קריא. ה-JSON נשמר כגיבוי רק אם הטקסט לא נבנה משום סיבה.
+      if (window.__efshar) payload.efshar = window.__efsharText || JSON.stringify(window.__efshar);
       if (window.__scanMeasure) {           // raw measurements when a camera/upload scan happened
         payload.thumb_angle = window.__scanMeasure.thumb_angle;
         payload.finger_ratio = window.__scanMeasure.finger_ratio;
@@ -1439,7 +1442,12 @@ window.BC_TRACK = {
       var cur = 1;
       function valid(step){
         if(step===1) return !!sel.value;
-        if(step===2){ var ok = fName.querySelector('input').value.trim().length>1; fName.classList.toggle('bad', !ok); return ok; }
+        if(step===2){
+          var okName = fName.querySelector('input').value.trim().length>1;
+          var okComp = fComp.querySelector('input').value.trim().length>1;
+          fName.classList.toggle('bad', !okName); fComp.classList.toggle('bad', !okComp);
+          return okName && okComp;
+        }
         return true;
       }
       function go(n){
@@ -1975,6 +1983,12 @@ function renderQuestions(preset, m, mode){
 function composeResult(){
   const sel={}; for(const k of EF_ORDER) sel[k]=efSel[k];
   window.__efshar=sel;
+  // גרסה קריאה לגיליון ולהתראה. בלעדיה עמודת "תוצאת מחשבון" מקבלת JSON גולמי שאי אפשר לקרוא.
+  try{
+    window.__efsharText = EF_ORDER
+      .map(k => EFSHAR.questions[k].name + ': ' + EFSHAR.questions[k].options[sel[k]].label)
+      .join(' · ');
+  }catch(e){ window.__efsharText = ''; }
   window.__scanMode=efMode; window.__scanMeasure=efMeasure;   // מצב ידני: measure=null → הטופס ישלח רק efshar+scan_mode
   if(efMeasure){
     $('metrics').style.display='';
