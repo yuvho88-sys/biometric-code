@@ -14,6 +14,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&family=IBM+Plex+Sans+Hebrew:wght@500;600&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A24B' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M14.5 9.5l-2 5-3 1 2-5z'/%3E%3C/svg%3E">
+<!-- תמונת ההירו היא ה-LCP. טעינה מוקדמת, עם הגרסה הקטנה למובייל -->
+<link rel="preload" as="image" href="media/stage-1920.webp" fetchpriority="high"
+      imagesrcset="media/stage-900.webp 900w, media/stage-1400.webp 1400w, media/stage-1920.webp 1920w"
+      imagesizes="100vw">
 <!-- ══════════ מדידה לקמפיין ══════════
      שלושת המזהים למטה הם כל מה שצריך כדי שהמדידה תעלה לאוויר.
      ריק = הכלי לא נטען כלל, והדף רץ בדיוק כמו היום. -->
@@ -91,6 +95,10 @@ window.BC_TRACK = {
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&family=IBM+Plex+Sans+Hebrew:wght@500;600&display=swap');
 
+  /* האיפוס נכתב במקור ל-.bc בלבד, כי הדף היה תוכן בלבד בתוך Artifact.
+     בגרסת האתר נשארו ל-body שוליים של 8px מברירת המחדל של הדפדפן,
+     והם יצרו מסגרת בהירה סביב הדף שמנעה מרקע ההירו להגיע לקצוות. */
+  html, body { margin: 0; padding: 0; }
   .bc, .bc * { box-sizing: border-box; margin: 0; padding: 0; }
   /* הרקע נמתח על כל החלון, לא רק על תוכן הדף. אחרת מתחת לפוטר ומעל האזור
      הבטוח במובייל נראה הלבן של הדפדפן */
@@ -193,11 +201,37 @@ window.BC_TRACK = {
   }
   /* הכלל הזה מרים את התוכן מעל שכבת הגרעין. הכפתור הצף והסרגל הדביק מוחרגים,
      אחרת position:relative דורס להם את ה-fixed והם נופלים לתוך זרימת הדף */
-  html.skin-e .bc > *:not(.wa):not(.sticky) { position:relative; z-index:2; }
+  /* כל אלמנט שמוקם בעצמו חייב להיות מוחרג כאן במפורש, אחרת הכלל דורס אותו
+     ומחזיר אותו לזרימת הדף. כך נשברו כבר .wa ו-.sticky, ואחריהם .skip-link
+     שתפס 41px ודחף את ההירו כלפי מטה. */
+  html.skin-e .bc > *:not(.wa):not(.sticky):not(.skip-link) { position:relative; z-index:2; }
 
-  /* הירו מקבל אור חם שיורד מלמעלה, במקום שטח אחיד */
+  /* ── הירו: רעות על הבמה, מתחת לצעיף שמנת ──
+     היא עומדת משמאל (התמונה משוקפת) והמסך הריק נפתח מימין, בדיוק מתחת לכותרת.
+     הצעיף אטום מימין כדי שהטקסט הכהה יישאר קריא, ונפתח שמאלה כדי שהיא תיראה. */
   html.skin-e .bc .hero {
-    background:radial-gradient(120% 85% at 50% -10%, #F7F2E6 0%, #EFE9DA 45%, #E8E0CE 100%);
+    --veil:linear-gradient(to left,
+      rgba(245,239,228,.97) 0%, rgba(245,239,228,.93) 30%,
+      rgba(245,239,228,.78) 54%, rgba(245,239,228,.30) 80%, rgba(245,239,228,.06) 100%);
+    --stage-pos:center center;
+    background:var(--veil), url(media/stage.jpg);
+    background:var(--veil), image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg"));
+    background-size:cover, cover;
+    background-position:center, var(--stage-pos);
+    background-repeat:no-repeat, no-repeat;
+  }
+  /* במובייל הטקסט תופס את כל הרוחב, ולכן הצעיף יורד מלמעלה ולא מהצד */
+  @media (max-width:900px){
+    html.skin-e .bc .hero {
+      --veil:linear-gradient(to bottom,
+        rgba(245,239,228,.95) 0%, rgba(245,239,228,.91) 55%, rgba(245,239,228,.74) 100%);
+      --stage-pos:34% center;
+    }
+  }
+  /* צל הטקסט היה כהה מתקופת ההירו הכהה, והוא מרח את הכותרת על השמנת.
+     הילה בהירה ודקה מרימה את הטקסט מהתמונה בלי ללכלך אותו. */
+  html.skin-e .bc .hero h1, html.skin-e .bc .hero .sub {
+    text-shadow:0 1px 0 rgba(255,255,255,.6), 0 2px 10px rgba(245,239,228,.55);
   }
 
   /* הלוגו: הסמל הלבן נעלם על שמנת. גרסה כהה */
