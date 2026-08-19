@@ -1175,46 +1175,6 @@ window.BC_TRACK = {
     html.skin-f .bc .cta::before { width:56px; }
   }
 
-  /* ══ מובייל, גרסה סופית: אותה קומפוזיציה של הדסקטופ, בפריים ייעודי ══
-     במקום למתוח את הצילום הרחב על מסך גבוה, נבנה קובץ נפרד לנייד:
-     הפריים המקורי יושב בתחתיתו, והקיר שמעליו נמתח כלפי מעלה מתוך
-     השורות העליונות שלו עצמו. כך הטקסט יושב על המשך הקיר, רעות עומדת
-     בשליש התחתון, והקהל נשאר בתחתית הפריים — בלי הגדלה ובלי טשטוש. */
-  @media (max-width:900px){
-    html.skin-f .bc .hero { padding:18px 0 50px; }
-    html.skin-f .bc .hero::before {
-      inset:0; height:auto;
-      background:url(media/stage-m.jpg) center bottom/cover no-repeat;
-      background:image-set(url(media/stage-m.webp) type("image/webp"), url(media/stage-m.jpg) type("image/jpeg")) center bottom/cover no-repeat;
-      filter:contrast(1.05) saturate(.9) brightness(.96);
-      -webkit-mask-image:none; mask-image:none;
-    }
-    /* הקיר מוחשך כדי שהטקסט יישב עליו, ונפתח למטה כדי שרעות והקהל ייראו */
-    html.skin-f .bc .hero::after {
-      inset:0; height:auto;
-      background:
-        linear-gradient(to bottom,
-          rgba(9,20,23,.93) 0%, rgba(9,20,23,.91) 38%, rgba(9,20,23,.84) 52%,
-          rgba(9,20,23,.58) 64%, rgba(9,20,23,.34) 74%, rgba(9,20,23,.30) 88%,
-          rgba(9,20,23,.62) 100%),
-        radial-gradient(80% 26% at 42% 76%, rgba(255,186,132,.16) 0%, transparent 76%);
-    }
-    html.skin-f .bc .hero-copy { max-width:100%; padding-top:6px; }
-  }
-
-  @media (max-width:900px){
-    /* מרווח נוסף בתחתית דוחף את הפריים מטה, כך שהפנים שלה נוחתות מתחת
-       לכפתור ולא מאחוריו, ומה שנפתח מלמטה הוא רצפת הבמה והקהל */
-    html.skin-f .bc .hero { padding-bottom:124px; }
-    html.skin-f .bc .hero > .wrap::before,
-    html.skin-f .bc .hero > .wrap::after { bottom:auto; top:calc(100% + 14px); }
-    html.skin-f .bc .hero > .wrap::before { top:calc(100% + 28px); }
-    /* שתי השורות האחרונות יושבות על הצילום, ולכן הן צריכות משקל ואור */
-    html.skin-f .bc .hero .hero-alt,
-    html.skin-f .bc .hero .hero-proof { color:#E4F0ED; text-shadow:0 1px 12px rgba(0,0,0,.85); }
-    html.skin-f .bc .hero .hero-proof span { color:#A9DCD2; }
-  }
-
   /* ══ שלוש השורות הן משפט אחד, לא שלושה בלוקים ══
      הכותרת פותחת, השורה השנייה ממשיכה, והשלישית היא הקאצ'. לכן שלושתן
      באותה משפחת אותיות, בסולם יורד־ואז־עולה, במרווחים צמודים שנקראים
