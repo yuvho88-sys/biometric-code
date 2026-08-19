@@ -1179,6 +1179,40 @@ window.BC_TRACK = {
     html.skin-f .bc .cta { transition:background-color .18s linear, box-shadow .18s linear; }
     html.skin-f .bc .cta:hover, html.skin-f .bc .cta:active { transform:none; }
   }
+  /* כפתורי הוויזרד בטופס: המשך הוא צעד ראשי ולכן עובר לקוטב הטכנולוגיה,
+     וחזרה נשאר קישור שקט. כך הבורדו לא מופיע על אף כפתור בדף */
+  html.skin-f .bc .wz-next {
+    background:var(--pole-cool); color:var(--cta-ink);
+    border-radius:var(--radius-cta); min-height:48px;
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 45%, transparent),
+               0 8px 22px color-mix(in srgb, var(--pole-cool) 24%, transparent);
+    transition:transform .18s var(--ease), box-shadow .18s var(--ease), background-color .18s var(--ease);
+  }
+  html.skin-f .bc .wz-next:hover {
+    background:color-mix(in srgb, var(--pole-cool) 86%, var(--lighten));
+    transform:translateY(-2px);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 60%, transparent),
+               0 14px 32px color-mix(in srgb, var(--pole-cool) 34%, transparent);
+  }
+  html.skin-f .bc .wz-next:active { transform:translateY(0); }
+  html.skin-f .bc .wz-next:focus-visible { outline:3px solid color-mix(in srgb, var(--pole-cool) 70%, var(--lighten)); outline-offset:3px; }
+  html.skin-f .bc .wz-back { color:var(--text-on-light-muted); }
+  html.skin-f .bc .wz-back:hover { color:var(--text-on-light); }
+  @media (prefers-reduced-motion: reduce){
+    html.skin-f .bc .wz-next:hover, html.skin-f .bc .wz-next:active { transform:none; }
+  }
+  /* שורת ההכשרה האישית: קישור ghost בתוך משפט, מדרגה מתחת לכרטיס ההרצאה */
+  html.skin-f .bc .ef-alt {
+    margin-top:14px; text-align:center;
+    font-size:15.5px; line-height:1.6; color:var(--text-on-light-muted);
+  }
+  html.skin-f .bc .ef-alt-link {
+    background:none; border:0; padding:0; font:inherit; cursor:pointer;
+    color:var(--measure-text); text-decoration:underline;
+    text-underline-offset:3px; text-decoration-thickness:1px;
+  }
+  html.skin-f .bc .ef-alt-link:hover { color:var(--text-on-light); }
+  html.skin-f .bc .ef-alt-link:focus-visible { outline:2px solid var(--measure-line); outline-offset:3px; border-radius:3px; }
   /* כפתור משנה: מתאר דק בצבע הטקסט המשני, רקע שקוף */
   html.skin-f .bc .cta.ghost {
     background:transparent; color:var(--text-on-light-muted);
@@ -1242,7 +1276,10 @@ window.BC_TRACK = {
        ממנה. שורה 1 נעצרת ברצפה של 17 פיקסלים ולכן היא יוצאת גדולה מהיחס
        התאורטי: מתחת לזה היא כיתוב אגבי ולא שורת פתיחה. */
     html.skin-f .bc .hero-h1 { margin:2px 0 .7rem; line-height:1.08; }
-    html.skin-f .bc .hero-h1 .hl-1 { font-size:clamp(17px,3.4vw,24px); margin-bottom:.16em; }
+    /* שורה 1 נשארת 17 פיקסלים כרצפת קריאוּת. כדי שהפירמידה בכל זאת
+       תיקרא, ההפרדה נעשית במשקל ובריווח ולא בהקטנה: היא הופכת לשורת
+       סטאפ שקטה במקום להתחרות בפאנץ. */
+    html.skin-f .bc .hero-h1 .hl-1 { font-size:clamp(17px,3.4vw,24px); font-weight:500; letter-spacing:.005em; margin-bottom:.2em; }
     html.skin-f .bc .hero-h1 .hl-2 { font-size:clamp(20px,calc(6.71vw - 3.22px),42px); margin-bottom:.08em; }
     html.skin-f .bc .hero-h1 .hl-3 { font-size:clamp(30px,calc(11.67vw - 5.6px),72px); }
     html.skin-f .bc .hero-sub { font-size:17px; line-height:1.55; margin-bottom:1.1rem; }
@@ -1349,13 +1386,9 @@ window.BC_TRACK = {
             <div class="ef-cta">
               <h4>רוצה שהצוות שלך יחווה את זה על עצמו?</h4>
               <p>אני מעבירה הרצאות למנהלי/ות ואנשי/נשות משאבי אנוש. חוויה שבה כל משתתף/ת מרגיש/ה שנגעתי במשהו אמיתי אצלו/ה, ולומד/ת כלי מעשי לקריאת אנשים בגיוס, בהשמה ובהחלטות. בדיוק כמו האבחון הזה, רק לעומק ועל כל הצוות.</p>
-              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">הביאו את רעות להרצאה ←</button>
+              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">קבלו תאריכים והצעה להרצאה</button>
             </div>
-            <div class="ef-cta">
-              <h4>רוצה ללמוד לקרוא את זה בעצמך?</h4>
-              <p>האבחון נתן 5 עדשות. בהכשרה האישית, אחד על אחד, לומדים לזהות את הדפוסים האלה באנשים שיושבים מולכם. היכולת נשארת אצלכם בארגון.</p>
-              <button type="button" class="cta ghost ef-cta-btn" data-interest="הכשרה אישית">ללמוד את הכלי בעצמי ←</button>
-            </div>
+            <p class="ef-alt">מעדיפים ללמוד לקרוא את זה בעצמכם? יש גם <button type="button" class="ef-cta-btn ef-alt-link" data-interest="הכשרה אישית">הכשרה אישית</button> — אפשר לסמן את זה בטופס.</p>
           </div>
         </div>
       </div>
@@ -1376,7 +1409,7 @@ window.BC_TRACK = {
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
         <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="דינמיקה, חיכוכים ותקשורת">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="אחד על אחד">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד">עוד לא בטוחים</option></select></div>
-        <button type="submit" class="cta">קבלו תאריכים והצעה</button>
+        <button type="submit" class="cta">קבלו תאריכים והצעה להרצאה</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת. אחזור אליכם עם פרטים והצעה, וההחלטה כולה שלכם.</p>
       </form>
@@ -1462,7 +1495,7 @@ window.BC_TRACK = {
       <span class="badge fade">חשוב שתדעו</span>
       <h2 class="fade">בלי מיסטיקה ובלי רוחניות. שיטה שאפשר למדוד ולבדוק.</h2>
       <p class="fade">שיטת <span class="ltr">H.I.P</span> פותחה על ידי רעות ביטון על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן ו-17 שנות ניסיון באבחון התנהגות אנושית. זה כלי מדידה של דפוסי התנהגות ואישיות, נקודה. אין פה קריאת עתידות, ואת זה מבינות מהר גם ההנהלות הכי אנליטיות.</p>
-      <p class="obj-stat fade">מאות אבחונים. אפס מגע פיזי.</p>
+      <p class="obj-stat fade">אבחונים לאורך שנים. אפס מגע פיזי.</p>
     </div></div>
   </section>
 
@@ -1478,7 +1511,7 @@ window.BC_TRACK = {
           <h2>שלום, אני רעות.</h2>
           <p>יש פרק בקורות החיים שלי שאני לא מרחיבה עליו, ואספר ממנו רק דבר אחד: במשך שנים עבדתי במקום שבו טעות בקריאת אדם לא עולה כסף. היא עולה הרבה יותר.</p>
           <p>שם למדתי שאנשים הם שני סיפורים: הסיפור שהם מספרים, ומי שהם באמת. ואת ההבדל בין השניים לא שומעים במילים. רואים אותו.</p>
-          <p>היום, אחרי 17 שנים של ניתוח ואבחון התנהגות אנושית, הכשרה מבית ד"ר ארנולד הולצמן, ומאות אבחונים והרצאות, אני עושה את זה בשיטה שפיתחתי, <span class="ltr">H.I.P</span>, בדרך שנשמעת מוזרה בפעם הראשונה שמספרים לכם עליה: אני קוראת אנשים מכפות הידיים שלהם.</p>
+          <p>היום, אחרי 17 שנים של ניתוח ואבחון התנהגות אנושית, הכשרה מבית ד"ר ארנולד הולצמן, והרצאות ואבחונים לאורך השנים, אני עושה את זה בשיטה שפיתחתי, <span class="ltr">H.I.P</span>, בדרך שנשמעת מוזרה בפעם הראשונה שמספרים לכם עליה: אני קוראת אנשים מכפות הידיים שלהם.</p>
           <p class="letter-punch">כף היד לא עוברת עריכה. וזה כל היתרון שלה.</p>
           <p>ומה אני לא מבטיחה: לא דיוק של מאה אחוז, ולא החלטה במקומכם. האבחון לא מחליף קורות חיים, בדיקת המלצות, ריאיון או תקופת ניסיון. הוא מצטרף אליהם, ומוסיף את השכבה האחת שאף אחד מהם לא רואה.</p>
           <p class="sign">שלך,<br><strong>רעות ביטון</strong><br>בינה אנושית · שיטת <span class="ltr">H.I.P</span></p>
@@ -2299,14 +2332,21 @@ window.__efsharRender = renderQuestions;   // לבדיקה/כיול בלבד
   if(sec.classList.contains('gated')) window.__detachDecoder();
 })();
 
-document.querySelectorAll('.ef-cta-btn').forEach(b=>b.addEventListener('click', ()=>{
+/* האזנה מוסבת ולא ישירה: הסורק מנותק מה-DOM עד לפתיחת הנעילה, ולכן
+   קשירה ישירה בזמן הטעינה לא תפסה אף כפתור והכפתורים בבלוק התוצאות
+   היו מתים. ההאזנה על המסמך עובדת גם על אלמנטים שחוזרים לעמוד מאוחר יותר. */
+document.addEventListener('click', function(ev){
+  const b = ev.target && ev.target.closest ? ev.target.closest('.ef-cta-btn') : null;
+  if(!b) return;
+  (()=>{
   // מי שכבר השאיר פרטים בביקור הזה לא צריך למלא שוב: מחזירים אותו למסך התודה
   if(window.__leadSent){ $('lead-form').scrollIntoView({behavior:'smooth'}); return; }
   const sel=$('f-interest'); if(sel && b.dataset.interest) sel.value=b.dataset.interest;
   // הסריקה כבר ענתה על שלב 1, פותחים את הוויזרד ישר בשלב 2
   if(window.__wzPick && b.dataset.interest) window.__wzPick(b.dataset.interest);
   $('lead-form').scrollIntoView({behavior:'smooth'});
-}));
+  })();
+});
 </script>
 
 </body>
