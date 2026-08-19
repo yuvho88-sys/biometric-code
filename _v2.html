@@ -1051,6 +1051,7 @@ window.BC_TRACK = {
     --scrim-text:rgba(8,20,23,.86); --scrim-mid:rgba(8,20,23,.80);
     --scrim-mid-2:rgba(8,20,23,.52); --scrim-soft:rgba(8,20,23,.22);
     --scrim-edge:rgba(8,20,23,0);
+    --hero-figure-pad:348px;   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
     --shadow-ink:rgba(0,0,0,.45); --shadow-ink-2:rgba(0,0,0,.5); --shadow-deep:rgba(0,0,0,.8);
     --lighten:#FFFFFF;   /* משמש רק כמסיס בתוך color-mix, לא כצבע רכיב */
   }
@@ -1215,7 +1216,7 @@ window.BC_TRACK = {
      שלו עצמו. הסקרים מכהה רק את גזרת הטקסט ונפתח לפני הדמות */
   @media (max-width:600px){
     html.skin-f .bc .hero {
-      min-height:auto; display:block; padding:20px 0 380px;
+      min-height:auto; display:block; padding:20px 0 var(--hero-figure-pad);
       background:var(--bg-hero-warm);
     }
     html.skin-f .bc .hero::before {
@@ -1234,6 +1235,20 @@ window.BC_TRACK = {
     html.skin-f .bc .hero-copy { max-width:100%; }
     html.skin-f .bc .hero .hero-proof { color:var(--text-on-dark); }
     html.skin-f .bc .hero .hero-proof span { color:var(--pole-cool); text-shadow:0 1px 10px var(--shadow-deep); }
+
+    /* ── כיול טיפוגרפי למובייל ──
+       שורה 3 היא נקודת העוגן: היא מכוילת למלא כ-93% מרוחב התוכן, בערך
+       מועדף מבוסס vw כדי שהיחס יישמר גם ב-360. שתי השורות שמעליה נגזרות
+       ממנה. שורה 1 נעצרת ברצפה של 17 פיקסלים ולכן היא יוצאת גדולה מהיחס
+       התאורטי: מתחת לזה היא כיתוב אגבי ולא שורת פתיחה. */
+    html.skin-f .bc .hero-h1 { margin:2px 0 .7rem; line-height:1.08; }
+    html.skin-f .bc .hero-h1 .hl-1 { font-size:clamp(17px,3.4vw,24px); margin-bottom:.16em; }
+    html.skin-f .bc .hero-h1 .hl-2 { font-size:clamp(20px,calc(6.71vw - 3.22px),42px); margin-bottom:.08em; }
+    html.skin-f .bc .hero-h1 .hl-3 { font-size:clamp(30px,calc(11.67vw - 5.6px),72px); }
+    html.skin-f .bc .hero-sub { font-size:17px; line-height:1.55; margin-bottom:1.1rem; }
+    html.skin-f .bc .hero .hero-ctas { margin-top:.2rem; }
+    html.skin-f .bc .hero .hero-alt { font-size:16px; line-height:1.5; margin-top:12px; }
+    html.skin-f .bc .hero .hero-proof { font-size:16px; line-height:1.5; margin-top:14px; }
   }
 </style>
 
