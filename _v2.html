@@ -1174,6 +1174,82 @@ window.BC_TRACK = {
     }
     html.skin-f .bc .cta::before { width:56px; }
   }
+
+  /* ══ מובייל, גרסה סופית: אותה קומפוזיציה של הדסקטופ, בפריים ייעודי ══
+     במקום למתוח את הצילום הרחב על מסך גבוה, נבנה קובץ נפרד לנייד:
+     הפריים המקורי יושב בתחתיתו, והקיר שמעליו נמתח כלפי מעלה מתוך
+     השורות העליונות שלו עצמו. כך הטקסט יושב על המשך הקיר, רעות עומדת
+     בשליש התחתון, והקהל נשאר בתחתית הפריים — בלי הגדלה ובלי טשטוש. */
+  @media (max-width:900px){
+    html.skin-f .bc .hero { padding:18px 0 50px; }
+    html.skin-f .bc .hero::before {
+      inset:0; height:auto;
+      background:url(media/stage-m.jpg) center bottom/cover no-repeat;
+      background:image-set(url(media/stage-m.webp) type("image/webp"), url(media/stage-m.jpg) type("image/jpeg")) center bottom/cover no-repeat;
+      filter:contrast(1.05) saturate(.9) brightness(.96);
+      -webkit-mask-image:none; mask-image:none;
+    }
+    /* הקיר מוחשך כדי שהטקסט יישב עליו, ונפתח למטה כדי שרעות והקהל ייראו */
+    html.skin-f .bc .hero::after {
+      inset:0; height:auto;
+      background:
+        linear-gradient(to bottom,
+          rgba(9,20,23,.93) 0%, rgba(9,20,23,.91) 38%, rgba(9,20,23,.84) 52%,
+          rgba(9,20,23,.58) 64%, rgba(9,20,23,.34) 74%, rgba(9,20,23,.30) 88%,
+          rgba(9,20,23,.62) 100%),
+        radial-gradient(80% 26% at 42% 76%, rgba(255,186,132,.16) 0%, transparent 76%);
+    }
+    html.skin-f .bc .hero-copy { max-width:100%; padding-top:6px; }
+  }
+
+  @media (max-width:900px){
+    /* מרווח נוסף בתחתית דוחף את הפריים מטה, כך שהפנים שלה נוחתות מתחת
+       לכפתור ולא מאחוריו, ומה שנפתח מלמטה הוא רצפת הבמה והקהל */
+    html.skin-f .bc .hero { padding-bottom:124px; }
+    html.skin-f .bc .hero > .wrap::before,
+    html.skin-f .bc .hero > .wrap::after { bottom:auto; top:calc(100% + 14px); }
+    html.skin-f .bc .hero > .wrap::before { top:calc(100% + 28px); }
+    /* שתי השורות האחרונות יושבות על הצילום, ולכן הן צריכות משקל ואור */
+    html.skin-f .bc .hero .hero-alt,
+    html.skin-f .bc .hero .hero-proof { color:#E4F0ED; text-shadow:0 1px 12px rgba(0,0,0,.85); }
+    html.skin-f .bc .hero .hero-proof span { color:#A9DCD2; }
+  }
+
+  /* ══ שלוש השורות הן משפט אחד, לא שלושה בלוקים ══
+     הכותרת פותחת, השורה השנייה ממשיכה, והשלישית היא הקאצ'. לכן שלושתן
+     באותה משפחת אותיות, בסולם יורד־ואז־עולה, במרווחים צמודים שנקראים
+     כנשימה אחת. ההדגשה היושבת על "כפות הידיים" היא הנקודה שהמשפט חותר אליה. */
+  html.skin-f .bc .hero h1 { margin-bottom:.3rem; }
+  html.skin-f .bc .hero .hero-kick,
+  html.skin-f .bc .hero .hero-bio {
+    font-family:'Frank Ruhl Libre','David Libre',serif;
+    letter-spacing:-.012em; line-height:1.24;
+  }
+  html.skin-f .bc .hero .hero-kick {
+    font-size:clamp(1.34rem,2.9vw,2.1rem); font-weight:500;
+    color:#B9D3CF; margin:0 0 .4rem;
+  }
+  html.skin-f .bc .hero .hero-bio {
+    font-size:clamp(1.5rem,3.4vw,2.65rem); font-weight:700;
+    color:#F4FBF9; margin:0 0 1.7rem;
+  }
+  html.skin-f .bc .hero .hero-bio .hl {
+    color:#5FE0CE; position:relative; white-space:nowrap;
+  }
+  /* קו מדידה דק מתחת להדגשה, מאותה משפחה של פס השנתות בתחתית האולם */
+  html.skin-f .bc .hero .hero-bio .hl::after {
+    content:''; position:absolute; inset-inline:0; bottom:-.14em; height:2px;
+    background:linear-gradient(90deg, transparent 0, #5FE0CE 12%, #5FE0CE 88%, transparent 100%);
+    opacity:.65;
+  }
+
+  /* השורה השלישית נשברה כך ש"מספרות." נשארה לבדה. איזון שבירה + מידה
+     מעט קטנה מחזירים אותה לשתי שורות שוות */
+  html.skin-f .bc .hero .hero-bio {
+    font-size:clamp(1.42rem,3vw,2.32rem);
+    text-wrap:balance; max-width:26ch;
+  }
+  html.skin-f .bc .hero h1 { text-wrap:balance; }
 </style>
 
 <div class="bc">
@@ -1189,7 +1265,7 @@ window.BC_TRACK = {
       <div class="hero-copy">
         <h1 class="fade">לכל מרואיין יש שני סיפורים.</h1>
         <p class="hero-kick fade">אחד מהם הוא הכין מראש.</p>
-        <p class="hero-bio fade">את הסיפור השני כפות הידיים כבר מספרות.</p>
+        <p class="hero-bio fade">את הסיפור השני <span class="hl">כפות הידיים</span> כבר מספרות.</p>
         <p class="sub fade">את הפער בין השניים בארגון תמיד מגלים באיחור. בחודש השלישי של מי שנראה מושלם, ובשיחת העזיבה של מי שכבר מזמן החליט.</p>
         <p class="hero-bridge fade">ומה אם הייתם רואים את זה כבר בפגישה הראשונה, ולא בשיחת העזיבה?</p>
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
