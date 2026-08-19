@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="he" dir="rtl" class="skin-e skin-f">
+<html lang="he" dir="rtl" class="skin-e">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1010,400 +1010,6 @@ window.BC_TRACK = {
   .bc .cam-flip{position:absolute;top:10px;left:10px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid color-mix(in srgb, var(--accent-border) 50%, transparent);background:rgba(20,27,42,.72);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer}
   .bc .cam-flip:hover{border-color:var(--gold)}
   .bc .cam-flip svg{width:20px;height:20px}
-
-  /* ══════════════════════════════════════════════════════════════════
-     סקין F · אולם — אור, רעננות, ותחושת הרצאה כבר מהמסך הראשון
-     נטען אחרי סקין E ודורס לו את הטוקנים ואת בלוק הפתיחה. כל הכללים
-     המבניים של E נשארים בתוקף (גרעין הנייר, הרמת z-index, פאנלי הווידאו).
-     חוק: אפס ערכי צבע קשיחים ברכיבים. כל צבע יושב כטוקן ברמת הסקין.
-     ══════════════════════════════════════════════════════════════════ */
-  html.skin-f, html.skin-f body { background:#EEF3F3; }
-
-  html.skin-f .bc {
-    /* ── פלטה ── */
-    --bg-dark:#EEF3F3; --bg-dark-elevated:#F7FAFA; --bg-dark-deep:#E4ECEC;
-    --bg-light:#F7FAFA; --bg-light-2:#E4ECEC; --bg-card:#FFFFFF;
-    --text-on-dark:#122225; --text-on-dark-muted:#4B5F62;
-    --text-on-light:#122225; --text-on-light-muted:#4B5F62;
-    --accent-fill:#6E2A35; --accent-fill-deep:#5A2029;
-    --accent-text-on-dark:#6E2A35; --accent-text-on-light:#6E2A35;
-    --accent-on-fill:#F7FAFA;
-    --accent-border:#6E2A35; --accent-hairline:rgba(110,42,53,.26);
-    --measure-line:#0E8577; --measure-text:#0B6A5F; --measure-on-dark:#0B6A5F;
-    --surface-light-bg:#F7FAFA; --surface-light-card:#FFFFFF; --surface-light-text:#122225;
-    --surface-light-muted:#4B5F62; --surface-light-accent:#6E2A35; --surface-light-measure:#0B6A5F;
-    --measure-hairline:rgba(14,133,119,.30);
-    /* שני הקטבים: קורל אנושי, טורקיז טכנולוגי */
-    --pole-warm:#FF6A3D; --pole-cool:#12C7B4;
-
-    /* ── טוקנים חדשים שלא היו בקובץ ── */
-    --radius-cta:12px;
-    --cta-ink:#06211F;
-    --bg-hero:#0A181B;
-    --bg-hero-warm:#1A1512;
-    --hero-ink:#EAF3F1; --hero-ink-muted:#A9C4C0; --hero-ink-warm:#F7CDAE;
-    --rail:#5FE0CE;
-    --stage-glow:rgba(255,183,128,.22); --stage-glow-soft:rgba(255,150,90,.07);
-    --scrim-1:rgba(10,24,27,.95); --scrim-2:rgba(10,24,27,.74);
-    --scrim-3:rgba(10,24,27,.34); --scrim-4:rgba(10,24,27,.20);
-    --scrim-floor:rgba(3,9,11,.66);
-    --scrim-text:rgba(8,20,23,.86); --scrim-mid:rgba(8,20,23,.80);
-    --scrim-mid-2:rgba(8,20,23,.52); --scrim-soft:rgba(8,20,23,.22);
-    --scrim-edge:rgba(8,20,23,0);
-    --hero-figure-pad:calc(81vw + 16px);   /* ראשה של רעות יורד ככל שהמסך רחב יותר, כי הפריים נמתח לפי הרוחב. לכן המרווח נגזר מהרוחב ולא קבוע */   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
-    --shadow-ink:rgba(0,0,0,.45); --shadow-ink-2:rgba(0,0,0,.5); --shadow-deep:rgba(0,0,0,.8);
-    --lighten:#FFFFFF;   /* משמש רק כמסיס בתוך color-mix, לא כצבע רכיב */
-  }
-  html.skin-f .bc::before { opacity:.20; }
-  html.skin-f .bc > *:not(.wa):not(.sticky):not(.skip-link) { position:relative; z-index:2; }
-
-  /* ══════════ בלוק הפתיחה ══════════ */
-  html.skin-f .bc .hero {
-    --text-on-dark:var(--hero-ink);
-    --text-on-dark-muted:var(--hero-ink-muted);
-    --accent-text-on-dark:var(--hero-ink);
-    --gold-text-on-dark:var(--hero-ink-warm);
-    color:var(--text-on-dark);
-    background:var(--bg-hero);
-    position:relative; z-index:3; overflow:visible;
-    padding:30px 0 74px;
-    min-height:min(86vh,760px);
-    display:flex; align-items:center;
-  }
-  html.skin-f .bc .hero::before {
-    content:""; position:absolute; inset:0; z-index:0;
-    background:url(media/stage.jpg) center/cover no-repeat;
-    background:image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg")) center/cover no-repeat;
-    background-position:38% center;
-    filter:contrast(1.16) saturate(.84) brightness(.88);
-  }
-  /* שלוש שכבות אור: הילה חמה מאחורי רעות, אפלה שנסגרת מצד הטקסט,
-     וכהות שעולה מהרצפה כדי שהקהל בתחתית הפריים יישאר צללית */
-  html.skin-f .bc .hero::after {
-    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:
-      radial-gradient(58% 68% at 27% 44%, var(--stage-glow) 0%, var(--stage-glow-soft) 44%, transparent 74%),
-      linear-gradient(to left, var(--bg-hero) 0%, var(--scrim-1) 32%, var(--scrim-2) 55%, var(--scrim-3) 78%, var(--scrim-4) 100%),
-      radial-gradient(120% 78% at 50% 106%, var(--scrim-floor) 0%, transparent 58%);
-  }
-  html.skin-f .bc .hero > .wrap { position:relative; z-index:2; width:100%; padding-bottom:10px; }
-
-  html.skin-f .bc .hero-copy { max-width:38.5rem; margin-inline:0 auto; text-align:right; }
-  html.skin-f .bc .hero-copy .hero-ctas { justify-content:flex-start; }
-  html.skin-f .bc .hero-copy .hero-proof { margin-inline:0; }
-  /* הכפתור ירד לסוף הסקשן, ולכן הוא מקבל את המרווח שלו משורת ההמלצה */
-  /* הכפתור יורד מתחת לתמונה ויושב על התפר בין האולם לסקשן הבהיר.
-     הוא יוצא מזרימת הטקסט, ולכן הטקסט למעלה כבר לא צריך לפנות לו מקום */
-  html.skin-f .bc .hero .hero-ctas {
-    position:absolute; bottom:0; inset-inline-start:50%;
-    transform:translate(50%,50%); margin:0; z-index:5;
-    justify-content:center; width:auto;
-  }
-  html.skin-f .bc .hero .hero-ctas .cta { white-space:nowrap; width:auto; }
-  /* הסקשן שאחריו פותח מקום לכפתור שנכנס לתוכו */
-  html.skin-f .bc .tstm { padding-top:74px; }
-  html.skin-f .bc .hero .hero-alt { margin-top:1.15rem; }
-  html.skin-f .bc .hero .hero-proof { margin-top:1.15rem; }
-  html.skin-f .bc .hero .wm-hand { content:url(media/mark.png); }
-
-  /* פירמידה הפוכה: שלוש שורות בתוך h1 אחד, כל שורה נעולה לשורה אחת
-     בכל רוחב, והגודל הוא שמתכוונן. היחס 1 : 1.6 : 3 נשמר בדסקטופ
-     ונדחס במובייל, כי הקריטריון הנעול הוא שהשורות נכנסות ב-390 */
-  html.skin-f .bc .hero-h1 {
-    font-family:"Frank Ruhl Libre","David Libre",serif;
-    max-width:none; margin:6px 0 1.35rem; line-height:1.14; letter-spacing:-.02em;
-    text-shadow:0 2px 20px var(--shadow-ink);
-  }
-  html.skin-f .bc .hero-h1 span { display:block; white-space:nowrap; }
-  html.skin-f .bc .hero-h1 .hl-1 {
-    font-size:clamp(.94rem,2.34vw,1.42rem); font-weight:700;
-    color:var(--text-on-dark-muted); margin-bottom:.42em;
-  }
-  html.skin-f .bc .hero-h1 .hl-2 {
-    font-size:clamp(1.25rem,3.75vw,2.27rem); font-weight:700;
-    color:var(--text-on-dark); margin-bottom:.14em;
-  }
-  html.skin-f .bc .hero-h1 .hl-3 {
-    font-size:clamp(2rem,6vw,4.25rem); font-weight:900;
-    color:var(--pole-cool);
-  }
-  html.skin-f .bc .hero-sub {
-    max-width:46ch; font-size:clamp(15.5px,1.35vw,19px); line-height:1.62;
-    color:var(--text-on-dark); text-shadow:0 1px 14px var(--shadow-ink-2);
-    margin-bottom:0;
-  }
-  html.skin-f .bc .hero-sub .hl-human { color:var(--pole-warm); font-weight:700; }
-
-  /* ── כניסה מדורגת, CSS בלבד ── */
-  @keyframes heroIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
-  html.skin-f .bc .hero-h1 span,
-  html.skin-f .bc .hero-sub { opacity:0; animation:heroIn .62s var(--ease) forwards; }
-  html.skin-f .bc .hero-h1 .hl-1 { animation-delay:.05s; }
-  html.skin-f .bc .hero-h1 .hl-2 { animation-delay:.30s; }
-  html.skin-f .bc .hero-h1 .hl-3 { animation-delay:.70s; }
-  html.skin-f .bc .hero-sub      { animation-delay:.95s; }
-  @media (prefers-reduced-motion: reduce){
-    html.skin-f .bc .hero-h1 span,
-    html.skin-f .bc .hero-sub { animation:none; opacity:1; transform:none; }
-  }
-
-
-  /* ══════════ כפתור הפעולה: קוטב הטכנולוגיה ══════════ */
-  html.skin-f .bc .cta {
-    background:var(--pole-cool);
-    color:var(--cta-ink);
-    border-radius:var(--radius-cta);
-    padding:15px 30px; min-height:52px;
-    display:inline-flex; align-items:center; justify-content:center;
-    font-family:"Assistant","Segoe UI",Arial,sans-serif; font-weight:700;
-    font-size:clamp(15.5px,1.15vw,17.5px); letter-spacing:0;
-    border:0; text-decoration:none; position:relative; overflow:visible;
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 45%, transparent),
-               0 10px 30px color-mix(in srgb, var(--pole-cool) 26%, transparent);
-    transition:transform .18s var(--ease), box-shadow .18s var(--ease), background-color .18s var(--ease);
-  }
-  /* הנקודה הצפה ופס הקטבים החתוך יורדים מכל מופעי הכפתור */
-  html.skin-f .bc .cta::before,
-  html.skin-f .bc .cta::after { content:none; display:none; }
-  html.skin-f .bc .cta .cta-dot { display:none; }
-  html.skin-f .bc .cta:hover {
-    transform:translateY(-2px);
-    background:color-mix(in srgb, var(--pole-cool) 86%, var(--lighten));
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 60%, transparent),
-               0 16px 40px color-mix(in srgb, var(--pole-cool) 36%, transparent);
-  }
-  html.skin-f .bc .cta:active {
-    transform:translateY(0);
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 50%, transparent),
-               0 6px 18px color-mix(in srgb, var(--pole-cool) 22%, transparent);
-  }
-  html.skin-f .bc .cta:focus-visible {
-    outline:3px solid color-mix(in srgb, var(--pole-cool) 70%, var(--lighten));
-    outline-offset:3px;
-  }
-  @media (prefers-reduced-motion: reduce){
-    html.skin-f .bc .cta { transition:background-color .18s linear, box-shadow .18s linear; }
-    html.skin-f .bc .cta:hover, html.skin-f .bc .cta:active { transform:none; }
-  }
-  /* כפתורי הוויזרד בטופס: המשך הוא צעד ראשי ולכן עובר לקוטב הטכנולוגיה,
-     וחזרה נשאר קישור שקט. כך הבורדו לא מופיע על אף כפתור בדף */
-  html.skin-f .bc .wz-next {
-    background:var(--pole-cool); color:var(--cta-ink);
-    border-radius:var(--radius-cta); min-height:48px;
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 45%, transparent),
-               0 8px 22px color-mix(in srgb, var(--pole-cool) 24%, transparent);
-    transition:transform .18s var(--ease), box-shadow .18s var(--ease), background-color .18s var(--ease);
-  }
-  html.skin-f .bc .wz-next:hover {
-    background:color-mix(in srgb, var(--pole-cool) 86%, var(--lighten));
-    transform:translateY(-2px);
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 60%, transparent),
-               0 14px 32px color-mix(in srgb, var(--pole-cool) 34%, transparent);
-  }
-  html.skin-f .bc .wz-next:active { transform:translateY(0); }
-  html.skin-f .bc .wz-next:focus-visible { outline:3px solid color-mix(in srgb, var(--pole-cool) 70%, var(--lighten)); outline-offset:3px; }
-  html.skin-f .bc .wz-back { color:var(--text-on-light-muted); }
-  html.skin-f .bc .wz-back:hover { color:var(--text-on-light); }
-  @media (prefers-reduced-motion: reduce){
-    html.skin-f .bc .wz-next:hover, html.skin-f .bc .wz-next:active { transform:none; }
-  }
-  /* שורת ההכשרה האישית: קישור ghost בתוך משפט, מדרגה מתחת לכרטיס ההרצאה */
-  html.skin-f .bc .ef-alt {
-    margin-top:14px; text-align:center;
-    font-size:15.5px; line-height:1.6; color:var(--text-on-light-muted);
-  }
-  html.skin-f .bc .ef-alt-link {
-    background:none; border:0; padding:0; font:inherit; cursor:pointer;
-    color:var(--measure-text); text-decoration:underline;
-    text-underline-offset:3px; text-decoration-thickness:1px;
-  }
-  html.skin-f .bc .ef-alt-link:hover { color:var(--text-on-light); }
-  html.skin-f .bc .ef-alt-link:focus-visible { outline:2px solid var(--measure-line); outline-offset:3px; border-radius:3px; }
-  /* כפתור משנה: מתאר דק בצבע הטקסט המשני, רקע שקוף */
-  html.skin-f .bc .cta.ghost {
-    background:transparent; color:var(--text-on-light-muted);
-    border:1.5px solid color-mix(in srgb, var(--text-on-light-muted) 42%, transparent);
-    box-shadow:none;
-  }
-  /* כלל הבסיס של אבחון הניסיון כפה בורדו בסגוליות גבוהה. כאן הוא מנוטרל */
-  html.skin-f .bc .trial .cta.ghost.trial-cta {
-    color:var(--text-on-light-muted);
-    border-color:color-mix(in srgb, var(--text-on-light-muted) 42%, transparent);
-  }
-  html.skin-f .bc .cta.ghost:hover {
-    background:color-mix(in srgb, var(--text-on-light-muted) 10%, transparent);
-    color:var(--text-on-light); box-shadow:none;
-  }
-
-  /* ══ רוחב ביניים 601 עד 900: עדיין שתי עמודות ══
-     אין מקום לעמודת טקסט מלאה לצד הדמות, ולכן העמודה מצטמצמת והפריים
-     מוסט שמאלה, כדי שיישאר מסדרון ריק בין הטקסט לרעות */
-  @media (min-width:601px) and (max-width:900px){
-    html.skin-f .bc .hero { min-height:min(78vh,660px); padding:26px 0 58px; }
-    html.skin-f .bc .hero::before { background-position:62% center; }
-    html.skin-f .bc .hero::after {
-      background:
-        radial-gradient(52% 62% at 22% 46%, var(--stage-glow) 0%, transparent 74%),
-        linear-gradient(to left, var(--bg-hero) 0%, var(--scrim-1) 40%, var(--scrim-2) 62%, var(--scrim-3) 84%, var(--scrim-4) 100%);
-    }
-    html.skin-f .bc .hero-copy { max-width:26rem; }
-    html.skin-f .bc .hero-sub { max-width:34ch; }
-  }
-
-  /* ══ 600 ומטה: הפרדה אנכית, והדמות מוגנת ══
-     הצילום הרחב לא נמתח על מסך גבוה, אלא מוחלף בקובץ ייעודי שבו הפריים
-     המקורי יושב בתחתית והקיר שמעליו נמתח כלפי מעלה מתוך השורות העליונות
-     שלו עצמו. הסקרים מכהה רק את גזרת הטקסט ונפתח לפני הדמות */
-  @media (max-width:600px){
-    html.skin-f .bc .hero {
-      min-height:auto; display:block; padding:20px 0 var(--hero-figure-pad);
-      background:var(--bg-hero-warm);
-    }
-    html.skin-f .bc .hero::before {
-      background:url(media/stage-m.jpg) center bottom/cover no-repeat;
-      background:image-set(url(media/stage-m.webp) type("image/webp"), url(media/stage-m.jpg) type("image/jpeg")) center bottom/cover no-repeat;
-      filter:contrast(1.04) saturate(.92) brightness(.98);
-    }
-    html.skin-f .bc .hero::after {
-      background:linear-gradient(to bottom,
-        var(--scrim-text) 0%, var(--scrim-text) 34%,
-        var(--scrim-mid) 46%, var(--scrim-mid-2) 56%,
-        var(--scrim-soft) 65%, var(--scrim-edge) 76%);
-    }
-    html.skin-f .bc .hero > .wrap { padding-bottom:8px; }
-
-    html.skin-f .bc .hero-copy { max-width:100%; }
-    html.skin-f .bc .hero .hero-proof { color:var(--text-on-dark); }
-    html.skin-f .bc .hero .hero-proof span { color:var(--pole-cool); text-shadow:0 1px 10px var(--shadow-deep); }
-
-    /* ── כיול טיפוגרפי למובייל ──
-       שורה 3 היא נקודת העוגן: היא מכוילת למלא כ-93% מרוחב התוכן, בערך
-       מועדף מבוסס vw כדי שהיחס יישמר גם ב-360. שתי השורות שמעליה נגזרות
-       ממנה. שורה 1 נעצרת ברצפה של 17 פיקסלים ולכן היא יוצאת גדולה מהיחס
-       התאורטי: מתחת לזה היא כיתוב אגבי ולא שורת פתיחה. */
-    html.skin-f .bc .hero-h1 { margin:2px 0 1.5rem; line-height:1.14; }
-    /* שורה 1 נשארת 17 פיקסלים כרצפת קריאוּת. כדי שהפירמידה בכל זאת
-       תיקרא, ההפרדה נעשית במשקל ובריווח ולא בהקטנה: היא הופכת לשורת
-       סטאפ שקטה במקום להתחרות בפאנץ. */
-    html.skin-f .bc .hero-h1 .hl-1 { font-size:clamp(17px,3.4vw,24px); font-weight:500; letter-spacing:.005em; margin-bottom:.42em; }
-    html.skin-f .bc .hero-h1 .hl-2 { font-size:clamp(18px,calc(6.71vw - 3.22px),42px); margin-bottom:.22em; }
-    html.skin-f .bc .hero-h1 .hl-3 { font-size:clamp(30px,calc(11.67vw - 5.6px),72px); }
-    html.skin-f .bc .hero-sub { font-size:17px; line-height:1.68; }
-
-    html.skin-f .bc .hero .hero-alt { font-size:16px; line-height:1.62; margin-top:1.6rem; }
-    html.skin-f .bc .hero .hero-proof { font-size:16px; line-height:1.62; margin-top:1.5rem; }
-  }
-
-  /* ══════════ המלצות מארגונים ══════════
-     שלושה כרטיסים באותה תבנית, בקו של הדף: פורצלן, כוכבים בקוטב
-     הטכנולוגיה, ומרכאה גדולה באוקסבלוד כהדגשה גרפית בלבד.
-     כרטיס שמסומן is-draft הוא דוגמת עיצוב שממתינה לציטוט מאושר. */
-  html.skin-f .bc .tstm {
-    position:relative; isolation:isolate;
-    background:
-      radial-gradient(120% 82% at 50% 0%, color-mix(in srgb, var(--pole-cool) 8%, transparent) 0%, transparent 60%),
-      linear-gradient(180deg, var(--surface-light-card) 0%, var(--surface-light-bg) 44%, var(--surface-light-card) 100%);
-  }
-  /* רשת נקודות דקה. נותנת מרקם לנייר בלי להיראות כמו דפוס */
-  html.skin-f .bc .tstm::before {
-    content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.55;
-    background-image:radial-gradient(color-mix(in srgb, var(--measure-line) 20%, transparent) 1px, transparent 1px);
-    background-size:22px 22px;
-    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
-    mask-image:linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
-  }
-  html.skin-f .bc .tstm > .wrap { position:relative; z-index:1; }
-  html.skin-f .bc .tstm h2 {
-    text-align:center; font-size:var(--fs-h2); color:var(--surface-light-text);
-    margin:0 0 8px; max-width:22ch; margin-inline:auto;
-  }
-  html.skin-f .bc .tstm .tstm-sub {
-    text-align:center; color:var(--surface-light-muted);
-    font-size:var(--fs-sm); margin:0 auto 30px; max-width:44ch;
-  }
-  html.skin-f .bc .tstm-grid {
-    display:grid; gap:16px; grid-template-columns:1fr;
-  }
-  @media (min-width:860px){
-    html.skin-f .bc .tstm-grid { grid-template-columns:repeat(3,1fr); gap:18px; }
-  }
-  html.skin-f .bc .tstm-card {
-    position:relative; margin:0; padding:24px 22px 20px;
-    background:var(--surface-light-card);
-    border:1px solid color-mix(in srgb, var(--measure-line) 22%, transparent);
-    border-radius:16px;
-    box-shadow:0 1px 2px color-mix(in srgb, var(--surface-light-text) 6%, transparent),
-               0 10px 26px color-mix(in srgb, var(--surface-light-text) 5%, transparent);
-    display:flex; flex-direction:column;
-  }
-  /* המרכאה: סימן גרפי, לא טקסט */
-  html.skin-f .bc .tstm-card::before {
-    content:"\201D"; position:absolute; left:20px; right:auto; top:2px;
-    font-family:"Frank Ruhl Libre","David Libre",serif; font-weight:700;
-    font-size:64px; line-height:1; color:var(--accent-text-on-light); opacity:.16;
-  }
-  html.skin-f .bc .tstm-stars { display:flex; gap:3px; margin-bottom:12px; }
-  html.skin-f .bc .tstm-stars svg { width:17px; height:17px; fill:var(--pole-cool); }
-  html.skin-f .bc .tstm-card blockquote {
-    margin:0 0 18px; font-size:16.5px; line-height:1.72;
-    color:var(--surface-light-text); flex:1;
-  }
-  html.skin-f .bc .tstm-card figcaption {
-    display:flex; align-items:center; gap:11px;
-    padding-top:14px;
-    border-top:1px solid color-mix(in srgb, var(--measure-line) 18%, transparent);
-  }
-  html.skin-f .bc .tstm-av {
-    width:38px; height:38px; flex:0 0 38px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    background:color-mix(in srgb, var(--pole-cool) 18%, transparent);
-    border:1px solid color-mix(in srgb, var(--pole-cool) 42%, transparent);
-    color:var(--measure-text); font-weight:700; font-size:16px;
-    font-family:"Frank Ruhl Libre","David Libre",serif;
-  }
-  html.skin-f .bc .tstm-who { display:flex; flex-direction:column; line-height:1.35; }
-  html.skin-f .bc .tstm-org {
-    font-weight:700; font-size:15px; color:var(--surface-light-text);
-  }
-  html.skin-f .bc .tstm-role {
-    font-family:"IBM Plex Sans Hebrew","Assistant",sans-serif;
-    font-size:12.5px; letter-spacing:.04em; color:var(--surface-light-muted);
-  }
-  /* סימון גלוי לכרטיס שממתין לציטוט אמיתי */
-  html.skin-f .bc .tstm-card.is-draft {
-    border-style:dashed;
-    border-color:color-mix(in srgb, var(--accent-border) 38%, transparent);
-  }
-  html.skin-f .bc .tstm-flag {
-    position:absolute; inset-inline-end:16px; top:-11px;
-    font-family:"IBM Plex Sans Hebrew","Assistant",sans-serif;
-    font-size:11.5px; letter-spacing:.06em; font-weight:600;
-    color:var(--accent-on-fill); background:var(--accent-fill);
-    padding:4px 10px; border-radius:999px;
-  }
-
-  @media (max-width:600px){
-    html.skin-f .bc .tstm { padding-top:64px; }
-    html.skin-f .bc .tstm h2 { font-size:clamp(22px,6vw,27px); max-width:18ch; }
-    html.skin-f .bc .tstm .tstm-sub { margin-bottom:24px; }
-    html.skin-f .bc .tstm-grid { gap:20px; }
-    html.skin-f .bc .tstm-card { padding:22px 18px 18px; border-radius:14px; }
-    html.skin-f .bc .tstm-card blockquote { font-size:16px; line-height:1.7; margin-bottom:16px; }
-    html.skin-f .bc .tstm-card::before { font-size:52px; }
-    html.skin-f .bc .tstm-stars svg { width:16px; height:16px; }
-    html.skin-f .bc .tstm-av { width:34px; height:34px; flex-basis:34px; font-size:15px; }
-    html.skin-f .bc .tstm-org { font-size:14.5px; }
-    html.skin-f .bc .tstm-flag { font-size:11px; padding:3px 9px; inset-inline-end:12px; }
-  }
-
-  /* ══ בדף החי: רק המלצות אמיתיות ══
-     שני כרטיסי הדוגמה מוסתרים כאן, כדי שהדף הפומבי לא יציג ציטוטים
-     שאיש לא אמר וגם לא תוויות של עבודה בתהליך. הם ממשיכים לחיות
-     בעותק התצוגה _v2.html. ברגע שיגיעו שתי המלצות אמיתיות עם שם
-     ותפקיד, מוחקים את הבלוק הזה והן חוזרות לרשת. */
-  html.skin-f .bc .tstm-card.is-draft { display:none; }
-  html.skin-f .bc .tstm-grid { max-width:620px; margin-inline:auto; }
-  @media (min-width:860px){ html.skin-f .bc .tstm-grid { grid-template-columns:1fr; } }
 </style>
 
 <div class="bc">
@@ -1417,95 +1023,25 @@ window.BC_TRACK = {
         <a href="#top" class="wordmark" aria-label="רעות ביטון, לראש הדף"><img class="wm-hand" src="media/mark.png" width="209" height="160" alt="" aria-hidden="true"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></a>
       </div>
       <div class="hero-copy">
-        <h1 class="hero-h1">
-          <span class="hl-1">לכל מועמד יש סיפור שני.</span>
-          <span class="hl-2">בדרך כלל מגלים אותו כשכבר מאוחר מדי.</span>
-          <span class="hl-3">אפשר גם בזמן הראיון.</span>
-        </h1>
-        <p class="sub hero-sub">את הסיפור הזה <span class="hl-human">כפות הידיים</span> מספרות בלי מילים. שיטה מובנית לקרוא אותו — לפני החתימה, לא בשיחת העזיבה.</p>
+        <h1 class="fade">לכל מרואיין יש שני סיפורים.</h1>
+        <p class="hero-kick fade">אחד מהם הוא הכין מראש.</p>
+        <p class="hero-bio fade">את הסיפור השני כפות הידיים כבר מספרות.</p>
+        <p class="sub fade">את הפער בין השניים בארגון תמיד מגלים באיחור. בחודש השלישי של מי שנראה מושלם, ובשיחת העזיבה של מי שכבר מזמן החליט.</p>
+        <p class="hero-bridge fade">ומה אם הייתם רואים את זה כבר בפגישה הראשונה, ולא בשיחת העזיבה?</p>
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
         עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
         -->
-      </div>
-      </div>
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a>
         </div>
+        <p class="hero-alt fade">פחות טעויות גיוס. פחות עזיבות שתופסות אתכם לא מוכנים. וצוות שמדבר על אנשים באותה שפה.</p>
+        <p class="hero-proof fade">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר."<span>המועצה המקומית קדימה־צורן</span></p>
+      </div>
+      </div>
   </header>
 
-  <!-- ═══ המלצות מארגונים ═══
-       כרטיס 1 הוא ציטוט אמיתי שכבר מופיע בדף. כרטיסים 2 ו-3 הם דוגמאות
-       עיצוב בלבד ומסומנים ככאלה, עד שרעות תמסור ציטוטים אמיתיים עם שם,
-       תפקיד וארגון. אין להסיר את הסימון בלי ציטוט מאושר. -->
-  <section class="s-ivory tstm" id="tstm">
-    <div class="wrap">
-      <h2 class="fade">מה אומרים מנהלי גיוס וארגונים</h2>
-      <p class="tstm-sub fade">אחרי הרצאה לצוות, בארגונים שכבר עשו את זה.</p>
-
-      <div class="tstm-grid">
-
-        <figure class="tstm-card fade">
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">ק</span>
-            <span class="tstm-who">
-              <span class="tstm-org">המועצה המקומית קדימה־צורן</span>
-              <span class="tstm-role">אחרי מפגש לצוות העובדים</span>
-            </span>
-          </figcaption>
-        </figure>
-
-        <figure class="tstm-card is-draft fade">
-          <span class="tstm-flag">דוגמה · ממתין לאישור</span>
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>הגעתי ספקן. אחרי עשרים דקות כבר רשמתי לעצמי שאלות ששכחתי לשאול בראיונות. הצוות דיבר על זה שבוע.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">מ</span>
-            <span class="tstm-who">
-              <span class="tstm-org">שם הארגון</span>
-              <span class="tstm-role">מנהל או מנהלת גיוס</span>
-            </span>
-          </figcaption>
-        </figure>
-
-        <figure class="tstm-card is-draft fade">
-          <span class="tstm-flag">דוגמה · ממתין לאישור</span>
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>מאז אנחנו מדברים על מועמדים אחרת. יש לנו שפה אחת לתאר אנשים, וזה קיצר לנו ויכוחים בוועדות.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">א</span>
-            <span class="tstm-who">
-              <span class="tstm-org">שם הארגון</span>
-              <span class="tstm-role">משאבי אנוש ופיתוח ארגוני</span>
-            </span>
-          </figcaption>
-        </figure>
-
-      </div>
-    </div>
-  </section>
-
   <!-- 4b. DECODE (moved from /giyus/, verbatim) -->
-<section class="s-deep decode" id="decode">
+<section class="s-deep decode gated" id="decode">
   <div class="wrap">
     <h2 class="fade">אל תאמינו למילים. תבדקו על עצמכם.</h2>
     <p class="sub fade">אבחון דיגיטלי קצר, לפני שמחליטים אם השיטה מתאימה לצוות. שלוש דרכים להתחיל: תמונה של כף היד, סריקה חיה במצלמה, או שאלון בלי מצלמה.</p>
@@ -1572,9 +1108,13 @@ window.BC_TRACK = {
             <div class="ef-cta">
               <h4>רוצה שהצוות שלך יחווה את זה על עצמו?</h4>
               <p>אני מעבירה הרצאות למנהלי/ות ואנשי/נשות משאבי אנוש. חוויה שבה כל משתתף/ת מרגיש/ה שנגעתי במשהו אמיתי אצלו/ה, ולומד/ת כלי מעשי לקריאת אנשים בגיוס, בהשמה ובהחלטות. בדיוק כמו האבחון הזה, רק לעומק ועל כל הצוות.</p>
-              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">קבלו תאריכים והצעה להרצאה</button>
+              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">הביאו את רעות להרצאה ←</button>
             </div>
-            <p class="ef-alt">מעדיפים ללמוד לקרוא את זה בעצמכם? יש גם <button type="button" class="ef-cta-btn ef-alt-link" data-interest="הכשרה אישית">הכשרה אישית</button> — אפשר לסמן את זה בטופס.</p>
+            <div class="ef-cta">
+              <h4>רוצה ללמוד לקרוא את זה בעצמך?</h4>
+              <p>האבחון נתן 5 עדשות. בהכשרה האישית, אחד על אחד, לומדים לזהות את הדפוסים האלה באנשים שיושבים מולכם. היכולת נשארת אצלכם בארגון.</p>
+              <button type="button" class="cta ghost ef-cta-btn" data-interest="הכשרה אישית">ללמוד את הכלי בעצמי ←</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1595,7 +1135,7 @@ window.BC_TRACK = {
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
         <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="דינמיקה, חיכוכים ותקשורת">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="אחד על אחד">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד">עוד לא בטוחים</option></select></div>
-        <button type="submit" class="cta">קבלו תאריכים והצעה להרצאה</button>
+        <button type="submit" class="cta">קבלו תאריכים והצעה</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת. אחזור אליכם עם פרטים והצעה, וההחלטה כולה שלכם.</p>
       </form>
@@ -1654,7 +1194,25 @@ window.BC_TRACK = {
   </section>
 
   <!-- 4. BENEFITS -->
-  
+  <section class="s-navy benes surface-light">
+    <div class="wrap">
+      <h2 class="fade">הרצאה אחת. שלושה דברים שנשארים אחריה.</h2>
+      <div class="grid3">
+        <div class="card fade">
+          <h3>חוויה שמגבשת</h3>
+          <p>שעה שכולם משתתפים בה: כל עובד מגלה מה כף היד שלו מספרת עליו, ומשווה עם הקולגות. אחד צוחק, השני נשבע שזה לא ייתכן, ודווקא השקט שבפינה מודה שקלעו בול. על השעה הזאת מדברים במטבחון עוד הרבה זמן.</p>
+        </div>
+        <div class="card fade">
+          <h3>שפה מקצועית חדשה</h3>
+          <p>הצוות יוצא עם שפה מעשית לתקשורת: מי מחליט מהר ומי צריך לישון על זה. יש כאלה שפורחים כשנותנים להם חופש, ויש כאלה שדווקא צריכים גבולות ברורים. פחות חיכוכים, יותר הבנה. את ההבדל שומעים כבר בישיבה הראשונה שאחרי.</p>
+        </div>
+        <div class="card fade">
+          <h3>כלי ניהולי שנשאר</h3>
+          <p>מנהלים לומדים לראות את מה שהעובד לא אומר: מוטיבציה אמיתית, עומס שקט, שחיקה מתחת לפני השטח, לפני שזה הופך למכתב התפטרות. עובד אחד שנשאר, וההרצאה החזירה את עצמה.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- 5. OBJECTION -->
@@ -1663,7 +1221,7 @@ window.BC_TRACK = {
       <span class="badge fade">חשוב שתדעו</span>
       <h2 class="fade">בלי מיסטיקה ובלי רוחניות. שיטה שאפשר למדוד ולבדוק.</h2>
       <p class="fade">שיטת <span class="ltr">H.I.P</span> פותחה על ידי רעות ביטון על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן ו-17 שנות ניסיון באבחון התנהגות אנושית. זה כלי מדידה של דפוסי התנהגות ואישיות, נקודה. אין פה קריאת עתידות, ואת זה מבינות מהר גם ההנהלות הכי אנליטיות.</p>
-      <p class="obj-stat fade">אבחונים לאורך שנים. אפס מגע פיזי.</p>
+      <p class="obj-stat fade">מאות אבחונים. אפס מגע פיזי.</p>
     </div></div>
   </section>
 
@@ -1679,7 +1237,7 @@ window.BC_TRACK = {
           <h2>שלום, אני רעות.</h2>
           <p>יש פרק בקורות החיים שלי שאני לא מרחיבה עליו, ואספר ממנו רק דבר אחד: במשך שנים עבדתי במקום שבו טעות בקריאת אדם לא עולה כסף. היא עולה הרבה יותר.</p>
           <p>שם למדתי שאנשים הם שני סיפורים: הסיפור שהם מספרים, ומי שהם באמת. ואת ההבדל בין השניים לא שומעים במילים. רואים אותו.</p>
-          <p>היום, אחרי 17 שנים של ניתוח ואבחון התנהגות אנושית, הכשרה מבית ד"ר ארנולד הולצמן, והרצאות ואבחונים לאורך השנים, אני עושה את זה בשיטה שפיתחתי, <span class="ltr">H.I.P</span>, בדרך שנשמעת מוזרה בפעם הראשונה שמספרים לכם עליה: אני קוראת אנשים מכפות הידיים שלהם.</p>
+          <p>היום, אחרי 17 שנים של ניתוח ואבחון התנהגות אנושית, הכשרה מבית ד"ר ארנולד הולצמן, ומאות אבחונים והרצאות, אני עושה את זה בשיטה שפיתחתי, <span class="ltr">H.I.P</span>, בדרך שנשמעת מוזרה בפעם הראשונה שמספרים לכם עליה: אני קוראת אנשים מכפות הידיים שלהם.</p>
           <p class="letter-punch">כף היד לא עוברת עריכה. וזה כל היתרון שלה.</p>
           <p>ומה אני לא מבטיחה: לא דיוק של מאה אחוז, ולא החלטה במקומכם. האבחון לא מחליף קורות חיים, בדיקת המלצות, ריאיון או תקופת ניסיון. הוא מצטרף אליהם, ומוסיף את השכבה האחת שאף אחד מהם לא רואה.</p>
           <p class="sign">שלך,<br><strong>רעות ביטון</strong><br>בינה אנושית · שיטת <span class="ltr">H.I.P</span></p>
@@ -1691,7 +1249,19 @@ window.BC_TRACK = {
   </section>
 
   <!-- 6b. TRIAL DIAGNOSIS -->
-  
+  <section class="s-ivory trial surface-dark">
+    <div class="wrap"><div class="text-col">
+      <h2 class="fade">לא מאמינים? אל תאמינו. תבדקו.</h2>
+      <ul class="trial-steps fade">
+        <li>בחרו עובד ותיק שאתם מכירים היטב</li>
+        <li>אבחון <span class="ltr">H.I.P</span> מלא מתמונת כפות ידיים</li>
+        <li>דוח מפורט להשוואה מול מה שאתם כבר יודעים</li>
+      </ul>
+      <p class="kick fade">אם הדיוק לא יפתיע אתכם, לא שילמתם שקל ולא נמשיך. אם כן? נדבר על ההרצאה והמשך הדרך.</p>
+      <div class="center-cta fade"><a href="#lead-form" class="cta ghost trial-cta">בקשו אבחון ניסיון לעובד אחד</a></div>
+      <p class="no-commit fade">אבחוני הניסיון ניתנים בכפוף לזמינות.</p>
+    </div></div>
+  </section>
 
 
 
@@ -1710,8 +1280,20 @@ window.BC_TRACK = {
   </section>
 
   <!-- 10. FAQ -->
-  <section class="s-navy faq closing">
-    <div class="wrap">      <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
+  <section class="s-navy faq">
+    <div class="wrap">
+      <h2 class="fade">השאלות שחוזרות לפני שמזמינים</h2>
+      <div class="list fade">
+        <details><summary>כמה זמן נמשכת ההרצאה ולאיזה גודל קהל היא מתאימה?</summary><div class="ans">ההרצאה נמשכת 60 עד 75 דקות ומותאמת לגודל הקהל שלכם, מצוות מצומצם ועד כנס חברה. בשיחת האפיון נדייק יחד את הפורמט.</div></details>
+        <details open><summary>כמה זה עולה?</summary><div class="ans">תעשו רגע את החשבון של עזיבה אחת אצלכם: גיוס והכשרה, וכל החודשים באמצע. ההרצאה עולה פחות מזה, משמעותית. מלאו פרטים ואחזור אליכם עם הצעה מסודרת תוך יום עסקים.</div></details>
+        <details><summary>זה מתאים גם לקהל מגוון של עובדים, מנהלים והייטקיסטים ציניים?</summary><div class="ans">כן. גם הציניקן של המשרד יוצא עם משהו. בדרך כלל הוא זה שצוחק הכי חזק. ההדגמות בזמן אמת עושות את העבודה במקום שכנועים, וכולם יוצאים עם כלי שאפשר להשתמש בו כבר למחרת.</div></details>
+        <details><summary>איך מציגים את זה להנהלה בלי שזה יישמע תלוש?</summary><div class="ans">במשפט אחד: "כלי מדידה של דפוסי התנהגות, שמוסיף שכבת מידע על אנשים בגיוס ובניהול. לא מחליף ריאיון ולא מחליף שיקול דעת." זה הניסוח שעובד, כי הוא לא מבקש מאף אחד להאמין במשהו. ואם רוצים משהו חזק מזה, אפשר לעשות אבחון ניסיון לעובד ותיק ולהראות את הדוח בישיבה.</div></details>
+        <details><summary>זה לא משהו מיסטי? איך זה יתקבל אצל ההנהלה?</summary><div class="ans">ממש לא. שיטת <span class="ltr">H.I.P</span> פותחה על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן, כלי מדידה של דפוסי התנהגות, בלי שום קשר לרוחניות או קריאת עתידות. ההנהלות הכי אנליטיות הן דווקא הקהל שהכי מתחבר.</div></details>
+        <details><summary>מה צריך להכין מבחינה לוגיסטית?</summary><div class="ans">מעט מאוד. חלל עם מקרן או מסך, מיקרופון וכיסאות לקהל. אני מגיעה עם כל השאר.</div></details>
+        <details><summary>האם ההרצאה מתאימה גם לזום/היברידי?</summary><div class="ans">כן. ניתן להעביר את ההרצאה גם בפורמט מקוון או היברידי, וההדגמות עובדות גם דרך המסך.</div></details>
+        <details><summary>זה מתאים גם כאירוע גיבוש?</summary><div class="ans">זה בדיוק המקום שבו זה מצטיין: הרמת כוסית, יום עיון, אופסייט. ההרצאה היא החלק שכולם משתתפים בו וצוחקים בו, ואחר כך מדברים עליו. רק שממנה נשארים גם עם כלים.</div></details>
+      </div>
+      <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
       <p class="cta-micro fade">בלי התחייבות, גם אם אתם רק בודקים תקציב לשנה הבאה.</p>
     </div>
   </section>
@@ -2476,21 +2058,14 @@ window.__efsharRender = renderQuestions;   // לבדיקה/כיול בלבד
   if(sec.classList.contains('gated')) window.__detachDecoder();
 })();
 
-/* האזנה מוסבת ולא ישירה: הסורק מנותק מה-DOM עד לפתיחת הנעילה, ולכן
-   קשירה ישירה בזמן הטעינה לא תפסה אף כפתור והכפתורים בבלוק התוצאות
-   היו מתים. ההאזנה על המסמך עובדת גם על אלמנטים שחוזרים לעמוד מאוחר יותר. */
-document.addEventListener('click', function(ev){
-  const b = ev.target && ev.target.closest ? ev.target.closest('.ef-cta-btn') : null;
-  if(!b) return;
-  (()=>{
+document.querySelectorAll('.ef-cta-btn').forEach(b=>b.addEventListener('click', ()=>{
   // מי שכבר השאיר פרטים בביקור הזה לא צריך למלא שוב: מחזירים אותו למסך התודה
   if(window.__leadSent){ $('lead-form').scrollIntoView({behavior:'smooth'}); return; }
   const sel=$('f-interest'); if(sel && b.dataset.interest) sel.value=b.dataset.interest;
   // הסריקה כבר ענתה על שלב 1, פותחים את הוויזרד ישר בשלב 2
   if(window.__wzPick && b.dataset.interest) window.__wzPick(b.dataset.interest);
   $('lead-form').scrollIntoView({behavior:'smooth'});
-  })();
-});
+}));
 </script>
 
 </body>
