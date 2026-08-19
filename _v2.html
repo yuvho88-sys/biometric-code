@@ -1068,7 +1068,7 @@ window.BC_TRACK = {
     background:
       radial-gradient(58% 68% at 27% 44%, rgba(255,183,128,.22) 0%, rgba(255,150,90,.07) 44%, transparent 74%),
       linear-gradient(to left, #0A181B 0%, rgba(10,24,27,.95) 32%, rgba(10,24,27,.74) 55%, rgba(10,24,27,.34) 78%, rgba(10,24,27,.20) 100%),
-      radial-gradient(130% 96% at 50% 104%, rgba(3,9,11,.88) 0%, transparent 56%);
+      radial-gradient(120% 78% at 50% 106%, rgba(3,9,11,.66) 0%, transparent 58%);
   }
   html.skin-f .bc .hero > .wrap { position:relative; z-index:2; width:100%; padding-bottom:44px; }
 
@@ -1141,6 +1141,36 @@ window.BC_TRACK = {
       background:
         radial-gradient(78% 34% at 50% 30%, rgba(255,183,128,.16) 0%, transparent 74%),
         linear-gradient(to bottom, rgba(8,20,23,.95) 0%, rgba(8,20,23,.93) 42%, rgba(8,20,23,.74) 72%, rgba(8,20,23,.93) 100%);
+    }
+    html.skin-f .bc .cta::before { width:56px; }
+  }
+
+  /* ══ מובייל: הפריים הופך לרצועה, לא לרקע מוגדל ══
+     תמונת הבמה היא 16:9. כשמותחים אותה ב-cover על מסך טלפון צר וגבוה,
+     היא מוגדלת עד שרואים ממנה כרבע לרוחב: הקהל נחתך החוצה, ומה שנשאר
+     נראה מטושטש כי זו פיסה מוגדלת של צילום רחב. במקום זה, הפריים יושב
+     ברצועה ברוחב מלא בפרופורציה שקרובה למקור, הטקסט יורד מתחתיה על רקע
+     כהה אטום, וכך גם התמונה חדה וגם הקריאות מלאה. */
+  @media (max-width:900px){
+    html.skin-f .bc .hero {
+      min-height:auto; padding:18px 0 54px; display:block; background:#0A181B;
+    }
+    html.skin-f .bc .hero::before {
+      inset:74px 0 auto 0; height:min(46vh,360px);
+      background-position:31% 46%;
+      filter:contrast(1.06) saturate(.94) brightness(1);
+      -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 7%, #000 72%, transparent 100%);
+      mask-image:linear-gradient(to bottom, transparent 0, #000 7%, #000 72%, transparent 100%);
+    }
+    /* רק ליטוש: נגיעת אור חמה למעלה והשתלבות בכהה למטה. בלי מסך אפלה */
+    html.skin-f .bc .hero::after {
+      inset:74px 0 auto 0; height:min(46vh,360px);
+      background:
+        radial-gradient(70% 55% at 31% 40%, rgba(255,186,132,.14) 0%, transparent 72%),
+        linear-gradient(to bottom, rgba(10,24,27,.42) 0%, rgba(10,24,27,.06) 24%, rgba(10,24,27,.10) 58%, rgba(10,24,27,.95) 100%);
+    }
+    html.skin-f .bc .hero-copy {
+      max-width:100%; padding-top:calc(min(46vh,360px) + 4px);
     }
     html.skin-f .bc .cta::before { width:56px; }
   }
