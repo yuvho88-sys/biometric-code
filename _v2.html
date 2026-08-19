@@ -1,0 +1,2206 @@
+<!doctype html>
+<html lang="he" dir="rtl" class="skin-e skin-f">
+<head>
+  <meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הרצאה לארגונים שמלמדת לקרוא אנשים | רעות ביטון</title>
+<meta name="description" content="הרצאה לארגונים בשיטת H.I.P שמלמדת את הצוות לקרוא אנשים באמת: מניעת נשירה, שפה חדשה לתקשורת וכלי ניהולי שנשאר. בלי מיסטיקה: מדידה, שיטה, ותוצאות שאפשר לבדוק.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="הרצאה לארגונים שמלמדת לקרוא אנשים | רעות ביטון">
+<meta property="og:description" content="כל אדם הוא שני סיפורים: הסיפור שהוא מספר, ומי שהוא באמת. הרצאה בשיטת H.I.P שמלמדת את הצוות שלך לקרוא את הסיפור השני.">
+<meta property="og:image" content="https://yuvho88-sys.github.io/biometric-code/og-main.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&family=IBM+Plex+Sans+Hebrew:wght@500;600&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A24B' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M14.5 9.5l-2 5-3 1 2-5z'/%3E%3C/svg%3E">
+<!-- תמונת ההירו היא ה-LCP. טעינה מוקדמת, עם הגרסה הקטנה למובייל -->
+<link rel="preload" as="image" href="media/stage-1920.webp" fetchpriority="high"
+      imagesrcset="media/stage-900.webp 900w, media/stage-1400.webp 1400w, media/stage-1920.webp 1920w"
+      imagesizes="100vw">
+<!-- ══════════ מדידה לקמפיין ══════════
+     שלושת המזהים למטה הם כל מה שצריך כדי שהמדידה תעלה לאוויר.
+     ריק = הכלי לא נטען כלל, והדף רץ בדיוק כמו היום. -->
+<script>
+window.BC_TRACK = {
+  gtm:   '',   // GTM-XXXXXXX      מנהל תגיות גוגל
+  meta:  '',   // 15 ספרות         פיקסל מטא
+  ga4:   ''    // G-XXXXXXXXXX     גוגל אנליטיקס 4
+};
+(function(){
+  var C = window.BC_TRACK;
+  window.dataLayer = window.dataLayer || [];
+
+  // ── פרמטרי הקמפיין נלכדים פעם אחת ושורדים ניווט בתוך הדף ──
+  var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+  function readParams(){
+    var q = new URLSearchParams(location.search), out = {}, got = false;
+    KEYS.forEach(function(k){ var v = q.get(k); if(v){ out[k] = v.slice(0,120); got = true; } });
+    if(!got){
+      try { var saved = sessionStorage.getItem('bc_camp'); if(saved) return JSON.parse(saved); } catch(e){}
+      // בלי פרמטרים: מזהים לפחות מאיפה הגיעו
+      var ref = document.referrer || '';
+      out.utm_source = ref ? (ref.split('/')[2] || 'referral') : 'direct';
+      out.utm_medium = ref ? 'referral' : 'none';
+    }
+    try { sessionStorage.setItem('bc_camp', JSON.stringify(out)); } catch(e){}
+    return out;
+  }
+  window.BC_CAMPAIGN = readParams();
+
+  // ── טעינת הכלים, רק אם יש מזהה ──
+  function inject(src, attrs){
+    var s = document.createElement('script'); s.async = true; s.src = src;
+    if(attrs) Object.keys(attrs).forEach(function(k){ s.setAttribute(k, attrs[k]); });
+    document.head.appendChild(s);
+  }
+  if(C.gtm){
+    dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    inject('https://www.googletagmanager.com/gtm.js?id=' + C.gtm);
+  }
+  if(C.ga4){
+    inject('https://www.googletagmanager.com/gtag/js?id=' + C.ga4);
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', C.ga4, {send_page_view: true});
+  }
+  if(C.meta){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', C.meta); fbq('track', 'PageView');
+  }
+
+  // ── נקודת שידור אחת לכל האירועים בדף ──
+  // שמות האירועים במטא הם השמות התקניים, כדי שאפשר יהיה לבצע אופטימיזציה עליהם
+  var META_MAP = { lead_submit:'Lead', form_start:'InitiateCheckout', scan_open:'ViewContent' };
+  var GA_MAP   = { lead_submit:'generate_lead', form_start:'begin_checkout', scan_open:'view_item' };
+  var fired = {};
+  window.bcTrack = function(ev, data){
+    data = data || {};
+    var payload = Object.assign({event: ev}, window.BC_CAMPAIGN, data);
+    try { dataLayer.push(payload); } catch(e){}
+    // אירועי משפך נורים פעם אחת לביקור, כדי שהספירה תישאר נקייה
+    var once = (ev === 'form_start' || ev === 'scan_open');
+    if(once && fired[ev]) return;
+    fired[ev] = true;
+    try { if(window.fbq && META_MAP[ev]) fbq('track', META_MAP[ev], data); } catch(e){}
+    try { if(window.gtag && GA_MAP[ev]) gtag('event', GA_MAP[ev], payload); } catch(e){}
+  };
+})();
+</script>
+</head>
+<body>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&family=IBM+Plex+Sans+Hebrew:wght@500;600&display=swap');
+
+  /* האיפוס נכתב במקור ל-.bc בלבד, כי הדף היה תוכן בלבד בתוך Artifact.
+     בגרסת האתר נשארו ל-body שוליים של 8px מברירת המחדל של הדפדפן,
+     והם יצרו מסגרת בהירה סביב הדף שמנעה מרקע ההירו להגיע לקצוות. */
+  html, body { margin: 0; padding: 0; }
+  .bc, .bc * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* הרקע נמתח על כל החלון, לא רק על תוכן הדף. אחרת מתחת לפוטר ומעל האזור
+     הבטוח במובייל נראה הלבן של הדפדפן */
+  html.skin-e, html.skin-e body { background:#EDE6D6; }
+  .bc {
+    direction: rtl; text-align: right;
+    font-family: 'Assistant','Segoe UI',Arial,sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+    /* ══ חוקת צבע ══
+       1. --accent-fill לעולם לא משמש כצבע טקסט — יש לו וריאנטים ייעודיים.
+       2. טקסט על רקע כהה: --text-on-dark או --accent-text-on-dark בלבד.
+       3. מקסימום 2 אלמנטים אקסנט בולטים לכל viewport.
+       4. --confirm שמור לאישור/הצלחה/זמינות בלבד, לא לקישוט.
+       5. --measure-line הוא צבע גרפי (קווים, נקודות). כטקסט משתמשים ב---measure-text.
+       החלפת סקין: class skin-a / skin-b / skin-c על תגית html. ברירת מחדל = A. */
+
+    /* ─── סקין A · אטלס (ברירת מחדל) ─── */
+    --bg-dark:#241B16; --bg-dark-elevated:#2E231C; --bg-dark-deep:#1B1410;
+    --bg-light:#F5EFE4; --bg-light-2:#EDE5D6; --bg-card:#FBF7EF;
+    --text-on-dark:#F0E9DC; --text-on-dark-muted:#C4B5A4;
+    --text-on-light:#241B16; --text-on-light-muted:#5C4A3F;
+    --accent-fill:#6E2A35; --accent-fill-deep:#5A2029;
+    --accent-text-on-dark:#F29AA7; --accent-text-on-light:#6E2A35;
+    --accent-on-fill:#F5EFE4;
+    --accent-border:#6E2A35; --accent-hairline:rgba(110,42,53,.30);
+  /* סולם טיפוגרפי: שמונה מדרגות עם יחסים ברורים, במקום עשרים גדלים שנוצרו לפי הצורך */
+  --fs-xs:14px; --fs-sm:15px; --fs-base:17px; --fs-lg:18.5px; --fs-xl:21px;
+  --fs-h2:clamp(24px,3.3vw,33px); --fs-h2-lead:clamp(26px,3.7vw,38px);
+    --measure-line:#3E7C6F; --measure-text:#376D62; --measure-on-dark:#7FB5A6;
+    /* משטח בהיר לרגעי נשימה — נגזר מאותה משפחה צבעונית */
+    --surface-light-bg:#F5EFE4; --surface-light-card:#FBF7EF; --surface-light-text:#241B16;
+    --surface-light-muted:#5C4A3F; --surface-light-accent:#6E2A35; --surface-light-measure:#376D62;
+    --measure-hairline:rgba(62,124,111,.34);
+    --confirm:#1FA855;
+
+    /* שמות מדור קודם — ממופים לתפקידים. לא לשימוש בקוד חדש */
+    --gold-fill:var(--accent-fill); --gold-fill-deep:var(--accent-fill-deep);
+    --gold-text-on-dark:var(--accent-text-on-dark); --gold-text-on-light:var(--accent-text-on-light);
+    --gold-border:var(--accent-border); --gold-line:var(--accent-hairline);
+
+    /* שמות מדור קודם — ממופים לתפקידים. לא לשימוש בקוד חדש */
+    --navy:var(--bg-dark); --navy-2:var(--bg-dark-elevated); --navy-deep:var(--bg-dark-deep);
+    --ivory:var(--bg-light); --ivory-2:var(--bg-light-2); --card:var(--bg-card);
+    --gold:var(--gold-fill); --gold-2:var(--gold-fill-deep); --gold-light:var(--gold-text-on-dark);
+    --ink:var(--text-on-light); --muted-l:var(--text-on-dark-muted); --muted-d:var(--text-on-light-muted);
+    --line-gold:var(--gold-line); --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  /* ─── סקין B · חדר מדידה ─── */
+  /* ─── סקין D · סגול (בהשראת Make) ─── */
+  html.skin-d .bc {
+    --bg-dark:#4A1D7A; --bg-dark-elevated:#4E1F82; --bg-dark-deep:#38155E;
+    --bg-light:#F5F3FA; --bg-light-2:#EAE5F4; --bg-card:#FCFBFE;
+    --text-on-dark:#F4EDFA; --text-on-dark-muted:#DCCCEC;
+    --text-on-light:#2A1B3D; --text-on-light-muted:#584A6B;
+    --accent-fill:#B01FC4; --accent-fill-deep:#8E1A9E;
+    --accent-text-on-dark:#F6C4FC; --accent-text-on-light:#8E1A9E;
+    --accent-on-fill:#FFFFFF;
+    --accent-border:#B01FC4; --accent-hairline:rgba(176,31,196,.30);
+    --measure-line:#3EC9C0; --measure-text:#1F7A75; --measure-on-dark:#7FE3DC;
+    --surface-light-bg:#F5F3FA; --surface-light-card:#FCFBFE; --surface-light-text:#2A1B3D;
+    --surface-light-muted:#584A6B; --surface-light-accent:#8E1A9E; --surface-light-measure:#1F7A75;
+    --measure-hairline:rgba(62,201,192,.34);
+  }
+  /* ─── סקין E · שמנת ואוקסבלד ─── */
+  html.skin-e .bc {
+    /* אין בדף הזה "סקשן כהה" יותר. הטוקנים הכהים ממופים לשמנת,
+       כך שכל סקשן שהיה כהה הופך לבהיר בלי לגעת במבנה */
+    --bg-dark:#EDE6D6; --bg-dark-elevated:#F5F1E8; --bg-dark-deep:#EDE6D6;
+    --bg-light:#F5F1E8; --bg-light-2:#E6DECB; --bg-card:#FBF8F1;
+    --text-on-dark:#221A14; --text-on-dark-muted:#4E453A;
+    --text-on-light:#221A14; --text-on-light-muted:#4E453A;
+    --accent-fill:#5A2A28; --accent-fill-deep:#6E3532;
+    --accent-text-on-dark:#5A2A28; --accent-text-on-light:#5A2A28;
+    --accent-on-fill:#EDE6D6;
+    --accent-border:#5A2A28; --accent-hairline:rgba(90,42,40,.30);
+    --measure-line:#3E6B62; --measure-text:#2E5A52; --measure-on-dark:#2E5A52;
+    --surface-light-bg:#F5F1E8; --surface-light-card:#FBF8F1; --surface-light-text:#221A14;
+    --surface-light-muted:#4E453A; --surface-light-accent:#5A2A28; --surface-light-measure:#2E5A52;
+    --measure-hairline:rgba(62,107,98,.34);
+  }
+
+  /* ── פאנל הווידאו: הקליפ מצולם על שחור, לכן הוא לא יושב על שמנת. ──
+     מסגרת אספרסו ממסגרת אותו כמסך סריקה. המסכה הרדיאלית מבוטלת בסקין הזה,
+     כי היא נועדה למזג לרקע כהה ועל שמנת היא הייתה יוצרת הילה */
+  html.skin-e .bc .scan-art { display:flex; justify-content:center; }
+  html.skin-e .bc .scan-art .hands-vid { background:#221A14; border-radius:16px; overflow:hidden; }
+  html.skin-e .bc .hands-vid { -webkit-mask-image:none; mask-image:none; border-radius:0; }
+  html.skin-e .bc .proc-vid { -webkit-mask-image:none; mask-image:none;
+    background:#221A14; border-radius:12px; }
+
+
+  /* ════════ סקין E · שכבת החיים ════════ */
+
+  /* גרעין נייר. שמנת שטוחה נראית זולה, וגרעין עדין הופך אותה לנייר */
+  html.skin-e .bc::before {
+    content:''; position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.55;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+  /* הכלל הזה מרים את התוכן מעל שכבת הגרעין. הכפתור הצף והסרגל הדביק מוחרגים,
+     אחרת position:relative דורס להם את ה-fixed והם נופלים לתוך זרימת הדף */
+  /* כל אלמנט שמוקם בעצמו חייב להיות מוחרג כאן במפורש, אחרת הכלל דורס אותו
+     ומחזיר אותו לזרימת הדף. כך נשברו כבר .wa ו-.sticky, ואחריהם .skip-link
+     שתפס 41px ודחף את ההירו כלפי מטה. */
+  html.skin-e .bc > *:not(.wa):not(.sticky):not(.skip-link) { position:relative; z-index:2; }
+
+  /* ── הירו: רעות על הבמה, מתחת לצעיף שמנת ──
+     היא עומדת משמאל (התמונה משוקפת) והמסך הריק נפתח מימין, בדיוק מתחת לכותרת.
+     הצעיף אטום מימין כדי שהטקסט הכהה יישאר קריא, ונפתח שמאלה כדי שהיא תיראה. */
+  html.skin-e .bc .hero {
+    --veil:linear-gradient(to left,
+      rgba(245,239,228,.97) 0%, rgba(245,239,228,.93) 30%,
+      rgba(245,239,228,.78) 54%, rgba(245,239,228,.30) 80%, rgba(245,239,228,.06) 100%);
+    --stage-pos:center center;
+    background:var(--veil), url(media/stage.jpg);
+    background:var(--veil), image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg"));
+    background-size:cover, cover;
+    background-position:center, var(--stage-pos);
+    background-repeat:no-repeat, no-repeat;
+  }
+  /* במובייל הטקסט תופס את כל הרוחב, ולכן הצעיף יורד מלמעלה ולא מהצד */
+  @media (max-width:900px){
+    html.skin-e .bc .hero {
+      --veil:linear-gradient(to bottom,
+        rgba(245,239,228,.95) 0%, rgba(245,239,228,.91) 55%, rgba(245,239,228,.74) 100%);
+      --stage-pos:34% center;
+    }
+  }
+  /* צל הטקסט היה כהה מתקופת ההירו הכהה, והוא מרח את הכותרת על השמנת.
+     הילה בהירה ודקה מרימה את הטקסט מהתמונה בלי ללכלך אותו. */
+  html.skin-e .bc .hero h1, html.skin-e .bc .hero .sub {
+    text-shadow:0 1px 0 rgba(255,255,255,.6), 0 2px 10px rgba(245,239,228,.55);
+  }
+
+  /* הלוגו: הסמל הלבן נעלם על שמנת. גרסה כהה */
+  html.skin-e .bc .wm-hand { content:url(media/mark-dark.png); }
+
+  /* ── כפתור ראשי: אוקסבלד עם עומק, לא מלבן שטוח ── */
+  html.skin-e .bc .cta {
+    background:linear-gradient(160deg, #6B3230 0%, #5A2A28 55%, #4A211F 100%);
+    box-shadow:0 1px 0 rgba(255,255,255,.14) inset, 0 6px 18px rgba(90,42,40,.26);
+    position:relative; overflow:hidden;
+  }
+  /* ברק שעובר על הכפתור במעבר עכבר */
+  html.skin-e .bc .cta::after {
+    content:''; position:absolute; inset:0; transform:translateX(-120%);
+    background:linear-gradient(100deg, transparent 35%, rgba(255,255,255,.16) 50%, transparent 65%);
+    transition:transform .65s var(--ease);
+  }
+  html.skin-e .bc .cta:hover {
+    background:linear-gradient(160deg, #7A3A37 0%, #6E3532 55%, #5A2A28 100%);
+    box-shadow:0 1px 0 rgba(255,255,255,.18) inset, 0 10px 26px rgba(90,42,40,.34);
+    transform:translateY(-2px);
+  }
+  html.skin-e .bc .cta:hover::after { transform:translateX(120%); }
+  html.skin-e .bc .cta.ghost { background:transparent; box-shadow:none; }
+  html.skin-e .bc .cta.ghost::after { display:none; }
+
+
+  /* ── שני הקטבים בכפתור ──
+     אלמוג הוא הקוטב האנושי, טורקיז הוא הטכנולוגי. הם נוכחים כפס מדידה דק
+     בתחתית וכנקודה שפועמת, ולא כמילוי, כדי שהכפתור יישאר אוקסבלד שקט */
+  html.skin-e .bc { --pole-warm:#FF6A3D; --pole-cool:#2EF5D8; }
+
+  html.skin-e .bc .cta { padding-inline-end:46px; }
+  html.skin-e .bc .cta.ghost::before { background:linear-gradient(90deg, var(--pole-warm), var(--measure-text)); opacity:.85; }
+  html.skin-e .bc .cta.ghost .cta-dot { background:var(--measure-text); animation-name:ctaPulseDark; }
+  @keyframes ctaPulseDark {
+    0%   { box-shadow:0 0 0 0 rgba(46,90,82,.45); }
+    70%  { box-shadow:0 0 0 11px rgba(46,90,82,0); }
+    100% { box-shadow:0 0 0 0 rgba(46,90,82,0); }
+  }
+  html.skin-e .bc .cta::before {
+    content:''; position:absolute; inset:auto 0 0 0; height:3px; z-index:2;
+    background:linear-gradient(90deg, var(--pole-warm), var(--pole-cool));
+  }
+  /* הנקודה היא אותה נקודה שרצה על כפות הידיים בווידאו */
+  html.skin-e .bc .cta .cta-dot {
+    position:absolute; inset-inline-end:20px; top:50%; width:8px; height:8px; margin-top:-4px;
+    border-radius:50%; background:var(--pole-cool); z-index:2;
+    animation:ctaPulse 2.4s ease-out infinite;
+  }
+  @keyframes ctaPulse {
+    0%   { box-shadow:0 0 0 0 rgba(46,245,216,.55); }
+    70%  { box-shadow:0 0 0 11px rgba(46,245,216,0); }
+    100% { box-shadow:0 0 0 0 rgba(46,245,216,0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html.skin-e .bc .cta .cta-dot { animation:none; }
+  }
+
+  /* ── קו מדידה בין סקשנים, עם סימון אמצע ── */
+  html.skin-e .bc section + section::before {
+    content:''; position:absolute; top:0; right:50%; transform:translateX(50%);
+    width:min(560px,72%); height:1px;
+    background:linear-gradient(90deg, transparent, rgba(90,42,40,.22) 22%, rgba(90,42,40,.22) 78%, transparent);
+  }
+  html.skin-e .bc section + section::after {
+    content:''; position:absolute; top:-3px; right:50%; transform:translateX(50%);
+    width:7px; height:7px; border-radius:50%; background:var(--measure-line); opacity:.5;
+  }
+
+  /* ── כרטיסים מגיבים למגע ── */
+  html.skin-e .bc .card, html.skin-e .bc .rcard, html.skin-e .bc .tcard, html.skin-e .bc .list details {
+    transition:transform .2s var(--ease), box-shadow .2s ease, border-color .2s ease;
+  }
+  html.skin-e .bc .card:hover, html.skin-e .bc .tcard:hover {
+    transform:translateY(-3px); box-shadow:0 14px 34px rgba(34,26,20,.10);
+  }
+
+  /* ── קישורים בגוף טקסט: קו שנפתח ── */
+  html.skin-e .bc .letter-link, html.skin-e .bc .hero-proof span { position:relative; text-decoration:none; }
+  html.skin-e .bc .letter-link::after {
+    content:''; position:absolute; right:0; bottom:-3px; height:1.5px; width:100%;
+    background:var(--accent-fill); transform:scaleX(.35); transform-origin:right;
+    transition:transform .3s var(--ease);
+  }
+  html.skin-e .bc .letter-link:hover::after { transform:scaleX(1); }
+
+  /* ── פאנל האבחון: טבעת אור רכה שמפרידה אותו מהנייר ── */
+  html.skin-e .bc .scan-art .hands-vid {
+    box-shadow:0 0 0 1px rgba(34,26,20,.55), 0 18px 44px rgba(34,26,20,.22);
+  }
+
+  /* ── שדות הטופס: הפוקוס נדלק באוקסבלד ── */
+  html.skin-e .bc input:focus, html.skin-e .bc select:focus {
+    border-color:var(--accent-fill); box-shadow:0 0 0 3px rgba(90,42,40,.12);
+  }
+
+  /* ── כרטיסי הבחירה: נבחר מקבל מילוי עדין ── */
+  html.skin-e .bc .wz-card.sel { background:rgba(90,42,40,.06); border-color:var(--accent-fill); }
+
+  @media (prefers-reduced-motion: reduce){
+    html.skin-e .bc .cta::after, html.skin-e .bc .letter-link::after { transition:none; }
+    html.skin-e .bc .cta:hover, html.skin-e .bc .card:hover, html.skin-e .bc .tcard:hover { transform:none; }
+  }
+
+  /* ── מצב פוקוס: על שמנת חייבים טבעת נראית ── */
+  html.skin-e .bc a:focus-visible, html.skin-e .bc button:focus-visible,
+  html.skin-e .bc input:focus-visible, html.skin-e .bc select:focus-visible {
+    outline:2px solid #5A2A28; outline-offset:2px; }
+
+  /* ── CTA משני: מסגרת אוקסבלד על שקוף, ולא טקסט בהיר על כהה ── */
+  html.skin-e .bc .cta.ghost { color:#5A2A28; border:1.5px solid #5A2A28; background:transparent; }
+  html.skin-e .bc .cta.ghost:hover { background:rgba(90,42,40,.08); }
+  html.skin-b .bc {
+    --bg-dark:#1F2429; --bg-dark-elevated:#282E34; --bg-dark-deep:#171B1F;
+    --bg-light:#F2F3F1; --bg-light-2:#E7E9E6; --bg-card:#FAFBFA;
+    --text-on-dark:#EDEFEE; --text-on-dark-muted:#B4BCC2;
+    --text-on-light:#1F2429; --text-on-light-muted:#4E565D;
+    --accent-fill:#8A3B5C; --accent-fill-deep:#73304C;
+    --accent-text-on-dark:#F0A6C2; --accent-text-on-light:#8A3B5C;
+    --accent-on-fill:#F7F4F5;
+    --accent-border:#8A3B5C; --accent-hairline:rgba(138,59,92,.30);
+    --measure-line:#C56A4A; --measure-text:#995239; --measure-on-dark:#E2A183;
+    --surface-light-bg:#F2F3F1; --surface-light-card:#FAFBFA; --surface-light-text:#1F2429;
+    --surface-light-muted:#495157; --surface-light-accent:#8A3B5C; --surface-light-measure:#995239;
+    --measure-hairline:rgba(197,106,74,.34);
+  }
+
+  /* ─── סקין C · לילה במעבדה ─── */
+  html.skin-c .bc {
+    --bg-dark:#0F0C0A; --bg-dark-elevated:#241F1B; --bg-dark-deep:#0B0908;
+    --bg-light:#191512; --bg-light-2:#221D19; --bg-card:#241F1B;
+    --text-on-dark:#EFE7DA; --text-on-dark-muted:#B8AC9B;
+    --text-on-light:#EFE7DA; --text-on-light-muted:#B8AC9B;
+    --accent-fill:#D8B072; --accent-fill-deep:#C39A5C;
+    --accent-text-on-dark:#D8B072; --accent-text-on-light:#D8B072;
+    --accent-on-fill:#191512;
+    --accent-border:#D8B072; --accent-hairline:rgba(216,176,114,.32);
+    --measure-line:#7FB5A6; --measure-text:#7FB5A6; --measure-on-dark:#7FB5A6;
+    /* בסקין הכהה הרגע הבהיר דרמטי — שנהב מרוכך, ואקסנט/מדידה בוריאנט כהה */
+    --surface-light-bg:#E8DFCF; --surface-light-card:#F0E9DC; --surface-light-text:#191512;
+    --surface-light-muted:#4B443B; --surface-light-accent:#6E593A; --surface-light-measure:#45625A;
+    --measure-hairline:rgba(127,181,166,.34);
+    color: var(--ink); background: var(--ivory); overflow-x: hidden;
+  }
+  .bc .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  @media (min-width: 960px){ .bc .wrap { padding: 0 48px; } }
+  .bc .ltr { direction: ltr; unicode-bidi: isolate; }
+  .bc .serif { font-family: 'Frank Ruhl Libre','David Libre','Times New Roman',serif; }
+  /* ── טיפוגרפיה: שלושה תפקידים ──
+     Display = Frank Ruhl Libre · Body = Assistant · Measurement = IBM Plex Sans Hebrew */
+  .bc .t-measure, .bc .eyebrow, .bc .hero-eyebrow, .bc .hero-trust, .bc .tname,
+  .bc .wac-sub, .bc .no-commit, .bc .ef-qname, .bc .ef-lenses, .bc .metric b {
+    font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif;
+    letter-spacing:.08em; font-variant-numeric:tabular-nums; font-weight:500;
+  }
+  /* סקאלה טיפוגרפית */
+  .bc h1 { font-size:clamp(2.6rem,5vw,4.2rem); line-height:1.15; }
+  .bc h2 { line-height:1.18; }
+  .bc p, .bc li { line-height:1.7; }
+  /* מפריד סקשנים בסגנון קו מדידה — עדין, לא בכל מקום */
+  .bc .rule-measure { position:relative; height:1px; background:var(--measure-hairline);
+    max-width:180px; margin:0 auto; }
+  .bc .rule-measure::after { content:''; position:absolute; top:50%; right:50%;
+    width:5px; height:5px; margin:-2.5px -2.5px 0 0; border-radius:50%; background:var(--measure-line); }
+  .bc h1,.bc h2,.bc h3 { font-family:'Frank Ruhl Libre','David Libre','Times New Roman',serif; line-height:1.22; text-wrap:balance; font-weight:800; letter-spacing:.2px; }
+  .bc p { font-size: 17px; }
+
+  /* placeholder frames */
+  .bc .ph { border:1.5px dashed var(--line-gold); border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:var(--muted-d); background: color-mix(in srgb, var(--accent-border) 5%, transparent); text-align:center; padding:22px; }
+  .bc .ph .lab { font-size:13px; font-weight:600; letter-spacing:.3px; }
+  .bc .ph .hint { font-size:11.5px; opacity:.8; }
+  .bc .ph svg { width:34px; height:34px; stroke: var(--gold); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; opacity:.8; }
+  .bc .ph.on-dark { border-color: color-mix(in srgb, var(--accent-border) 45%, transparent); background: color-mix(in srgb, var(--accent-border) 7%, transparent); color: var(--muted-l); }
+
+  /* buttons */
+  .bc .cta { font-family:inherit; display:inline-block; background:var(--accent-fill); color:var(--accent-on-fill); font-weight:700; font-size:16.5px; padding:15px 30px; border-radius:11px; text-decoration:none; border:none; cursor:pointer; box-shadow:none; transition:transform .18s ease, box-shadow .18s ease; }
+  .bc .cta:hover { transform:translateY(-2px); background:var(--accent-fill-deep); }
+  .bc .cta:focus-visible { outline:3px solid #e7cf95; outline-offset:3px; }
+  .bc .cta.ghost { background:transparent; color:var(--gold-text-on-dark); border:1.5px solid var(--gold-border); box-shadow:none; }
+  .bc .cta.ghost:hover { background:color-mix(in srgb, var(--accent-border) 12%, transparent); box-shadow:none; }
+  /* משמעת זהב בהירו: הכפתור המשני נשאר נראה אך מפסיק להתחרות בראשי — מסגרת דקה, טקסט שנהב */
+  .bc .hero .cta.ghost { color:var(--text-on-dark); border-width:1px; }
+  /* משמעת זהב: תת-הכותרת היא כותרת-משנה, לא הדגשה. הזהב שמור לכפתור הראשי */
+    /* יחידה 1: כותרת + שורה פואטית. 55-65% מגודל הכותרת */
+  .bc .hero-kick { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--text-on-dark); font-weight:700; font-size:clamp(20px,3.2vw,30px); margin:0 0 1.4rem; }
+  /* יחידה 2: שורת ההסבר — יורדת מדרגה, טקסט ולא כותרת */
+  /* מינימום 0.95rem (הרצפה המאושרת): במובייל הפסקה יורדת ל-16px, וההסבר חייב להישאר מתחתיה בשרשרת ההיררכיה */
+  /* התשובה לכותרת. היא נושאת את הרעיון, ולכן היא גדולה יותר מטקסט רץ */
+  .bc .hero-bio { color:var(--text-on-dark); font-weight:600; font-size:clamp(1.12rem,1.75vw,1.42rem); line-height:1.5; margin:0 0 1.5rem; }
+
+  .bc .hero-aud { color:var(--muted-l); font-size:14.5px; font-weight:600; letter-spacing:.3px; margin-bottom:14px; }
+  /* Hero: eyebrow קהל יעד — שורת טקסט נקייה, בלי רקע ובלי מסגרת */
+  .bc .hero-eyebrow { color:var(--gold-text-on-dark); font-size:.9rem; font-weight:600; letter-spacing:1.4px; margin-bottom:10px; }
+  /* Hero: שאלת גשר בין הכאב לקריאה לפעולה */
+  .bc .hero-bridge { color:var(--gold-text-on-dark); font-weight:600; font-size:clamp(16.8px,2.2vw,21px); margin:1.5rem 0 .85rem; }
+  /* Hero: קישור טקסטואלי במקום כפתור משני — נשאר נראה בלי להתחרות בראשי */
+  .bc .hero-alt { margin-top:16px; font-size:1rem; color:var(--text-on-dark-muted); }
+  /* Hero: שורת אמון דקה */
+  .bc .hero-trust { margin-top:18px; font-size:.83rem; color:var(--text-on-dark-muted); }
+  .bc .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; margin-top:0; }
+  @media (max-width:720px){ .bc .hero-ctas{ flex-direction:column; } .bc .hero-ctas .cta{ width:100%; text-align:center; } }
+
+  /* fade */
+  .bc .fade { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+  .bc .fade.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .bc .fade{ opacity:1!important; transform:none!important; transition:none; } }
+
+  /* section shells */
+  .bc section { position:relative; padding:clamp(2.1rem,4vw,3.5rem) 0; overflow:hidden; }
+  .bc .s-navy { background: var(--navy); color: var(--text-on-dark); }
+  .bc .s-navy h2,.bc .s-navy h3 { color: var(--text-on-dark); }
+  .bc .s-ivory { background: var(--ivory); }
+  .bc .s-deep { background: linear-gradient(180deg,var(--navy-2),var(--navy-deep)); color: var(--text-on-dark); }
+  /* ══ מקצב תאורה ══
+     שתי מחלקות ברמת הסקשן שממפות מחדש טוקנים מקומית. אין צבעים קשיחים.
+     .surface-light — סקשן כהה הופך למשטח בהיר (רגע נשימה)
+     .surface-dark  — סקשן בהיר הופך לכהה (רצף כהה)
+     שתיהן אינרטיות עד שמישהו מוסיף את המחלקה. */
+  .bc .surface-light { color:var(--surface-light-text);
+    --bg-dark:var(--surface-light-bg); --bg-dark-elevated:var(--surface-light-bg);
+    --bg-dark-deep:var(--surface-light-bg); --bg-card:var(--surface-light-card);
+    --text-on-dark:var(--surface-light-text); --text-on-dark-muted:var(--surface-light-muted);
+    --accent-text-on-dark:var(--surface-light-accent); --measure-on-dark:var(--surface-light-measure);
+    --bg-light:var(--surface-light-bg); --bg-light-2:var(--surface-light-card);
+    --text-on-light:var(--surface-light-text); --text-on-light-muted:var(--surface-light-muted);
+    --accent-text-on-light:var(--surface-light-accent); --measure-text:var(--surface-light-measure);
+    --measure-line:var(--surface-light-measure);
+    /* חובה לחשב מחדש את שמות המדור הקודם — הם נפתרו כבר ברמת .bc */
+    --navy:var(--bg-dark); --navy-2:var(--bg-dark-elevated); --navy-deep:var(--bg-dark-deep);
+    --ivory:var(--bg-light); --ivory-2:var(--bg-light-2); --card:var(--bg-card);
+    --ink:var(--text-on-light); --muted-l:var(--text-on-dark-muted); --muted-d:var(--text-on-light-muted);
+    --gold-text-on-dark:var(--accent-text-on-dark); --gold-text-on-light:var(--accent-text-on-light);
+    --gold:var(--accent-fill); --gold-2:var(--accent-fill-deep); --gold-light:var(--accent-text-on-dark);
+    --line-gold:var(--accent-hairline);
+  }
+  .bc .surface-light h1, .bc .surface-light h2, .bc .surface-light h3 { color:var(--surface-light-text); }
+  .bc .surface-dark h1, .bc .surface-dark h2, .bc .surface-dark h3 { color:var(--text-on-dark); }
+  .bc .surface-dark { color:var(--text-on-dark);
+    --bg-light:var(--bg-dark); --bg-light-2:var(--bg-dark-elevated); --bg-card:var(--bg-dark-elevated);
+    --text-on-light:var(--text-on-dark); --text-on-light-muted:var(--text-on-dark-muted);
+    --accent-text-on-light:var(--accent-text-on-dark); --measure-text:var(--measure-on-dark);
+    /* חובה לחשב מחדש את שמות המדור הקודם — הם נפתרו כבר ברמת .bc */
+    --navy:var(--bg-dark); --navy-2:var(--bg-dark-elevated); --navy-deep:var(--bg-dark-deep);
+    --ivory:var(--bg-light); --ivory-2:var(--bg-light-2); --card:var(--bg-card);
+    --ink:var(--text-on-light); --muted-l:var(--text-on-dark-muted); --muted-d:var(--text-on-light-muted);
+    --gold-text-on-dark:var(--accent-text-on-dark); --gold-text-on-light:var(--accent-text-on-light);
+    --gold:var(--accent-fill); --gold-2:var(--accent-fill-deep); --gold-light:var(--accent-text-on-dark);
+    --line-gold:var(--accent-hairline);
+  }
+  /* מפריד קו מדידה בכל מעבר כהה↔בהיר */
+  .bc .surface-light + section::before, .bc section + .surface-light::before {
+    content:''; position:absolute; top:0; right:50%; transform:translateX(50%);
+    width:180px; height:1px; background:var(--measure-hairline);
+  }
+
+  /* רקע כהה-מוגבה: מפריד ויזואלית בין סקשנים כהים סמוכים בלי לשבור את הרצף */
+  .bc .s-dark-2 { background: var(--bg-dark-elevated); color: var(--text-on-dark); }
+  .bc .s-dark-2 h2, .bc .s-dark-2 h3 { color: var(--text-on-dark); }
+  .bc .s-dark-2 .eyebrow { color: var(--gold-text-on-dark); }
+  .bc .eyebrow { color: var(--gold-text-on-light); font-weight:700; font-size:13.5px; letter-spacing:.7px; margin-bottom:12px; }
+  .bc .s-navy .eyebrow,.bc .s-deep .eyebrow { color: var(--gold-text-on-dark); }
+  /* faint compass motif */
+  .bc .compass-bg { position:absolute; inset:0; pointer-events:none; opacity:.05; background-repeat:no-repeat; background-position: -60px center; background-size: 460px; }
+
+  /* HERO */
+  .bc .hero { position:relative; padding:40px 0 56px; color:var(--text-on-dark);
+    background:
+      radial-gradient(120% 90% at 80% 0%, var(--bg-dark-elevated) 0%, var(--bg-dark) 55%, var(--bg-dark-deep) 100%);
+  }
+  /* ── פריסת ההירו: טקסט מימין, יד משמאל (RTL) ── */
+  .bc .hero-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.78fr);
+    gap:clamp(2rem,4vw,4.5rem); align-items:center; }
+  .bc .hero-art { display:flex; justify-content:center; }
+  @media (max-width:900px){
+    .bc .hero-grid { grid-template-columns:1fr; gap:1.8rem; }
+    .bc .hero-art { order:2; }
+  }
+
+  /* ── Hand Constellation ── */
+  .bc .constellation { width:100%; max-width:400px; height:auto; overflow:visible; }
+  @media (max-width:900px){ .bc .constellation { max-width:250px; } }
+  .bc .cn-silh path { fill:none; stroke:var(--text-on-dark); stroke-width:22;
+    stroke-linecap:round; stroke-linejoin:round; }
+  /* pathLength=100 על כל קו, כדי שהמקף יהיה מספר קבוע ולא משתנה שספארי צריך לפענח בתוך keyframes */
+  .bc .cn-links line { stroke:var(--measure-on-dark); stroke-width:1.4; opacity:.55;
+    stroke-dasharray:100; stroke-dashoffset:0; }
+  .bc .cn-dots circle { fill:var(--measure-on-dark); opacity:.55; }
+  .bc .cn-meas path { fill:none; stroke:var(--accent-text-on-dark); stroke-width:1.2;
+    stroke-dasharray:1.2 1.2; stroke-dashoffset:0; opacity:.9; }
+  .bc .cn-tick { fill:var(--accent-text-on-dark); opacity:0; }
+
+  /* ── לופ מדידה: מחזור 7 שניות, נשימה של מכשיר ──
+     1. הדלקה 1.6s (רצף אנטומי, stagger 60ms) · 2. מתיחה 1.4s
+     3. שהייה 2.5s עם פולס נשימה · 4. דעיכה 1.5s ל-0.25, לא ל-0
+     קו המתאר והתוויות סטטיים — רק הנקודות והקווים חיים. */
+  .bc .constellation { --cycle:3.5s; }
+  .bc .cn-silh { opacity:.17; }
+  .bc .cn-tick { opacity:1; }
+
+  /* ההשהיה נכתבת ישירות על כל אלמנט מה-JS (animation-delay בפיקסלים של זמן),
+     ולא דרך calc על משתנה, כי זו נקודת כשל ידועה בספארי במובייל */
+  .bc .cn-dots circle {
+    animation:cnDotLoop var(--cycle) linear infinite;
+    transform-box:fill-box; transform-origin:center;
+  }
+  .bc .cn-links line { animation:cnLinkLoop var(--cycle) linear infinite; }
+  .bc .cn-meas path  { animation:cnMeasLoop var(--cycle) linear infinite; }
+
+  /* גל רציף: לכל נקודה יש רגע שיא ודעיכה מתמדת, כך שבכל רגע נתון
+     חלק מהנקודות בולטות וחלק עמומות — התנועה נראית גם במבט חטוף */
+  @keyframes cnDotLoop {
+    0%   { opacity:.18; transform:scale(1); }
+    8%   { opacity:1;   transform:scale(1.5); }
+    18%  { opacity:.95; transform:scale(1); }
+    55%  { opacity:.55; transform:scale(1); }
+    100% { opacity:.18; transform:scale(1); }
+  }
+  @keyframes cnLinkLoop {
+    0%   { stroke-dashoffset:100; opacity:.14; }
+    12%  { stroke-dashoffset:100; opacity:.22; }
+    34%  { stroke-dashoffset:0;   opacity:.7; }
+    82%  { stroke-dashoffset:0;   opacity:.55; }
+    100% { stroke-dashoffset:100; opacity:.14; }
+  }
+  @keyframes cnMeasLoop {
+    0%   { stroke-dashoffset:100; opacity:.14; }
+    18%  { stroke-dashoffset:100; opacity:.22; }
+    40%  { stroke-dashoffset:0;   opacity:1; }
+    82%  { stroke-dashoffset:0;   opacity:.85; }
+    100% { stroke-dashoffset:100; opacity:.14; }
+  }
+
+  /* אין השהיה מחוץ למסך. 21 עיגולים שמשנים שקיפות הם עומס אפסי, והמנגנון
+     שהשהה אותם היה מקור אפשרי ליד שנראית קפואה. עדיף שתמיד תרוץ */
+
+  /* מכשיר שביקש פחות תנועה (או אנדרואיד במצב חיסכון בסוללה, שמדליק את זה לבד):
+     אותו גל אור בדיוק ובאותו קצב, רק בלי הגדלה ובלי ציור קווים.
+     מה שמוסר הוא התנועה במרחב, לא הסימן שהיד חיה */
+  @media (prefers-reduced-motion: reduce){
+    .bc .cn-dots circle { animation-name:cnDotCalm; }
+    .bc .cn-links line, .bc .cn-meas path { animation:none; stroke-dashoffset:0; opacity:.55; }
+  }
+  @keyframes cnDotCalm {
+    0%   { opacity:.18; }
+    8%   { opacity:1; }
+    18%  { opacity:.95; }
+    55%  { opacity:.55; }
+    100% { opacity:.18; }
+  }
+
+  .bc .hero-copy { max-width: 600px; position:relative; }
+  .bc .hero h1, .bc .hero .sub { text-shadow: 0 2px 14px rgba(10,15,26,.42); }
+  @media (max-width: 720px){
+    .bc .hero { padding:22px 0 40px;
+      background: radial-gradient(140% 70% at 70% 0%, var(--bg-dark-elevated) 0%, var(--bg-dark) 60%, var(--bg-dark-deep) 100%);
+    }
+    .bc .hero-copy { max-width:100%; }
+    .bc .hero h1 { font-size:clamp(2.15rem,8.2vw,2.9rem); }
+    .bc .hero .cta { width:100%; text-align:center; }
+  }
+  .bc .hero .topbar { display:flex; justify-content:flex-start; padding: 14px 0 26px; }
+  /* ── wordmark: פתרון ביניים עד לוגו מעוצב ── */
+  .bc .wordmark { display:inline-flex; align-items:center; gap:11px; text-decoration:none; line-height:1; }
+  .bc .wordmark .wm-hand { width:auto; height:52px; flex:0 0 auto; display:block; }
+  @media (max-width:600px){ .bc .wordmark .wm-hand { height:44px; } }
+  .bc .wordmark .wm-hand .wm-l { opacity:.55; }
+  .bc .wordmark .wm-txt { display:flex; flex-direction:column; gap:3px; text-align:right; }
+  .bc .wordmark .wm-name { font-family:'Frank Ruhl Libre','David Libre',serif; font-weight:700;
+    font-size:var(--fs-lg); color:var(--text-on-dark); letter-spacing:.2px; }
+  .bc .wordmark .wm-sub { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-weight:500;
+    font-size:10.5px; letter-spacing:.11em; color:var(--text-on-dark-muted); }
+  .bc footer .foot-wordmark { justify-content:center; margin:0 auto 14px; }
+  .bc footer .foot-wordmark .wm-txt { text-align:center; align-items:center; }
+  @media (max-width:720px){ .bc .wordmark .wm-name{ font-size:17px; } .bc .wordmark .wm-hand{ width:23px; height:29px; } }
+  .bc .about .portrait { width:100%; max-width:260px; margin:26px auto 0; aspect-ratio:4/5; border-radius:14px; border:1px solid var(--accent-hairline); box-shadow:0 0 0 rgba(20,27,42,.28); overflow:hidden; display:block; }
+  .bc .about .portrait img { width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; filter: sepia(.1) saturate(.92) brightness(1.02); }
+  @media (max-width:600px){ .bc .about .portrait{ max-width:220px; } }
+  .bc .hero h1 { color:var(--text-on-dark); font-size:clamp(2.6rem,5vw,4.2rem); line-height:1.15; max-width:17ch; margin-bottom:.5rem; margin-top:8px; }
+  .bc .hero .sub { color:var(--text-on-dark); font-size:clamp(16px,2.1vw,20px); max-width:62ch; margin-bottom:0; }
+  .bc .hero .sub .ltr { color:var(--text-on-dark); font-weight:600; }
+
+  /* VIDEO */
+  .bc .video h2 { text-align:center; font-size:var(--fs-h2); }
+  .bc .video-wrap { position:relative; max-width:880px; margin:34px auto 0; aspect-ratio:16/9; border-radius:16px; overflow:hidden; border:1px solid var(--accent-hairline); background:var(--bg-dark-deep); }
+  .bc .yt-facade { position:absolute; inset:0; width:100%; height:100%; padding:0; border:none; cursor:pointer; background:#0d1524; display:block; }
+  .bc .yt-thumb { width:100%; height:100%; object-fit:cover; display:block; opacity:.94; transition:opacity .2s ease; }
+  .bc .yt-facade:hover .yt-thumb { opacity:1; }
+  .bc .yt-play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:78px; height:78px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 28px rgba(0,0,0,.45); transition:transform .18s ease; }
+  .bc .yt-facade:hover .yt-play { transform:translate(-50%,-50%) scale(1.08); }
+  .bc .yt-play svg { width:34px; height:34px; fill:var(--navy); margin-right:-3px; }
+  .bc .yt-facade:focus-visible { outline:3px solid #e7cf95; outline-offset:-3px; }
+  .bc .yt-iframe { width:100%; height:100%; border:0; display:block; }
+  @media (max-width:720px){ .bc .yt-play{ width:62px;height:62px; } .bc .yt-play svg{ width:28px;height:28px; } }
+
+  /* centered text column (pain, objection) */
+  .bc .text-col { max-width: 760px; margin-inline: auto; text-align: center; }
+  .bc .text-col h2 { max-width: 100%; margin-inline: auto; text-wrap: balance; }
+  .bc .text-col p { margin-inline: auto; }
+  .bc .text-col .eyebrow, .bc .text-col .badge { display:inline-block; }
+  /* PAIN */
+  .bc .pain h2 { font-size: var(--fs-h2); margin-bottom:20px; }
+  .bc .pain p { color:var(--text-on-light); margin-bottom:16px; }
+  .bc .pain .kick { font-weight:700; color:var(--text-on-light); font-size:var(--fs-lg); }
+  .bc .obj-stat { font-family:'Frank Ruhl Libre','David Libre',serif; color:var(--gold-text-on-dark); font-weight:700; font-size:22px; margin-top:18px; }
+  .bc .trial .trial-steps { list-style:none; padding:0; margin:18px auto 20px; max-width:520px; text-align:right; }
+  .bc .trial .trial-steps li { padding:10px 34px 10px 0; position:relative; font-size:17px; color:var(--ink); border-bottom:1px solid var(--line-gold); }
+  .bc .trial .trial-steps li:last-child { border-bottom:none; }
+  .bc .trial .trial-steps li::before { content:'←'; position:absolute; right:0; color:var(--gold-text-on-light); font-weight:700; }
+  .bc .trial .kick { font-weight:700; color:var(--text-on-light); font-size:var(--fs-lg); }
+  .bc .trial .cta.ghost.trial-cta { color:var(--gold-text-on-light); border-color:var(--gold-text-on-light); }
+  /* שורת הזמינות: משנית (13px, מעומעמת) אך עוברת AA על רקע שנהב.
+     --muted-d נותן רק 4.23:1 בגודל הזה, לכן גוון כהה מעט יותר: 4.98:1 */
+  .bc .trial .no-commit { color:var(--text-on-light-muted); }
+
+  /* BENEFITS */
+  .bc .benes h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:28px; }
+  .bc .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
+  .bc .card { background:transparent; border:1px solid var(--measure-hairline); border-radius:4px; padding:30px 28px; box-shadow:none; }
+  .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
+  .bc .card h3 { font-size:19px; margin-bottom:10px; color:var(--text-on-light); }
+  .bc .card p { color:var(--text-on-light); font-size:15.5px; }
+  /* cards sit on dark navy in the benefits section -> text must be light (fixes invisible dark/gold text) */
+  .bc .s-navy .card h3 { color:var(--text-on-dark); font-weight:700; font-size:1.3rem; margin-bottom:0; }
+  .bc .s-navy .card h3::after { content:''; display:block; width:40px; height:2px; background:var(--gold); border-radius:2px; margin-top:14px; }
+  .bc .s-navy .card p { color:var(--text-on-dark); font-size:16px; margin-top:14px; }
+  .bc .center-cta { text-align:center; margin-top:30px; }
+  /* הורדת חיכוך מתחת לכפתור הסוגר: מה לא נדרש כדי ללחוץ */
+  .bc .cta-micro { text-align:center; font-size:13.5px; color:var(--text-on-dark-muted); margin:12px 0 0; }
+  .bc .surface-light .cta-micro { color:var(--text-on-light-muted); }
+
+  /* OBJECTION */
+  .bc .obj .badge { display:inline-block; font-size:12.5px; font-weight:700; color:var(--accent-on-fill); background:var(--accent-fill); padding:6px 14px; border-radius:30px; margin-bottom:20px; }
+  .bc .obj h2 { font-size:var(--fs-h2); margin-bottom:22px; }
+  .bc .obj p { color:var(--text-on-dark); font-size:18px; }
+  .bc .obj p .ltr { color:var(--text-on-dark); font-weight:600; }
+
+  /* ABOUT */
+  .bc .about .cols { display:block; }
+  .bc .portrait-ph { aspect-ratio: 4/5; width:100%; }
+  .bc .about h2 { font-size:var(--fs-h2); margin-bottom:8px; }
+  .bc .about .sub-gold { color:var(--gold-text-on-light); font-weight:700; font-size:16px; margin-bottom:18px; }
+  /* ── המכתב: הסקשן שצריך להרגיש הכי "מכתב" בדף ── */
+  .bc .about .letter { max-width:62ch; margin-inline:auto; }
+  /* בלי אות פתיחה מוגדלת: לעברית אין גובה־גדולות, ואות כמו יוד יושבת בראש השורה
+     ומרחפת מעל הטקסט כמו גרש. במקומה, פסקת הפתיחה עצמה גדולה מעט */
+  .bc .about .letter > p:first-of-type { font-size:1.08em; line-height:1.66; }
+  /* ── כרטיסים ממוספרים בסגנון תווית מדידה ── */
+  .bc .benes .grid3 { counter-reset:bene; }
+  .bc .benes .card { counter-increment:bene; position:relative; padding-top:44px; }
+  .bc .benes .card::before {
+    content:counter(bene,decimal-leading-zero);
+    position:absolute; top:22px; right:28px;
+    font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-weight:600;
+    font-size:11.5px; letter-spacing:.16em; color:var(--measure-on-dark);
+    font-variant-numeric:tabular-nums;
+  }
+  .bc .s-navy .card { background:transparent; border-color:var(--measure-hairline); }
+  /* היד עברה מההירו לסקשן הסורק: אלה בדיוק אותן 21 נקודות שהסורק מודד */
+  .bc .hands-vid { display:block; width:100%; height:auto; border-radius:14px;
+    -webkit-mask-image:radial-gradient(120% 105% at 50% 50%, #000 58%, transparent 100%);
+            mask-image:radial-gradient(120% 105% at 50% 50%, #000 58%, transparent 100%); }
+  .bc .scan-art { display:flex; justify-content:center; margin:-6px 0 26px; }
+  .bc .scan-art .hands-vid { max-width:520px; }
+  @media (max-width:600px){ .bc .scan-art .hands-vid { max-width:100%; } .bc .scan-art { margin:0 0 18px; } }
+  /* ראש הדף ממורכז: העמודה עצמה במרכז, וכל שורה בתוכה מיושרת למרכז */
+  .bc .hero-copy { max-width:760px; margin-inline:auto; text-align:center; }
+  .bc .hero-copy h1, .bc .hero-copy .sub, .bc .hero-copy .hero-bio,
+  .bc .hero-copy .hero-kick, .bc .hero-copy .hero-bridge { margin-inline:auto; }
+  .bc .hero-copy .hero-ctas { justify-content:center; }
+
+  /* ══ ויזרד תלת-שלבי ══ נבנה ב-JS בזמן ריצה. בלי JS הטופס המלא מוצג כרגיל. */
+  .bc .wz-bar { display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:34px; }
+  .bc .wz-count { font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-size:12px;
+    font-weight:600; letter-spacing:.22em; color:var(--accent-text-on-light); order:-1; }
+  .bc .wz-segs { display:flex; gap:8px; justify-content:center; }
+  .bc .wz-seg { width:56px; height:6px; border-radius:99px; background:var(--measure-hairline);
+    transition:background .3s var(--ease), width .3s var(--ease); }
+  .bc .wz-seg.on { background:var(--accent-fill); }
+  .bc .wz-seg.cur { width:64px; }
+
+  .bc .wz-step { display:none; }
+  .bc .wz-step.on { display:block; animation:wzIn .22s var(--ease); }
+  @keyframes wzIn { from { opacity:0; transform:translateX(18px); } to { opacity:1; transform:none; } }
+
+  /* שלב 1: כרטיסי בחירה גדולים */
+  .bc .wz-cards { display:grid; gap:9px; max-width:520px; margin-inline:auto; }
+  .bc .wz-card { width:100%; text-align:right; font:inherit; display:flex; align-items:baseline;
+    flex-wrap:wrap; gap:4px 10px; color:var(--text-on-light); background:var(--bg-light-2); cursor:pointer;
+    border:1px solid var(--measure-hairline); border-radius:12px; padding:14px 18px;
+    transition:border-color .18s ease, background .18s ease, transform .18s var(--ease); }
+  .bc .wz-card:hover { border-color:var(--accent-border); transform:translateY(-2px); }
+  .bc .wz-card:focus-visible { outline:3px solid var(--accent-border); outline-offset:2px; }
+  .bc .wz-card.sel { border-color:var(--accent-border); background:color-mix(in srgb, var(--accent-border) 10%, transparent); }
+
+  /* שלבים 2-3: שדות ממורכזים ברוחב אחיד עם הכרטיסים */
+  .bc .wz-step[data-step="2"], .bc .wz-step[data-step="3"] { max-width:520px; margin-inline:auto; }
+
+  /* ניווט */
+  .bc .wz-nav { display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:26px; }
+  .bc .wz-next { font:inherit; font-size:16.5px; font-weight:700; cursor:pointer;
+    background:var(--accent-fill); color:var(--accent-on-fill); border:none;
+    border-radius:12px; padding:16px 44px; transition:background .18s ease; }
+  .bc .wz-next:hover { background:var(--accent-fill-deep); }
+  .bc .wz-card .wz-t { font-size:var(--fs-lg); font-weight:700; color:var(--text-on-light); line-height:1.25; }
+  .bc .wz-card .wz-d { font-size:var(--fs-xs); font-weight:400; color:var(--text-on-light-muted);
+    line-height:1.4; position:relative; padding-inline-start:12px; }
+  .bc .wz-card .wz-d::before { content:"·"; position:absolute; inset-inline-start:2px; opacity:.55; }
+  .bc .wz-card.sel .wz-t { color:var(--accent-text-on-light); }
+  .bc .wz-back { font:inherit; font-size:var(--fs-xs); font-weight:600; cursor:pointer;
+    background:none; border:none; color:var(--text-on-light-muted); padding:4px; }
+  .bc .wz-back:hover { color:var(--accent-text-on-light); text-decoration:underline; text-underline-offset:4px; }
+  .bc .wz-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  @media (max-width:600px){ .bc .wz-seg { width:44px; } .bc .wz-seg.cur { width:52px; } .bc .wz-card { padding:13px 15px; } }
+  @media (prefers-reduced-motion: reduce){ .bc .wz-step.on { animation:none; } .bc .wz-seg { transition:none; } }
+
+  /* ── טופס: שדות עם מסגרת דקה, בלי מילויים כבדים ── */
+  .bc input, .bc select { border-radius:4px; }
+  .bc .about .letter p { margin:0 0 10px; line-height:1.66; color:var(--ink); }
+  .bc .about .letter .sign { margin-top:20px; }
+  /* שורות מפתח במכתב: פסקה עצמאית, מודגשת, נושמת פי 1.5 מפסקה רגילה (14px -> 21px) */
+  .bc .about .letter .letter-punch { font-weight:700; margin:13px 0; color:var(--ink); }
+  /* "מדברות?" — שורת סיום ממורכזת עם אוויר משני הצדדים */
+  .bc .about .letter .letter-ask { text-align:center; margin:20px 0 6px; }
+  .bc .about .letter .letter-link { color:var(--gold-text-on-light); font-weight:700; font-size:var(--fs-lg); text-decoration:underline; text-underline-offset:4px; }
+  .bc .about .cols { align-items:start; }
+  .bc .about p { color:var(--text-on-light); font-size:16.5px; }
+
+  /* TESTIMONIALS */
+  .bc .tests h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:28px; max-width:26ch; margin-inline:auto; }
+  .bc .tcard { background: rgba(255,255,255,.04); border:1px solid color-mix(in srgb, var(--accent-border) 22%, transparent); border-radius:18px; padding:26px; display:flex; flex-direction:column; gap:16px; }
+  .bc .tcard .quote-ph { min-height:78px; }
+  .bc .tcard .tquote { color:var(--text-on-dark); font-size:var(--fs-base); line-height:1.75; margin:0; min-height:78px; }
+  .bc .tcard .tname { color:var(--gold-text-on-dark); font-weight:700; font-size:14.5px; }
+  .bc .tsingle { display:flex; justify-content:center; }
+  .bc .tsingle .tcard { max-width:720px; width:100%; padding:34px 38px; }
+  .bc .tsingle .tquote { font-size:var(--fs-lg); line-height:1.8; min-height:0; }
+  .bc .tcard .who { display:flex; align-items:center; gap:12px; }
+  .bc .tcard .avatar-ph { width:52px; height:52px; border-radius:50%; flex:0 0 52px; }
+  .bc .tcard .who .meta .name-ph { width:120px; height:12px; }
+
+  /* WHATSAPP CAROUSEL (skeleton) */
+  .bc .wac h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:24px; }
+  /* WhatsApp carousel */
+  .bc .wa-viewport { overflow:hidden; margin-top:20px; }
+  .bc .wa-track { display:flex; direction:ltr; transition:transform .45s ease; will-change:transform; }
+  .bc .wa-slide { flex:0 0 32%; padding:0 9px; box-sizing:border-box; direction:rtl; }
+  @media (max-width:900px){ .bc .wa-slide{ flex:0 0 52%; } }
+  @media (max-width:600px){ .bc .wa-slide{ flex:0 0 78%; } }
+  @media (prefers-reduced-motion: reduce){ .bc .wa-track{ transition:none; } }
+  .bc .wa-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:16px; }
+  /* קרוסלת צילומי וואטסאפ: הצילום מוצג במלואו ביחס המקורי שלו, בלי חיתוך.
+     גובה אחיד היה חותך את צידי ההודעות ומשאיר טקסט חתוך */
+  .bc .wac-sub { text-align:center; color:var(--text-on-dark-muted); font-size:15px; margin:-14px auto 6px; }
+  /* בלי כרטיס: הצילום יושב ישירות על רקע הסקשן, כך שהשוליים סביבו לא נראים כקופסה ריקה */
+  .bc .wa-shot { font:inherit; display:block; width:100%; padding:0; border:none; background:transparent;
+    cursor:zoom-in; transition:transform .18s var(--ease); }
+  .bc .wa-shot:hover { transform:translateY(-3px); }
+  .bc .wa-shot:focus-visible { outline:3px solid var(--gold-text-on-dark); outline-offset:3px; }
+  .bc .wa-shot img { display:block; width:100%; height:430px; object-fit:contain; object-position:center; border-radius:12px; }
+  @media (max-width:600px){ .bc .wa-shot img { height:400px; } }
+  /* לייטבוקס */
+  .bc .wa-lb { position:fixed; inset:0; z-index:70; background:rgba(10,15,26,.94); display:none;
+    align-items:center; justify-content:center; padding:26px 16px; }
+  .bc .wa-lb.on { display:flex; }
+  .bc .wa-lb img { max-width:min(520px,94vw); max-height:88vh; border-radius:14px; box-shadow:0 24px 60px rgba(0,0,0,.5); }
+  .bc .wa-lb-x { position:absolute; top:16px; left:16px; width:46px; height:46px; border-radius:50%;
+    border:1px solid var(--gold-line); background:rgba(20,27,42,.8); color:var(--text-on-dark);
+    font-size:26px; line-height:1; cursor:pointer; }
+  .bc .wa-lb-x:hover { border-color:var(--gold-border); }
+  .bc .wa-arrow { font:inherit; width:44px;height:44px;border-radius:50%; border:1px solid var(--line-gold); background:transparent; color:var(--text-on-dark-muted); cursor:pointer; font-size:20px; line-height:1; display:flex;align-items:center;justify-content:center; transition:background .18s ease; }
+  .bc .wa-arrow:hover{ background:color-mix(in srgb, var(--accent-border) 14%, transparent); }
+  .bc .wa-arrow:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+  /* הנקודה נשארת 9 פיקסלים, אבל אזור המגע מגיע ל-44 בגובה ול-20 ברוחב.
+     רוחב מלא של 44 היה יוצר חפיפה בין נקודות שכנות ולחיצה על השקופית הלא נכונה */
+  .bc .wa-dots{ display:flex; gap:2px; }
+  .bc .wa-dot{ font:inherit; width:20px; height:44px; background:none; border:none; padding:0; cursor:pointer; position:relative; }
+  .bc .wa-dot::before{ content:""; position:absolute; top:50%; inset-inline-start:50%; width:9px; height:9px; margin:-4.5px 0 0 -4.5px;
+    border-radius:50%; background:color-mix(in srgb, var(--accent-border) 32%, transparent); transition:transform .15s ease, background .15s ease; }
+  .bc .wa-dot.active::before{ background:var(--gold); transform:scale(1.18); }
+  .bc .skip-link{ position:absolute; inset-inline-start:-9999px; top:8px; z-index:200; background:var(--accent-fill); color:var(--accent-on-fill);
+    padding:10px 18px; border-radius:8px; font-weight:700; text-decoration:none; }
+  .bc .skip-link:focus{ inset-inline-start:8px; }
+  .bc .wa-demo-note{ text-align:center; color:var(--text-on-dark-muted); font-size:13px; margin-top:16px; }
+  /* phone frame + WhatsApp chat mock (demo-slides) */
+  .bc .wa-phone { border:9px solid var(--bg-dark-deep); background:var(--bg-dark-deep); border-radius:32px; aspect-ratio:9/17.6; overflow:hidden; box-shadow:0 18px 44px rgba(0,0,0,.3); }
+  .bc .wa-chat { height:100%; display:flex; flex-direction:column; background:#e5ddd3; }
+  .bc .wa-head { display:flex; align-items:center; gap:8px; background:#075e54; color:#fff; padding:9px 10px; }
+  .bc .wa-back{ font-size:19px; line-height:1; opacity:.9; }
+  .bc .wa-av { width:30px;height:30px;border-radius:50%; background:#cdbba1; flex:0 0 30px; }
+  .bc .wa-name { font-size:13px; font-weight:700; display:flex; flex-direction:column; line-height:1.2; }
+  /* צבע חיים 2/3: נקודת "מחוברת" — נוצרת ב-CSS בלבד, בלי לגעת ב-HTML */
+  .bc .wa-name small { font-size:10.5px; font-weight:400; opacity:.85; display:flex; align-items:center; gap:5px; }
+  .bc .wa-name small::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--confirm); flex:0 0 auto; }
+  .bc .wa-body { flex:1; padding:14px 12px; display:flex; flex-direction:column; gap:9px; overflow:hidden; background-image: radial-gradient(rgba(0,0,0,.035) 1px, transparent 1px); background-size:16px 16px; }
+  .bc .wa-in { position:relative; align-self:flex-start; max-width:84%; background:#fff; border-radius:9px; border-top-right-radius:2px; padding:8px 11px 17px; box-shadow:0 1px 1px rgba(0,0,0,.12); }
+  .bc .wa-in p { color:#111b21; font-size:12.5px; line-height:1.45; margin:0; }
+  .bc .wa-in .t { position:absolute; bottom:4px; left:9px; font-size:9.5px; color:#71777D; }
+  .bc .wa-in::before { content:''; position:absolute; top:0; right:-6px; border:6px solid transparent; border-top-color:#fff; border-right-width:0; }
+
+  /* WHO */
+  .bc .who2 { text-align:center; }
+  .bc .who2 h2 { font-size:var(--fs-h2); margin-bottom:26px; }
+  .bc .chips { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:24px; }
+  /* צ'יפים on-dark: רקע לבן שקוף, מסגרת בגוון הטקסט המשני, בלי צל */
+  .bc .chip { background:rgba(255,255,255,.07); border:1px solid rgba(175,186,207,.25); color:var(--text-on-dark); font-weight:600; font-size:15.5px; padding:11px 20px; border-radius:11px; }
+  .bc .who2 .format { color:var(--text-on-dark-muted); max-width:64ch; margin:0 auto; }
+
+  /* FAQ */
+  .bc .faq h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:26px; }
+  .bc .faq .list { max-width:800px; margin:0 auto; }
+  .bc details { background:var(--bg-card); border:1px solid var(--measure-hairline); border-radius:13px; margin-bottom:12px; overflow:hidden; }
+  .bc summary { list-style:none; cursor:pointer; padding:19px 22px; font-weight:700; color:var(--text-on-light); font-size:17px; display:flex; justify-content:space-between; align-items:center; gap:14px; }
+  .bc summary::-webkit-details-marker{ display:none; }
+  .bc summary::after { content:'+'; color:var(--gold-text-on-light); font-size:22px; font-weight:400; flex:0 0 auto; }
+  .bc details[open] summary::after { content:'–'; }
+  .bc details .ans { padding:0 22px 20px; color:var(--text-on-light); font-size:16px; }
+  .bc .todo { color:var(--gold-text-on-light); font-size:13px; font-weight:600; }
+
+  /* FORM */
+  .bc .formsec h2 { text-align:center; font-size:var(--fs-h2-lead); max-width:28ch; margin:0 auto 16px; }
+  .bc .formsec .fs-lead { text-align:center; color:var(--text-on-dark); max-width:60ch; margin:0 auto 36px; font-size:17px; }
+  .bc .formsec { padding-top: 84px; }
+  .bc form { max-width:560px; margin-inline:auto; background:var(--bg-card); border:1px solid color-mix(in srgb, var(--text-on-light) 11%, transparent); border-radius:20px; padding:32px 28px; box-shadow:0 24px 60px rgba(5,12,26,.4); }
+  .bc .field { margin-bottom:17px; }
+  .bc label { display:block; font-weight:600; color:var(--text-on-light); font-size:var(--fs-xs); margin-bottom:7px; }
+  .bc input { width:100%; font-family:inherit; font-size:16px; color:var(--ink); padding:13px 15px; border:1px solid var(--measure-hairline); border-radius:11px; background:var(--bg-light-2); }
+  /* צבע חיים 3/3: השדה הפעיל מגיב — הטופס מרגיש חי בדיוק ברגע ההקלדה */
+  .bc input:focus, .bc select:focus { outline:none; border-color:var(--confirm); box-shadow:0 0 0 3px rgba(31,168,85,.22); }
+  .bc form .cta { width:100%; margin-top:6px; font-size:16px; }
+  .bc .no-commit { text-align:center; color:var(--muted-d); font-size:13px; margin-top:12px; }
+  .bc .err { display:none; color:#d33; font-size:13px; margin-top:6px; }
+  .bc .field.bad input { border-color:#e56; background:transparent; }
+  .bc .field.bad .err { display:block; }
+  .bc .form-err { display:none; color:#c0392b; background:#fdecea; border-radius:9px; padding:10px 12px; font-size:14px; text-align:center; margin-top:12px; }
+  .bc .form-err.show { display:block; }
+  .bc form .cta[disabled] { opacity:.65; cursor:default; }
+  .bc .side-quote { align-self:center; }
+  .bc .side-quote .ph { min-height:150px; }
+  /* צבע חיים 1/3: רגע ההצלחה — פס אישור עליון + וי. הטקסט נשאר בצבעי הטקסט הרגילים */
+  .bc .thankyou { display:none; text-align:center; padding:18px; background:var(--bg-card); border-radius:20px; border-top:4px solid var(--confirm); }
+  .bc .thankyou::before { content:''; display:block; width:44px; height:44px; margin:4px auto 14px; border-radius:50%;
+    background:var(--confirm) no-repeat center/22px 22px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"); }
+  .bc .thankyou.show { display:block; }
+
+  /* FOOTER */
+  .bc footer { background: var(--navy-deep); color:var(--text-on-light-muted); padding:26px 0; text-align:center; font-size:14px; }
+  .bc footer .logo-ph { width:180px; height:56px; margin:0 auto 14px; }
+  .bc footer a { color:var(--accent-text-on-light); text-decoration:underline; }
+  .bc footer .links { display:flex; gap:20px; justify-content:center; margin-top:6px; }
+  .bc .social-row { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; margin:18px auto 16px; }
+  .bc .soc-group { display:flex; gap:10px; }
+  .bc .soc-divider { width:1px; height:26px; background:var(--line-gold); }
+  .bc .soc { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(245,241,232,.07); color:var(--text-on-light-muted); text-decoration:none; transition:color .18s ease, background .18s ease, transform .18s ease; }
+  .bc .soc:hover { color:var(--gold); background:color-mix(in srgb, var(--accent-border) 16%, transparent); transform:translateY(-2px); }
+  .bc .soc:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+  .bc .soc svg { width:20px; height:20px; fill:currentColor; }
+
+  /* floating + sticky */
+  .bc .wa { position:fixed; bottom:22px; left:22px; z-index:60; width:56px;height:56px;border-radius:50%; background:#25d366; display:flex;align-items:center;justify-content:center; box-shadow:0 8px 22px rgba(0,0,0,.3); transition: bottom .3s ease; }
+  .bc .wa svg{ width:29px;height:29px; fill:#fff; }
+  .bc.sticky-on section:last-of-type, .bc.sticky-on footer { padding-bottom:calc(78px + env(safe-area-inset-bottom,0px)); }
+  .bc .sticky { position:fixed; bottom:0; left:0; right:0; z-index:55; background:var(--navy); border-top:1px solid var(--line-gold); padding:11px 16px; padding-bottom:calc(11px + env(safe-area-inset-bottom,0px)); display:none; transform:translateY(120%); transition:transform .3s ease; }
+  .bc.sticky-on .sticky { transform:translateY(0); }
+  .bc .sticky a { display:block; text-align:center; }
+  @media (max-width:900px){
+    .bc .wa { left:16px; bottom:calc(18px + env(safe-area-inset-bottom,0px)); }
+    .bc.sticky-on .wa { bottom:calc(84px + env(safe-area-inset-bottom,0px)); }
+  }
+  @media (prefers-reduced-motion: reduce){ .bc .sticky, .bc .wa { transition:none; } }
+
+  @media (max-width: 900px){ .bc .grid3{ grid-template-columns:1fr; } .bc .about .cols{ grid-template-columns:1fr; } .bc .form-grid{ grid-template-columns:1fr; } .bc section{ padding:34px 0; } .bc .sticky{ display:block; } }
+  /* ===== decode component (copied verbatim from /giyus/) ===== */
+  /* decode */
+  .decode h2{font-size:var(--fs-h2-lead);color:var(--text-on-dark);text-align:center;margin-bottom:10px}
+  .decode .sub{color:var(--muted-l);text-align:center;max-width:560px;margin:0 auto 30px}
+  .decoder{max-width:620px;margin:0 auto;background:var(--navy-deep);border:1px solid var(--line-gold);
+    border-radius:20px;padding:clamp(20px,4vw,32px)}
+  .consent{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:var(--muted-l);
+    background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 16px;margin-bottom:18px;cursor:pointer}
+  .consent input{margin-top:3px;width:20px;height:20px;flex:0 0 auto;accent-color:var(--gold)}
+  .entries{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:520px){.entries{grid-template-columns:1fr}}
+  .entry-btn{display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 14px;background:rgba(255,255,255,.04);
+    border:1.5px solid color-mix(in srgb, var(--accent-border) 30%, transparent);border-radius:14px;color:var(--text-on-dark);font:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:.18s var(--ease)}
+  .entry-btn:hover:not(:disabled){border-color:var(--gold);background:color-mix(in srgb, var(--accent-border) 10%, transparent)}
+  .entry-btn:disabled{opacity:.4;cursor:not-allowed}
+  .entry-btn svg{width:30px;height:30px;color:var(--gold)}
+  #camWrap{margin-top:16px;display:none}
+  #camWrap video{width:100%;border-radius:14px;background:#000;transform:scaleX(-1)}
+  .cam-hint{font-size:13px;color:var(--muted-l);text-align:center;margin-top:8px}
+  .cam-shoot{display:none;margin:12px auto 0;width:auto;padding:12px 26px}
+  .decode-msg{text-align:center;color:var(--gold-light);font-size:15px;margin-top:16px;min-height:1.4em}
+  .proc{display:none;text-align:center;margin-top:22px}
+  .proc-vid{display:block;width:100%;max-width:340px;margin:0 auto 14px;border-radius:12px;
+    -webkit-mask-image:radial-gradient(120% 105% at 50% 50%,#000 55%,transparent 100%);
+            mask-image:radial-gradient(120% 105% at 50% 50%,#000 55%,transparent 100%)}
+  .proc .spinner{width:44px;height:44px;border:3px solid color-mix(in srgb, var(--accent-border) 20%, transparent);border-top-color:var(--gold);border-radius:50%;margin:0 auto 14px;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .proc .ptext{color:var(--gold-light);font-size:16px;font-weight:600}
+
+  /* result card */
+  .result{display:none;margin-top:24px}
+  .rcard{background:var(--card);color:var(--ink);border-radius:18px;padding:clamp(20px,4vw,30px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+  .rcard h3{font-size:22px;color:var(--text-on-light);margin-bottom:16px}
+  .metrics{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+  .metric{background:#fff;border:1px solid #e7e1d3;border-radius:12px;padding:10px 14px;font-size:14px;color:var(--muted-d);flex:1 1 auto;text-align:center}
+  .metric b{display:block;font-family:'Frank Ruhl Libre',serif;font-size:22px;color:var(--gold-text-on-dark);font-weight:800;margin-top:2px}
+  .reading{font-size:17px;line-height:1.7;color:var(--ink)}
+  .rdisc{font-size:12.5px;color:var(--muted-d);margin-top:16px;padding-top:14px;border-top:1px solid #e7e1d3}
+  /* שער הסריקה. ברירת המחדל ב-HTML היא נעול, כך שגם בלי JS לא נחשפת סריקה בלי פרטים */
+  .scan-lock{max-width:560px;margin:0 auto;text-align:center;padding:30px 24px;border-radius:20px;
+    border:1px solid var(--line-gold);background:rgba(255,255,255,.04)}
+  .scan-lock .sl-title{font-family:var(--font-display);font-weight:700;font-size:var(--fs-xl);
+    color:var(--text-on-dark);margin:0 0 10px}
+  .scan-lock .sl-body{color:var(--text-on-dark);font-size:16px;line-height:1.7;margin:0 0 20px}
+  .scan-lock .sl-note{color:var(--text-on-dark-muted);font-size:13px;margin:14px 0 0}
+  .bc .hero-proof{margin:18px auto 0;max-width:46ch;font-size:14.5px;line-height:1.55;
+    color:var(--text-on-dark-muted)}
+  .bc .hero-proof span{display:block;margin-top:4px;font-family:var(--font-measure,inherit);
+    font-size:12.5px;letter-spacing:.04em;color:var(--measure-on-dark)}
+  .scan-basis{max-width:52ch;margin:0 auto 22px;text-align:center;font-size:15px;line-height:1.65;
+    color:var(--text-on-dark-muted)}
+  .scan-basis strong{display:block;color:var(--text-on-dark);margin-bottom:3px}
+    .scan-lock .sl-spec{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-wrap:wrap;
+    justify-content:center;gap:8px 10px}
+  .scan-lock .sl-spec li{font-family:var(--font-measure,inherit);font-size:13.5px;letter-spacing:.03em;
+    color:var(--measure-on-dark);border:1px solid color-mix(in srgb, var(--measure-on-dark) 32%, transparent);
+    border-radius:999px;padding:6px 13px}
+  .scan-lock .cta{display:inline-block}
+  #decode.gated #decoder{display:none}
+  #decode:not(.gated) .scan-lock{display:none}
+  .locked{position:relative;margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line-gold)}
+  .locked .blurred{filter:blur(6px);opacity:.5;padding:26px;background:rgba(255,255,255,.04);font-size:15px;color:var(--muted-l);user-select:none;pointer-events:none}
+  .locked .lock-cta{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px;background:linear-gradient(180deg,rgba(20,27,42,.55),rgba(20,27,42,.85))}
+  .locked .lock-cta p{margin:0;font-weight:700;color:var(--text-on-dark);max-width:420px}
+  /* host-page integration: the main page's generic .bc label / .bc input form rules
+     leak into the copied component and override .consent (navy-on-navy text, block
+     layout, styled checkbox). Restore the exact giyus declarations, scoped to .decode. */
+  .bc .decode .consent{display:flex;font-weight:400;color:var(--muted-l);font-size:14px;margin-bottom:0}
+  .bc .decode .consent input{width:20px;height:20px;padding:0;border:none;background:transparent;border-radius:0}
+  /* EFSHAR — שאלות, תוצאה, CTA */
+  .bc .decode .entries{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:640px){ .bc .decode .entries{grid-template-columns:1fr} }
+  .bc .ef-qs{margin-top:16px}
+  .bc .ef-intro{color:var(--muted-l);font-size:14.5px;line-height:1.7;margin-bottom:6px}
+  .bc .ef-lenses{color:var(--gold-text-on-dark);font-weight:700;font-size:14.5px;margin-bottom:14px}
+  .bc .ef-q{border:1px solid color-mix(in srgb, var(--accent-border) 25%, transparent);border-radius:14px;padding:16px;margin-bottom:12px;background:rgba(255,255,255,.03)}
+  .bc .ef-qname{color:var(--gold-text-on-dark);font-weight:700;font-size:13.5px;letter-spacing:.5px;margin-bottom:4px}
+  .bc .ef-qtext{color:var(--text-on-dark);font-weight:700;font-size:16.5px;margin-bottom:4px}
+  .bc .ef-qhow{color:var(--muted-l);font-size:13.5px;margin-bottom:10px}
+  .bc .ef-measured{color:var(--gold-light);font-size:13.5px;margin-bottom:8px}
+  .bc .ef-opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  @media(max-width:640px){ .bc .ef-opts{grid-template-columns:1fr} }
+  .bc .ef-opt{padding:11px 8px;border-radius:10px;border:1px solid color-mix(in srgb, var(--accent-border) 30%, transparent);background:rgba(255,255,255,.04);color:var(--text-on-dark);font-family:inherit;font-size:14.5px;cursor:pointer;transition:border-color .15s ease, background .15s ease}
+  .bc .ef-opt:hover{border-color:var(--gold)}
+  .bc .ef-opt.sel{border-color:var(--gold);background:color-mix(in srgb, var(--accent-border) 16%, transparent);color:var(--gold-light);font-weight:700}
+  .bc .ef-show{width:100%;margin-top:6px}
+  .bc .ef-show[disabled]{opacity:.5;cursor:default}
+  .bc .ef-opener{color:var(--text-on-light);font-weight:700;margin:0 0 10px}
+  .bc .ef-snip{color:var(--ink);line-height:1.75;margin:0 0 10px}
+  .bc .ef-combo{color:var(--gold-text-on-dark);font-weight:600;line-height:1.75;margin:0 0 10px}
+  .bc .ef-cross{color:var(--text-on-light);margin:14px 0 0;border-top:1px solid color-mix(in srgb, var(--accent-border) 35%, transparent);padding-top:12px}
+  .bc .ef-ctas{display:grid;gap:14px;margin-top:16px}
+  .bc .ef-cta{border:1px solid color-mix(in srgb, var(--accent-border) 40%, transparent);border-radius:14px;padding:18px;background:color-mix(in srgb, var(--accent-border) 6%, transparent)}
+  .bc .ef-cta h4{color:var(--gold-text-on-dark);font-size:18px;margin:0 0 8px;font-family:'Frank Ruhl Libre','David Libre',serif}
+  .bc .ef-cta p{color:#465067;font-size:14.5px;line-height:1.7;margin:0 0 12px}
+  .bc select{width:100%;font-family:inherit;font-size:16px;color:var(--ink);padding:13px 15px;border:1.5px solid #e2ddcf;border-radius:11px;background:#fbfaf6}
+  .bc .thankyou .ty-sign{margin-top:12px;color:var(--gold-text-on-light);font-weight:700;font-size:14.5px}
+  .bc footer .legal{color:var(--text-on-dark-muted);opacity:.8;font-size:12.5px;line-height:1.6;max-width:760px;margin:14px auto 10px}
+  /* closing task 4: engine-load notice + camera flip */
+  .bc .engine-load{display:none;align-items:center;justify-content:center;gap:10px;color:var(--muted-l);font-size:14px;margin-top:12px}
+  .bc .engine-load .spinner{width:18px;height:18px;border:2.5px solid color-mix(in srgb, var(--accent-border) 30%, transparent);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;flex:0 0 18px}
+  .bc #camWrap{position:relative}
+  .bc .cam-flip{position:absolute;top:10px;left:10px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid color-mix(in srgb, var(--accent-border) 50%, transparent);background:rgba(20,27,42,.72);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .bc .cam-flip:hover{border-color:var(--gold)}
+  .bc .cam-flip svg{width:20px;height:20px}
+
+  /* ══════════════════════════════════════════════════════════════════
+     סקין F · "אולם" — אור, רעננות, ותחושת הרצאה כבר מהמסך הראשון
+     הקרם יצא. הקרקע היא פורצלן קריר, ההירו הוא אולם חשוך עם אור במה,
+     האוקסבלד נשאר כעוגן רציני, והוורדיגריס עולה מקו דק לנוכחות חיה.
+     נטען אחרי סקין E ולכן דורס לו טוקנים והירו בלבד. כל הכללים המבניים
+     של E נשארים בתוקף (גרעין, הרמת z-index, פאנלי הווידאו).
+     ══════════════════════════════════════════════════════════════════ */
+  html.skin-f, html.skin-f body { background:#EEF3F3; }
+
+  html.skin-f .bc {
+    --bg-dark:#EEF3F3; --bg-dark-elevated:#F7FAFA; --bg-dark-deep:#E4ECEC;
+    --bg-light:#F7FAFA; --bg-light-2:#E4ECEC; --bg-card:#FFFFFF;
+    --text-on-dark:#122225; --text-on-dark-muted:#4B5F62;
+    --text-on-light:#122225; --text-on-light-muted:#4B5F62;
+    --accent-fill:#6E2A35; --accent-fill-deep:#5A2029;
+    --accent-text-on-dark:#6E2A35; --accent-text-on-light:#6E2A35;
+    --accent-on-fill:#F7FAFA;
+    --accent-border:#6E2A35; --accent-hairline:rgba(110,42,53,.26);
+    --measure-line:#0E8577; --measure-text:#0B6A5F; --measure-on-dark:#0B6A5F;
+    --surface-light-bg:#F7FAFA; --surface-light-card:#FFFFFF; --surface-light-text:#122225;
+    --surface-light-muted:#4B5F62; --surface-light-accent:#6E2A35; --surface-light-measure:#0B6A5F;
+    --measure-hairline:rgba(14,133,119,.30);
+    --pole-warm:#FF6A3D; --pole-cool:#12C7B4;
+  }
+  /* גרעין הנייר נועד לשמנת. על פורצלן הוא מלכלך, ולכן נשאר כרמז בלבד */
+  html.skin-f .bc::before { opacity:.20; }
+  html.skin-f .bc > *:not(.wa):not(.sticky):not(.skip-link) { position:relative; z-index:2; }
+
+  /* ── ההירו: אולם חשוך, אור במה, ורעות בתוכו ──
+     הטוקנים הכהים מוגדרים מחדש על ההירו עצמו, כך שכל צאצא בתוכו מקבל
+     צבעי טקסט של רקע כהה בלי לגעת בטוקנים הגלובליים של הדף. */
+  html.skin-f .bc .hero {
+    --text-on-dark:#EAF3F1; --text-on-dark-muted:#A9C4C0;
+    --accent-text-on-dark:#EAF3F1;
+    --rail:#5FE0CE;
+    color:var(--text-on-dark);
+    background:#0A181B;
+    position:relative; isolation:isolate; overflow:hidden;
+    padding:30px 0 74px;
+    min-height:min(86vh,760px);
+    display:flex; align-items:center;
+  }
+  html.skin-f .bc .hero::before {
+    content:''; position:absolute; inset:0; z-index:0;
+    background:url(media/stage.jpg) center/cover no-repeat;
+    background:image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg")) center/cover no-repeat;
+    filter:contrast(1.16) saturate(.84) brightness(.88);
+    background-position:38% center;
+  }
+  /* שלוש שכבות אור: הילה חמה מאחורי רעות, אפלה שנסגרת מצד הטקסט,
+     וכהות שעולה מהרצפה כדי שהקהל בתחתית הפריים יישאר צללית */
+  html.skin-f .bc .hero::after {
+    content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(58% 68% at 27% 44%, rgba(255,183,128,.22) 0%, rgba(255,150,90,.07) 44%, transparent 74%),
+      linear-gradient(to left, #0A181B 0%, rgba(10,24,27,.95) 32%, rgba(10,24,27,.74) 55%, rgba(10,24,27,.34) 78%, rgba(10,24,27,.20) 100%),
+      radial-gradient(130% 96% at 50% 104%, rgba(3,9,11,.88) 0%, transparent 56%);
+  }
+  html.skin-f .bc .hero > .wrap { position:relative; z-index:2; width:100%; padding-bottom:44px; }
+
+  /* שוברים את הציר המרכזי: הטקסט נצמד לימין, והשמאל נשאר לרעות ולקהל */
+  html.skin-f .bc .hero-copy { max-width:38.5rem; margin-inline:0 auto; text-align:right; }
+  html.skin-f .bc .hero-copy h1, html.skin-f .bc .hero-copy .sub,
+  html.skin-f .bc .hero-copy .hero-bio, html.skin-f .bc .hero-copy .hero-kick,
+  html.skin-f .bc .hero-copy .hero-bridge { margin-inline:0; }
+  html.skin-f .bc .hero-copy .hero-ctas { justify-content:flex-start; }
+  html.skin-f .bc .hero-copy .hero-proof { margin-inline:0; }
+
+  /* קפיצת גודל אמיתית בין הכותרת לכל השאר */
+  html.skin-f .bc .hero h1 {
+    font-size:clamp(2.6rem,6vw,5.2rem); line-height:1.03; letter-spacing:-.022em;
+    max-width:13.5ch; margin-bottom:.7rem;
+  }
+  html.skin-f .bc .hero h1, html.skin-f .bc .hero .sub {
+    text-shadow:0 2px 22px rgba(0,0,0,.5);
+  }
+  html.skin-f .bc .hero .hero-kick { color:var(--rail); font-weight:500; }
+  html.skin-f .bc .hero .hero-alt { color:var(--text-on-dark-muted); }
+  /* הסמל הלבן חוזר, אבל רק בתוך ההירו. בפוטר הרקע בהיר ולכן נשאר הכהה */
+  html.skin-f .bc .hero .wm-hand { content:url(media/mark.png); }
+
+  /* פס המדידה בתחתית ההירו — החתימה של האטלס, ומה שמסמן שהדף נמדד ולא מקושט */
+  html.skin-f .bc .hero > .wrap::after {
+    content:''; position:absolute; inset-inline:0; bottom:14px; height:9px; opacity:.55;
+    background:
+      linear-gradient(var(--rail),var(--rail)) bottom right/100% 1px no-repeat,
+      repeating-linear-gradient(to left, var(--rail) 0 1px, transparent 1px 58px) bottom right/100% 9px no-repeat;
+  }
+  html.skin-f .bc .hero > .wrap::before {
+    content:'01 · האולם'; position:absolute; inset-inline-start:0; bottom:26px;
+    font-family:'IBM Plex Sans Hebrew','Assistant',sans-serif; font-weight:500;
+    font-size:12px; letter-spacing:.14em; color:var(--rail); opacity:.75;
+  }
+
+  /* הכפתור על רקע כהה: אותו אוקסבלד, מואר מדרגה כדי שלא ישקע */
+  html.skin-f .bc .hero .cta {
+    background:linear-gradient(160deg,#8C3844 0%,#702B36 58%,#5A2029 100%);
+    box-shadow:0 1px 0 rgba(255,255,255,.18) inset, 0 12px 30px rgba(0,0,0,.42);
+  }
+  html.skin-f .bc .hero .cta:hover {
+    background:linear-gradient(160deg,#9C404D 0%,#7E323E 58%,#67252E 100%);
+    box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 16px 38px rgba(0,0,0,.5);
+  }
+
+  @media (max-width:900px){
+    html.skin-f .bc .hero { min-height:auto; padding:24px 0 62px; }
+    html.skin-f .bc .hero::before { background-position:36% center; }
+    html.skin-f .bc .hero::after {
+      background:
+        radial-gradient(72% 38% at 50% 40%, rgba(255,183,128,.20) 0%, transparent 72%),
+        linear-gradient(to bottom, rgba(10,24,27,.93) 0%, rgba(10,24,27,.88) 44%, rgba(10,24,27,.66) 70%, rgba(10,24,27,.9) 100%);
+    }
+    html.skin-f .bc .hero-copy { max-width:100%; }
+  }
+
+  /* ── תיקוני קריאות בהירו ── */
+  html.skin-f .bc .hero { --gold-text-on-dark:#F7CDAE; }
+  /* פס הקטבים בכפתור: קטע מדידה קצר בפינה, לא קו מלא שנקרא כמו תקלה */
+  html.skin-f .bc .cta::before {
+    inset:auto auto 0 0; width:72px; height:2px; opacity:.9;
+  }
+  @media (max-width:900px){
+    /* במובייל הטקסט יושב על הפריים כולו, ולכן החושך צריך להיות עמוק יותר,
+       והפריים מוזז כך שהפנים שלה לא נופלות מתחת לפסקה */
+    html.skin-f .bc .hero::before { background-position:34% 14%; }
+    html.skin-f .bc .hero::after {
+      background:
+        radial-gradient(78% 34% at 50% 30%, rgba(255,183,128,.16) 0%, transparent 74%),
+        linear-gradient(to bottom, rgba(8,20,23,.95) 0%, rgba(8,20,23,.93) 42%, rgba(8,20,23,.74) 72%, rgba(8,20,23,.93) 100%);
+    }
+    html.skin-f .bc .cta::before { width:56px; }
+  }
+</style>
+
+<div class="bc">
+  <a href="#top" class="skip-link">דילוג לתוכן</a>
+  <main id="content">
+
+  <!-- 1. HERO -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="topbar">
+        <a href="#top" class="wordmark" aria-label="רעות ביטון, לראש הדף"><img class="wm-hand" src="media/mark.png" width="209" height="160" alt="" aria-hidden="true"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></a>
+      </div>
+      <div class="hero-copy">
+        <h1 class="fade">לכל מרואיין יש שני סיפורים.</h1>
+        <p class="hero-kick fade">אחד מהם הוא הכין מראש.</p>
+        <p class="hero-bio fade">את הסיפור השני כפות הידיים כבר מספרות.</p>
+        <p class="sub fade">את הפער בין השניים בארגון תמיד מגלים באיחור. בחודש השלישי של מי שנראה מושלם, ובשיחת העזיבה של מי שכבר מזמן החליט.</p>
+        <p class="hero-bridge fade">ומה אם הייתם רואים את זה כבר בפגישה הראשונה, ולא בשיחת העזיבה?</p>
+        <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
+        עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
+        -->
+        <div class="hero-ctas fade">
+          <a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a>
+        </div>
+        <p class="hero-alt fade">פחות טעויות גיוס. פחות עזיבות שתופסות אתכם לא מוכנים. וצוות שמדבר על אנשים באותה שפה.</p>
+        <p class="hero-proof fade">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר."<span>המועצה המקומית קדימה־צורן</span></p>
+      </div>
+      </div>
+  </header>
+
+  <!-- 4b. DECODE (moved from /giyus/, verbatim) -->
+<section class="s-deep decode gated" id="decode">
+  <div class="wrap">
+    <h2 class="fade">אל תאמינו למילים. תבדקו על עצמכם.</h2>
+    <p class="sub fade">אבחון דיגיטלי קצר, לפני שמחליטים אם השיטה מתאימה לצוות. שלוש דרכים להתחיל: תמונה של כף היד, סריקה חיה במצלמה, או שאלון בלי מצלמה.</p>
+      <!-- שתי כפות ידיים אמיתיות עם 21 נקודות המדידה. אותן נקודות שהסורק מודד -->
+      <div class="scan-art">
+        <video class="hands-vid" src="media/hands.mp4" poster="media/hands-poster.jpg"
+               autoplay muted loop playsinline preload="metadata"
+               aria-label="שתי כפות ידיים פתוחות ועליהן 21 נקודות המדידה של השיטה, עם גל אור שעובר ביניהן"></video>
+      </div>
+    <!-- שער הסריקה: נעול עד שמשאירים פרטים. נפתח מהטופס וגם מ-localStorage בביקור חוזר -->
+    <p class="scan-basis fade"><strong>לא גורלות. לא אסטרולוגיה. לא אנרגיות.</strong>
+      המנוע כאן רץ על בסיס הידע של רעות, באותה שיטה שהיא מלמדת בהרצאה.</p>
+    <div class="scan-lock fade" id="scanLock">
+      <p class="sl-title">הפענוח שלכם מוכן. נשאר רק להכיר.</p>
+      <p class="sl-body">השאירו פרטים כדי לשמוע על ההרצאה לארגון שלכם, ומיד אחר כך ייפתח לכם האבחון. תבדקו את השיטה על עצמכם, לפני שאתם מחליטים להביא אותה לצוות.</p>
+      <ul class="sl-spec">
+        <li>שתי דקות</li>
+        <li>חמש עדשות אישיות</li>
+        <li>התוצאה על המסך, בלי המתנה</li>
+      </ul>
+      <a href="#lead-form" class="cta" id="scanLockCta">להשאיר פרטים ולפתוח את האבחון</a>
+      <p class="sl-note">האבחון רץ במכשיר שלכם בלבד. התמונה לא נשמרת ולא נשלחת.</p>
+    </div>
+    <div class="decoder fade" id="decoder">
+      <label class="consent" for="consentChk">
+        <input type="checkbox" id="consentChk">
+        <span>אני מאשר/ת עיבוד תמונת כף היד. התמונה מעובדת במכשיר שלי בלבד ואינה נשמרת או נשלחת. המדידות והסימונים יצורפו לפנייה רק אם אבחר להשאיר פרטים. <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">מדיניות פרטיות</a></span>
+      </label>
+      <div class="entries">
+        <button class="entry-btn" id="btnUpload" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+          העלאת תמונה
+        </button>
+        <button class="entry-btn" id="btnCamera" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          סריקה חיה
+        </button>
+        <button class="entry-btn" id="btnManual" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          שאלון מודרך, בלי מצלמה
+        </button>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" hidden>
+      <div id="camWrap">
+        <video id="cam" playsinline muted></video>
+        <button type="button" class="cam-flip" id="camFlip" aria-label="החלפת מצלמה" title="החלפת מצלמה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3"/><path d="M22 12.5a10 10 0 0 1-18.8 4.3"/></svg></button>
+        <div class="cam-hint">כף יד פתוחה מול המצלמה, נזהה אוטומטית</div>
+        <button type="button" class="cta cam-shoot" id="camShoot">צלמו עכשיו</button>
+      </div>
+      <div class="decode-msg" id="decodeMsg"></div>
+      <div class="engine-load" id="engineLoad"><div class="spinner"></div><div>טוען את מנוע הזיהוי. פעם ראשונה בלבד, כמה שניות…</div></div>
+      <div class="ef-qs" id="efsharQs" style="display:none"></div>
+      <div class="proc" id="proc">
+        <video class="proc-vid" src="media/hands.mp4" poster="media/hands-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <div class="ptext" id="procText">מודד את זווית האגודל…</div>
+      </div>
+      <div class="result" id="result">
+        <div class="rcard">
+          <h3>הפענוח הראשוני שלך</h3>
+          <div class="metrics" id="metrics"></div>
+          <div class="reading" id="reading"></div>
+          <div class="rdisc">פענוח ראשוני על בסיס הסימונים שלך. אינו אבחון אישי של רעות ביטון.</div>
+          <div class="ef-ctas">
+            <div class="ef-cta">
+              <h4>רוצה שהצוות שלך יחווה את זה על עצמו?</h4>
+              <p>אני מעבירה הרצאות למנהלי/ות ואנשי/נשות משאבי אנוש. חוויה שבה כל משתתף/ת מרגיש/ה שנגעתי במשהו אמיתי אצלו/ה, ולומד/ת כלי מעשי לקריאת אנשים בגיוס, בהשמה ובהחלטות. בדיוק כמו האבחון הזה, רק לעומק ועל כל הצוות.</p>
+              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">הביאו את רעות להרצאה ←</button>
+            </div>
+            <div class="ef-cta">
+              <h4>רוצה ללמוד לקרוא את זה בעצמך?</h4>
+              <p>האבחון נתן 5 עדשות. בהכשרה האישית, אחד על אחד, לומדים לזהות את הדפוסים האלה באנשים שיושבים מולכם. היכולת נשארת אצלכם בארגון.</p>
+              <button type="button" class="cta ghost ef-cta-btn" data-interest="הכשרה אישית">ללמוד את הכלי בעצמי ←</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- 11. FORM -->
+  <section class="s-deep formsec surface-light" id="lead-form">
+    <div class="wrap">
+      <p class="fs-lead roi-line fade">בואו נמצא תאריך שמתאים לצוות שלכם.</p>
+      <h2 class="fade">הזמינו את ההרצאה שהצוות ידבר עליה, ויישאר בזכותה.</h2>
+      <p class="fs-lead fade">מלאו את הפרטים ואחזור אליכם. נבין יחד מה הצוות שלכם צריך, ואשלח לכם תאריכים פנויים ואת כל הפרטים.</p>
+      <form id="bcForm" novalidate>
+        <div class="field" data-f="name"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם מלא</div></div>
+        <div class="field" data-f="company"><label for="f-company">ארגון או חברה</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון</div></div>
+        <div class="field" data-f="role"><label for="f-role">התפקיד שלך</label><select id="f-role" name="role"><option value="">בחרו מהרשימה</option><option value="משאבי אנוש">משאבי אנוש או People</option><option value="גיוס">גיוס והשמה</option><option value="רווחה וחוויית עובד">רווחה וחוויית עובד</option><option value="הדרכה ופיתוח ארגוני">הדרכה ופיתוח ארגוני</option><option value="ניהול צוות">ניהול צוות או הנהלה</option><option value="ועד עובדים">ועד עובדים</option><option value="אחר">אחר</option></select><div class="err"></div></div>
+        <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
+        <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
+        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="דינמיקה, חיכוכים ותקשורת">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="אחד על אחד">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד">עוד לא בטוחים</option></select></div>
+        <button type="submit" class="cta">קבלו תאריכים והצעה</button>
+        <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
+        <p class="no-commit">השארת פרטים אינה מחייבת. אחזור אליכם עם פרטים והצעה, וההחלטה כולה שלכם.</p>
+      </form>
+      <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:var(--fs-xl);margin-bottom:8px">תודה! קיבלתי את הפרטים שלכם.</h3><p style="color:var(--text-on-light)">אחזור אליכם אישית תוך יום-יומיים. <span id="tyMid">בינתיים, האבחון שעשיתם הוא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235</p></div>
+    </div>
+  </section>
+
+  <!-- סקשן וידאו — הוסר מהרינדור 2026-08-03. סיבה: נכס B2C (טלפון אישי, reutbitton.com, סימן מים CapCut). יוחזר רק עם וידאו B2B נקי + אישור מפורש.
+       המנגנון המקורי: facade של יוטיוב, ה-iframe נטען רק בלחיצה. הקוד ב-JS (querySelectorAll('.yt-facade')) וה-CSS נשארו במקומם ולא עושים כלום בלי הסקשן. -->
+  <!--
+  <section class="s-deep video">
+    <div class="wrap">
+      <h2 class="fade">רגע לפני שנמשיך — תראי בעצמך</h2>
+      <div class="video-wrap fade">
+        <button class="yt-facade" type="button" aria-label="הפעלת סרטון ההרצאה של רעות ביטון" data-id="_uMl2XqDNoI">
+          <img class="yt-thumb" src="https://i.ytimg.com/vi/_uMl2XqDNoI/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/_uMl2XqDNoI/hqdefault.jpg'">
+          <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- 3. PAIN -->
+  <section class="s-ivory pain surface-dark">
+    <div class="wrap"><div class="text-col">
+      <h2 class="fade">אתם מזהים את זה לפני כולם.</h2>
+      <p class="fade">העובד שנהיה שקט בישיבות. הכוכבת שפתאום "בודקת אופציות". הצוות שמתקשר פחות ומתחכך יותר. אתם רואים את הסימנים. אבל עד שמדברים, זה כבר מכתב התפטרות על השולחן.</p>
+      <p class="kick fade">ומה אם כל הצוות, כולל המנהלים, היה יודע לקרוא את הסימנים האלה הרבה לפני שהם הופכים למכתב?</p>
+    </div></div>
+  </section>
+
+  <!-- 8. WHATSAPP CAROUSEL — צילומי מסך אמיתיים. נחתכו כדי להסיר מקלדת, שורת סטטוס, שמות לקוחות וקישורי חשבונית. מקור: wa-src/ ; חתוכים: wa-clean/ ; מוגשים: deploy/wa/ -->
+  <section class="s-dark-2 wac">
+    <div class="wrap">
+      <h2 class="fade">ההודעות שמגיעות אחרי</h2>
+      <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
+      <div class="wa-viewport fade" id="waViewport">
+        <div class="wa-track" id="waTrack">
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="900" height="747" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
+        </div>
+      </div>
+      <div class="wa-nav">
+        <button class="wa-arrow" type="button" data-dir="1" aria-label="השקופית הבאה">›</button>
+        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
+        <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">‹</button>
+      </div>
+      <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
+    </div>
+  </section>
+
+  <!-- 4. BENEFITS -->
+  <section class="s-navy benes surface-light">
+    <div class="wrap">
+      <h2 class="fade">הרצאה אחת. שלושה דברים שנשארים אחריה.</h2>
+      <div class="grid3">
+        <div class="card fade">
+          <h3>חוויה שמגבשת</h3>
+          <p>שעה שכולם משתתפים בה: כל עובד מגלה מה כף היד שלו מספרת עליו, ומשווה עם הקולגות. אחד צוחק, השני נשבע שזה לא ייתכן, ודווקא השקט שבפינה מודה שקלעו בול. על השעה הזאת מדברים במטבחון עוד הרבה זמן.</p>
+        </div>
+        <div class="card fade">
+          <h3>שפה מקצועית חדשה</h3>
+          <p>הצוות יוצא עם שפה מעשית לתקשורת: מי מחליט מהר ומי צריך לישון על זה. יש כאלה שפורחים כשנותנים להם חופש, ויש כאלה שדווקא צריכים גבולות ברורים. פחות חיכוכים, יותר הבנה. את ההבדל שומעים כבר בישיבה הראשונה שאחרי.</p>
+        </div>
+        <div class="card fade">
+          <h3>כלי ניהולי שנשאר</h3>
+          <p>מנהלים לומדים לראות את מה שהעובד לא אומר: מוטיבציה אמיתית, עומס שקט, שחיקה מתחת לפני השטח, לפני שזה הופך למכתב התפטרות. עובד אחד שנשאר, וההרצאה החזירה את עצמה.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 5. OBJECTION -->
+  <section class="s-deep obj surface-light">
+    <div class="wrap"><div class="text-col">
+      <span class="badge fade">חשוב שתדעו</span>
+      <h2 class="fade">בלי מיסטיקה ובלי רוחניות. שיטה שאפשר למדוד ולבדוק.</h2>
+      <p class="fade">שיטת <span class="ltr">H.I.P</span> פותחה על ידי רעות ביטון על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן ו-17 שנות ניסיון באבחון התנהגות אנושית. זה כלי מדידה של דפוסי התנהגות ואישיות, נקודה. אין פה קריאת עתידות, ואת זה מבינות מהר גם ההנהלות הכי אנליטיות.</p>
+      <p class="obj-stat fade">מאות אבחונים. אפס מגע פיזי.</p>
+    </div></div>
+  </section>
+
+  <!-- 6. ABOUT -->
+  <section class="s-ivory about">
+    <div class="wrap">
+      <div class="cols">
+        <!-- גיבוי: פורטרט מאויר (רישום עיפרון) שמור ב-public/images/reut-portrait-illustration.png -->
+        <!-- backup illustrated portrait kept at public/images/reut-portrait-illustration.png -->
+        <!--rest of about text below-->
+        <div class="fade letter">
+          <div class="eyebrow">מכתב אישי</div>
+          <h2>שלום, אני רעות.</h2>
+          <p>יש פרק בקורות החיים שלי שאני לא מרחיבה עליו, ואספר ממנו רק דבר אחד: במשך שנים עבדתי במקום שבו טעות בקריאת אדם לא עולה כסף. היא עולה הרבה יותר.</p>
+          <p>שם למדתי שאנשים הם שני סיפורים: הסיפור שהם מספרים, ומי שהם באמת. ואת ההבדל בין השניים לא שומעים במילים. רואים אותו.</p>
+          <p>היום, אחרי 17 שנים של ניתוח ואבחון התנהגות אנושית, הכשרה מבית ד"ר ארנולד הולצמן, ומאות אבחונים והרצאות, אני עושה את זה בשיטה שפיתחתי, <span class="ltr">H.I.P</span>, בדרך שנשמעת מוזרה בפעם הראשונה שמספרים לכם עליה: אני קוראת אנשים מכפות הידיים שלהם.</p>
+          <p class="letter-punch">כף היד לא עוברת עריכה. וזה כל היתרון שלה.</p>
+          <p>ומה אני לא מבטיחה: לא דיוק של מאה אחוז, ולא החלטה במקומכם. האבחון לא מחליף קורות חיים, בדיקת המלצות, ריאיון או תקופת ניסיון. הוא מצטרף אליהם, ומוסיף את השכבה האחת שאף אחד מהם לא רואה.</p>
+          <p class="sign">שלך,<br><strong>רעות ביטון</strong><br>בינה אנושית · שיטת <span class="ltr">H.I.P</span></p>
+          <div class="portrait fade"><img src="media/portrait-warm.jpg" alt="רעות ביטון, מרצה ומאבחנת בשיטת H.I.P" loading="lazy" width="440" height="537"></div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6b. TRIAL DIAGNOSIS -->
+  <section class="s-ivory trial surface-dark">
+    <div class="wrap"><div class="text-col">
+      <h2 class="fade">לא מאמינים? אל תאמינו. תבדקו.</h2>
+      <ul class="trial-steps fade">
+        <li>בחרו עובד ותיק שאתם מכירים היטב</li>
+        <li>אבחון <span class="ltr">H.I.P</span> מלא מתמונת כפות ידיים</li>
+        <li>דוח מפורט להשוואה מול מה שאתם כבר יודעים</li>
+      </ul>
+      <p class="kick fade">אם הדיוק לא יפתיע אתכם, לא שילמתם שקל ולא נמשיך. אם כן? נדבר על ההרצאה והמשך הדרך.</p>
+      <div class="center-cta fade"><a href="#lead-form" class="cta ghost trial-cta">בקשו אבחון ניסיון לעובד אחד</a></div>
+      <p class="no-commit fade">אבחוני הניסיון ניתנים בכפוף לזמינות.</p>
+    </div></div>
+  </section>
+
+
+
+
+
+  <!-- 9. WHO -->
+  <!-- padding-top:0 הוסר עם הקרוסלה — הוא היה קיים רק כדי להיצמד אליה. להחזיר אם הקרוסלה חוזרת. -->
+  <section class="s-dark-2 who2">
+    <div class="wrap">
+      <h2 class="fade">למי זה מתאים</h2>
+      <div class="chips fade">
+        <span class="chip">חברות הייטק</span><span class="chip">בנקים</span><span class="chip">חברות ביטוח</span><span class="chip">משרדי עורכי דין</span><span class="chip">ארגונים בינוניים וגדולים</span><span class="chip">ועדי עובדים</span><span class="chip">רשויות מקומיות</span><span class="chip">סמינרים וימי עיון</span>
+      </div>
+      <p class="format fade">פורמט: 60 עד 75 דקות, מתאים בדיוק למשבצת של ימי עיון, הרמות כוסית, ערבי צוות ופעילויות חברה.</p>
+    </div>
+  </section>
+
+  <!-- 10. FAQ -->
+  <section class="s-navy faq">
+    <div class="wrap">
+      <h2 class="fade">השאלות שחוזרות לפני שמזמינים</h2>
+      <div class="list fade">
+        <details><summary>כמה זמן נמשכת ההרצאה ולאיזה גודל קהל היא מתאימה?</summary><div class="ans">ההרצאה נמשכת 60 עד 75 דקות ומותאמת לגודל הקהל שלכם, מצוות מצומצם ועד כנס חברה. בשיחת האפיון נדייק יחד את הפורמט.</div></details>
+        <details open><summary>כמה זה עולה?</summary><div class="ans">תעשו רגע את החשבון של עזיבה אחת אצלכם: גיוס והכשרה, וכל החודשים באמצע. ההרצאה עולה פחות מזה, משמעותית. מלאו פרטים ואחזור אליכם עם הצעה מסודרת תוך יום עסקים.</div></details>
+        <details><summary>זה מתאים גם לקהל מגוון של עובדים, מנהלים והייטקיסטים ציניים?</summary><div class="ans">כן. גם הציניקן של המשרד יוצא עם משהו. בדרך כלל הוא זה שצוחק הכי חזק. ההדגמות בזמן אמת עושות את העבודה במקום שכנועים, וכולם יוצאים עם כלי שאפשר להשתמש בו כבר למחרת.</div></details>
+        <details><summary>איך מציגים את זה להנהלה בלי שזה יישמע תלוש?</summary><div class="ans">במשפט אחד: "כלי מדידה של דפוסי התנהגות, שמוסיף שכבת מידע על אנשים בגיוס ובניהול. לא מחליף ריאיון ולא מחליף שיקול דעת." זה הניסוח שעובד, כי הוא לא מבקש מאף אחד להאמין במשהו. ואם רוצים משהו חזק מזה, אפשר לעשות אבחון ניסיון לעובד ותיק ולהראות את הדוח בישיבה.</div></details>
+        <details><summary>זה לא משהו מיסטי? איך זה יתקבל אצל ההנהלה?</summary><div class="ans">ממש לא. שיטת <span class="ltr">H.I.P</span> פותחה על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן, כלי מדידה של דפוסי התנהגות, בלי שום קשר לרוחניות או קריאת עתידות. ההנהלות הכי אנליטיות הן דווקא הקהל שהכי מתחבר.</div></details>
+        <details><summary>מה צריך להכין מבחינה לוגיסטית?</summary><div class="ans">מעט מאוד. חלל עם מקרן או מסך, מיקרופון וכיסאות לקהל. אני מגיעה עם כל השאר.</div></details>
+        <details><summary>האם ההרצאה מתאימה גם לזום/היברידי?</summary><div class="ans">כן. ניתן להעביר את ההרצאה גם בפורמט מקוון או היברידי, וההדגמות עובדות גם דרך המסך.</div></details>
+        <details><summary>זה מתאים גם כאירוע גיבוש?</summary><div class="ans">זה בדיוק המקום שבו זה מצטיין: הרמת כוסית, יום עיון, אופסייט. ההרצאה היא החלק שכולם משתתפים בו וצוחקים בו, ואחר כך מדברים עליו. רק שממנה נשארים גם עם כלים.</div></details>
+      </div>
+      <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
+      <p class="cta-micro fade">בלי התחייבות, גם אם אתם רק בודקים תקציב לשנה הבאה.</p>
+    </div>
+  </section>
+
+
+  <!-- 12. FOOTER -->
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="wordmark foot-wordmark"><img class="wm-hand" src="media/mark.png" width="209" height="160" alt="" aria-hidden="true"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></div>
+      <p class="legal">האבחון הדיגיטלי הוא כלי היכרות עצמי המבוסס על שיטת האבחון הפסיכודיאגנוסטי בכף היד של רעות ביטון, ומבוסס גם על שיטת ד"ר ארנולד הולצמן (אינו קורס/שירות רשמי מטעמו). התכנים אינם אבחון רפואי או פסיכולוגי קליני, ואינם ייעוץ תעסוקתי פורמלי.</p>
+      <div>הקוד הביומטרי · הרצאות ביומטריה עסקית לארגונים · שיטת <span class="ltr">H.I.P</span></div>
+      <!-- הקישור לאתר הוסר: הוא מוביל מדף קמפיין חד־מטרתי לעולם מותגי אחר (קריירה, זוגיות, צמיחה אישית) -->
+      <div class="social-row">
+        <div class="soc-group">
+          <a class="soc" href="tel:+972-50-745-9235" aria-label="חיוג לרעות ביטון" title="טלפון"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.02L6.6 10.8z"/></svg></a>
+          <a class="soc" href="https://wa.me/972507459235?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%94%D7%A8%D7%A6%D7%90%D7%94%20%D7%9C%D7%90%D7%A8%D7%92%D7%95%D7%A0%D7%99%D7%9D" target="_blank" rel="noopener noreferrer" aria-label="שליחת וואטסאפ לרעות ביטון" title="וואטסאפ"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.15-1.7-.84-2-.94-.26-.1-.46-.15-.65.15-.2.3-.75.94-.92 1.13-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.5.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.57-.9-2.15-.24-.57-.48-.5-.65-.5h-.56c-.2 0-.5.07-.77.37-.26.3-1 .98-1 2.4 0 1.4 1.03 2.76 1.17 2.95.15.2 2.03 3.1 4.9 4.35.68.3 1.22.47 1.63.6.69.22 1.3.19 1.8.11.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.2-.56-.35zM12 2.2A9.78 9.78 0 0 0 3.6 17.1L2.5 21.5l4.55-1.2A9.78 9.78 0 1 0 12 2.2z"/></svg></a>
+          <a class="soc" href="mailto:contact@reutbitton.com" aria-label="שליחת מייל לרעות ביטון" title="מייל"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 12l8-5.99V6H4zm16 2.24-7.4 5.55a1 1 0 0 1-1.2 0L4 8.24V18h16V8.24z"/></svg></a>
+        </div>
+        <span class="soc-divider" aria-hidden="true"></span>
+        <div class="soc-group">
+          <a class="soc" href="https://www.linkedin.com/in/reut-bitton-8b9295312" target="_blank" rel="noopener noreferrer" aria-label="לינקדאין של רעות ביטון" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.9H5.56v8.44h2.78zM6.95 8.66a1.61 1.61 0 1 0 0-3.22 1.61 1.61 0 0 0 0 3.22zM18.44 18.34v-4.63c0-2.47-1.32-3.62-3.08-3.62-1.42 0-2.06.78-2.42 1.33V9.9h-2.78v8.44h2.78v-4.71c0-.25.02-.5.09-.68.2-.5.66-1.02 1.42-1.02 1 0 1.4.76 1.4 1.88v4.53h2.79z"/></svg></a>
+          <a class="soc" href="https://www.instagram.com/reut_bitton_5" target="_blank" rel="noopener noreferrer" aria-label="אינסטגרם של רעות ביטון" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.07.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.36.47 2.43.05 1.07.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.07-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77c-.55.55-1.11.89-1.77 1.15-.64.25-1.36.42-2.43.47-1.07.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.07-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.36-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.07.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.89 1.77-1.15.64-.25 1.36-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 1.8c-2.67 0-2.99.01-4.04.06-.98.04-1.51.21-1.86.35-.47.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.31.88-.35 1.86-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.98.21 1.51.35 1.86.18.47.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.31 1.86.35 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.98-.04 1.51-.21 1.86-.35.47-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.31-.88.35-1.86.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.98-.21-1.51-.35-1.86a3.1 3.1 0 0 0-.75-1.15 3.1 3.1 0 0 0-1.15-.75c-.35-.14-.88-.31-1.86-.35-1.05-.05-1.37-.06-4.04-.06zM12 6.87a5.13 5.13 0 1 1 0 10.26 5.13 5.13 0 0 1 0-10.26zm0 1.8a3.33 3.33 0 1 0 0 6.66 3.33 3.33 0 0 0 0-6.66zm5.34-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
+          <a class="soc" href="https://www.facebook.com/reut.bitton.3" target="_blank" rel="noopener noreferrer" aria-label="פייסבוק של רעות ביטון" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+          <a class="soc" href="https://www.tiktok.com/@reutbitton0" target="_blank" rel="noopener noreferrer" aria-label="טיקטוק של רעות ביטון" title="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.1v12.42a2.52 2.52 0 0 1-2.52 2.4 2.52 2.52 0 0 1-2.52-2.52 2.52 2.52 0 0 1 3.3-2.4V7.72a5.66 5.66 0 0 0-.78-.05A5.62 5.62 0 0 0 4.3 13.3a5.62 5.62 0 0 0 9.63 3.95 5.62 5.62 0 0 0 1.64-3.98V8.9a7.3 7.3 0 0 0 4.28 1.37V7.17a4.28 4.28 0 0 1-3.25-1.35z"/></svg></a>
+        </div>
+      </div>
+      <div class="links"><a href="privacy.html" target="_blank" rel="noopener">מדיניות פרטיות</a></div>
+    </div>
+  </footer>
+
+  <a class="wa" href="https://wa.me/972507459235?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%94%D7%A8%D7%A6%D7%90%D7%94%20%D7%9C%D7%90%D7%A8%D7%92%D7%95%D7%A0%D7%99%D7%9D" target="_blank" rel="noopener" aria-label="וואטסאפ"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.15-1.7-.84-2-.94-.26-.1-.46-.15-.65.15-.2.3-.75.94-.92 1.13-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.5.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.57-.9-2.15-.24-.57-.48-.5-.65-.5h-.56c-.2 0-.5.07-.77.37-.26.3-1 .98-1 2.4 0 1.4 1.03 2.76 1.17 2.95.15.2 2.03 3.1 4.9 4.35.68.3 1.22.47 1.63.6.69.22 1.3.19 1.8.11.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.2-.56-.35zM12 2.2A9.78 9.78 0 0 0 3.6 17.1L2.5 21.5l4.55-1.2A9.78 9.78 0 1 0 12 2.2z"/></svg></a>
+
+  <div class="sticky"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
+
+</div>
+
+<script>
+(function(){
+  var scope = document.querySelector('.bc') || document;
+  var els = scope.querySelectorAll('.fade');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+
+  scope.querySelectorAll('a[href="#lead-form"]').forEach(function(a){
+    a.addEventListener('click',function(ev){ev.preventDefault();var t=scope.querySelector('#lead-form');if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
+  });
+
+  // skeleton form: no webhook yet (technical later) — just show thank-you
+  var WEBHOOK = 'https://hook.eu2.make.com/lhr4r9b9cn4k69or7m0edfdq53oo10xe';
+  // תחילת מילוי: נורה פעם אחת, בנגיעה הראשונה בטופס
+  (function(){ var f=scope.querySelector('#bcForm'); if(!f) return;
+    var hit=function(){ if(window.bcTrack) window.bcTrack('form_start'); f.removeEventListener('focusin',hit); f.removeEventListener('change',hit); };
+    f.addEventListener('focusin',hit); f.addEventListener('change',hit); })();
+  var form = scope.querySelector('#bcForm'), thanks = scope.querySelector('#thankyou'), formErr = scope.querySelector('#formErr');
+  function isMobileIL(v){ var d=(v||'').replace(/\D/g,''); return /^0(5\d)\d{7}$/.test(d); }
+  function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((v||'').trim()); }
+  function toIntl(v){ return (v||'').replace(/\D/g,'').replace(/^0/,'972'); }
+  if(form){
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      if(formErr) formErr.classList.remove('show');
+      var f = { name:scope.querySelector('#f-name'), company:scope.querySelector('#f-company'), phone:scope.querySelector('#f-phone'), email:scope.querySelector('#f-email') };
+      var ok = true;
+      function mark(key, valid){ var w=scope.querySelector('.field[data-f="'+key+'"]'); if(w) w.classList.toggle('bad', !valid); if(!valid) ok=false; }
+      mark('name', f.name.value.trim().length>1);
+      // הארגון הוא עמודה A בגיליון והוא פותח את שורת הנושא בהתראה. ליד בלי ארגון מגיע חסר.
+      mark('company', f.company.value.trim().length>1);
+      mark('phone', isMobileIL(f.phone.value));
+      mark('email', isEmail(f.email.value));
+      if(!ok){ var bad=scope.querySelector('.field.bad input'); if(bad) bad.focus(); return; }
+      var btn = form.querySelector('button[type=submit]');
+      var orig = btn.textContent;
+      btn.disabled = true; btn.textContent = 'שולח…';
+      var payload = { name:f.name.value.trim(), company:f.company.value.trim(), phone:toIntl(f.phone.value), email:f.email.value.trim(), source:(window.BC_CAMPAIGN&&window.BC_CAMPAIGN.utm_source)||'direct', page:location.href };
+      var intSel = scope.querySelector('#f-interest');
+      if (intSel) payload.interest = intSel.value;
+      var roleSel = scope.querySelector('#f-role');
+      if (roleSel && roleSel.value) payload.role = roleSel.value;
+      // הגיליון מקבל טקסט קריא. ה-JSON נשמר כגיבוי רק אם הטקסט לא נבנה משום סיבה.
+      if (window.__efshar) payload.efshar = window.__efsharText || JSON.stringify(window.__efshar);
+      if (window.__scanMeasure) {           // raw measurements when a camera/upload scan happened
+        payload.thumb_angle = window.__scanMeasure.thumb_angle;
+        payload.finger_ratio = window.__scanMeasure.finger_ratio;
+        payload.spread_ratio = window.__scanMeasure.spread_ratio;
+      }
+      if (window.__scanMode) payload.scan_mode = window.__scanMode;
+      // פרמטרי הקמפיין נוסעים עם הליד, כדי שאפשר יהיה לדעת איזו מודעה הביאה אותו
+      if (window.BC_CAMPAIGN) {
+        payload.utm_medium   = window.BC_CAMPAIGN.utm_medium   || '';
+        payload.utm_campaign = window.BC_CAMPAIGN.utm_campaign || '';
+        payload.utm_content  = window.BC_CAMPAIGN.utm_content  || '';
+        payload.click_id     = window.BC_CAMPAIGN.gclid || window.BC_CAMPAIGN.fbclid || '';
+      }
+      var done = false;
+      function success(){ if(done) return; done=true;
+        var mid=document.getElementById('tyMid');
+        // מי שכבר סרק מקבל את הניסוח המקורי. מי שהגיע דרך השער מקבל הפניה לסריקה שנפתחה
+        if(mid && !window.__efshar){ mid.textContent='ובינתיים, האבחון הדיגיטלי נפתח לכם למעלה. תבדקו את השיטה על עצמכם.'; }
+        window.__leadSent = true;
+        if(window.bcTrack) window.bcTrack('lead_submit', { interest: payload.interest || '', role: payload.role || '' });
+        if(window.__unlockScan) window.__unlockScan(true);
+        form.style.display='none'; if(thanks){ thanks.classList.add('show'); thanks.scrollIntoView({behavior:'smooth', block:'center'}); } }
+      function fail(){ if(done) return; done=true; btn.disabled=false; btn.textContent=orig; if(formErr) formErr.classList.add('show'); }
+      fetch(WEBHOOK, { method:'POST', mode:'no-cors', keepalive:true, body:new URLSearchParams(payload) })
+        .then(success).catch(fail);
+      // no-cors gives an opaque response; treat as sent after a short grace period
+      setTimeout(success, 1200);
+    });
+    // clear error state on typing
+    ['#f-name','#f-company','#f-phone','#f-email'].forEach(function(sel){
+      var i=scope.querySelector(sel); if(i){ i.addEventListener('input', function(){ var w=i.closest('.field'); if(w) w.classList.remove('bad'); }); }
+    });
+
+    // ── ויזרד תלת-שלבי (progressive enhancement) ──
+    // מחלק את הטופס הקיים לשלושה שלבים. ה-payload, השדות והוולידציות לא משתנים.
+    (function wizard(){
+      var fName = scope.querySelector('.field[data-f="name"]'),
+          fComp = scope.querySelector('.field[data-f="company"]'),
+          fPhone= scope.querySelector('.field[data-f="phone"]'),
+          fMail = scope.querySelector('.field[data-f="email"]'),
+          fInt  = scope.querySelector('.field[data-f="interest"]'),
+          sel   = scope.querySelector('#f-interest'),
+          btn   = form.querySelector('button[type=submit]'),
+          noCom = form.querySelector('.no-commit');
+      if(!(fName && fComp && fPhone && fMail && fInt && sel && btn)) return;
+
+      // פס התקדמות
+      var bar = document.createElement('div'); bar.className = 'wz-bar';
+      var segs = document.createElement('div'); segs.className = 'wz-segs';
+      for(var i=0;i<3;i++){ var sg=document.createElement('div'); sg.className='wz-seg'; segs.appendChild(sg); }
+      var count = document.createElement('span'); count.className = 'wz-count';
+      bar.appendChild(segs); bar.appendChild(count);
+
+      var steps = [1,2,3].map(function(n){ var d=document.createElement('div'); d.className='wz-step'; d.setAttribute('data-step',n); return d; });
+
+      // שלב 1 — כרטיסים, הטקסט נלקח מה-option הקיימים (לא נכתבות מחרוזות חדשות)
+      var cards = document.createElement('div'); cards.className='wz-cards';
+      var cardEls = [].map.call(sel.options, function(opt){
+        var b=document.createElement('button'); b.type='button'; b.className='wz-card';
+        b.value = opt.value;
+        var t=document.createElement('span'); t.className='wz-t'; t.textContent = opt.textContent;
+        b.appendChild(t);
+        var d=opt.getAttribute('data-desc');
+        if(d){ var sub=document.createElement('span'); sub.className='wz-d'; sub.textContent = d; b.appendChild(sub); }
+        b.addEventListener('click', function(){
+          cardEls.forEach(function(c){ c.classList.remove('sel'); c.setAttribute('aria-pressed','false'); });
+          b.classList.add('sel'); b.setAttribute('aria-pressed','true');
+          sel.value = opt.value;
+          setTimeout(function(){ go(2); }, 250);
+        });
+        b.setAttribute('aria-pressed','false');
+        cards.appendChild(b); return b;
+      });
+      steps[0].appendChild(cards);
+      fInt.classList.add('wz-hidden');            // ה-select נשאר ב-DOM עבור ה-payload
+      steps[0].appendChild(fInt);
+
+      var fRole = scope.querySelector('.field[data-f="role"]');
+      steps[1].appendChild(fName); steps[1].appendChild(fComp);
+      if(fRole) steps[1].appendChild(fRole);
+      steps[2].appendChild(fPhone); steps[2].appendChild(fMail);
+      steps[2].appendChild(btn);
+      if(formErr) steps[2].appendChild(formErr);
+      if(noCom) steps[2].appendChild(noCom);
+
+      // ניווט
+      var nav = document.createElement('div'); nav.className='wz-nav';
+      var back = document.createElement('button'); back.type='button'; back.className='wz-back'; back.textContent='→ חזרה';
+      var next = document.createElement('button'); next.type='button'; next.className='wz-next'; next.textContent='המשך ←';
+      nav.appendChild(next); nav.appendChild(back);
+
+      form.insertBefore(bar, form.firstChild);
+      steps.forEach(function(s){ form.appendChild(s); });
+      form.appendChild(nav);
+
+      var cur = 1;
+      function valid(step){
+        if(step===1) return !!sel.value;
+        if(step===2){
+          var okName = fName.querySelector('input').value.trim().length>1;
+          var okComp = fComp.querySelector('input').value.trim().length>1;
+          fName.classList.toggle('bad', !okName); fComp.classList.toggle('bad', !okComp);
+          return okName && okComp;
+        }
+        return true;
+      }
+      function go(n){
+        if(window.bcTrack) window.bcTrack('wizard_step',{step:n});
+        if(n>cur && !valid(cur)){ var bad=form.querySelector('.field.bad input'); if(bad) bad.focus(); return; }
+        cur = Math.min(3, Math.max(1, n));
+        steps.forEach(function(s,i){ s.classList.toggle('on', i===cur-1); });
+        [].forEach.call(segs.children, function(sg,i){ sg.classList.toggle('on', i<cur); sg.classList.toggle('cur', i===cur-1); sg.setAttribute('aria-current', i===cur-1 ? 'step' : 'false'); });
+        count.textContent = 'שלב ' + cur + ' מתוך 3';
+        back.style.display = cur===1 ? 'none' : '';
+        next.style.display = cur===3 ? 'none' : '';
+        var first = steps[cur-1].querySelector('input');
+        if(first && cur>1) first.focus({preventScroll:true});
+      }
+      // מי שסרקה כבר בחרה — הסריקה מדלגת על שלב 1 ומסמנת את הכרטיס
+      window.__wzPick = function(val){
+        var hit = cardEls.filter(function(c){ return c.value === val; })[0];
+        if(!hit) return;
+        cardEls.forEach(function(c){ c.classList.remove('sel'); c.setAttribute('aria-pressed','false'); });
+        hit.classList.add('sel'); hit.setAttribute('aria-pressed','true');
+        sel.value = val;
+        go(2);
+      };
+      next.addEventListener('click', function(){ go(cur+1); });
+      back.addEventListener('click', function(){ go(cur-1); });
+      form.addEventListener('keydown', function(ev){
+        if(ev.key!=='Enter' || cur===3) return;
+        if(ev.target.tagName==='INPUT'){ ev.preventDefault(); go(cur+1); }
+      });
+      go(1);
+    })();
+  }
+
+  // YouTube facade: load real iframe only on click (no YT scripts on page load)
+  scope.querySelectorAll('.yt-facade').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-id');
+      var wrap = btn.parentNode;
+      var ifr = document.createElement('iframe');
+      ifr.className = 'yt-iframe';
+      ifr.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      ifr.title = 'סרטון ההרצאה של רעות ביטון';
+      ifr.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+      ifr.setAttribute('allowfullscreen', '');
+      wrap.innerHTML = '';
+      wrap.appendChild(ifr);
+    });
+  });
+
+  // WhatsApp carousel: center active slide, dots, arrows, autoplay (pause on touch/hover), swipe
+  var waTrack = scope.querySelector('#waTrack');
+  if(waTrack && waTrack.children.length){
+    var waVp = scope.querySelector('#waViewport');
+    var dotsWrap = scope.querySelector('#waDots');
+    var slides = waTrack.children;
+    var count = slides.length;
+    var idx = 0, timer = null, resumeTO = null;
+    for(var d=0; d<count; d++){
+      var dot = document.createElement('button');
+      dot.className = 'wa-dot' + (d===0 ? ' active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'שקופית ' + (d+1));
+      (function(i){ dot.addEventListener('click', function(){ goTo(i); pauseResume(); }); })(d);
+      dotsWrap.appendChild(dot);
+    }
+    var dots = dotsWrap.children;
+    function slideW(){ return slides[0].getBoundingClientRect().width; }
+    function goTo(i){
+      idx = (i % count + count) % count;
+      var vpW = waVp.getBoundingClientRect().width;
+      var sw = slideW();
+      waTrack.style.transform = 'translateX(' + (((vpW - sw)/2) - idx*sw) + 'px)';
+      for(var k=0;k<dots.length;k++){ dots[k].classList.toggle('active', k===idx); }
+    }
+    function next(){ goTo(idx+1); }
+    function prev(){ goTo(idx-1); }
+    scope.querySelectorAll('.wa-arrow').forEach(function(a){
+      a.addEventListener('click', function(){ (parseInt(a.getAttribute('data-dir'),10) > 0 ? next : prev)(); pauseResume(); });
+    });
+    function start(){ stop(); timer = setInterval(next, 6000); }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+    function pauseResume(){ stop(); clearTimeout(resumeTO); resumeTO = setTimeout(start, 9000); }
+    waVp.addEventListener('mouseenter', stop);
+    waVp.addEventListener('mouseleave', start);
+    var x0 = null;
+    waVp.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; stop(); }, { passive:true });
+    waVp.addEventListener('touchend', function(e){
+      if(x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if(Math.abs(dx) > 40){ (dx < 0 ? next : prev)(); }
+      pauseResume();
+    }, { passive:true });
+    window.addEventListener('resize', function(){ goTo(idx); });
+    goTo(0); start();
+  }
+
+  // הווידאו של הידיים: דפדפני מובייל חוסמים ניגון אוטומטי בכמה מצבים
+  // (חיסכון סוללה, חוסך נתונים, הגדרת מדיה). מנסים שוב כשהוא נכנס למסך,
+  // ואם עדיין נחסם, מנסים שוב בנגיעה הראשונה של המשתמש בדף.
+  var hv = scope.querySelector('.hands-vid');
+  if(hv){
+    var tryPlay = function(){ var p = hv.play(); if(p && p.catch) p.catch(function(){}); };
+    hv.muted = true; hv.setAttribute('playsinline',''); tryPlay();
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting) tryPlay(); }); },
+        { rootMargin:'200px' }).observe(hv);
+    }
+    ['touchstart','pointerdown','scroll'].forEach(function(ev){
+      window.addEventListener(ev, function once(){ tryPlay();
+        ['touchstart','pointerdown','scroll'].forEach(function(e2){ window.removeEventListener(e2, once); });
+      }, { once:false, passive:true });
+    });
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) tryPlay(); });
+  }
+
+
+  // הנקודה נוספת מהקוד, כדי שלא ייגעו בכל כפתור בנפרד ב-HTML
+  scope.querySelectorAll('.cta').forEach(function(b){
+    if(b.querySelector('.cta-dot')) return;
+    var d = document.createElement('span'); d.className = 'cta-dot'; d.setAttribute('aria-hidden','true');
+    b.appendChild(d);
+  });
+  // Hand Constellation: כותבים לכל אלמנט animation-delay מפורש (בלי calc על משתנה,
+  // שנשבר בספארי במובייל), עוצרים מחוץ למסך, ואם בכל זאת ה-CSS לא רץ — מפעילים ידנית
+  var cn = scope.querySelector('.constellation');
+  if(cn){
+    var CYCLE = 3500, STEP = 165;
+    var parts = [];
+    cn.querySelectorAll('.cn-dots circle, .cn-links line, .cn-meas path').forEach(function(el){
+      var i = parseFloat(el.style.getPropertyValue('--i')) || 0;
+      var isMeas = el.parentNode.classList.contains('cn-meas');
+      var delay = isMeas ? (600 + i * 100) : (i * STEP);
+      el.style.animationDelay = '-' + (CYCLE - (delay % CYCLE)) + 'ms';
+      parts.push({ el:el, delay:delay, kind: isMeas ? 'meas' : (el.tagName === 'circle' ? 'dot' : 'link') });
+    });
+
+    // רשת ביטחון: אם אחרי טעינה אין אנימציית CSS רצה על הנקודות
+    // (דפדפן ישן, keyframes שלא נקלטו) — מריצים את אותו לופ דרך Web Animations API
+    setTimeout(function(){
+      var probe = cn.querySelector('.cn-dots circle');
+      var live = probe && probe.getAnimations && probe.getAnimations().length > 0;
+      if(live) return;
+      if(!probe || !probe.animate) return;
+      var FR = {
+        dot:  [{opacity:.18},{opacity:1},{opacity:.95},{opacity:.55},{opacity:.18}],
+        link: [{opacity:.14},{opacity:.7},{opacity:.55},{opacity:.14}],
+        meas: [{opacity:.14},{opacity:1},{opacity:.85},{opacity:.14}]
+      };
+      parts.forEach(function(p){
+        p.el.animate(FR[p.kind], { duration: CYCLE, iterations: Infinity,
+          delay: -(CYCLE - (p.delay % CYCLE)), easing:'linear' });
+      });
+    }, 1200);
+  }
+
+  // לייטבוקס לצילומי הוואטסאפ: נבנה בלחיצה ראשונה, נסגר ב-Esc, בלחיצה על הרקע או על הכפתור
+  var waShots = scope.querySelectorAll('.wa-shot');
+  if(waShots.length){
+    var lb = null, lbImg = null, lastFocus = null;
+    function buildLb(){
+      lb = document.createElement('div');
+      lb.className = 'wa-lb';
+      lb.innerHTML = '<button class="wa-lb-x" type="button" aria-label="סגירה">×</button><img alt="">';
+      lbImg = lb.querySelector('img');
+      lb.addEventListener('click', function(e){ if(e.target === lb || e.target.closest('.wa-lb-x')) closeLb(); });
+      scope.appendChild(lb);
+    }
+    function openLb(src, alt){
+      if(!lb) buildLb();
+      lastFocus = document.activeElement;
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.classList.add('on');
+      document.body.style.overflow = 'hidden';
+      lb.querySelector('.wa-lb-x').focus();
+    }
+    function closeLb(){
+      if(!lb) return;
+      lb.classList.remove('on');
+      document.body.style.overflow = '';
+      if(lastFocus) lastFocus.focus();
+    }
+    waShots.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var img = btn.querySelector('img');
+        openLb(btn.getAttribute('data-full') || img.src, img.getAttribute('alt'));
+      });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+  }
+
+  // sticky CTA (mobile): show only after 25% scroll; hide over the form & footer
+  var sticky = scope.querySelector('.sticky');
+  if(sticky){
+    var formSec = scope.querySelector('#lead-form');
+    var footEl = scope.querySelector('footer');
+    var ticking = false;
+    function updateSticky(){
+      ticking = false;
+      var doc = document.documentElement;
+      var sy = window.scrollY || doc.scrollTop;
+      var past = sy > doc.scrollHeight * 0.25;
+      var over = false;
+      if(formSec){ var r = formSec.getBoundingClientRect(); if(r.top < window.innerHeight && r.bottom > 0) over = true; }
+      if(footEl){ var fr = footEl.getBoundingClientRect(); if(fr.top < window.innerHeight) over = true; }
+      scope.classList.toggle('sticky-on', past && !over);
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(updateSticky); } }, { passive:true });
+    window.addEventListener('resize', updateSticky);
+    updateSticky();
+  }
+})();
+</script>
+
+<!-- decode module (copied verbatim from /giyus/) -->
+<script type="module">
+/* ================= CONFIG ================= */
+// מנוע א.פ.ש.ר: דטרמיניסטי, רץ בדפדפן בלבד — אין webhook פענוח ואין AI.
+
+/* ================= helpers ================= */
+const $ = id => document.getElementById(id);
+const dl = (ev, data) => { try{ if(window.bcTrack) window.bcTrack(ev, data||{}); else if(window.dataLayer) window.dataLayer.push({event:ev, ...(data||{})}); }catch(e){} };
+const nowTs = () => new Date().toISOString();
+
+/* ================= EFSHAR — בסיס הידע הרשמי של רעות (כלשונו, אין לערוך) ================= */
+const EFSHAR = {
+  intro_scan: 'הכינו יד אחת (הדומיננטית), רגועה, בלי למתוח. בכל שאלה בחרו את מה שהכי מתאים למה שאתם רואים ומרגישים. אין תשובה נכונה, יש תשובה אמיתית.',
+  lenses_line: '5 העדשות = א.פ.ש.ר: אנרגיה · עצמאות · פוקוס · שליטה · רגישות.',
+  result_opener: 'הנה כמה שורות עלייך, מתוך 5 העדשות שסימנת:',
+  questions: {
+    a: { name: 'אנרגיה', q: 'לחצו בעדינות על מרכז כף היד. איך היא מרגישה?', how: 'לחיצה קלה על הכרית המרכזית: רכה או ספוגית מול קשה/מוצקה.',
+      options: {
+        hard:   { label: 'קשה ומוצקה',   snippet: 'אנרגיה: את/ה מונע/ת-תוצאה ועצמאי/ת. הקושי מיתרגם לכוח ולעמידות. ב-HR: מי שדוחף/ת החלטות קדימה ולא מתפרק/ת תחת עומס; לשים לב מתי הנחישות הופכת לנוקשות.' },
+        mid:    { label: 'באמצע, גמישה', snippet: 'אנרגיה: יש לך אלסטיות: להסתגל בלי לאבד את עצמך. האיזון שמאפשר גם להכיל אנשים וגם להישאר יציב/ה בהחלטות.' },
+        soft:   { label: 'רכה וספוגית',  snippet: 'אנרגיה: אנטנה חזקה לאנשים ולאווירה, נכס בניהול אנשים. הכוח שלך ברגישות, בתנאי ששומרים על עצמך מספיגת-יתר ומקבלים תנאים תומכים.' }
+      } },
+    ayin: { name: 'עצמאות', q: 'כמה האגודל נפתח מכף היד, כשהיד רגועה?', how: 'הרווח בין האגודל לאצבע המורה: פתוח או רחב מול צמוד או קרוב.',
+      options: {
+        open:   { label: 'פתוח ורחב',  snippet: 'עצמאות: קנאי/ת לעצמאות ובודק/ת גבולות. צריך/ה מרחב, וקשה לך כשמכתיבים לך. בצוות: יוזמה וישירות.' },
+        mid:    { label: 'בינוני',      snippet: 'עצמאות: נע/ה בין עצמאות לשיתוף. יודע/ת גם להוביל וגם להשתלב לפי המצב.' },
+        close:  { label: 'צמוד וקרוב', snippet: 'עצמאות: ריכוז, זהירות ושליטה עצמית. גבול פנימי שמור. שוקל/ת לפני שפועל/ת, ומעריך/ה מסגרת ברורה.' }
+      } },
+    pe: { name: 'פוקוס', q: 'אורך האצבעות ביחס לכף היד?', how: 'ארוכות יחסית לכף מול קצרות. חשוב: לא מדד לאינטליגנציה ולא לקשב/ריכוז, אלא סגנון פוקוס.',
+      options: {
+        long:   { label: 'ארוכות יחסית', snippet: 'פוקוס: צולל/ת לעומק הפרט ומדייק/ת. עין לפרטים שאחרים מפספסים. לשים לב לא לאבד את התמונה הגדולה.' },
+        mid:    { label: 'בערך שווה',    snippet: 'פוקוס: מחליף/ה בין פרט לתמונה גדולה לפי הצורך. גם דיוק וגם ראייה רחבה.' },
+        short:  { label: 'קצרות יחסית',  snippet: 'פוקוס: תופס/ת תמונה גדולה מהר ופועל/ת מאינטואיציה ויצירתיות. הכוח בקבלת החלטות מהירה.' }
+      } },
+    shin: { name: 'שליטה', q: 'המפרקים לאורך האצבעות, בולטים או חלקים?', how: 'מפרקים מודגשים/גושיים מול חלקים וזורמים.',
+      options: {
+        knotty: { label: 'בולטים',  snippet: 'שליטה: במיטבך תחת לחץ: לווסת עומס, לארגן ולהתמיד. מצטיין/ת בלוגיסטיקה ובסדר; לשים לב מתי מייצרים לחץ גם לעצמך.' },
+        mid:    { label: 'בינוניים', snippet: 'שליטה: שילוב של סדר וספונטניות: מבנה כשצריך, גמישות כשאפשר.' },
+        smooth: { label: 'חלקים',   snippet: 'שליטה: ספונטני/ת, אינטואיטיבי/ת, מגיב/ה מהר, נשאב/ת להשראה. פחות נהלים נוקשים, יותר יצירתיות.' }
+      } },
+    resh: { name: 'רגישות', q: 'מרקם העור של כף היד?', how: 'עדין/דק/חלק מול עבה/גס.',
+      options: {
+        fine:   { label: 'עדין ודק',  snippet: 'רגישות: קולט/ת הרבה יותר מהסביבה ממה שמראים. רגישות גבוהה. צריך/ה שקט כדי להחליט טוב, וזה מה שהופך אותך לקשוב/ה לאנשים.' },
+        mid:    { label: 'בינוני',    snippet: 'רגישות: איזון בין קליטה לסינון: קשוב/ה בלי להישאב.' },
+        thick:  { label: 'עבה יותר', snippet: 'רגישות: מסנן/ת רעש ונשאר/ת ממוקד/ת. יתרון בסביבות עמוסות ובלחץ.' }
+      } }
+  },
+  combos: [
+    { when: { a: 'hard', shin: 'knotty' },  text: 'מנוע ביצוע תחת לחץ. האדם שנרצה לידנו כשצריך להוציא החלטה קשה לפועל (עם תשומת לב לא לשחוק את הסובבים).' },
+    { when: { a: 'soft', resh: 'fine' },    text: 'אנטנה אנושית. קולט/ת ניואנסים שאחרים לא רואים; מתנה ב-HR שדורשת סביבה שמכבדת אותה.' },
+    { when: { pe: 'long', shin: 'knotty' }, text: 'דיוק תהליכי גבוה. מצוין/ת בבניית תהליכים ובקרה; לזכור מתי לשחרר פרפקציוניזם.' },
+    { when: { pe: 'short', ayin: 'open' },  text: 'ראש יזמי. רואה כיוון ורוצה לפרוץ; עוצמה בהובלת שינוי, עם צורך בשותפים למילוי הפרטים.' }
+  ],
+  crossover: 'וזה חלון אחד בלבד. בשיטה, אף סימן לא עומד לבד. המשמעות האמיתית נמצאת בהצטלבות של כל היד יחד. מה שראית עכשיו זו טעימה מדויקת, לא המפה המלאה. והכול דינמי: נקודת פתיחה, לא גזר דין.'
+};
+
+/* מיפוי מדידות המצלמה לבחירות — // כיול: רעות */
+const AYIN_OPEN_DEG  = 45;   // מעל  → פתוח ורחב
+const AYIN_CLOSE_DEG = 30;   // מתחת → צמוד וקרוב
+const PE_LONG_RATIO  = 0.88; // מעל  → ארוכות יחסית
+const PE_SHORT_RATIO = 0.76; // מתחת → קצרות יחסית
+const EF_ORDER = ['a','ayin','pe','shin','resh'];   // סדר הצגה קבוע: א→ע→פ→ש→ר
+
+function mapMeasures(m){
+  const ayin = m.thumb_angle > AYIN_OPEN_DEG ? 'open' : (m.thumb_angle < AYIN_CLOSE_DEG ? 'close' : 'mid');
+  const pe   = m.finger_ratio > PE_LONG_RATIO ? 'long' : (m.finger_ratio < PE_SHORT_RATIO ? 'short' : 'mid');
+  return { ayin, pe };
+}
+window.__efsharMap = mapMeasures;   // חשוף לבדיקת יחידה בקונסול
+// חשיפה לבדיקות בלבד (סימולציית מצב מצלמה): מוגדר אחרי שהפונקציה קיימת, בסוף המודול.
+
+
+/* ================= measurements ================= */
+function dist(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
+function measure(lm){
+  const w=lm[0], tTip=lm[4], iBase=lm[5], mBase=lm[9], mTip=lm[12], pBase=lm[17];
+  const v1={x:tTip.x-w.x,y:tTip.y-w.y}, v2={x:iBase.x-w.x,y:iBase.y-w.y};
+  const dot=v1.x*v2.x+v1.y*v2.y, mag=Math.hypot(v1.x,v1.y)*Math.hypot(v2.x,v2.y)||1;
+  const thumb_angle=Math.round(Math.acos(Math.max(-1,Math.min(1,dot/mag)))*180/Math.PI);
+  const finger_ratio=+(dist(mBase,mTip)/(dist(w,mBase)||1)).toFixed(2);
+  const palmW=dist(iBase,pBase)||1;
+  const spread=(dist(lm[8],lm[12])+dist(lm[12],lm[16])+dist(lm[16],lm[20]))/3;
+  const spread_ratio=+(spread/palmW).toFixed(2);
+  return {thumb_angle, finger_ratio, spread_ratio};
+}
+
+/* quality gate — demands a close, straight, open hand before capture (upload + live) */
+function handQuality(lm){
+  const w=lm[0], iBase=lm[5], pBase=lm[17], mBase=lm[9], mTip=lm[12];
+  const palmW=dist(iBase,pBase);
+  if(palmW<0.13) return {ok:false, msg:'📏 קרבו את היד למצלמה, רחוק מדי'};
+  if(palmW>0.68) return {ok:false, msg:'📏 הרחיקו מעט את היד'};
+  if((w.y-mTip.y)<0.10) return {ok:false, msg:'✋ יישרו את כף היד, אצבעות כלפי מעלה'};
+  const tilt=Math.atan2(Math.abs(mBase.x-w.x), Math.abs(mBase.y-w.y))*180/Math.PI;
+  if(tilt>32) return {ok:false, msg:'↕️ יישרו את היד מול המצלמה'};
+  return {ok:true, msg:'מצוין'};
+}
+
+/* ================= MediaPipe (lazy) ================= */
+let vision=null, landmarkerImg=null, landmarkerVid=null, mpFailed=false;
+async function loadVision(){
+  if(vision || mpFailed) return vision;
+  try{
+    const mod = await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14');
+    const { HandLandmarker, FilesetResolver } = mod;
+    const fileset = await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm');
+    vision = { HandLandmarker, fileset };
+    return vision;
+  }catch(e){ mpFailed=true; return null; }
+}
+async function getImgLandmarker(){
+  const v=await loadVision(); if(!v) return null;
+  if(!landmarkerImg){
+    landmarkerImg = await v.HandLandmarker.createFromOptions(v.fileset,{
+      baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task'},
+      runningMode:'IMAGE', numHands:1 });
+  }
+  return landmarkerImg;
+}
+async function getVidLandmarker(){
+  const v=await loadVision(); if(!v) return null;
+  if(!landmarkerVid){
+    landmarkerVid = await v.HandLandmarker.createFromOptions(v.fileset,{
+      baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task'},
+      runningMode:'VIDEO', numHands:1 });
+  }
+  return landmarkerVid;
+}
+
+/* ================= שער הסריקה =================
+   הסריקה נעולה עד שמשאירים פרטים. הנעילה נשמרת ב-localStorage כדי שביקור חוזר
+   מאותו דפדפן לא יבקש פרטים שוב. אין כאן מידע אישי, רק דגל פתיחה. */
+window.__unlockScan = function(scrollBack){
+  const sec=$('decode'); if(!sec) return;
+  if(!sec.classList.contains('gated')) return;
+  sec.classList.remove('gated');
+  if(window.bcTrack) window.bcTrack('scan_open');
+  if(window.__attachDecoder) window.__attachDecoder();
+  if(scrollBack){
+    // נותנים למסך התודה רגע להיקלט, ואז מחזירים אותם לסריקה שנפתחה
+    setTimeout(function(){
+      const d=$('decoder'); if(!d) return;
+      d.scrollIntoView({behavior:'smooth', block:'center'});
+      const msg=$('decodeMsg'); if(msg) msg.textContent='האבחון נפתח. בחרו איך להתחיל.';
+    }, 2600);
+  }
+};
+// אין זיכרון בין ביקורים: כל טעינה של הדף מתחילה נעולה, בלי יוצא מן הכלל.
+// דגל שנשמר בדפדפן היה פותח את הסורק גם למי שלא מילא פרטים בביקור הזה.
+try{ localStorage.removeItem('bc_scan_open'); }catch(e){}
+
+/* ================= UI flow ================= */
+const consent=$('consentChk'), btnUpload=$('btnUpload'), btnCamera=$('btnCamera'),
+      fileInput=$('fileInput'), camWrap=$('camWrap'), cam=$('cam'),
+      decodeMsg=$('decodeMsg'), proc=$('proc'), procText=$('procText'), result=$('result'),
+      camShoot=$('camShoot');
+let camStream=null, camRAF=null;
+let camFacing = 'user';   // קדמית בשני המכשירים: אי אפשר למקם כף יד בלי לראות את התצוגה. כפתור ההחלפה נשאר
+const engineLoadEl=$('engineLoad');
+const ENGINE_FAIL_MSG='לא הצלחנו לטעון את מנוע הזיהוי. בדקו את החיבור ונסו שוב, או עברו לשאלון המודרך (בלי מצלמה).';
+function engineNoticeShow(){ if(vision || mpFailed) return; engineLoadEl.style.display='flex'; }
+function engineNoticeHide(){ engineLoadEl.style.display='none'; }
+
+consent.addEventListener('change', ()=>{ const on=consent.checked; btnUpload.disabled=!on; btnCamera.disabled=!on; const bm=$('btnManual'); if(bm) bm.disabled=!on; });
+
+const PROC_MSGS=['מודד את זווית האגודל…','משווה יחסי אורכים…','מצליב עם בסיס הידע…','מנסח את הפענוח…'];
+let procTimer=null;
+function startProc(){ result.style.display='none'; decodeMsg.textContent=''; proc.style.display='block';
+  var pv=proc.querySelector('.proc-vid'); if(pv){ pv.currentTime=0; var pp=pv.play(); if(pp&&pp.catch) pp.catch(function(){}); } let i=0; procText.textContent=PROC_MSGS[0];
+  procTimer=setInterval(()=>{ i=(i+1)%PROC_MSGS.length; procText.textContent=PROC_MSGS[i]; },1400); }
+function stopProc(){ proc.style.display='none'; var pv=proc.querySelector('.proc-vid'); if(pv) pv.pause(); if(procTimer){clearInterval(procTimer);procTimer=null;} }
+
+let lastMeasure=null, lastType=null;
+function typeOf(m){ return (m.thumb_angle>=38?'A':'B')+(m.finger_ratio>=0.82?'1':'2'); }
+
+async function runDecode(m, mode){
+  lastMeasure=m; lastType=typeOf(m);
+  window.__scanMeasure=m; window.__scanMode=mode;   // bridge to main form (unified page)
+  dl('decode_started',{mode});
+  startProc();
+  const MIN_PROC_MS=3200;   // keep the deliberate "measuring…" animation on screen — never snap instantly
+  await new Promise(r=>setTimeout(r, MIN_PROC_MS));
+  stopProc();
+  // מדדנו ע (זווית אגודל) ו-פ (יחס אצבעות); ההמשך: אישור הבחירות + שאלות המישוש.
+  renderQuestions(mapMeasures(m), m, mode);
+}
+
+function noHand(){ stopProc(); decodeMsg.textContent='לא הצלחנו לזהות כף יד. נסו תמונה מוארת יותר, כף פתוחה מול המצלמה.'; }
+
+/* ---- upload path ---- */
+btnUpload.addEventListener('click', ()=>{ if(!consent.checked) return; stopCamera(); fileInput.click(); });
+fileInput.addEventListener('change', async ()=>{
+  const f=fileInput.files&&fileInput.files[0]; if(!f) return;
+  engineNoticeShow(); startProc();
+  const lm=await getImgLandmarker();
+  engineNoticeHide();
+  const img=new Image();
+  img.onload=async ()=>{
+    if(!lm){ stopProc(); decodeMsg.textContent=ENGINE_FAIL_MSG; return; }
+    try{
+      const res=lm.detect(img);
+      if(res && res.landmarks && res.landmarks.length){
+        const q=handQuality(res.landmarks[0]);
+        if(!q.ok){ stopProc(); decodeMsg.textContent=q.msg.replace(/^[^ ]+ /,'')+'. צלמו את כף היד קרוב, פתוחה וישרה, ונסו שוב.'; }
+        else { await runDecode(measure(res.landmarks[0]),'upload'); }
+      }
+      else { noHand(); }
+    }catch(e){ noHand(); }
+    URL.revokeObjectURL(img.src);
+  };
+  img.onerror=()=>{ stopProc(); decodeMsg.textContent='לא הצלחנו לטעון את התמונה. נסו קובץ אחר.'; };
+  img.src=URL.createObjectURL(f);
+});
+
+/* ---- camera path ---- */
+function stopCamera(){ if(camRAF){cancelAnimationFrame(camRAF);camRAF=null;} if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null;} camWrap.style.display='none'; if(camShoot) camShoot.style.display='none'; }
+btnCamera.addEventListener('click', async ()=>{
+  if(!consent.checked) return;
+  decodeMsg.textContent='';
+  try{
+    camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:camFacing},audio:false});
+  }catch(e){
+    decodeMsg.textContent='אין גישה למצלמה. נסו "העלאת תמונה" במקום.'; return;
+  }
+  engineNoticeShow();
+  const lm=await getVidLandmarker();
+  engineNoticeHide();
+  if(!lm){ stopCamera(); decodeMsg.textContent=ENGINE_FAIL_MSG; return; }
+  camWrap.style.display='block'; cam.srcObject=camStream; await cam.play();
+  let goodSince=0, lastVideoTime=-1, lastGoodAt=0, lastHand=null, started=performance.now();
+  const HOLD_MS=1400;      // מספיק זמן כדי לוודא יד יציבה, בלי לייאש
+  const GRACE_MS=400;      // פריים בודד לא טוב לא מאפס את הספירה. רעד יד הוא לא כישלון
+  const MANUAL_AFTER=6000; // אם אחרי 6 שניות עוד לא נסגר אוטומטית, נותנים כפתור צילום ידני
+  camShoot.style.display='none'; camShoot.disabled=true;
+  const loop=()=>{
+    if(!camStream){ return; }
+    if(cam.currentTime!==lastVideoTime){
+      lastVideoTime=cam.currentTime;
+      try{
+        const res=lm.detectForVideo(cam, performance.now());
+        const now=performance.now();
+        if(res && res.landmarks && res.landmarks.length){
+          lastHand=res.landmarks[0];
+          const q=handQuality(lastHand);
+          if(q.ok){
+            lastGoodAt=now;
+            if(!goodSince) goodSince=now;
+            const held=now-goodSince;
+            if(held>=HOLD_MS){ const m=measure(lastHand); stopCamera(); runDecode(m,'camera'); return; }
+            decodeMsg.textContent='✓ מצוין, אל תזוזו… '+Math.max(1,Math.ceil((HOLD_MS-held)/1000));
+          } else {
+            if(now-lastGoodAt>GRACE_MS) goodSince=0;
+            decodeMsg.textContent=q.msg;
+          }
+          camShoot.disabled=false;
+        } else {
+          lastHand=null; camShoot.disabled=true;
+          if(now-lastGoodAt>GRACE_MS) goodSince=0;
+          decodeMsg.textContent='✋ כף יד פתוחה מול המצלמה';
+        }
+        // דרך מילוט: מי שהמצלמה שלו מתקשה לא נתקע בלולאה אינסופית
+        if(now-started>MANUAL_AFTER && camShoot.style.display==='none') camShoot.style.display='block';
+      }catch(e){}
+    }
+    camRAF=requestAnimationFrame(loop);
+  };
+  camShoot.onclick=()=>{ if(!lastHand) return; const m=measure(lastHand); stopCamera(); runDecode(m,'camera'); };
+  camRAF=requestAnimationFrame(loop);
+});
+
+/* החלפת מצלמה קדמית/אחורית — מקור וידאו בלבד, המדידה לא משתנה */
+$('camFlip').addEventListener('click', async (e)=>{
+  e.stopPropagation();
+  camFacing = camFacing==='user' ? 'environment' : 'user';
+  if(!camStream) return;
+  camStream.getTracks().forEach(t=>t.stop());
+  try{
+    camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:camFacing},audio:false});
+    cam.srcObject=camStream; await cam.play();
+  }catch(err){ stopCamera(); decodeMsg.textContent='אין גישה למצלמה. נסו "העלאת תמונה" במקום.'; }
+});
+
+/* ================= EFSHAR — שאלות ותוצאה ================= */
+const qsWrap=$('efsharQs');
+const efSel={};
+let efMeasure=null, efMode=null;
+
+$('btnManual').addEventListener('click', ()=>{ if(!consent.checked) return; stopCamera(); decodeMsg.textContent=''; renderQuestions(null, null, 'manual'); });
+
+function renderQuestions(preset, m, mode){
+  efMeasure=m||null; efMode=mode;
+  for(const k of EF_ORDER) delete efSel[k];
+  if(preset){ if(preset.ayin) efSel.ayin=preset.ayin; if(preset.pe) efSel.pe=preset.pe; }
+  result.style.display='none';
+  let html='<div class="ef-intro">'+EFSHAR.intro_scan+'</div><div class="ef-lenses">'+EFSHAR.lenses_line+'</div>';
+  for(const k of EF_ORDER){
+    const Q=EFSHAR.questions[k];
+    const measured=!!(preset && (k==='ayin'||k==='pe') && efSel[k]);
+    html+='<div class="ef-q" data-k="'+k+'">'
+      +'<div class="ef-qname">'+Q.name+'</div>'
+      +'<div class="ef-qtext">'+Q.q+'</div>'
+      +'<div class="ef-qhow">'+Q.how+'</div>'
+      +(measured?'<div class="ef-measured">מדדנו: '+Q.options[efSel[k]].label+', מרגיש נכון? אפשר לתקן.</div>':'')
+      +'<div class="ef-opts">'
+      +Object.keys(Q.options).map(ok=>'<button type="button" class="ef-opt'+(efSel[k]===ok?' sel':'')+'" data-k="'+k+'" data-o="'+ok+'">'+Q.options[ok].label+'</button>').join('')
+      +'</div></div>';
+  }
+  html+='<button type="button" class="cta ef-show" id="efShow" disabled>הציגו את הפענוח שלי</button>';
+  qsWrap.innerHTML=html; qsWrap.style.display='block';
+  qsWrap.querySelectorAll('.ef-opt').forEach(b=>b.addEventListener('click', ()=>{
+    efSel[b.dataset.k]=b.dataset.o;
+    qsWrap.querySelectorAll('.ef-opt[data-k="'+b.dataset.k+'"]').forEach(x=>x.classList.toggle('sel', x===b));
+    $('efShow').disabled = !EF_ORDER.every(k=>efSel[k]);
+  }));
+  $('efShow').disabled = !EF_ORDER.every(k=>efSel[k]);
+  $('efShow').addEventListener('click', composeResult);
+  qsWrap.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function composeResult(){
+  const sel={}; for(const k of EF_ORDER) sel[k]=efSel[k];
+  window.__efshar=sel;
+  // גרסה קריאה לגיליון ולהתראה. בלעדיה עמודת "תוצאת מחשבון" מקבלת JSON גולמי שאי אפשר לקרוא.
+  try{
+    window.__efsharText = EF_ORDER
+      .map(k => EFSHAR.questions[k].name + ': ' + EFSHAR.questions[k].options[sel[k]].label)
+      .join(' · ');
+  }catch(e){ window.__efsharText = ''; }
+  window.__scanMode=efMode; window.__scanMeasure=efMeasure;   // מצב ידני: measure=null → הטופס ישלח רק efshar+scan_mode
+  if(efMeasure){
+    $('metrics').style.display='';
+    $('metrics').innerHTML =
+      '<div class="metric">זווית אגודל<b>'+efMeasure.thumb_angle+'°</b></div>'+
+      '<div class="metric">יחס אורך אצבע<b>'+efMeasure.finger_ratio+'</b></div>'+
+      '<div class="metric">מרווח אצבעות<b>'+efMeasure.spread_ratio+'</b></div>';
+  } else { $('metrics').style.display='none'; $('metrics').innerHTML=''; }
+  let html='<p class="ef-opener">'+EFSHAR.result_opener+'</p>';
+  for(const k of EF_ORDER) html+='<p class="ef-snip">'+EFSHAR.questions[k].options[sel[k]].snippet+'</p>';
+  const combos=EFSHAR.combos.filter(c=>Object.keys(c.when).every(k=>sel[k]===c.when[k])).slice(0,2);
+  for(const c of combos) html+='<p class="ef-combo">'+c.text+'</p>';
+  html+='<p class="ef-cross"><strong>'+EFSHAR.crossover+'</strong></p>';
+  $('reading').innerHTML=html;
+  qsWrap.style.display='none';
+  result.style.display='block';
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
+  dl('decode_shown',{mode:efMode, efshar:EF_ORDER.map(k=>sel[k]).join(',')});
+}
+
+/* שתי הקריאות לפעולה בתוצאה — גלילה לטופס עם ה-interest המתאים */
+window.__efsharRender = renderQuestions;   // לבדיקה/כיול בלבד
+/* ── נעילה פיזית ──
+   ה-CSS לבדו מסתיר, אבל האלמנטים נשארים בעמוד. כאן מוציאים את הסורק מה-DOM
+   לגמרי ומשאירים במקומו סימנייה. רץ בסוף הסקריפט, אחרי שכל ההפניות לאלמנטים
+   כבר נתפסו, כך שהן נשארות תקפות וההחזרה לעמוד מחזירה מנוע עובד. */
+(function physicalGate(){
+  var sec=document.getElementById('decode'), d=document.getElementById('decoder');
+  if(!sec || !d) return;
+  var slot=document.createComment('decoder');
+  window.__attachDecoder=function(){ if(!d.isConnected && slot.parentNode) slot.parentNode.replaceChild(d,slot); };
+  window.__detachDecoder=function(){ if(d.isConnected && d.parentNode) d.parentNode.replaceChild(slot,d); };
+  if(sec.classList.contains('gated')) window.__detachDecoder();
+})();
+
+document.querySelectorAll('.ef-cta-btn').forEach(b=>b.addEventListener('click', ()=>{
+  // מי שכבר השאיר פרטים בביקור הזה לא צריך למלא שוב: מחזירים אותו למסך התודה
+  if(window.__leadSent){ $('lead-form').scrollIntoView({behavior:'smooth'}); return; }
+  const sel=$('f-interest'); if(sel && b.dataset.interest) sel.value=b.dataset.interest;
+  // הסריקה כבר ענתה על שלב 1, פותחים את הוויזרד ישר בשלב 2
+  if(window.__wzPick && b.dataset.interest) window.__wzPick(b.dataset.interest);
+  $('lead-form').scrollIntoView({behavior:'smooth'});
+}));
+</script>
+
+</body>
+</html>
