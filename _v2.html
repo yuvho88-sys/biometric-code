@@ -1051,7 +1051,7 @@ window.BC_TRACK = {
     --scrim-text:rgba(8,20,23,.86); --scrim-mid:rgba(8,20,23,.80);
     --scrim-mid-2:rgba(8,20,23,.52); --scrim-soft:rgba(8,20,23,.22);
     --scrim-edge:rgba(8,20,23,0);
-    --hero-figure-pad:348px;   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
+    --hero-figure-pad:380px;   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
     --shadow-ink:rgba(0,0,0,.45); --shadow-ink-2:rgba(0,0,0,.5); --shadow-deep:rgba(0,0,0,.8);
     --lighten:#FFFFFF;   /* משמש רק כמסיס בתוך color-mix, לא כצבע רכיב */
   }
@@ -1087,11 +1087,15 @@ window.BC_TRACK = {
       linear-gradient(to left, var(--bg-hero) 0%, var(--scrim-1) 32%, var(--scrim-2) 55%, var(--scrim-3) 78%, var(--scrim-4) 100%),
       radial-gradient(120% 78% at 50% 106%, var(--scrim-floor) 0%, transparent 58%);
   }
-  html.skin-f .bc .hero > .wrap { position:relative; z-index:2; width:100%; padding-bottom:44px; }
+  html.skin-f .bc .hero > .wrap { position:relative; z-index:2; width:100%; padding-bottom:10px; }
 
   html.skin-f .bc .hero-copy { max-width:38.5rem; margin-inline:0 auto; text-align:right; }
   html.skin-f .bc .hero-copy .hero-ctas { justify-content:flex-start; }
   html.skin-f .bc .hero-copy .hero-proof { margin-inline:0; }
+  /* הכפתור ירד לסוף הסקשן, ולכן הוא מקבל את המרווח שלו משורת ההמלצה */
+  html.skin-f .bc .hero-copy .hero-ctas { margin-top:1.7rem; }
+  html.skin-f .bc .hero .hero-alt { margin-top:1.15rem; }
+  html.skin-f .bc .hero .hero-proof { margin-top:1.15rem; }
   html.skin-f .bc .hero .wm-hand { content:url(media/mark.png); }
 
   /* פירמידה הפוכה: שלוש שורות בתוך h1 אחד, כל שורה נעולה לשורה אחת
@@ -1118,6 +1122,7 @@ window.BC_TRACK = {
   html.skin-f .bc .hero-sub {
     max-width:46ch; font-size:clamp(15.5px,1.35vw,19px); line-height:1.62;
     color:var(--text-on-dark); text-shadow:0 1px 14px var(--shadow-ink-2);
+    margin-bottom:0;
   }
   html.skin-f .bc .hero-sub .hl-human { color:var(--pole-warm); font-weight:700; }
 
@@ -1134,13 +1139,6 @@ window.BC_TRACK = {
     html.skin-f .bc .hero-sub { animation:none; opacity:1; transform:none; }
   }
 
-  /* קו המדידה בתחתית האולם. גרפיקה בלבד, בלי תווית טקסט */
-  html.skin-f .bc .hero > .wrap::after {
-    content:""; position:absolute; inset-inline:0; bottom:14px; height:9px; opacity:.55;
-    background:
-      linear-gradient(var(--rail),var(--rail)) bottom right/100% 1px no-repeat,
-      repeating-linear-gradient(to left, var(--rail) 0 1px, transparent 1px 58px) bottom right/100% 9px no-repeat;
-  }
 
   /* ══════════ כפתור הפעולה: קוטב הטכנולוגיה ══════════ */
   html.skin-f .bc .cta {
@@ -1264,8 +1262,8 @@ window.BC_TRACK = {
         var(--scrim-mid) 46%, var(--scrim-mid-2) 56%,
         var(--scrim-soft) 65%, var(--scrim-edge) 76%);
     }
-    html.skin-f .bc .hero > .wrap { padding-bottom:18px; }
-    html.skin-f .bc .hero > .wrap::after { content:none; }
+    html.skin-f .bc .hero > .wrap { padding-bottom:8px; }
+
     html.skin-f .bc .hero-copy { max-width:100%; }
     html.skin-f .bc .hero .hero-proof { color:var(--text-on-dark); }
     html.skin-f .bc .hero .hero-proof span { color:var(--pole-cool); text-shadow:0 1px 10px var(--shadow-deep); }
@@ -1275,17 +1273,17 @@ window.BC_TRACK = {
        מועדף מבוסס vw כדי שהיחס יישמר גם ב-360. שתי השורות שמעליה נגזרות
        ממנה. שורה 1 נעצרת ברצפה של 17 פיקסלים ולכן היא יוצאת גדולה מהיחס
        התאורטי: מתחת לזה היא כיתוב אגבי ולא שורת פתיחה. */
-    html.skin-f .bc .hero-h1 { margin:2px 0 .7rem; line-height:1.08; }
+    html.skin-f .bc .hero-h1 { margin:2px 0 1.15rem; line-height:1.08; }
     /* שורה 1 נשארת 17 פיקסלים כרצפת קריאוּת. כדי שהפירמידה בכל זאת
        תיקרא, ההפרדה נעשית במשקל ובריווח ולא בהקטנה: היא הופכת לשורת
        סטאפ שקטה במקום להתחרות בפאנץ. */
     html.skin-f .bc .hero-h1 .hl-1 { font-size:clamp(17px,3.4vw,24px); font-weight:500; letter-spacing:.005em; margin-bottom:.2em; }
     html.skin-f .bc .hero-h1 .hl-2 { font-size:clamp(20px,calc(6.71vw - 3.22px),42px); margin-bottom:.08em; }
     html.skin-f .bc .hero-h1 .hl-3 { font-size:clamp(30px,calc(11.67vw - 5.6px),72px); }
-    html.skin-f .bc .hero-sub { font-size:17px; line-height:1.55; margin-bottom:1.1rem; }
-    html.skin-f .bc .hero .hero-ctas { margin-top:.2rem; }
-    html.skin-f .bc .hero .hero-alt { font-size:16px; line-height:1.5; margin-top:12px; }
-    html.skin-f .bc .hero .hero-proof { font-size:16px; line-height:1.5; margin-top:14px; }
+    html.skin-f .bc .hero-sub { font-size:17px; line-height:1.55; }
+    html.skin-f .bc .hero .hero-ctas { margin-top:1.8rem; }
+    html.skin-f .bc .hero .hero-alt { font-size:16px; line-height:1.5; margin-top:1.35rem; }
+    html.skin-f .bc .hero .hero-proof { font-size:16px; line-height:1.5; margin-top:1.25rem; }
   }
 </style>
 
@@ -1309,11 +1307,11 @@ window.BC_TRACK = {
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
         עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
         -->
+        <p class="hero-alt fade">פחות טעויות גיוס. פחות עזיבות שתופסות אתכם לא מוכנים. וצוות שמדבר על אנשים באותה שפה.</p>
+        <p class="hero-proof fade">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר."<span>המועצה המקומית קדימה־צורן</span></p>
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a>
         </div>
-        <p class="hero-alt fade">פחות טעויות גיוס. פחות עזיבות שתופסות אתכם לא מוכנים. וצוות שמדבר על אנשים באותה שפה.</p>
-        <p class="hero-proof fade">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר."<span>המועצה המקומית קדימה־צורן</span></p>
       </div>
       </div>
   </header>
