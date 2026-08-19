@@ -1051,7 +1051,7 @@ window.BC_TRACK = {
     --scrim-text:rgba(8,20,23,.86); --scrim-mid:rgba(8,20,23,.80);
     --scrim-mid-2:rgba(8,20,23,.52); --scrim-soft:rgba(8,20,23,.22);
     --scrim-edge:rgba(8,20,23,0);
-    --hero-figure-pad:380px;   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
+    --hero-figure-pad:275px;   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
     --shadow-ink:rgba(0,0,0,.45); --shadow-ink-2:rgba(0,0,0,.5); --shadow-deep:rgba(0,0,0,.8);
     --lighten:#FFFFFF;   /* משמש רק כמסיס בתוך color-mix, לא כצבע רכיב */
   }
@@ -1066,7 +1066,7 @@ window.BC_TRACK = {
     --gold-text-on-dark:var(--hero-ink-warm);
     color:var(--text-on-dark);
     background:var(--bg-hero);
-    position:relative; isolation:isolate; overflow:hidden;
+    position:relative; z-index:3; overflow:visible;
     padding:30px 0 74px;
     min-height:min(86vh,760px);
     display:flex; align-items:center;
@@ -1093,7 +1093,16 @@ window.BC_TRACK = {
   html.skin-f .bc .hero-copy .hero-ctas { justify-content:flex-start; }
   html.skin-f .bc .hero-copy .hero-proof { margin-inline:0; }
   /* הכפתור ירד לסוף הסקשן, ולכן הוא מקבל את המרווח שלו משורת ההמלצה */
-  html.skin-f .bc .hero-copy .hero-ctas { margin-top:1.7rem; }
+  /* הכפתור יורד מתחת לתמונה ויושב על התפר בין האולם לסקשן הבהיר.
+     הוא יוצא מזרימת הטקסט, ולכן הטקסט למעלה כבר לא צריך לפנות לו מקום */
+  html.skin-f .bc .hero .hero-ctas {
+    position:absolute; bottom:0; inset-inline-start:50%;
+    transform:translate(50%,50%); margin:0; z-index:5;
+    justify-content:center; width:auto;
+  }
+  html.skin-f .bc .hero .hero-ctas .cta { white-space:nowrap; width:auto; }
+  /* הסקשן שאחריו פותח מקום לכפתור שנכנס לתוכו */
+  html.skin-f .bc .tstm { padding-top:74px; }
   html.skin-f .bc .hero .hero-alt { margin-top:1.15rem; }
   html.skin-f .bc .hero .hero-proof { margin-top:1.15rem; }
   html.skin-f .bc .hero .wm-hand { content:url(media/mark.png); }
@@ -1103,13 +1112,13 @@ window.BC_TRACK = {
      ונדחס במובייל, כי הקריטריון הנעול הוא שהשורות נכנסות ב-390 */
   html.skin-f .bc .hero-h1 {
     font-family:"Frank Ruhl Libre","David Libre",serif;
-    max-width:none; margin:6px 0 1.15rem; line-height:1.08; letter-spacing:-.02em;
+    max-width:none; margin:6px 0 1.35rem; line-height:1.14; letter-spacing:-.02em;
     text-shadow:0 2px 20px var(--shadow-ink);
   }
   html.skin-f .bc .hero-h1 span { display:block; white-space:nowrap; }
   html.skin-f .bc .hero-h1 .hl-1 {
     font-size:clamp(.94rem,2.34vw,1.42rem); font-weight:700;
-    color:var(--text-on-dark-muted); margin-bottom:.28em;
+    color:var(--text-on-dark-muted); margin-bottom:.42em;
   }
   html.skin-f .bc .hero-h1 .hl-2 {
     font-size:clamp(1.25rem,3.75vw,2.27rem); font-weight:700;
@@ -1273,17 +1282,91 @@ window.BC_TRACK = {
        מועדף מבוסס vw כדי שהיחס יישמר גם ב-360. שתי השורות שמעליה נגזרות
        ממנה. שורה 1 נעצרת ברצפה של 17 פיקסלים ולכן היא יוצאת גדולה מהיחס
        התאורטי: מתחת לזה היא כיתוב אגבי ולא שורת פתיחה. */
-    html.skin-f .bc .hero-h1 { margin:2px 0 1.15rem; line-height:1.08; }
+    html.skin-f .bc .hero-h1 { margin:2px 0 1.5rem; line-height:1.14; }
     /* שורה 1 נשארת 17 פיקסלים כרצפת קריאוּת. כדי שהפירמידה בכל זאת
        תיקרא, ההפרדה נעשית במשקל ובריווח ולא בהקטנה: היא הופכת לשורת
        סטאפ שקטה במקום להתחרות בפאנץ. */
-    html.skin-f .bc .hero-h1 .hl-1 { font-size:clamp(17px,3.4vw,24px); font-weight:500; letter-spacing:.005em; margin-bottom:.2em; }
-    html.skin-f .bc .hero-h1 .hl-2 { font-size:clamp(20px,calc(6.71vw - 3.22px),42px); margin-bottom:.08em; }
+    html.skin-f .bc .hero-h1 .hl-1 { font-size:clamp(17px,3.4vw,24px); font-weight:500; letter-spacing:.005em; margin-bottom:.42em; }
+    html.skin-f .bc .hero-h1 .hl-2 { font-size:clamp(18px,calc(6.71vw - 3.22px),42px); margin-bottom:.22em; }
     html.skin-f .bc .hero-h1 .hl-3 { font-size:clamp(30px,calc(11.67vw - 5.6px),72px); }
-    html.skin-f .bc .hero-sub { font-size:17px; line-height:1.55; }
-    html.skin-f .bc .hero .hero-ctas { margin-top:1.8rem; }
-    html.skin-f .bc .hero .hero-alt { font-size:16px; line-height:1.5; margin-top:1.35rem; }
-    html.skin-f .bc .hero .hero-proof { font-size:16px; line-height:1.5; margin-top:1.25rem; }
+    html.skin-f .bc .hero-sub { font-size:17px; line-height:1.68; }
+
+    html.skin-f .bc .hero .hero-alt { font-size:16px; line-height:1.62; margin-top:1.6rem; }
+    html.skin-f .bc .hero .hero-proof { font-size:16px; line-height:1.62; margin-top:1.5rem; }
+  }
+
+  /* ══════════ המלצות מארגונים ══════════
+     שלושה כרטיסים באותה תבנית, בקו של הדף: פורצלן, כוכבים בקוטב
+     הטכנולוגיה, ומרכאה גדולה באוקסבלוד כהדגשה גרפית בלבד.
+     כרטיס שמסומן is-draft הוא דוגמת עיצוב שממתינה לציטוט מאושר. */
+  html.skin-f .bc .tstm { background:var(--surface-light-bg); }
+  html.skin-f .bc .tstm h2 {
+    text-align:center; font-size:var(--fs-h2); color:var(--surface-light-text);
+    margin:0 0 8px; max-width:22ch; margin-inline:auto;
+  }
+  html.skin-f .bc .tstm .tstm-sub {
+    text-align:center; color:var(--surface-light-muted);
+    font-size:var(--fs-sm); margin:0 auto 30px; max-width:44ch;
+  }
+  html.skin-f .bc .tstm-grid {
+    display:grid; gap:16px; grid-template-columns:1fr;
+  }
+  @media (min-width:860px){
+    html.skin-f .bc .tstm-grid { grid-template-columns:repeat(3,1fr); gap:18px; }
+  }
+  html.skin-f .bc .tstm-card {
+    position:relative; margin:0; padding:24px 22px 20px;
+    background:var(--surface-light-card);
+    border:1px solid color-mix(in srgb, var(--measure-line) 22%, transparent);
+    border-radius:16px;
+    box-shadow:0 1px 2px color-mix(in srgb, var(--surface-light-text) 6%, transparent),
+               0 10px 26px color-mix(in srgb, var(--surface-light-text) 5%, transparent);
+    display:flex; flex-direction:column;
+  }
+  /* המרכאה: סימן גרפי, לא טקסט */
+  html.skin-f .bc .tstm-card::before {
+    content:"\201D"; position:absolute; inset-inline-start:20px; top:6px;
+    font-family:"Frank Ruhl Libre","David Libre",serif; font-weight:700;
+    font-size:64px; line-height:1; color:var(--accent-text-on-light); opacity:.16;
+  }
+  html.skin-f .bc .tstm-stars { display:flex; gap:3px; margin-bottom:12px; }
+  html.skin-f .bc .tstm-stars svg { width:17px; height:17px; fill:var(--pole-cool); }
+  html.skin-f .bc .tstm-card blockquote {
+    margin:0 0 18px; font-size:16.5px; line-height:1.72;
+    color:var(--surface-light-text); flex:1;
+  }
+  html.skin-f .bc .tstm-card figcaption {
+    display:flex; align-items:center; gap:11px;
+    padding-top:14px;
+    border-top:1px solid color-mix(in srgb, var(--measure-line) 18%, transparent);
+  }
+  html.skin-f .bc .tstm-av {
+    width:38px; height:38px; flex:0 0 38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:color-mix(in srgb, var(--pole-cool) 18%, transparent);
+    border:1px solid color-mix(in srgb, var(--pole-cool) 42%, transparent);
+    color:var(--measure-text); font-weight:700; font-size:16px;
+    font-family:"Frank Ruhl Libre","David Libre",serif;
+  }
+  html.skin-f .bc .tstm-who { display:flex; flex-direction:column; line-height:1.35; }
+  html.skin-f .bc .tstm-org {
+    font-weight:700; font-size:15px; color:var(--surface-light-text);
+  }
+  html.skin-f .bc .tstm-role {
+    font-family:"IBM Plex Sans Hebrew","Assistant",sans-serif;
+    font-size:12.5px; letter-spacing:.04em; color:var(--surface-light-muted);
+  }
+  /* סימון גלוי לכרטיס שממתין לציטוט אמיתי */
+  html.skin-f .bc .tstm-card.is-draft {
+    border-style:dashed;
+    border-color:color-mix(in srgb, var(--accent-border) 38%, transparent);
+  }
+  html.skin-f .bc .tstm-flag {
+    position:absolute; inset-inline-end:16px; top:-11px;
+    font-family:"IBM Plex Sans Hebrew","Assistant",sans-serif;
+    font-size:11.5px; letter-spacing:.06em; font-weight:600;
+    color:var(--accent-on-fill); background:var(--accent-fill);
+    padding:4px 10px; border-radius:999px;
   }
 </style>
 
@@ -1300,7 +1383,7 @@ window.BC_TRACK = {
       <div class="hero-copy">
         <h1 class="hero-h1">
           <span class="hl-1">לכל מועמד יש סיפור שני.</span>
-          <span class="hl-2">בדרך כלל מגלים אותו בחודש השלישי.</span>
+          <span class="hl-2">בדרך כלל מגלים אותו כשכבר מאוחר מדי.</span>
           <span class="hl-3">אפשר גם בזמן הראיון.</span>
         </h1>
         <p class="sub hero-sub">את הסיפור הזה <span class="hl-human">כפות הידיים</span> מספרות בלי מילים. שיטה מובנית לקרוא אותו — לפני החתימה, לא בשיחת העזיבה.</p>
@@ -1308,13 +1391,83 @@ window.BC_TRACK = {
         עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
         -->
         <p class="hero-alt fade">פחות טעויות גיוס. פחות עזיבות שתופסות אתכם לא מוכנים. וצוות שמדבר על אנשים באותה שפה.</p>
-        <p class="hero-proof fade">"פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר."<span>המועצה המקומית קדימה־צורן</span></p>
+      </div>
+      </div>
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a>
         </div>
-      </div>
-      </div>
   </header>
+
+  <!-- ═══ המלצות מארגונים ═══
+       כרטיס 1 הוא ציטוט אמיתי שכבר מופיע בדף. כרטיסים 2 ו-3 הם דוגמאות
+       עיצוב בלבד ומסומנים ככאלה, עד שרעות תמסור ציטוטים אמיתיים עם שם,
+       תפקיד וארגון. אין להסיר את הסימון בלי ציטוט מאושר. -->
+  <section class="s-ivory tstm" id="tstm">
+    <div class="wrap">
+      <h2 class="fade">מה אומרים מנהלי גיוס וארגונים</h2>
+      <p class="tstm-sub fade">אחרי הרצאה לצוות, בארגונים שכבר עשו את זה.</p>
+
+      <div class="tstm-grid">
+
+        <figure class="tstm-card fade">
+          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          </div>
+          <blockquote>פתחת צוהר לעולם חדש. מעניין ומעורר השראה, מרתק ביותר.</blockquote>
+          <figcaption>
+            <span class="tstm-av" aria-hidden="true">ק</span>
+            <span class="tstm-who">
+              <span class="tstm-org">המועצה המקומית קדימה־צורן</span>
+              <span class="tstm-role">אחרי מפגש לצוות העובדים</span>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="tstm-card is-draft fade">
+          <span class="tstm-flag">דוגמה · ממתין לאישור</span>
+          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          </div>
+          <blockquote>הגעתי ספקן. אחרי עשרים דקות כבר רשמתי לעצמי שאלות ששכחתי לשאול בראיונות. הצוות דיבר על זה שבוע.</blockquote>
+          <figcaption>
+            <span class="tstm-av" aria-hidden="true">מ</span>
+            <span class="tstm-who">
+              <span class="tstm-org">שם הארגון</span>
+              <span class="tstm-role">מנהל או מנהלת גיוס</span>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="tstm-card is-draft fade">
+          <span class="tstm-flag">דוגמה · ממתין לאישור</span>
+          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          </div>
+          <blockquote>מאז אנחנו מדברים על מועמדים אחרת. יש לנו שפה אחת לתאר אנשים, וזה קיצר לנו ויכוחים בוועדות.</blockquote>
+          <figcaption>
+            <span class="tstm-av" aria-hidden="true">א</span>
+            <span class="tstm-who">
+              <span class="tstm-org">שם הארגון</span>
+              <span class="tstm-role">משאבי אנוש ופיתוח ארגוני</span>
+            </span>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
 
   <!-- 4b. DECODE (moved from /giyus/, verbatim) -->
 <section class="s-deep decode gated" id="decode">
