@@ -1051,7 +1051,7 @@ window.BC_TRACK = {
     --scrim-text:rgba(8,20,23,.86); --scrim-mid:rgba(8,20,23,.80);
     --scrim-mid-2:rgba(8,20,23,.52); --scrim-soft:rgba(8,20,23,.22);
     --scrim-edge:rgba(8,20,23,0);
-    --hero-figure-pad:275px;   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
+    --hero-figure-pad:calc(81vw + 16px);   /* ראשה של רעות יורד ככל שהמסך רחב יותר, כי הפריים נמתח לפי הרוחב. לכן המרווח נגזר מהרוחב ולא קבוע */   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
     --shadow-ink:rgba(0,0,0,.45); --shadow-ink-2:rgba(0,0,0,.5); --shadow-deep:rgba(0,0,0,.8);
     --lighten:#FFFFFF;   /* משמש רק כמסיס בתוך color-mix, לא כצבע רכיב */
   }
@@ -1299,7 +1299,21 @@ window.BC_TRACK = {
      שלושה כרטיסים באותה תבנית, בקו של הדף: פורצלן, כוכבים בקוטב
      הטכנולוגיה, ומרכאה גדולה באוקסבלוד כהדגשה גרפית בלבד.
      כרטיס שמסומן is-draft הוא דוגמת עיצוב שממתינה לציטוט מאושר. */
-  html.skin-f .bc .tstm { background:var(--surface-light-bg); }
+  html.skin-f .bc .tstm {
+    position:relative; isolation:isolate;
+    background:
+      radial-gradient(120% 82% at 50% 0%, color-mix(in srgb, var(--pole-cool) 8%, transparent) 0%, transparent 60%),
+      linear-gradient(180deg, var(--surface-light-card) 0%, var(--surface-light-bg) 44%, var(--surface-light-card) 100%);
+  }
+  /* רשת נקודות דקה. נותנת מרקם לנייר בלי להיראות כמו דפוס */
+  html.skin-f .bc .tstm::before {
+    content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.55;
+    background-image:radial-gradient(color-mix(in srgb, var(--measure-line) 20%, transparent) 1px, transparent 1px);
+    background-size:22px 22px;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
+    mask-image:linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
+  }
+  html.skin-f .bc .tstm > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .tstm h2 {
     text-align:center; font-size:var(--fs-h2); color:var(--surface-light-text);
     margin:0 0 8px; max-width:22ch; margin-inline:auto;
@@ -1325,7 +1339,7 @@ window.BC_TRACK = {
   }
   /* המרכאה: סימן גרפי, לא טקסט */
   html.skin-f .bc .tstm-card::before {
-    content:"\201D"; position:absolute; inset-inline-start:20px; top:6px;
+    content:"\201D"; position:absolute; left:20px; right:auto; top:2px;
     font-family:"Frank Ruhl Libre","David Libre",serif; font-weight:700;
     font-size:64px; line-height:1; color:var(--accent-text-on-light); opacity:.16;
   }
@@ -1368,6 +1382,20 @@ window.BC_TRACK = {
     color:var(--accent-on-fill); background:var(--accent-fill);
     padding:4px 10px; border-radius:999px;
   }
+
+  @media (max-width:600px){
+    html.skin-f .bc .tstm { padding-top:64px; }
+    html.skin-f .bc .tstm h2 { font-size:clamp(22px,6vw,27px); max-width:18ch; }
+    html.skin-f .bc .tstm .tstm-sub { margin-bottom:24px; }
+    html.skin-f .bc .tstm-grid { gap:20px; }
+    html.skin-f .bc .tstm-card { padding:22px 18px 18px; border-radius:14px; }
+    html.skin-f .bc .tstm-card blockquote { font-size:16px; line-height:1.7; margin-bottom:16px; }
+    html.skin-f .bc .tstm-card::before { font-size:52px; }
+    html.skin-f .bc .tstm-stars svg { width:16px; height:16px; }
+    html.skin-f .bc .tstm-av { width:34px; height:34px; flex-basis:34px; font-size:15px; }
+    html.skin-f .bc .tstm-org { font-size:14.5px; }
+    html.skin-f .bc .tstm-flag { font-size:11px; padding:3px 9px; inset-inline-end:12px; }
+  }
 </style>
 
 <div class="bc">
@@ -1390,7 +1418,6 @@ window.BC_TRACK = {
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
         עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
         -->
-        <p class="hero-alt fade">פחות טעויות גיוס. פחות עזיבות שתופסות אתכם לא מוכנים. וצוות שמדבר על אנשים באותה שפה.</p>
       </div>
       </div>
         <div class="hero-ctas fade">
@@ -1470,7 +1497,7 @@ window.BC_TRACK = {
   </section>
 
   <!-- 4b. DECODE (moved from /giyus/, verbatim) -->
-<section class="s-deep decode gated" id="decode">
+<section class="s-deep decode" id="decode">
   <div class="wrap">
     <h2 class="fade">אל תאמינו למילים. תבדקו על עצמכם.</h2>
     <p class="sub fade">אבחון דיגיטלי קצר, לפני שמחליטים אם השיטה מתאימה לצוות. שלוש דרכים להתחיל: תמונה של כף היד, סריקה חיה במצלמה, או שאלון בלי מצלמה.</p>
@@ -1619,25 +1646,7 @@ window.BC_TRACK = {
   </section>
 
   <!-- 4. BENEFITS -->
-  <section class="s-navy benes surface-light">
-    <div class="wrap">
-      <h2 class="fade">הרצאה אחת. שלושה דברים שנשארים אחריה.</h2>
-      <div class="grid3">
-        <div class="card fade">
-          <h3>חוויה שמגבשת</h3>
-          <p>שעה שכולם משתתפים בה: כל עובד מגלה מה כף היד שלו מספרת עליו, ומשווה עם הקולגות. אחד צוחק, השני נשבע שזה לא ייתכן, ודווקא השקט שבפינה מודה שקלעו בול. על השעה הזאת מדברים במטבחון עוד הרבה זמן.</p>
-        </div>
-        <div class="card fade">
-          <h3>שפה מקצועית חדשה</h3>
-          <p>הצוות יוצא עם שפה מעשית לתקשורת: מי מחליט מהר ומי צריך לישון על זה. יש כאלה שפורחים כשנותנים להם חופש, ויש כאלה שדווקא צריכים גבולות ברורים. פחות חיכוכים, יותר הבנה. את ההבדל שומעים כבר בישיבה הראשונה שאחרי.</p>
-        </div>
-        <div class="card fade">
-          <h3>כלי ניהולי שנשאר</h3>
-          <p>מנהלים לומדים לראות את מה שהעובד לא אומר: מוטיבציה אמיתית, עומס שקט, שחיקה מתחת לפני השטח, לפני שזה הופך למכתב התפטרות. עובד אחד שנשאר, וההרצאה החזירה את עצמה.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
 
   <!-- 5. OBJECTION -->
@@ -1674,19 +1683,7 @@ window.BC_TRACK = {
   </section>
 
   <!-- 6b. TRIAL DIAGNOSIS -->
-  <section class="s-ivory trial surface-dark">
-    <div class="wrap"><div class="text-col">
-      <h2 class="fade">לא מאמינים? אל תאמינו. תבדקו.</h2>
-      <ul class="trial-steps fade">
-        <li>בחרו עובד ותיק שאתם מכירים היטב</li>
-        <li>אבחון <span class="ltr">H.I.P</span> מלא מתמונת כפות ידיים</li>
-        <li>דוח מפורט להשוואה מול מה שאתם כבר יודעים</li>
-      </ul>
-      <p class="kick fade">אם הדיוק לא יפתיע אתכם, לא שילמתם שקל ולא נמשיך. אם כן? נדבר על ההרצאה והמשך הדרך.</p>
-      <div class="center-cta fade"><a href="#lead-form" class="cta ghost trial-cta">בקשו אבחון ניסיון לעובד אחד</a></div>
-      <p class="no-commit fade">אבחוני הניסיון ניתנים בכפוף לזמינות.</p>
-    </div></div>
-  </section>
+  
 
 
 
@@ -1705,20 +1702,8 @@ window.BC_TRACK = {
   </section>
 
   <!-- 10. FAQ -->
-  <section class="s-navy faq">
-    <div class="wrap">
-      <h2 class="fade">השאלות שחוזרות לפני שמזמינים</h2>
-      <div class="list fade">
-        <details><summary>כמה זמן נמשכת ההרצאה ולאיזה גודל קהל היא מתאימה?</summary><div class="ans">ההרצאה נמשכת 60 עד 75 דקות ומותאמת לגודל הקהל שלכם, מצוות מצומצם ועד כנס חברה. בשיחת האפיון נדייק יחד את הפורמט.</div></details>
-        <details open><summary>כמה זה עולה?</summary><div class="ans">תעשו רגע את החשבון של עזיבה אחת אצלכם: גיוס והכשרה, וכל החודשים באמצע. ההרצאה עולה פחות מזה, משמעותית. מלאו פרטים ואחזור אליכם עם הצעה מסודרת תוך יום עסקים.</div></details>
-        <details><summary>זה מתאים גם לקהל מגוון של עובדים, מנהלים והייטקיסטים ציניים?</summary><div class="ans">כן. גם הציניקן של המשרד יוצא עם משהו. בדרך כלל הוא זה שצוחק הכי חזק. ההדגמות בזמן אמת עושות את העבודה במקום שכנועים, וכולם יוצאים עם כלי שאפשר להשתמש בו כבר למחרת.</div></details>
-        <details><summary>איך מציגים את זה להנהלה בלי שזה יישמע תלוש?</summary><div class="ans">במשפט אחד: "כלי מדידה של דפוסי התנהגות, שמוסיף שכבת מידע על אנשים בגיוס ובניהול. לא מחליף ריאיון ולא מחליף שיקול דעת." זה הניסוח שעובד, כי הוא לא מבקש מאף אחד להאמין במשהו. ואם רוצים משהו חזק מזה, אפשר לעשות אבחון ניסיון לעובד ותיק ולהראות את הדוח בישיבה.</div></details>
-        <details><summary>זה לא משהו מיסטי? איך זה יתקבל אצל ההנהלה?</summary><div class="ans">ממש לא. שיטת <span class="ltr">H.I.P</span> פותחה על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן, כלי מדידה של דפוסי התנהגות, בלי שום קשר לרוחניות או קריאת עתידות. ההנהלות הכי אנליטיות הן דווקא הקהל שהכי מתחבר.</div></details>
-        <details><summary>מה צריך להכין מבחינה לוגיסטית?</summary><div class="ans">מעט מאוד. חלל עם מקרן או מסך, מיקרופון וכיסאות לקהל. אני מגיעה עם כל השאר.</div></details>
-        <details><summary>האם ההרצאה מתאימה גם לזום/היברידי?</summary><div class="ans">כן. ניתן להעביר את ההרצאה גם בפורמט מקוון או היברידי, וההדגמות עובדות גם דרך המסך.</div></details>
-        <details><summary>זה מתאים גם כאירוע גיבוש?</summary><div class="ans">זה בדיוק המקום שבו זה מצטיין: הרמת כוסית, יום עיון, אופסייט. ההרצאה היא החלק שכולם משתתפים בו וצוחקים בו, ואחר כך מדברים עליו. רק שממנה נשארים גם עם כלים.</div></details>
-      </div>
-      <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
+  <section class="s-navy faq closing">
+    <div class="wrap">      <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
       <p class="cta-micro fade">בלי התחייבות, גם אם אתם רק בודקים תקציב לשנה הבאה.</p>
     </div>
   </section>
