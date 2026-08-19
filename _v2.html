@@ -1106,17 +1106,7 @@ window.BC_TRACK = {
     font-size:12px; letter-spacing:.14em; color:var(--rail); opacity:.75;
   }
 
-  /* הכפתור על רקע כהה: אותו אוקסבלד, מואר מדרגה כדי שלא ישקע */
-  html.skin-f .bc .hero .cta {
-    background:linear-gradient(160deg,#8C3844 0%,#702B36 58%,#5A2029 100%);
-    box-shadow:0 1px 0 rgba(255,255,255,.18) inset, 0 12px 30px rgba(0,0,0,.42);
-  }
-  html.skin-f .bc .hero .cta:hover {
-    background:linear-gradient(160deg,#9C404D 0%,#7E323E 58%,#67252E 100%);
-    box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 16px 38px rgba(0,0,0,.5);
-  }
-
-  @media (max-width:900px){
+  @media (max-width:600px){
     html.skin-f .bc .hero { min-height:auto; padding:24px 0 62px; }
     html.skin-f .bc .hero::before { background-position:36% center; }
     html.skin-f .bc .hero::after {
@@ -1133,7 +1123,7 @@ window.BC_TRACK = {
   html.skin-f .bc .cta::before {
     inset:auto auto 0 0; width:72px; height:2px; opacity:.9;
   }
-  @media (max-width:900px){
+  @media (max-width:600px){
     /* במובייל הטקסט יושב על הפריים כולו, ולכן החושך צריך להיות עמוק יותר,
        והפריים מוזז כך שהפנים שלה לא נופלות מתחת לפסקה */
     html.skin-f .bc .hero::before { background-position:34% 14%; }
@@ -1151,7 +1141,7 @@ window.BC_TRACK = {
      נראה מטושטש כי זו פיסה מוגדלת של צילום רחב. במקום זה, הפריים יושב
      ברצועה ברוחב מלא בפרופורציה שקרובה למקור, הטקסט יורד מתחתיה על רקע
      כהה אטום, וכך גם התמונה חדה וגם הקריאות מלאה. */
-  @media (max-width:900px){
+  @media (max-width:600px){
     html.skin-f .bc .hero {
       min-height:auto; padding:18px 0 54px; display:block; background:#0A181B;
     }
@@ -1215,7 +1205,7 @@ window.BC_TRACK = {
      רעות יושבת בחלק העליון ואף מילה לא עליה. מתחת לרצועה הרקע ממשיך
      בגוון החם־כהה של רצפת האולם ודועך אל הכהה של הדף, כך שהטקסט יושב
      על המשך של אותו חדר ולא על בלוק שחור מנותק. */
-  @media (max-width:900px){
+  @media (max-width:600px){
     html.skin-f .bc .hero {
       background:
         radial-gradient(120% 42% at 50% 30%, rgba(86,64,44,.55) 0%, rgba(28,26,24,.28) 46%, transparent 78%),
@@ -1231,6 +1221,191 @@ window.BC_TRACK = {
         linear-gradient(to bottom, rgba(10,24,27,.38) 0%, rgba(10,24,27,.05) 22%, rgba(10,24,27,.10) 56%, rgba(10,24,27,.55) 100%);
     }
   }
+
+  /* ══════════════════════════════════════════════════════════════════
+     בלוק פתיחה, גרסה 2 — פירמידה הפוכה
+     סטאפ קטן, פאנץ' ענק, שליטה ידנית מלאה בשבירות השורות.
+     כל צבע כאן מגיע ממשתנה של מערכת הסקינים. אין ערכים קשיחים.
+     ══════════════════════════════════════════════════════════════════ */
+  html.skin-f .bc {
+    /* משתני מערכת חדשים ברמת הסקין: לא היה בקובץ טוקן רדיוס ולא טוקן סקרים */
+    --radius-cta:12px;
+    --cta-ink:#06211F;
+    --scrim-text:rgba(8,20,23,.86);
+    --scrim-edge:rgba(8,20,23,0);
+  }
+
+  html.skin-f .bc .hero-h1 {
+    font-family:'Frank Ruhl Libre','David Libre',serif;
+    max-width:none; margin:6px 0 1.15rem; line-height:1.08; letter-spacing:-.02em;
+    text-shadow:0 2px 20px rgba(0,0,0,.45);
+  }
+  html.skin-f .bc .hero-h1 span {
+    display:block; white-space:nowrap; /* כל שורה נשארת שורה אחת בכל רוחב */
+  }
+  /* יחסי הגודל 1 : 1.6 : 3 נשמרים בדסקטופ. במובייל הם נדחסים ל-1 : 1.33 : 2.13,
+     כי הקריטריון הנעול הוא ששלוש השורות נכנסות כל אחת בשורה אחת ב-390 */
+  html.skin-f .bc .hero-h1 .hl-1 {
+    font-size:clamp(.94rem,2.34vw,1.42rem); font-weight:700;
+    color:var(--text-on-dark-muted); margin-bottom:.28em;
+  }
+  html.skin-f .bc .hero-h1 .hl-2 {
+    font-size:clamp(1.25rem,3.75vw,2.27rem); font-weight:700;
+    color:var(--text-on-dark); margin-bottom:.14em;
+  }
+  html.skin-f .bc .hero-h1 .hl-3 {
+    font-size:clamp(2rem,6vw,4.25rem); font-weight:900;
+    color:var(--pole-cool);
+  }
+  html.skin-f .bc .hero-sub {
+    max-width:46ch; font-size:clamp(15.5px,1.35vw,19px); line-height:1.62;
+    color:var(--text-on-dark); text-shadow:0 1px 14px rgba(0,0,0,.5);
+  }
+  html.skin-f .bc .hero-sub .hl-human { color:var(--pole-warm); font-weight:700; }
+
+  /* ── כניסה מדורגת, CSS בלבד ── */
+  @keyframes heroIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+  html.skin-f .bc .hero-h1 span,
+  html.skin-f .bc .hero-sub {
+    opacity:0; animation:heroIn .62s var(--ease) forwards;
+  }
+  html.skin-f .bc .hero-h1 .hl-1 { animation-delay:.05s; }
+  html.skin-f .bc .hero-h1 .hl-2 { animation-delay:.30s; }
+  html.skin-f .bc .hero-h1 .hl-3 { animation-delay:.70s; }
+  html.skin-f .bc .hero-sub      { animation-delay:.95s; }
+  @media (prefers-reduced-motion: reduce){
+    html.skin-f .bc .hero-h1 span,
+    html.skin-f .bc .hero-sub { animation:none; opacity:1; transform:none; }
+  }
+
+  /* ══ כפתור הפעולה: קוטב הטכנולוגיה, מלא ══ */
+  html.skin-f .bc .cta {
+    background:var(--pole-cool);
+    color:var(--cta-ink);
+    border-radius:var(--radius-cta);
+    padding:15px 30px; min-height:52px;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Assistant','Segoe UI',Arial,sans-serif; font-weight:700;
+    font-size:clamp(15.5px,1.15vw,17.5px); letter-spacing:0;
+    border:0; text-decoration:none; position:relative; overflow:visible;
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 45%, transparent),
+               0 10px 30px color-mix(in srgb, var(--pole-cool) 26%, transparent);
+    transition:transform .18s var(--ease), box-shadow .18s var(--ease), background-color .18s var(--ease);
+  }
+  /* הנקודה הצפה ופס הקטבים החתוך יורדים מכל מופעי הכפתור */
+  html.skin-f .bc .cta::before,
+  html.skin-f .bc .cta::after { content:none; display:none; }
+  html.skin-f .bc .cta .cta-dot { display:none; }
+  html.skin-f .bc .cta:hover {
+    transform:translateY(-2px);
+    background:color-mix(in srgb, var(--pole-cool) 86%, #FFFFFF);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 60%, transparent),
+               0 16px 40px color-mix(in srgb, var(--pole-cool) 36%, transparent);
+  }
+  html.skin-f .bc .cta:active {
+    transform:translateY(0);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 50%, transparent),
+               0 6px 18px color-mix(in srgb, var(--pole-cool) 22%, transparent);
+  }
+  html.skin-f .bc .cta:focus-visible {
+    outline:3px solid color-mix(in srgb, var(--pole-cool) 70%, #FFFFFF);
+    outline-offset:3px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html.skin-f .bc .cta { transition:background-color .18s linear, box-shadow .18s linear; }
+    html.skin-f .bc .cta:hover, html.skin-f .bc .cta:active { transform:none; }
+  }
+
+  /* ══ מובייל: הפרדה אנכית — טקסט בגזרה העליונה, הדמות מעוגנת לתחתית ══
+     קובץ ייעודי לנייד: הפריים המקורי בתחתיתו, והקיר שמעליו נמתח כלפי מעלה
+     מתוך השורות העליונות שלו עצמו. הסקרים מכהה רק את גזרת הטקסט ונפתח
+     לפני הדמות, כך שהפנים וכפות הידיים נשארות גלויות. */
+  @media (max-width:600px){
+    html.skin-f .bc .hero {
+      min-height:auto; padding:20px 0 34px; display:block; background:var(--bg-dark-deep);
+    }
+    html.skin-f .bc .hero::before {
+      inset:0; height:auto;
+      background:url(media/stage-m.jpg) center bottom/cover no-repeat;
+      background:image-set(url(media/stage-m.webp) type("image/webp"), url(media/stage-m.jpg) type("image/jpeg")) center bottom/cover no-repeat;
+      filter:contrast(1.04) saturate(.92) brightness(.98);
+      -webkit-mask-image:none; mask-image:none;
+    }
+    html.skin-f .bc .hero::after {
+      inset:0; height:auto;
+      background:linear-gradient(to bottom,
+        var(--scrim-text) 0%, var(--scrim-text) 46%,
+        rgba(8,20,23,.62) 60%, rgba(8,20,23,.24) 72%, var(--scrim-edge) 84%);
+    }
+    html.skin-f .bc .hero-copy { max-width:100%; padding-top:0; }
+    html.skin-f .bc .hero > .wrap { padding-bottom:30px; }
+  }
+
+  /* תווית "01 · האולם" הוסרה: היא טקסט שלא מופיע בקופי המאושר.
+     קו המדידה עצמו נשאר, הוא גרפיקה ולא טקסט */
+  html.skin-f .bc .hero > .wrap::before { content:none; }
+
+  /* ══ רוחב ביניים 601 עד 900: עדיין שתי עמודות ══
+     בטווח הזה אין מקום לעמודת טקסט מלאה לצד הדמות, ולכן העמודה מצטמצמת
+     והפריים מוסט שמאלה, כדי שיישאר מסדרון ריק בין הטקסט לרעות */
+  @media (min-width:601px) and (max-width:900px){
+    html.skin-f .bc .hero { min-height:min(78vh,660px); display:flex; align-items:center; padding:26px 0 58px; }
+    html.skin-f .bc .hero::before { background-position:62% center; }
+    html.skin-f .bc .hero::after {
+      background:
+        radial-gradient(52% 62% at 22% 46%, rgba(255,183,128,.20) 0%, transparent 74%),
+        linear-gradient(to left, #0A181B 0%, rgba(10,24,27,.95) 40%, rgba(10,24,27,.72) 62%, rgba(10,24,27,.30) 84%, rgba(10,24,27,.18) 100%);
+    }
+    html.skin-f .bc .hero-copy { max-width:26rem; margin-inline:0 auto; text-align:right; }
+    html.skin-f .bc .hero-sub { max-width:34ch; }
+  }
+
+  /* ══ 600 ומטה: הפרדה אנכית, והדמות מוגנת ══
+     גובה הבלוק נקבע כך שהטקסט מסתיים לפני שראשה מתחיל. המרווח התחתון
+     הוא מה שדוחף את הפריים מטה — בלעדיו הטקסט נוחת על הפנים ועל הידיים */
+  @media (max-width:600px){
+    html.skin-f .bc .hero { padding:20px 0 380px; }
+    html.skin-f .bc .hero > .wrap { padding-bottom:18px; }
+    html.skin-f .bc .hero::after {
+      background:linear-gradient(to bottom,
+        var(--scrim-text) 0%, var(--scrim-text) 40%,
+        rgba(8,20,23,.72) 52%, rgba(8,20,23,.26) 62%, var(--scrim-edge) 72%);
+    }
+  }
+
+  @media (max-width:600px){
+    /* קו המדידה מוסתר בנייד: הוא נחת על שורת ההמלצה. בדסקטופ הוא נשאר */
+    html.skin-f .bc .hero > .wrap::after { content:none; }
+    /* מעבר רך יותר בין גזרת הטקסט לפריים, בלי תפר אופקי */
+    html.skin-f .bc .hero::after {
+      background:linear-gradient(to bottom,
+        var(--scrim-text) 0%, var(--scrim-text) 34%,
+        rgba(8,20,23,.80) 46%, rgba(8,20,23,.52) 56%,
+        rgba(8,20,23,.22) 65%, var(--scrim-edge) 76%);
+    }
+  }
+
+  @media (max-width:600px){
+    /* שורת מקור ההמלצה יושבת במקום שבו הרקע כבר מתבהר, ולכן היא מקבלת
+       את צבע הטקסט המלא במקום המעומעם */
+    html.skin-f .bc .hero .hero-proof { color:var(--text-on-dark); }
+    html.skin-f .bc .hero .hero-proof span { color:var(--pole-cool); text-shadow:0 1px 10px rgba(0,0,0,.8); }
+  }
+
+  /* כפתור משני (ghost): עובר גם הוא לקוטב הטכנולוגיה, כדי שהבורדו לא
+     יופיע על אף כפתור בדף. על רקע בהיר משתמשים בגוון הכהה של אותו קוטב,
+     כי הטורקיז החשמלי לא עומד בניגודיות על פורצלן */
+  html.skin-f .bc .cta.ghost {
+    background:transparent;
+    color:var(--measure-text);
+    border:2px solid var(--measure-line);
+    box-shadow:none;
+  }
+  html.skin-f .bc .cta.ghost:hover {
+    background:color-mix(in srgb, var(--measure-line) 12%, transparent);
+    color:var(--measure-text);
+    box-shadow:none;
+  }
 </style>
 
 <div class="bc">
@@ -1244,10 +1419,12 @@ window.BC_TRACK = {
         <a href="#top" class="wordmark" aria-label="רעות ביטון, לראש הדף"><img class="wm-hand" src="media/mark.png" width="209" height="160" alt="" aria-hidden="true"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></a>
       </div>
       <div class="hero-copy">
-        <h1 class="fade">כל מועמד למשרה מגיע עם שני סיפורים.</h1>
-        <p class="hero-kick fade">אחד מהם הוא הכין מראש.</p>
-        <p class="hero-bio fade">את השני <span class="hl">כפות הידיים שלו</span> כבר מספרות לכם.</p>
-        <p class="sub fade">את הפער בין השניים בארגון תמיד מגלים באיחור. בחודש השלישי של מי שנראה מושלם, ובשיחת העזיבה של מי שכבר מזמן החליט.</p>
+        <h1 class="hero-h1">
+          <span class="hl-1">לכל מועמד יש סיפור שני.</span>
+          <span class="hl-2">בדרך כלל מגלים אותו בחודש השלישי.</span>
+          <span class="hl-3">אפשר גם בתוך הראיון.</span>
+        </h1>
+        <p class="sub hero-sub">את הסיפור הזה <span class="hl-human">כפות הידיים</span> מספרות בלי מילים. שיטה מובנית לקרוא אותו — לפני החתימה, לא בשיחת העזיבה.</p>
         <p class="hero-bridge fade">ומה אם הייתם רואים את זה כבר בפגישה הראשונה, ולא בשיחת העזיבה?</p>
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
         עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
