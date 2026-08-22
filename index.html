@@ -1625,12 +1625,18 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     /* הסרטון הוא 16:9 והסקשן גבוה. כיסוי מלא היה מגדיל אותו עד ששתי
        אצבעות ממלאות את המסך. כאן הוא נכנס במלואו, וגובה הסקשן ממלא
        את השאר בצבע הרקע */
-    html.skin-f .bc .decode-bg video { object-fit:contain; object-position:center 38%; opacity:.92; }
+    /* הסרטון יושב כרצועה ברוחב מלא בגזרה העליונה, מיד מאחורי הכותרת,
+       כדי שהכפות ייראו כבר כשנכנסים לסקשן ולא רק בהמשך הגלילה */
+    html.skin-f .bc .decode-bg { display:block; }
+    html.skin-f .bc .decode-bg video {
+      position:absolute; inset-inline:0; top:4%;
+      width:100%; height:auto; object-fit:contain; opacity:.95;
+    }
     html.skin-f .bc .decode-bg { background:var(--bg-hero); }
     html.skin-f .bc .decode-bg::after {
       background:
-        radial-gradient(ellipse 92% 44% at 50% 38%, rgba(10,24,27,.86) 42%, rgba(10,24,27,.5) 80%, rgba(10,24,27,.2) 100%),
-        linear-gradient(180deg, rgba(10,24,27,.9) 0%, rgba(10,24,27,.34) 24%, rgba(10,24,27,.34) 72%, rgba(10,24,27,.9) 100%);
+        radial-gradient(ellipse 96% 30% at 50% 16%, rgba(10,24,27,.72) 40%, rgba(10,24,27,.4) 78%, rgba(10,24,27,.12) 100%),
+        linear-gradient(180deg, rgba(10,24,27,.82) 0%, rgba(10,24,27,.3) 18%, rgba(10,24,27,.62) 46%, rgba(10,24,27,.9) 100%);
     }
   }
 </style>
