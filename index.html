@@ -1571,6 +1571,55 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   /* חצי הקרוסלה נמדדו ברוחב 7 פיקסלים בלבד. אזור הלחיצה מורחב ל-44,
      החץ עצמו נשאר באותו גודל */
   html.skin-f .bc .wa-arrow { min-width:44px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; }
+
+  /* ══════════ סקשן האבחון: הסרטון כרקע חי ══════════
+     הסרטון מצולם על שחור, ולכן הסקשן כולו הופך לכהה והטקסט בו מתהפך
+     לבהיר. זה גם נותן לדף רגע של קצב באמצע רצף הפורצלן. */
+  html.skin-f .bc .decode {
+    position:relative; isolation:isolate; overflow:hidden;
+    background:var(--bg-hero);
+    --text-on-dark:var(--hero-ink);
+    --text-on-dark-muted:var(--hero-ink-muted);
+    --text-on-light:var(--hero-ink);
+    --surface-light-text:var(--hero-ink);
+    --surface-light-muted:var(--hero-ink-muted);
+    --text-on-light-muted:var(--hero-ink-muted);
+    --muted-d:var(--hero-ink-muted);
+    --muted-l:var(--hero-ink-muted);
+    --ink:var(--hero-ink);
+    --accent-text-on-dark:var(--rail);
+    --gold-text-on-dark:var(--rail);
+    --measure-text:var(--rail);
+    color:var(--hero-ink);
+  }
+  html.skin-f .bc .decode-bg { position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+  html.skin-f .bc .decode-bg video {
+    width:100%; height:100%; object-fit:cover; display:block;
+    opacity:.55; filter:contrast(1.06) saturate(1.04);
+  }
+  /* שכבת קריאוּת: כהה במרכז שבו יושב הטקסט, ונפתחת בקצוות */
+  html.skin-f .bc .decode-bg::after {
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 84% 64% at 50% 46%, rgba(10,24,27,.9) 34%, rgba(10,24,27,.66) 74%, rgba(10,24,27,.4) 100%),
+      linear-gradient(180deg, rgba(10,24,27,.94) 0%, rgba(10,24,27,.6) 24%, rgba(10,24,27,.6) 74%, rgba(10,24,27,.94) 100%);
+  }
+  html.skin-f .bc .decode > .wrap { position:relative; z-index:1; }
+  /* הכרטיסים בסקשן מקבלים רקע כהה־שקוף במקום לבן שיצרוב את העין */
+  html.skin-f .bc .decode .scan-lock { background:rgba(255,255,255,.05); border-color:rgba(95,224,206,.34); }
+  html.skin-f .bc .decode .entry-btn { color:var(--hero-ink); border-color:rgba(95,224,206,.4); background:rgba(255,255,255,.05); }
+  html.skin-f .bc .decode .entry-btn:hover { background:rgba(255,255,255,.1); }
+  /* מי שביקש פחות תנועה מקבל תמונת סטילס מאותו פריים */
+  @media (prefers-reduced-motion: reduce){
+    html.skin-f .bc .decode-bg video { display:none; }
+    html.skin-f .bc .decode-bg { background:url(media/hands-poster.jpg) center/cover no-repeat; }
+  }
+
+  /* הצילום של רעות בסקשן המכתב היה חלש מדי בנייד. הצעיף מרוכך */
+  @media (max-width:900px){
+    html.skin-f .bc { --veil-top:linear-gradient(to bottom,
+      rgba(247,250,250,.86) 0%, rgba(247,250,250,.8) 55%, rgba(247,250,250,.62) 100%); }
+  }
 </style>
 
 <div class="bc">
@@ -1720,15 +1769,14 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
   <!-- 4b. DECODE (moved from /giyus/, verbatim) -->
 <section class="s-deep decode gated" id="decode">
+  <!-- הסרטון רץ כרקע חי של הסקשן. אותן 21 נקודות שהסורק מודד -->
+  <div class="decode-bg" aria-hidden="true">
+    <video class="hands-bg-vid" src="media/hands.mp4" poster="media/hands-poster.jpg"
+           autoplay muted loop playsinline preload="metadata"></video>
+  </div>
   <div class="wrap">
     <h2 class="fade">אל תאמינו למילים. תבדקו על עצמכם.</h2>
     <p class="sub fade">אבחון דיגיטלי קצר, לפני שמחליטים אם השיטה מתאימה לצוות. שלוש דרכים להתחיל: תמונה של כף היד, סריקה חיה במצלמה, או שאלון בלי מצלמה.</p>
-      <!-- שתי כפות ידיים אמיתיות עם 21 נקודות המדידה. אותן נקודות שהסורק מודד -->
-      <div class="scan-art">
-        <video class="hands-vid" src="media/hands.mp4" poster="media/hands-poster.jpg"
-               autoplay muted loop playsinline preload="metadata"
-               aria-label="שתי כפות ידיים פתוחות ועליהן 21 נקודות המדידה של השיטה, עם גל אור שעובר ביניהן"></video>
-      </div>
     <!-- שער הסריקה: נעול עד שמשאירים פרטים. נפתח מהטופס וגם מ-localStorage בביקור חוזר -->
     <p class="scan-basis fade"><strong>לא גורלות. לא אסטרולוגיה. לא אנרגיות.</strong>
       המנוע כאן רץ על בסיס הידע של רעות, באותה שיטה שהיא מלמדת בהרצאה.</p>
