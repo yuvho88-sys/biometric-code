@@ -1509,15 +1509,15 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .hero { position:relative; overflow:hidden; background:var(--surface-light-bg); }
   html.skin-f .bc .hero::before {
     content:""; display:block; position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:url(media/hero-bg-warm.jpg) center center / cover no-repeat;
-    background:image-set(url(media/hero-bg-warm.webp) type("image/webp"), url(media/hero-bg-warm.jpg) type("image/jpeg")) center center / cover no-repeat;
-    opacity:1; filter:contrast(1.14) saturate(1.06);
+    background:url(media/hall-d.jpg) center center / cover no-repeat;
+    background:image-set(url(media/hall-d.webp) type("image/webp"), url(media/hall-d.jpg) type("image/jpeg")) center center / cover no-repeat;
+    opacity:1; filter:saturate(.88) brightness(1.02);
   }
   html.skin-f .bc .hero::after {
     content:""; display:block; position:absolute; inset:0; z-index:1; pointer-events:none;
     background:
-      radial-gradient(ellipse 54% 42% at 50% 32%, var(--veil-hero) 20%, transparent 84%),
-      linear-gradient(180deg, var(--veil-hero) 0%, transparent 18%, transparent 78%, var(--surface-light-bg) 100%),
+      radial-gradient(ellipse 76% 62% at 50% 40%, var(--veil-hero) 44%, rgba(250,247,242,.72) 68%, transparent 92%),
+      linear-gradient(180deg, var(--veil-hero) 0%, rgba(250,247,242,.6) 22%, rgba(250,247,242,.55) 74%, var(--surface-light-bg) 100%),
       linear-gradient(0deg, var(--hero-tint), var(--hero-tint));
   }
   html.skin-f .bc { --hero-tint:rgba(0,0,0,0); --veil-hero:#FAF7F2; }
@@ -1529,14 +1529,14 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
        לזו שבמחשב: הדמויות בצדדים ולחיצת היד מתחת לטקסט. */
     html.skin-f .bc .hero::before {
       opacity:1; background-position:center center;
-      background:url(media/hero-bg-m.jpg) center center / cover no-repeat;
-      background:image-set(url(media/hero-bg-m.webp) type("image/webp"), url(media/hero-bg-m.jpg) type("image/jpeg")) center center / cover no-repeat;
+      background:url(media/hall-m.jpg) center center / cover no-repeat;
+      background:image-set(url(media/hall-m.webp) type("image/webp"), url(media/hall-m.jpg) type("image/jpeg")) center center / cover no-repeat;
       filter:contrast(1.14) saturate(1.06);
     }
     html.skin-f .bc .hero::after {
       background:
-        radial-gradient(ellipse 88% 46% at 50% 38%, var(--veil-hero) 26%, transparent 84%),
-        linear-gradient(180deg, var(--veil-hero) 0%, transparent 20%, transparent 74%, var(--surface-light-bg) 100%),
+        radial-gradient(ellipse 104% 44% at 50% 32%, var(--veil-hero) 26%, rgba(250,247,242,.62) 64%, transparent 92%),
+        linear-gradient(180deg, var(--veil-hero) 0%, rgba(250,247,242,.5) 22%, rgba(250,247,242,.42) 74%, var(--surface-light-bg) 100%),
         linear-gradient(0deg, var(--hero-tint), var(--hero-tint));
     }
   }
