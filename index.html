@@ -25,8 +25,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&family=IBM+Plex+Sans+Hebrew:wght@500;600&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A24B' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M14.5 9.5l-2 5-3 1 2-5z'/%3E%3C/svg%3E">
 <!-- תמונת ההירו היא ה-LCP. טעינה מוקדמת, עם הגרסה הקטנה למובייל -->
-<link rel="preload" as="image" href="media/stage-1920.webp" fetchpriority="high"
-      imagesrcset="media/stage-900.webp 900w, media/stage-1400.webp 1400w, media/stage-1920.webp 1920w"
+<link rel="preload" as="image" href="media/reut-portrait.webp" fetchpriority="high"
+      imagesrcset="media/stage-900.webp 900w, media/stage-1400.webp 1400w, media/reut-portrait.webp 1920w"
       imagesizes="100vw">
 <!-- ══════════ מדידה לקמפיין ══════════
      שלושת המזהים למטה הם כל מה שצריך כדי שהמדידה תעלה לאוויר.
@@ -225,8 +225,8 @@ window.BC_TRACK = {
       rgba(245,239,228,.97) 0%, rgba(245,239,228,.93) 30%,
       rgba(245,239,228,.78) 54%, rgba(245,239,228,.30) 80%, rgba(245,239,228,.06) 100%);
     --stage-pos:center center;
-    background:var(--veil), url(media/stage.jpg);
-    background:var(--veil), image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg"));
+    background:var(--veil), url(media/reut-portrait.jpg);
+    background:var(--veil), image-set(url(media/reut-portrait.webp) type("image/webp"), url(media/reut-portrait.jpg) type("image/jpeg"));
     background-size:cover, cover;
     background-position:center, var(--stage-pos);
     background-repeat:no-repeat, no-repeat;
@@ -1092,8 +1092,8 @@ window.BC_TRACK = {
   }
   html.skin-f .bc .hero::before {
     content:""; position:absolute; inset:0; z-index:0;
-    background:url(media/stage.jpg) center/cover no-repeat;
-    background:image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg")) center/cover no-repeat;
+    background:url(media/reut-portrait.jpg) center/cover no-repeat;
+    background:image-set(url(media/reut-portrait.webp) type("image/webp"), url(media/reut-portrait.jpg) type("image/jpeg")) center/cover no-repeat;
     background-position:38% center;
     filter:contrast(1.16) saturate(.84) brightness(.88);
   }
@@ -1488,16 +1488,16 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
      בלי צילום, כדי שלא תהיה כפילות. */
   html.skin-f .bc .about {
     position:relative;
-    background:var(--veil-side), url(media/stage.jpg);
-    background:var(--veil-side), image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg"));
+    background:var(--veil-side), url(media/reut-portrait.jpg);
+    background:var(--veil-side), image-set(url(media/reut-portrait.webp) type("image/webp"), url(media/reut-portrait.jpg) type("image/jpeg"));
     background-size:cover, cover;
     background-position:center, center center;
     background-repeat:no-repeat, no-repeat;
   }
   @media (max-width:900px){
     html.skin-f .bc .about {
-      background:var(--veil-top), url(media/stage.jpg);
-      background:var(--veil-top), image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg"));
+      background:var(--veil-top), url(media/reut-portrait.jpg);
+      background:var(--veil-top), image-set(url(media/reut-portrait.webp) type("image/webp"), url(media/reut-portrait.jpg) type("image/jpeg"));
       background-size:cover, cover;
       background-position:center, 34% center;
     }
@@ -1744,6 +1744,48 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .about .eyebrow { color:var(--measure-text); }
   html.skin-f .bc .about h2, html.skin-f .bc .about .letter p { color:var(--text-on-dark); }
   html.skin-f .bc .about .letter strong { color:var(--text-on-dark); }
+
+  /* ══ הפורטרט בסקשן המכתב ══
+     צולם על שחור, ולכן הוא מתמזג ישירות בדף הכהה. הוא יושב בצד אחד
+     והטקסט בצד השני, עם שכבה כהה עדינה שמחזיקה את הקריאוּת */
+  html.skin-f .bc .about {
+    background:url(media/reut-portrait.jpg) left 6% center / auto 92% no-repeat, #0A181B;
+    background:image-set(url(media/reut-portrait.webp) type(image/webp), url(media/reut-portrait.jpg) type(image/jpeg)) right 8% center / auto 88% no-repeat, #0A181B;
+  }
+  html.skin-f .bc .about::before {
+    background:
+          linear-gradient(180deg, #0A181B 0%, rgba(10,24,27,0) 14%, rgba(10,24,27,0) 86%, #0A181B 100%),
+          linear-gradient(to left, rgba(10,24,27,0) 62%, #0A181B 100%),
+          linear-gradient(to right, rgba(10,24,27,.28) 0%, rgba(10,24,27,.72) 32%, rgba(10,24,27,.93) 60%, rgba(10,24,27,.97) 100%);
+    height:100%;
+  }
+  html.skin-f .bc .about .letter { max-width:640px; margin-inline:0 auto; }
+  @media (max-width:900px){
+    html.skin-f .bc .about {
+      background:url(media/reut-portrait.jpg) center top / 100% auto no-repeat, #0A181B;
+      background:image-set(url(media/reut-portrait.webp) type(image/webp), url(media/reut-portrait.jpg) type(image/jpeg)) center top / 100% auto no-repeat, #0A181B;
+      padding-top:clamp(220px,58vw,420px);
+    }
+    html.skin-f .bc .about::before {
+      background:linear-gradient(180deg, rgba(10,24,27,.15) 0%, rgba(10,24,27,.55) 34%, rgba(10,24,27,.94) 58%, rgba(10,24,27,.98) 100%);
+    }
+    html.skin-f .bc .about .letter { max-width:100%; }
+  }
+
+  /* ══ בנייד: תמונה מונפשת במקום וידאו ══
+     ניגון אוטומטי של וידאו נחסם באייפון במצב חיסכון בסוללה ובאנדרואיד
+     במצב חוסך נתונים, ואז הרקע קופא. תמונה מונפשת לא כפופה לחסימות
+     האלה ותמיד זזה. לכן בנייד הווידאו מוסתר ובמקומו רצה אותה תנועה
+     בדיוק כתמונה מונפשת. במחשב נשאר הווידאו, שהוא קל יותר. */
+  @media (max-width:700px){
+    html.skin-f .bc .decode-bg video { display:none; }
+    html.skin-f .bc .decode-bg {
+      background:url(media/hands-anim.webp) center 6% / 100% auto no-repeat, var(--bg-hero);
+    }
+  }
+  @media (max-width:700px) and (prefers-reduced-motion: reduce){
+    html.skin-f .bc .decode-bg { background:url(media/hands-poster.jpg) center 6% / 100% auto no-repeat, var(--bg-hero); }
+  }
 </style>
 
 <div class="bc">
@@ -1768,7 +1810,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a>
         </div>
-        <p class="hero-alt fade">פחות טעויות גיוס. פחות עזיבות שתופסות אתכם לא מוכנים. וצוות שמדבר על אנשים באותה שפה.</p>
+        <p class="hero-alt fade">שעה וחצי, ובסופה כל אחד בצוות יודע לקרוא את הסיפור השני: מי מתאים באמת, מי כבר עם רגל בחוץ, ואיפה החיכוך שאיש לא מדבר עליו.</p>
       </div>
       </div>
   </header>
