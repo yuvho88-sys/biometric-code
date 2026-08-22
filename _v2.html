@@ -3,7 +3,7 @@
 <head>
   <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>הרצאה לארגונים שמלמדת לקרוא אנשים | רעות ביטון</title>
 <meta name="description" content="הרצאה לארגונים בשיטת H.I.P שמלמדת את הצוות לקרוא אנשים באמת: מניעת נשירה, שפה חדשה לתקשורת וכלי ניהולי שנשאר. בלי מיסטיקה: מדידה, שיטה, ותוצאות שאפשר לבדוק.">
 <meta property="og:type" content="website">
@@ -106,6 +106,7 @@ window.BC_TRACK = {
   html.skin-e, html.skin-e body { background:#EDE6D6; }
   .bc {
     direction: rtl; text-align: right;
+    -webkit-text-size-adjust:100%; text-size-adjust:100%;
     font-family: 'Assistant','Segoe UI',Arial,sans-serif;
     line-height: 1.7; -webkit-font-smoothing: antialiased;
     /* ══ חוקת צבע ══
@@ -1053,6 +1054,15 @@ window.BC_TRACK = {
     --scrim-edge:rgba(8,20,23,0);
     --hero-figure-pad:calc(81vw + 16px);   /* ראשה של רעות יורד ככל שהמסך רחב יותר, כי הפריים נמתח לפי הרוחב. לכן המרווח נגזר מהרוחב ולא קבוע */   /* דוחף את הפריים מטה כך שראש רעות נוחת מתחת לבלוק */
     --shadow-ink:rgba(0,0,0,.45); --shadow-ink-2:rgba(0,0,0,.5); --shadow-deep:rgba(0,0,0,.8);
+    /* ── ערכי גיבוי לדפדפנים בלי color-mix (אייפון ישן) ── */
+    --cool-ring:rgba(18,199,180,.45); --cool-glow:rgba(18,199,180,.26);
+    --cool-ring-2:rgba(18,199,180,.60); --cool-glow-2:rgba(18,199,180,.36);
+    --cool-lift:#3ED8C7; --cool-focus:#5FE0CE;
+    --ghost-line:rgba(75,95,98,.42); --ghost-tint:rgba(75,95,98,.10);
+    --card-line:rgba(14,133,119,.22); --card-shadow:rgba(18,34,37,.06);
+    --card-shadow-2:rgba(18,34,37,.05); --card-rule:rgba(14,133,119,.18);
+    --av-bg:rgba(18,199,180,.18); --av-line:rgba(18,199,180,.42);
+    --dot-ink:rgba(14,133,119,.20); --tstm-halo:rgba(18,199,180,.08);
     --lighten:#FFFFFF;   /* משמש רק כמסיס בתוך color-mix, לא כצבע רכיב */
   }
   html.skin-f .bc::before { opacity:.20; }
@@ -1159,6 +1169,7 @@ window.BC_TRACK = {
     font-family:"Assistant","Segoe UI",Arial,sans-serif; font-weight:700;
     font-size:clamp(15.5px,1.15vw,17.5px); letter-spacing:0;
     border:0; text-decoration:none; position:relative; overflow:visible;
+    box-shadow:0 0 0 1px var(--cool-ring), 0 10px 30px var(--cool-glow);
     box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 45%, transparent),
                0 10px 30px color-mix(in srgb, var(--pole-cool) 26%, transparent);
     transition:transform .18s var(--ease), box-shadow .18s var(--ease), background-color .18s var(--ease);
@@ -1169,16 +1180,20 @@ window.BC_TRACK = {
   html.skin-f .bc .cta .cta-dot { display:none; }
   html.skin-f .bc .cta:hover {
     transform:translateY(-2px);
+    background:var(--cool-lift);
     background:color-mix(in srgb, var(--pole-cool) 86%, var(--lighten));
+    box-shadow:0 0 0 1px var(--cool-ring-2), 0 16px 40px var(--cool-glow-2);
     box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 60%, transparent),
                0 16px 40px color-mix(in srgb, var(--pole-cool) 36%, transparent);
   }
   html.skin-f .bc .cta:active {
     transform:translateY(0);
+    box-shadow:0 0 0 1px var(--cool-ring), 0 6px 18px var(--cool-glow);
     box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 50%, transparent),
                0 6px 18px color-mix(in srgb, var(--pole-cool) 22%, transparent);
   }
   html.skin-f .bc .cta:focus-visible {
+    outline:3px solid var(--cool-focus);
     outline:3px solid color-mix(in srgb, var(--pole-cool) 70%, var(--lighten));
     outline-offset:3px;
   }
@@ -1191,11 +1206,13 @@ window.BC_TRACK = {
   html.skin-f .bc .wz-next {
     background:var(--pole-cool); color:var(--cta-ink);
     border-radius:var(--radius-cta); min-height:48px;
+    box-shadow:0 0 0 1px var(--cool-ring), 0 8px 22px var(--cool-glow);
     box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 45%, transparent),
                0 8px 22px color-mix(in srgb, var(--pole-cool) 24%, transparent);
     transition:transform .18s var(--ease), box-shadow .18s var(--ease), background-color .18s var(--ease);
   }
   html.skin-f .bc .wz-next:hover {
+    background:var(--cool-lift);
     background:color-mix(in srgb, var(--pole-cool) 86%, var(--lighten));
     transform:translateY(-2px);
     box-shadow:0 0 0 1px color-mix(in srgb, var(--pole-cool) 60%, transparent),
@@ -1223,6 +1240,7 @@ window.BC_TRACK = {
   /* כפתור משנה: מתאר דק בצבע הטקסט המשני, רקע שקוף */
   html.skin-f .bc .cta.ghost {
     background:transparent; color:var(--text-on-light-muted);
+    border:1.5px solid var(--ghost-line);
     border:1.5px solid color-mix(in srgb, var(--text-on-light-muted) 42%, transparent);
     box-shadow:none;
   }
@@ -1232,6 +1250,7 @@ window.BC_TRACK = {
     border-color:color-mix(in srgb, var(--text-on-light-muted) 42%, transparent);
   }
   html.skin-f .bc .cta.ghost:hover {
+    background:var(--ghost-tint);
     background:color-mix(in srgb, var(--text-on-light-muted) 10%, transparent);
     color:var(--text-on-light); box-shadow:none;
   }
@@ -1301,14 +1320,15 @@ window.BC_TRACK = {
      כרטיס שמסומן is-draft הוא דוגמת עיצוב שממתינה לציטוט מאושר. */
   html.skin-f .bc .tstm {
     position:relative; isolation:isolate;
+    background:linear-gradient(180deg, var(--surface-light-card) 0%, var(--surface-light-bg) 44%, var(--surface-light-card) 100%);
     background:
-      radial-gradient(120% 82% at 50% 0%, color-mix(in srgb, var(--pole-cool) 8%, transparent) 0%, transparent 60%),
+      radial-gradient(120% 82% at 50% 0%, var(--tstm-halo) 0%, transparent 60%),
       linear-gradient(180deg, var(--surface-light-card) 0%, var(--surface-light-bg) 44%, var(--surface-light-card) 100%);
   }
   /* רשת נקודות דקה. נותנת מרקם לנייר בלי להיראות כמו דפוס */
   html.skin-f .bc .tstm::before {
     content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.55;
-    background-image:radial-gradient(color-mix(in srgb, var(--measure-line) 20%, transparent) 1px, transparent 1px);
+    background-image:radial-gradient(var(--dot-ink) 1px, transparent 1px);
     background-size:22px 22px;
     -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
     mask-image:linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
@@ -1331,8 +1351,10 @@ window.BC_TRACK = {
   html.skin-f .bc .tstm-card {
     position:relative; margin:0; padding:24px 22px 20px;
     background:var(--surface-light-card);
+    border:1px solid var(--card-line);
     border:1px solid color-mix(in srgb, var(--measure-line) 22%, transparent);
     border-radius:16px;
+    box-shadow:0 1px 2px var(--card-shadow), 0 10px 26px var(--card-shadow-2);
     box-shadow:0 1px 2px color-mix(in srgb, var(--surface-light-text) 6%, transparent),
                0 10px 26px color-mix(in srgb, var(--surface-light-text) 5%, transparent);
     display:flex; flex-direction:column;
@@ -1352,11 +1374,13 @@ window.BC_TRACK = {
   html.skin-f .bc .tstm-card figcaption {
     display:flex; align-items:center; gap:11px;
     padding-top:14px;
+    border-top:1px solid var(--card-rule);
     border-top:1px solid color-mix(in srgb, var(--measure-line) 18%, transparent);
   }
   html.skin-f .bc .tstm-av {
     width:38px; height:38px; flex:0 0 38px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
+    background:var(--av-bg); border:1px solid var(--av-line);
     background:color-mix(in srgb, var(--pole-cool) 18%, transparent);
     border:1px solid color-mix(in srgb, var(--pole-cool) 42%, transparent);
     color:var(--measure-text); font-weight:700; font-size:16px;
