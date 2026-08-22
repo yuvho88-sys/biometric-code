@@ -1439,7 +1439,7 @@ window.BC_TRACK = {
     background:var(--surface-light-bg);
   }
   /* שכבות האולם הכהה מבוטלות כאן */
-  html.skin-f .bc .hero::before, html.skin-f .bc .hero::after { content:none; display:none; }
+  /* שכבות ההירו בשימוש שוב, לרקע החדש */
   html.skin-f .bc .hero > .wrap { padding-bottom:0; }
   html.skin-f .bc .hero > .wrap::after, html.skin-f .bc .hero > .wrap::before { content:none; }
   html.skin-f .bc .hero-copy { max-width:760px; margin-inline:auto; text-align:center; }
@@ -1493,6 +1493,37 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     }
   }
   html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
+
+  /* ══════════ רקע ההירו: לחיצת יד בחשיפה כפולה ══════════
+     הצילום שסופק בהיר מלכתחילה. הוא יושב בשכבה נפרדת מתחת לתוכן,
+     עם גוון טורקיז עדין שמחבר אותו לפלטה, ומסכה רדיאלית שמנקה את
+     אזור הטקסט. הטקסט לא מתפשר: אם צריך, המסכה מתחזקת. */
+  html.skin-f .bc .hero { position:relative; overflow:hidden; background:var(--surface-light-bg); }
+  html.skin-f .bc .hero::before {
+    content:""; display:block; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:url(media/hero-bg.jpg) center 72% / cover no-repeat;
+    background:image-set(url(media/hero-bg.webp) type("image/webp"), url(media/hero-bg.jpg) type("image/jpeg")) center 72% / cover no-repeat;
+    opacity:.92;
+  }
+  html.skin-f .bc .hero::after {
+    content:""; display:block; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(ellipse 64% 50% at 50% 34%, var(--surface-light-bg) 30%, transparent 80%),
+      linear-gradient(180deg, var(--surface-light-bg) 0%, transparent 24%, transparent 72%, var(--surface-light-bg) 100%),
+      linear-gradient(0deg, var(--hero-tint), var(--hero-tint));
+  }
+  html.skin-f .bc { --hero-tint:rgba(18,199,180,.05); }
+  html.skin-f .bc .hero > .wrap { position:relative; z-index:2; }
+  @media (max-width:640px){
+    /* בנייד הטקסט רחב יותר, ולכן הצילום נחלש והמסכה מתחזקת */
+    html.skin-f .bc .hero::before { opacity:.8; background-position:center 76%; }
+    html.skin-f .bc .hero::after {
+      background:
+        radial-gradient(ellipse 96% 52% at 50% 40%, var(--surface-light-bg) 34%, transparent 82%),
+        linear-gradient(180deg, var(--surface-light-bg) 0%, transparent 20%, transparent 74%, var(--surface-light-bg) 100%),
+        linear-gradient(0deg, var(--hero-tint), var(--hero-tint));
+    }
+  }
 </style>
 
 <div class="bc">
