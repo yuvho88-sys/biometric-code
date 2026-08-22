@@ -1529,8 +1529,10 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
        לזו שבמחשב: הדמויות בצדדים ולחיצת היד מתחת לטקסט. */
     html.skin-f .bc .hero::before {
       opacity:1; background-position:center center;
-      background:url(media/hero-bg-m.jpg) center center / cover no-repeat;
-      background:image-set(url(media/hero-bg-m.webp) type("image/webp"), url(media/hero-bg-m.jpg) type("image/jpeg")) center center / cover no-repeat;
+      background:url(media/hero-bg-warm.jpg) center bottom / 100% auto no-repeat;
+      background:image-set(url(media/hero-bg-warm.webp) type("image/webp"), url(media/hero-bg-warm.jpg) type("image/jpeg")) center bottom / 100% auto no-repeat;
+      -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
+      mask-image:linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
       filter:contrast(1.14) saturate(1.06);
     }
     html.skin-f .bc .hero::after {
