@@ -2,7 +2,17 @@
 <html lang="he" dir="rtl" class="skin-e skin-f">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(){
+    var d=document.documentElement; d.className+=" js";
+    window.addEventListener("DOMContentLoaded",function(){
+      setTimeout(function(){
+        if(!document.querySelector(".fade.in")){
+          var n=document.querySelectorAll(".fade"); for(var i=0;i<n.length;i++) n[i].className+=" in";
+        }
+      },2500);
+    });
+  })();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>הרצאה לארגונים שמלמדת לקרוא אנשים | רעות ביטון</title>
 <meta name="description" content="הרצאה לארגונים בשיטת H.I.P שמלמדת את הצוות לקרוא אנשים באמת: מניעת נשירה, שפה חדשה לתקשורת וכלי ניהולי שנשאר. בלי מיסטיקה: מדידה, שיטה, ותוצאות שאפשר לבדוק.">
 <meta property="og:type" content="website">
@@ -1540,6 +1550,27 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         linear-gradient(0deg, var(--hero-tint), var(--hero-tint));
     }
   }
+
+  /* אם הסקריפט לא רץ, או נשבר לפני שהספיק לחשוף, הדף מוצג במלואו.
+     כשהכל תקין הכלל הזה לא נוגע בכלום. */
+  html:not(.js) .fade { opacity:1 !important; transform:none !important; }
+
+  /* יעד המגע של נקודות הקרוסלה הורחב ל-44 על 44. הנקודה שרואים
+     נשארה באותו גודל בדיוק, היא מצוירת כאלמנט פנימי */
+  html.skin-f .bc .wa-dot { width:44px; }
+  html.skin-f .bc .wa-dots { gap:0; flex:1 1 auto; flex-wrap:wrap; justify-content:center; row-gap:2px; }
+  /* שורת הניווט עלולה להתארך מעבר לרוחב המסך כשיש שבע נקודות ושני חצים.
+     גלישה לשורה שנייה עדיפה על חצים שנדחפים אל מחוץ למסך */
+  html.skin-f .bc .wa-nav { flex-wrap:nowrap; }
+  /* בשורה צרה הנקודות גולשות לשורה שנייה במקום לדחוף את החצים החוצה */
+
+  /* פסקת הכאב נמדדה ב-89 תווים בשורה. הגבלה לעמודת קריאה נוחה */
+  html.skin-f .bc .pain p { max-width:64ch; }
+  html.skin-f .bc .pain .wrap > * { margin-inline:auto; }
+
+  /* חצי הקרוסלה נמדדו ברוחב 7 פיקסלים בלבד. אזור הלחיצה מורחב ל-44,
+     החץ עצמו נשאר באותו גודל */
+  html.skin-f .bc .wa-arrow { min-width:44px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; }
 </style>
 
 <div class="bc">
