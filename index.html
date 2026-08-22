@@ -1506,12 +1506,16 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
      הצילום שסופק בהיר מלכתחילה. הוא יושב בשכבה נפרדת מתחת לתוכן,
      עם גוון טורקיז עדין שמחבר אותו לפלטה, ומסכה רדיאלית שמנקה את
      אזור הטקסט. הטקסט לא מתפשר: אם צריך, המסכה מתחזקת. */
-  html.skin-f .bc .hero { position:relative; overflow:hidden; background:var(--surface-light-bg); }
+  html.skin-f .bc .hero {
+    position:relative; overflow:hidden;
+    background:linear-gradient(var(--room-wash), var(--room-wash)), url(media/room-d.jpg) center bottom / cover no-repeat, var(--surface-light-bg);
+    background:linear-gradient(var(--room-wash), var(--room-wash)), image-set(url(media/room-d.webp) type("image/webp"), url(media/room-d.jpg) type("image/jpeg")) center bottom / cover no-repeat, var(--surface-light-bg);
+  }
   html.skin-f .bc .hero::before {
     content:""; display:block; position:absolute; inset:0; z-index:0; pointer-events:none;
     background:url(media/hero-bg-t.jpg) center center / cover no-repeat;
     background:image-set(url(media/hero-bg-t.webp) type("image/webp"), url(media/hero-bg-t.jpg) type("image/jpeg")) center center / cover no-repeat;
-    opacity:1; filter:contrast(1.14) saturate(1.06);
+    opacity:.62; mix-blend-mode:multiply; filter:contrast(1.1) saturate(1.04);
   }
   html.skin-f .bc .hero::after {
     content:""; display:block; position:absolute; inset:0; z-index:1; pointer-events:none;
@@ -1520,15 +1524,19 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       linear-gradient(180deg, var(--veil-hero) 0%, transparent 18%, transparent 78%, var(--surface-light-bg) 100%),
       linear-gradient(0deg, var(--hero-tint), var(--hero-tint));
   }
-  html.skin-f .bc { --hero-tint:rgba(0,0,0,0); --veil-hero:#FAF7F2; }
+  html.skin-f .bc { --hero-tint:rgba(0,0,0,0); --veil-hero:#FAF7F2; --room-wash:rgba(247,250,250,.62); --room-wash-m:rgba(247,250,250,.66); }
   html.skin-f .bc .hero > .wrap { position:relative; z-index:2; }
   @media (max-width:640px){
     /* בנייד הטקסט רחב יותר, ולכן הצילום נחלש והמסכה מתחזקת */
     /* בנייד הפריים הרחב היה נחתך ומאבד את לחיצת היד. כאן נכנס קובץ
        ייעודי שבו הצילום כולו יושב בקנבס אנכי, כך שהקומפוזיציה זהה
        לזו שבמחשב: הדמויות בצדדים ולחיצת היד מתחת לטקסט. */
+    html.skin-f .bc .hero {
+      background:linear-gradient(var(--room-wash-m), var(--room-wash-m)), url(media/room-m.jpg) center bottom / cover no-repeat, var(--surface-light-bg);
+      background:linear-gradient(var(--room-wash-m), var(--room-wash-m)), image-set(url(media/room-m.webp) type("image/webp"), url(media/room-m.jpg) type("image/jpeg")) center bottom / cover no-repeat, var(--surface-light-bg);
+    }
     html.skin-f .bc .hero::before {
-      opacity:1; background-position:center center;
+      opacity:.58; mix-blend-mode:multiply; background-position:center center;
       background:url(media/hero-bg-mt.jpg) center center / cover no-repeat;
       background:image-set(url(media/hero-bg-mt.webp) type("image/webp"), url(media/hero-bg-mt.jpg) type("image/jpeg")) center center / cover no-repeat;
       filter:contrast(1.14) saturate(1.06);
