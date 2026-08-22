@@ -1639,6 +1639,111 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         linear-gradient(180deg, rgba(10,24,27,.82) 0%, rgba(10,24,27,.3) 18%, rgba(10,24,27,.62) 46%, rgba(10,24,27,.9) 100%);
     }
   }
+
+  /* ══════════════════════════════════════════════════════════════════
+     סקין כהה לכל הדף — הסגנון של סקשן האבחון מורחב לכל הסקשנים.
+     הטוקנים ממופים מחדש: הרקעים כהים, הטקסט בהיר, הטורקיז נשאר צבע
+     הפעולה, והאוקסבלוד יורד להדגשות טקסט חמות בלבד.
+     הצילומים בפתיחה ובמכתב נשארים כרקע, ומתחתם נוספת שכבה כהה שמחברת
+     אותם לשאר הדף במקום להשאיר אותם כאיים בהירים.
+     ══════════════════════════════════════════════════════════════════ */
+  html.skin-f, html.skin-f body { background:#0A181B; }
+
+  html.skin-f .bc {
+    /* משטחים */
+    --bg-dark:#0A181B; --bg-dark-elevated:#10222630; --bg-dark-deep:#071214;
+    --bg-light:#0E1F22; --bg-light-2:#0B1A1D; --bg-card:#12252900;
+    --surface-light-bg:#0E1F22; --surface-light-card:rgba(255,255,255,.045);
+    /* טקסט */
+    --text-on-dark:#EAF3F1; --text-on-dark-muted:#A9C4C0;
+    --text-on-light:#EAF3F1; --text-on-light-muted:#A9C4C0;
+    --surface-light-text:#EAF3F1; --surface-light-muted:#A9C4C0;
+    --ink:#EAF3F1; --muted-d:#A9C4C0; --muted-l:#A9C4C0;
+    /* מבטאים */
+    --accent-text-on-dark:#F7CDAE; --accent-text-on-light:#F7CDAE;
+    --gold-text-on-dark:#F7CDAE; --gold-text-on-light:#F7CDAE;
+    --measure-text:#5FE0CE; --measure-on-dark:#5FE0CE; --measure-line:#2E9E8F;
+    --surface-light-accent:#F7CDAE; --surface-light-measure:#5FE0CE;
+    --accent-hairline:rgba(247,205,174,.24);
+    --measure-hairline:rgba(95,224,206,.26);
+    --line-gold:rgba(95,224,206,.22);
+    /* גיבויים לדפדפנים בלי color-mix */
+    --card-line:rgba(95,224,206,.18); --card-rule:rgba(95,224,206,.14);
+    --ghost-line:rgba(169,196,192,.42); --ghost-tint:rgba(169,196,192,.1);
+    --card-shadow:rgba(0,0,0,.35); --card-shadow-2:rgba(0,0,0,.28);
+    --av-bg:rgba(95,224,206,.14); --av-line:rgba(95,224,206,.34);
+    --dot-ink:rgba(95,224,206,.16); --tstm-halo:rgba(18,199,180,.08);
+    --veil-hero:#0A181B; --room-wash:rgba(10,24,27,.5); --room-wash-m:rgba(10,24,27,.56);
+  }
+  /* גרעין הנייר לא שייך לדף כהה */
+  html.skin-f .bc::before { opacity:0; }
+
+  /* ── כל הסקשנים על אותה קרקע כהה ── */
+  html.skin-f .bc .s-ivory, html.skin-f .bc .s-navy,
+  html.skin-f .bc .s-deep, html.skin-f .bc .s-dark-2 { background:var(--bg-dark); }
+  html.skin-f .bc .surface-light, html.skin-f .bc .surface-dark { background:var(--bg-dark); }
+  html.skin-f .bc footer { background:#071214; color:var(--text-on-dark-muted); }
+
+  /* ── כרטיסים: לוח כהה־שקוף עם קו דק, במקום לבן ── */
+  html.skin-f .bc .tstm { background:linear-gradient(180deg,#0B1A1D 0%,#0E1F22 46%,#0B1A1D 100%); }
+  html.skin-f .bc .tstm::before { opacity:.35; }
+  html.skin-f .bc .tstm-card {
+    background:rgba(255,255,255,.045);
+    border:1px solid var(--card-line);
+    box-shadow:0 1px 2px var(--card-shadow), 0 14px 30px var(--card-shadow-2);
+  }
+  html.skin-f .bc .tstm-card::before { color:var(--accent-text-on-light); opacity:.22; }
+  html.skin-f .bc .tstm-org { color:var(--text-on-dark); }
+  html.skin-f .bc .tstm-role { color:var(--text-on-dark-muted); }
+  html.skin-f .bc .tstm-av { background:var(--av-bg); border-color:var(--av-line); color:var(--measure-text); }
+
+  /* ── הטופס והשדות ── */
+  html.skin-f .bc .formsec .card, html.skin-f .bc .form-card,
+  html.skin-f .bc .wz-card, html.skin-f .bc .thankyou {
+    background:rgba(255,255,255,.05); border:1px solid var(--card-line); color:var(--text-on-dark);
+  }
+  html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea {
+    background:rgba(255,255,255,.06); color:var(--text-on-dark);
+    border:1.5px solid rgba(95,224,206,.24);
+  }
+  html.skin-f .bc input::placeholder, html.skin-f .bc textarea::placeholder { color:rgba(169,196,192,.7); }
+  html.skin-f .bc input:focus, html.skin-f .bc select:focus, html.skin-f .bc textarea:focus {
+    border-color:var(--pole-cool); outline:none;
+  }
+  html.skin-f .bc label { color:var(--text-on-dark); }
+  html.skin-f .bc .metric { background:rgba(255,255,255,.06); border-color:var(--card-line); color:var(--text-on-dark-muted); }
+  html.skin-f .bc .rcard { background:rgba(255,255,255,.05); color:var(--text-on-dark); box-shadow:0 14px 40px rgba(0,0,0,.45); }
+  html.skin-f .bc .rcard h3, html.skin-f .bc .reading { color:var(--text-on-dark); }
+  html.skin-f .bc .rdisc { color:var(--text-on-dark-muted); border-top-color:var(--card-rule); }
+  html.skin-f .bc .form-err { background:rgba(192,57,43,.16); color:#FFB4A8; }
+
+  /* ── קרוסלת הוואטסאפ: הצילומים בהירים, אז הם מקבלים מסגרת כהה רכה ── */
+  html.skin-f .bc .wa-slide img { border-radius:14px; }
+  html.skin-f .bc .wa-arrow { border-color:var(--line-gold); color:var(--text-on-dark-muted); }
+
+  /* ── שאלות ואקורדיון ── */
+  html.skin-f .bc details { border-color:var(--card-line); }
+  html.skin-f .bc summary { color:var(--text-on-dark); }
+  html.skin-f .bc .ans { color:var(--text-on-dark-muted); }
+
+  /* ── הפתיחה והמכתב: שכבה כהה מתחת לצילום ── */
+  html.skin-f .bc .hero { background:#0A181B; }
+  html.skin-f .bc .hero::after {
+    background:
+      radial-gradient(ellipse 76% 62% at 50% 40%, rgba(10,24,27,.86) 34%, rgba(10,24,27,.6) 70%, rgba(10,24,27,.42) 100%),
+      linear-gradient(180deg, rgba(10,24,27,.9) 0%, rgba(10,24,27,.55) 24%, rgba(10,24,27,.55) 72%, rgba(10,24,27,.94) 100%);
+  }
+  html.skin-f .bc .about { background:#0A181B; }
+  html.skin-f .bc .about::before {
+    background:linear-gradient(180deg, rgba(10,24,27,.94) 0%, rgba(10,24,27,.6) 26%, rgba(10,24,27,.35) 60%, rgba(10,24,27,.9) 100%);
+    height:100%;
+  }
+  html.skin-f .bc .about .letter { position:relative; z-index:1; }
+
+  /* ההדגשות של המכתב על רקע כהה */
+  html.skin-f .bc .about .eyebrow { color:var(--measure-text); }
+  html.skin-f .bc .about h2, html.skin-f .bc .about .letter p { color:var(--text-on-dark); }
+  html.skin-f .bc .about .letter strong { color:var(--text-on-dark); }
 </style>
 
 <div class="bc">
