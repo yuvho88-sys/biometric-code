@@ -1476,17 +1476,33 @@ window.BC_TRACK = {
   }
 
 
-  /* ══ תפר רך בין הפתיחה למכתב ══
-     גוון תחתית הפריים נמדד מהדף עצמו ונמשך אל תוך הסקשן שאחריו,
-     כשכבה שקופה מעל הרקע. הצילום עצמו לא נגע. */
-  html.skin-f .bc { --seam-tint:rgba(203,199,189,.55); }
-  html.skin-f .bc .about { position:relative; }
+html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
+  /* ══ הצילום ממשיך אל תוך המכתב ══
+     אותו פריים של הפתיחה, בהמשך הקאדר (תחתית התמונה), מתחת לצעיף
+     חזק יותר כי כאן יש הרבה טקסט לקרוא. כך שני הסקשנים נראים כחדר אחד. */
+  html.skin-f .bc { --veil-letter:linear-gradient(180deg,
+    rgba(247,250,250,.88) 0%, rgba(247,250,250,.94) 38%, rgba(247,250,250,.97) 100%); }
+  html.skin-f .bc .about { position:relative; background:var(--surface-light-bg); }
+  /* הצילום יושב בשכבה נפרדת ונמוג בשני הקצוות, כדי שהמעבר מהפתיחה
+     אליו יהיה רך ולא קו אופקי חד */
   html.skin-f .bc .about::before {
-    content:""; position:absolute; inset:0 0 auto 0; height:clamp(120px,22vw,260px);
-    pointer-events:none; z-index:0;
-    background:linear-gradient(180deg, var(--seam-tint) 0%, rgba(203,199,189,.22) 46%, rgba(203,199,189,0) 100%);
+    content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:var(--veil-letter), url(media/stage.jpg);
+    background:var(--veil-letter), image-set(url(media/stage-1920.webp) type("image/webp"), url(media/stage.jpg) type("image/jpeg"));
+    background-size:cover, cover;
+    background-position:center, center bottom;
+    background-repeat:no-repeat, no-repeat;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 16%, #000 88%, transparent 100%);
+    mask-image:linear-gradient(180deg, transparent 0, #000 16%, #000 88%, transparent 100%);
   }
   html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
+
+  @media (max-width:600px){
+    /* בנייד הטקסט רחב יותר ויושב ישר מעל הפריים, ולכן הצעיף מתחזק
+       והצילום נשאר רמז בלבד */
+    html.skin-f .bc { --veil-letter:linear-gradient(180deg,
+      rgba(247,250,250,.93) 0%, rgba(247,250,250,.96) 38%, rgba(247,250,250,.985) 100%); }
+  }
 </style>
 
 <div class="bc">
