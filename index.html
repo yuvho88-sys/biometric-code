@@ -1595,14 +1595,14 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .decode-bg { position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
   html.skin-f .bc .decode-bg video {
     width:100%; height:100%; object-fit:cover; display:block;
-    opacity:.55; filter:contrast(1.06) saturate(1.04);
+    opacity:.88; filter:contrast(1.12) saturate(1.06) brightness(1.06);
   }
   /* שכבת קריאוּת: כהה במרכז שבו יושב הטקסט, ונפתחת בקצוות */
   html.skin-f .bc .decode-bg::after {
     content:""; position:absolute; inset:0;
     background:
-      radial-gradient(ellipse 84% 64% at 50% 46%, rgba(10,24,27,.9) 34%, rgba(10,24,27,.66) 74%, rgba(10,24,27,.4) 100%),
-      linear-gradient(180deg, rgba(10,24,27,.94) 0%, rgba(10,24,27,.6) 24%, rgba(10,24,27,.6) 74%, rgba(10,24,27,.94) 100%);
+      radial-gradient(ellipse 46% 58% at 50% 44%, rgba(10,24,27,.88) 40%, rgba(10,24,27,.5) 78%, rgba(10,24,27,.12) 100%),
+      linear-gradient(180deg, rgba(10,24,27,.88) 0%, rgba(10,24,27,.3) 22%, rgba(10,24,27,.3) 76%, rgba(10,24,27,.88) 100%);
   }
   html.skin-f .bc .decode > .wrap { position:relative; z-index:1; }
   /* הכרטיסים בסקשן מקבלים רקע כהה־שקוף במקום לבן שיצרוב את העין */
@@ -1619,6 +1619,19 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   @media (max-width:900px){
     html.skin-f .bc { --veil-top:linear-gradient(to bottom,
       rgba(247,250,250,.86) 0%, rgba(247,250,250,.8) 55%, rgba(247,250,250,.62) 100%); }
+  }
+
+  @media (max-width:700px){
+    /* הסרטון הוא 16:9 והסקשן גבוה. כיסוי מלא היה מגדיל אותו עד ששתי
+       אצבעות ממלאות את המסך. כאן הוא נכנס במלואו, וגובה הסקשן ממלא
+       את השאר בצבע הרקע */
+    html.skin-f .bc .decode-bg video { object-fit:contain; object-position:center 38%; opacity:.92; }
+    html.skin-f .bc .decode-bg { background:var(--bg-hero); }
+    html.skin-f .bc .decode-bg::after {
+      background:
+        radial-gradient(ellipse 92% 44% at 50% 38%, rgba(10,24,27,.86) 42%, rgba(10,24,27,.5) 80%, rgba(10,24,27,.2) 100%),
+        linear-gradient(180deg, rgba(10,24,27,.9) 0%, rgba(10,24,27,.34) 24%, rgba(10,24,27,.34) 72%, rgba(10,24,27,.9) 100%);
+    }
   }
 </style>
 
@@ -2219,7 +2232,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   // הווידאו של הידיים: דפדפני מובייל חוסמים ניגון אוטומטי בכמה מצבים
   // (חיסכון סוללה, חוסך נתונים, הגדרת מדיה). מנסים שוב כשהוא נכנס למסך,
   // ואם עדיין נחסם, מנסים שוב בנגיעה הראשונה של המשתמש בדף.
-  var hv = scope.querySelector('.hands-vid');
+  var hv = scope.querySelector('.hands-vid, .hands-bg-vid');
   if(hv){
     var tryPlay = function(){ var p = hv.play(); if(p && p.catch) p.catch(function(){}); };
     hv.muted = true; hv.setAttribute('playsinline',''); tryPlay();
