@@ -1478,6 +1478,22 @@ window.BC_TRACK = {
     }
     html.skin-f .bc .hero-copy { max-width:100%; }
   }
+
+  /* בדף החי נשאר כרטיס המלצה אמיתי אחד, ולכן הרשת מתכווצת אליו */
+  html.skin-f .bc .tstm-grid { max-width:620px; margin-inline:auto; }
+  @media (min-width:860px){ html.skin-f .bc .tstm-grid { grid-template-columns:1fr; } }
+
+  /* ══ תפר רך בין הפתיחה למכתב ══
+     גוון תחתית הפריים נמדד מהדף עצמו ונמשך אל תוך הסקשן שאחריו,
+     כשכבה שקופה מעל הרקע. הצילום עצמו לא נגע. */
+  html.skin-f .bc { --seam-tint:rgba(203,199,189,.55); }
+  html.skin-f .bc .about { position:relative; }
+  html.skin-f .bc .about::before {
+    content:""; position:absolute; inset:0 0 auto 0; height:clamp(120px,22vw,260px);
+    pointer-events:none; z-index:0;
+    background:linear-gradient(180deg, var(--seam-tint) 0%, rgba(203,199,189,.22) 46%, rgba(203,199,189,0) 100%);
+  }
+  html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 </style>
 
 <div class="bc">
@@ -1558,45 +1574,35 @@ window.BC_TRACK = {
           </figcaption>
         </figure>
 
-        <figure class="tstm-card is-draft fade">
-          <span class="tstm-flag">דוגמה · ממתין לאישור</span>
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>הגעתי ספקן. אחרי עשרים דקות כבר רשמתי לעצמי שאלות ששכחתי לשאול בראיונות. הצוות דיבר על זה שבוע.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">מ</span>
-            <span class="tstm-who">
-              <span class="tstm-org">שם הארגון</span>
-              <span class="tstm-role">מנהל או מנהלת גיוס</span>
-            </span>
-          </figcaption>
-        </figure>
+        
 
-        <figure class="tstm-card is-draft fade">
-          <span class="tstm-flag">דוגמה · ממתין לאישור</span>
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>מאז אנחנו מדברים על מועמדים אחרת. יש לנו שפה אחת לתאר אנשים, וזה קיצר לנו ויכוחים בוועדות.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">א</span>
-            <span class="tstm-who">
-              <span class="tstm-org">שם הארגון</span>
-              <span class="tstm-role">משאבי אנוש ופיתוח ארגוני</span>
-            </span>
-          </figcaption>
-        </figure>
+        
 
       </div>
+    </div>
+  </section>
+
+<section class="s-dark-2 wac">
+    <div class="wrap">
+      <h2 class="fade">ההודעות שמגיעות אחרי</h2>
+      <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
+      <div class="wa-viewport fade" id="waViewport">
+        <div class="wa-track" id="waTrack">
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="900" height="747" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
+        </div>
+      </div>
+      <div class="wa-nav">
+        <button class="wa-arrow" type="button" data-dir="1" aria-label="השקופית הבאה">›</button>
+        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
+        <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">‹</button>
+      </div>
+      <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
     </div>
   </section>
 
@@ -1725,29 +1731,7 @@ window.BC_TRACK = {
   </section>
 
   <!-- 8. WHATSAPP CAROUSEL — צילומי מסך אמיתיים. נחתכו כדי להסיר מקלדת, שורת סטטוס, שמות לקוחות וקישורי חשבונית. מקור: wa-src/ ; חתוכים: wa-clean/ ; מוגשים: deploy/wa/ -->
-  <section class="s-dark-2 wac">
-    <div class="wrap">
-      <h2 class="fade">ההודעות שמגיעות אחרי</h2>
-      <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
-      <div class="wa-viewport fade" id="waViewport">
-        <div class="wa-track" id="waTrack">
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="900" height="747" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
-        </div>
-      </div>
-      <div class="wa-nav">
-        <button class="wa-arrow" type="button" data-dir="1" aria-label="השקופית הבאה">›</button>
-        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
-        <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">‹</button>
-      </div>
-      <div class="center-cta fade"><a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a></div>
-    </div>
-  </section>
+  
 
   <!-- 4. BENEFITS -->
   
