@@ -1524,7 +1524,15 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .hero > .wrap { position:relative; z-index:2; }
   @media (max-width:640px){
     /* בנייד הטקסט רחב יותר, ולכן הצילום נחלש והמסכה מתחזקת */
-    html.skin-f .bc .hero::before { opacity:1; background-position:center 76%; }
+    /* בנייד הפריים הרחב היה נחתך ומאבד את לחיצת היד. כאן נכנס קובץ
+       ייעודי שבו הצילום כולו יושב בקנבס אנכי, כך שהקומפוזיציה זהה
+       לזו שבמחשב: הדמויות בצדדים ולחיצת היד מתחת לטקסט. */
+    html.skin-f .bc .hero::before {
+      opacity:1; background-position:center center;
+      background:url(media/hero-bg-m.jpg) center center / cover no-repeat;
+      background:image-set(url(media/hero-bg-m.webp) type("image/webp"), url(media/hero-bg-m.jpg) type("image/jpeg")) center center / cover no-repeat;
+      filter:contrast(1.14) saturate(1.06);
+    }
     html.skin-f .bc .hero::after {
       background:
         radial-gradient(ellipse 88% 46% at 50% 38%, var(--veil-hero) 26%, transparent 84%),
