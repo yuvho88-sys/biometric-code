@@ -1501,26 +1501,26 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .hero { position:relative; overflow:hidden; background:var(--surface-light-bg); }
   html.skin-f .bc .hero::before {
     content:""; display:block; position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:url(media/hero-bg.jpg) center 72% / cover no-repeat;
-    background:image-set(url(media/hero-bg.webp) type("image/webp"), url(media/hero-bg.jpg) type("image/jpeg")) center 72% / cover no-repeat;
+    background:url(media/hero-bg-warm.jpg) center 72% / cover no-repeat;
+    background:image-set(url(media/hero-bg-warm.webp) type("image/webp"), url(media/hero-bg-warm.jpg) type("image/jpeg")) center 72% / cover no-repeat;
     opacity:1;
   }
   html.skin-f .bc .hero::after {
     content:""; display:block; position:absolute; inset:0; z-index:1; pointer-events:none;
     background:
-      radial-gradient(ellipse 64% 50% at 50% 34%, var(--surface-light-bg) 30%, transparent 80%),
-      linear-gradient(180deg, var(--surface-light-bg) 0%, transparent 24%, transparent 72%, var(--surface-light-bg) 100%),
+      radial-gradient(ellipse 64% 50% at 50% 34%, var(--veil-hero) 30%, transparent 80%),
+      linear-gradient(180deg, var(--veil-hero) 0%, transparent 24%, transparent 72%, var(--surface-light-bg) 100%),
       linear-gradient(0deg, var(--hero-tint), var(--hero-tint));
   }
-  html.skin-f .bc { --hero-tint:rgba(0,0,0,0); }
+  html.skin-f .bc { --hero-tint:rgba(0,0,0,0); --veil-hero:#FAF7F2; }
   html.skin-f .bc .hero > .wrap { position:relative; z-index:2; }
   @media (max-width:640px){
     /* בנייד הטקסט רחב יותר, ולכן הצילום נחלש והמסכה מתחזקת */
     html.skin-f .bc .hero::before { opacity:.9; background-position:center 76%; }
     html.skin-f .bc .hero::after {
       background:
-        radial-gradient(ellipse 96% 52% at 50% 40%, var(--surface-light-bg) 34%, transparent 82%),
-        linear-gradient(180deg, var(--surface-light-bg) 0%, transparent 20%, transparent 74%, var(--surface-light-bg) 100%),
+        radial-gradient(ellipse 96% 52% at 50% 40%, var(--veil-hero) 34%, transparent 82%),
+        linear-gradient(180deg, var(--veil-hero) 0%, transparent 20%, transparent 74%, var(--surface-light-bg) 100%),
         linear-gradient(0deg, var(--hero-tint), var(--hero-tint));
     }
   }
