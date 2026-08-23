@@ -1979,12 +1979,13 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .tstm-card, html.skin-f .bc .wz-card, html.skin-f .bc .entry-btn,
   html.skin-f .bc details, html.skin-f .bc .metric, html.skin-f .bc .tstm-av,
   html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea,
-  html.skin-f .bc .wa-arrow, html.skin-f .bc .sticky { border-color:var(--hair); }
+  html.skin-f .bc .wa-arrow, html.skin-f .bc .sticky,
+  html.skin-f .bc form { border-color:var(--hair); }
   html.skin-f .bc .tstm-card figcaption { border-top-color:var(--hair); }
 
   /* ── התג הבורדו יורד: הוא היה הצבע החם היחיד בדף ── */
   html.skin-f .bc .obj .badge {
-    background:rgba(95,224,206,.12); color:var(--a-soft);
+    background:rgba(95,224,206,.14); color:var(--a-soft);
     border:1px solid var(--hair); font-weight:600;
   }
 
@@ -2024,6 +2025,124 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .decode-bg { background-color:var(--s-deep); }
   html.skin-f .bc form, html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea { background:rgba(255,255,255,.08); }
   html.skin-f .bc .skip-link { color:var(--s-deep); background:var(--a-main); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     תיקון ויזואלי אחרי מעבר מסך־אחרי־מסך בנייד
+     שני מוקדים: הצבעוניות של קהל האולם בפתיחה, והקרוסלה שנראתה שבורה.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* ── 1. הפתיחה: חולצות הקהל הכניסו עשרה צבעים לפריים ──
+     הצילום עובר לגוון אחיד ומאבד רוויה, כך שהוא נקרא כמרקם של אולם
+     ולא כקרנבל. רעות והבמה שומרים על נפח כי הניגודיות דווקא עולה. */
+  html.skin-f .bc .hero::before { filter:saturate(.28) contrast(1.12) brightness(1.02); }
+
+  /* ── הסמל שליד השם ──
+     נשאר בגרסה הכהה מהתקופה שבה הדף היה בהיר, ולכן הוא נבלע ברקע
+     ונקרא ככתם. הדף כולו כהה עכשיו, ולכן חוזרת גרסת הדיו הלבנה. */
+  html.skin-f .bc .wm-hand, html.skin-f .bc .hero .wm-hand { content:url(media/mark.png); }
+
+  /* בנייד שורת האייקונים בפוטר נשברת לשתיים, והקו המפריד נשאר תלוי
+     לבדו בסוף השורה. הוא מפריד בין קבוצות שכבר לא יושבות זו לצד זו. */
+  @media (max-width:600px){ html.skin-f .bc .soc-divider { display:none; } }
+
+  /* ── 2. הקרוסלה ── */
+  /* השקופיות הופכות לכרטיסים בגובה אחיד במקום צילומים חתוכים באוויר */
+  html.skin-f .bc .wa-slide { padding:0 7px; }
+  html.skin-f .bc .wa-shot {
+    display:block; width:100%; padding:8px; border:1px solid var(--hair);
+    border-radius:14px; overflow:hidden; background:var(--s-card);
+    height:clamp(300px,76vw,420px);
+  }
+  /* contain ולא cover: לצילומי הוואטסאפ יחסים שונים לגמרי זה מזה,
+     וחיתוך היה חותך את המילים משני הצדדים. כך המסגרת אחידה
+     וההודעה נשארת שלמה, ולחיצה פותחת אותה בגודל מלא. */
+  html.skin-f .bc .wa-shot img {
+    width:100%; height:100%; object-fit:contain; object-position:center; display:block;
+    border-radius:8px;
+  }
+  /* השקופיות שמסביב מעומעמות, כך שברור שהן הבאות בתור ולא תקלה */
+  html.skin-f .bc .wa-slide { opacity:.32; transition:opacity .35s ease; }
+  html.skin-f .bc .wa-slide.is-cur { opacity:1; }
+  @media (prefers-reduced-motion: reduce){ html.skin-f .bc .wa-slide { transition:none; } }
+
+  /* שורת הניווט: חצים צמודים לנקודות, הכול בשורה אחת */
+  html.skin-f .bc .wa-nav { gap:8px; flex-wrap:nowrap; }
+  html.skin-f .bc .wa-dots { flex:0 1 auto; flex-wrap:nowrap; gap:0; }
+  html.skin-f .bc .wa-dot { width:34px; }
+  html.skin-f .bc .wa-arrow { width:44px; height:44px; min-width:44px; }
+  /* שבע נקודות ושני חצים לא נכנסים ב-320 פיקסל ביעד מגע מלא.
+     החצים נשארים 44 מלאים, והנקודות מצטמצמות ברוחב בלבד —
+     הגובה שלהן נשאר 44, ולכן הן עדיין נוחות ללחיצה באגודל. */
+  @media (max-width:360px){ html.skin-f .bc .wa-dot { width:26px; } }
+
+  /* ══════════════════════════════════════════════════════════════════
+     ניקוי הנייד: שני משטחים בלבד, ותמונות שיושבות ברצועות ולא מתחת לטקסט
+     שלוש התלונות: יותר מדי גוונים, טקסט של המכתב חצי על התמונה וחצי על
+     רקע שטוח, וכפות הידיים שצפות מעל הטופס במקום למסגר אותו.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* ── שני משטחים בלבד בכל הדף ── */
+  html.skin-f .bc { --s-raise:#1D434E; }
+  html.skin-f .bc .obj, html.skin-f .bc .who2,
+  html.skin-f .bc .tstm { background:var(--s-page); }
+  /* למכתב יש צילום רקע במחשב, ולכן נקבע כאן רק גוון המשטח שמאחוריו.
+     קיצור background היה מוחק את הצילום. */
+  html.skin-f .bc .about { background-color:var(--s-page); }
+  /* במחשב הצילום נשאר ברקע המכתב, והצעיף שמסביבו נצבע עדיין בגוון
+     של הסקין הקודם — ולכן הצילום נקרא כמלבן מודבק. הצעיף נצבע כאן
+     מגוון המשטח הנוכחי, כך שהצילום נמוג אל תוך הסקשן. */
+  @media (min-width:901px){
+    /* הצילום מפסיק להיות מלבן מודבק והופך לרצועה שמכסה את מלוא הגובה
+       ונמוגה אל תוך הטקסט. אין לו יותר קצה עליון או תחתון, ולכן אין
+       מסגרת שחורה על המשטח. */
+    html.skin-f .bc .about { background-image:none; }
+    html.skin-f .bc .about::before{
+      content:""; position:absolute; top:0; bottom:0; left:0; right:auto;
+      width:min(46%,620px); height:auto; transform:none; max-width:none; z-index:0;
+      background:url(media/reut-portrait.jpg) center center / cover no-repeat;
+      background:image-set(url(media/reut-portrait.webp) type("image/webp"), url(media/reut-portrait.jpg) type("image/jpeg")) center center / cover no-repeat;
+      -webkit-mask-image:linear-gradient(to right, #000 0, #000 48%, transparent 100%);
+      mask-image:linear-gradient(to right, #000 0, #000 48%, transparent 100%);
+    }
+  }
+  html.skin-f .bc .tstm { background:var(--s-page); }
+  html.skin-f .bc .tstm::before { opacity:.2; }
+
+  @media (max-width:900px){
+    /* ── המכתב: הצילום ברצועה נקייה, הטקסט מתחתיו ולא עליו ── */
+    html.skin-f .bc .about {
+      background:var(--s-page); background-image:none;
+      padding-top:calc(var(--portrait-band) + 26px);
+      position:relative;
+    }
+    html.skin-f .bc { --portrait-band:clamp(300px,72vw,440px); }
+    html.skin-f .bc .about::before {
+      content:""; position:absolute; inset:0 0 auto 0; height:var(--portrait-band);
+      /* סקין-e מציב פס־הפרדה דק ב-section+section::before ברוחב חלקי ובהזזה.
+         כאן אותו פסאודו הופך לרצועת הצילום, ולכן הרוחב וההזזה מתאפסים. */
+      width:100%; transform:none; max-width:none;
+      background:url(media/reut-portrait.jpg) center 22% / cover no-repeat;
+      background:image-set(url(media/reut-portrait.webp) type("image/webp"), url(media/reut-portrait.jpg) type("image/jpeg")) center 22% / cover no-repeat;
+      -webkit-mask-image:linear-gradient(180deg, #000 0, #000 62%, transparent 100%);
+      mask-image:linear-gradient(180deg, #000 0, #000 62%, transparent 100%);
+      background-size:cover;
+      background-position:center 20%;
+      background-repeat:no-repeat;
+      z-index:0;
+    }
+    html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
+
+    /* ── האבחון: כפות הידיים ברצועה עליונה, הטופס על משטח נקי ── */
+    html.skin-f .bc .decode { background:var(--s-deep); }
+    html.skin-f .bc .decode-bg {
+      inset:0 0 auto 0; height:clamp(240px,62vw,360px);
+      background:url(media/hands-anim.webp) center 30% / 150% auto no-repeat, var(--s-deep);
+      -webkit-mask-image:linear-gradient(180deg, #000 0, #000 58%, transparent 100%);
+      mask-image:linear-gradient(180deg, #000 0, #000 58%, transparent 100%);
+    }
+    html.skin-f .bc .decode-bg::after { content:none; }
+    html.skin-f .bc .decode > .wrap { padding-top:clamp(210px,54vw,320px); }
+  }
 </style>
 
 <div class="bc">
@@ -2602,6 +2721,8 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       var sw = slideW();
       waTrack.style.transform = 'translateX(' + (((vpW - sw)/2) - idx*sw) + 'px)';
       for(var k=0;k<dots.length;k++){ dots[k].classList.toggle('active', k===idx); }
+      // השקופית שבמרכז מלאה, השכנות מעומעמות, כך שברור מה נקרא עכשיו
+      for(var m=0;m<count;m++){ slides[m].classList.toggle('is-cur', m===idx); }
     }
     function next(){ goTo(idx+1); }
     function prev(){ goTo(idx-1); }
