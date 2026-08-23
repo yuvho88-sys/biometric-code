@@ -1837,6 +1837,42 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       radial-gradient(ellipse 78% 62% at 50% 40%, rgba(15,37,44,.78) 34%, rgba(15,37,44,.48) 72%, rgba(15,37,44,.28) 100%),
       linear-gradient(180deg, rgba(15,37,44,.84) 0%, rgba(15,37,44,.4) 24%, rgba(15,37,44,.4) 72%, rgba(15,37,44,.88) 100%);
   }
+
+  /* ══ מדרגת הארה שלישית ══ */
+  html.skin-f, html.skin-f body { background:#1D434E; }
+  html.skin-f .bc {
+    --bg-dark:#1D434E; --bg-dark-deep:#133038; --bg-dark-elevated:#245059;
+    --bg-light:#245059; --bg-light-2:#204A54; --surface-light-bg:#245059;
+    --surface-light-card:rgba(255,255,255,.1);
+    --text-on-dark-muted:#D3E4E0; --text-on-light-muted:#D3E4E0;
+    --surface-light-muted:#D3E4E0; --muted-d:#D3E4E0; --muted-l:#D3E4E0;
+  }
+  html.skin-f .bc .obj, html.skin-f .bc .who2 { background:#245059; }
+  html.skin-f .bc .about { background-color:#204A54; }
+  html.skin-f .bc .tstm { background:linear-gradient(180deg,#204A54 0%,#245059 46%,#204A54 100%); }
+  html.skin-f .bc .pain, html.skin-f .bc .wac, html.skin-f .bc .formsec, html.skin-f .bc .faq { background:#1D434E; }
+  html.skin-f .bc .hero, html.skin-f .bc .decode { background:#133038; }
+  html.skin-f .bc footer { background:#133038; }
+  html.skin-f .bc .tstm-card, html.skin-f .bc .wz-card,
+  html.skin-f .bc .formsec .card, html.skin-f .bc .form-card { background:rgba(255,255,255,.1); }
+  html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea { background:rgba(255,255,255,.12); }
+  /* השכבות מעל הצילומים מתרככות בהתאם */
+  html.skin-f .bc .hero::after {
+    background:
+      radial-gradient(ellipse 78% 62% at 50% 40%, rgba(19,48,56,.72) 34%, rgba(19,48,56,.42) 72%, rgba(19,48,56,.22) 100%),
+      linear-gradient(180deg, rgba(19,48,56,.8) 0%, rgba(19,48,56,.34) 24%, rgba(19,48,56,.34) 72%, rgba(19,48,56,.86) 100%);
+  }
+  html.skin-f .bc .about::before {
+    background:
+      linear-gradient(180deg, #204A54 0%, rgba(32,74,84,0) 14%, rgba(32,74,84,0) 86%, #204A54 100%),
+      linear-gradient(to left, rgba(32,74,84,0) 62%, #204A54 100%),
+      linear-gradient(to right, rgba(32,74,84,.12) 0%, rgba(32,74,84,.5) 32%, rgba(32,74,84,.86) 60%, rgba(32,74,84,.94) 100%);
+  }
+  @media (max-width:900px){
+    html.skin-f .bc .about::before {
+      background:linear-gradient(180deg, rgba(32,74,84,.05) 0%, rgba(32,74,84,.3) 34%, rgba(32,74,84,.86) 58%, rgba(32,74,84,.96) 100%);
+    }
+  }
 </style>
 
 <div class="bc">
