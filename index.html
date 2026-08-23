@@ -2160,6 +2160,81 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     }
     html.skin-f .bc .decode .formsec > .wrap { position:relative; z-index:1; }
   }
+
+  /* ══════════════════════════════════════════════════════════════════
+     אור: המשטחים עולים מדרגה, המבטא נכנס למשפטי המפתח, והכוכבים זהב
+     יובל: "מרגיש אפור, אני רוצה שיכנס אור לדף". שלושה מהלכים:
+     המשטחים מקבלים בהירות ורוויה, הצעיף על הפתיחה מתרכך כך שרעות
+     על הבמה מוארת, ומשפטי המפתח מסומנים בטורקיז שכבר משמש כמבטא.
+     ══════════════════════════════════════════════════════════════════ */
+  html.skin-f .bc {
+    --s-deep:#17414C; --s-page:#1E5462; --s-raise:#24606F;
+    --s-card:rgba(255,255,255,.10);
+    /* בסיס הצעיפים על הצילומים, באותה משפחה של המשטח החדש */
+    --scrim-rgb:23,65,76;
+    /* הזהב של דירוג גוגל — הצבע היחיד מחוץ למשפחה, ורק לכוכבים */
+    --star:#FBBC04;
+  }
+  html.skin-f .bc .obj, html.skin-f .bc .who2,
+  html.skin-f .bc .tstm { background:var(--s-page); }
+  html.skin-f .bc .about { background-color:var(--s-page); }
+
+  /* ── משפטי המפתח ──
+     ארבע השורות שנושאות את הטיעון מקבלות את צבע המבטא, כך שהעין
+     תופסת אותן בסריקה מהירה. יחס ניגודיות מעל 5 על המשטח החדש. */
+  html.skin-f .bc .hero .hero-bio,
+  html.skin-f .bc .pain .kick,
+  html.skin-f .bc .about .letter .letter-punch,
+  html.skin-f .bc .obj .obj-stat { color:var(--a-soft); }
+
+  /* ── הכוכבים בהמלצות ── */
+  html.skin-f .bc .tstm-stars svg { fill:var(--star); color:var(--star); }
+
+  /* המשטחים הרכים שנשארו על הגוון הישן מתיישרים לטוקן אחד */
+  html.skin-f .bc form, html.skin-f .bc input, html.skin-f .bc select,
+  html.skin-f .bc textarea, html.skin-f .bc .chip, html.skin-f .bc .soc { background:var(--s-card); }
+
+  /* ── הפרדת הטקסט מהצילום ──
+     בפתיחה נשארה הילה לבנה מהסקין הבהיר, שעל צילום מואר רק מטשטשת.
+     במקומה צל כהה רך: הוא מחזיק את הקריאוּת בלי להחשיך את הפריים. */
+  /* ── לוח הקריאוּת ──
+     במקום להחשיך את כל הפריים כדי שהטקסט ייקרא, מוצב צעיף רך מתחת
+     לעמודת הקופי בלבד. הבמה, הקהל ורעות נשארים מוארים; רק מה שמאחורי
+     המילים מתעמעם, והמעבר רדיאלי כך שלא נראה כמלבן. */
+  html.skin-f .bc .hero .hero-copy { position:relative; }
+  /* שורת העובדות יושבת מחוץ ללוח, על רצפת הבמה המוארת — היא עולה לדיו המלא */
+  html.skin-f .bc .hero .hero-alt { color:var(--i-main); }
+  html.skin-f .bc .hero .hero-copy::before {
+    content:""; position:absolute; z-index:-1; pointer-events:none;
+    inset:-23% -3% -9%; width:auto; height:auto; transform:none; max-width:none;
+    background:radial-gradient(ellipse 72% 76% at 50% 48%,
+      rgba(var(--scrim-rgb),.95) 0%, rgba(var(--scrim-rgb),.88) 46%,
+      rgba(var(--scrim-rgb),.52) 76%, transparent 100%);
+  }
+  html.skin-f .bc .hero h1, html.skin-f .bc .hero .hero-kick,
+  html.skin-f .bc .hero .hero-bio, html.skin-f .bc .hero .sub,
+  html.skin-f .bc .hero .hero-alt {
+    text-shadow:0 1px 2px rgba(var(--scrim-rgb),.95), 0 0 10px rgba(var(--scrim-rgb),.92), 0 0 28px rgba(var(--scrim-rgb),.85);
+  }
+
+  /* ── הפתיחה: יותר אור על רעות ופחות צעיף על הפריים ── */
+  html.skin-f .bc .hero::before { filter:saturate(.44) contrast(1.08) brightness(1.14); }
+  html.skin-f .bc .hero::after {
+    background:
+      linear-gradient(180deg, rgba(var(--scrim-rgb),.9) 0%, rgba(var(--scrim-rgb),.5) 10%, rgba(var(--scrim-rgb),.1) 18%, transparent 24%),
+      radial-gradient(44% 72% at 84% 52%, rgba(255,226,192,.3) 0%, transparent 72%),
+      linear-gradient(to right, rgba(var(--scrim-rgb),.84) 0%, rgba(var(--scrim-rgb),.66) 26%, rgba(var(--scrim-rgb),.38) 52%, rgba(var(--scrim-rgb),.14) 76%, transparent 100%),
+      radial-gradient(ellipse 60% 58% at 46% 44%, rgba(var(--scrim-rgb),.3) 30%, rgba(var(--scrim-rgb),.14) 74%, transparent 100%),
+      linear-gradient(180deg, transparent 24%, rgba(var(--scrim-rgb),.16) 58%, rgba(var(--scrim-rgb),.52) 80%, rgba(var(--scrim-rgb),.86) 100%);
+  }
+  @media (max-width:900px){
+    html.skin-f .bc .hero::after {
+      background:
+        linear-gradient(180deg, rgba(var(--scrim-rgb),.92) 0%, rgba(var(--scrim-rgb),.56) 9%, rgba(var(--scrim-rgb),.12) 17%, transparent 23%),
+        radial-gradient(ellipse 78% 66% at 44% 42%, rgba(var(--scrim-rgb),.4) 34%, rgba(var(--scrim-rgb),.24) 72%, rgba(var(--scrim-rgb),.1) 100%),
+        linear-gradient(180deg, transparent 23%, rgba(var(--scrim-rgb),.32) 58%, rgba(var(--scrim-rgb),.58) 80%, rgba(var(--scrim-rgb),.9) 100%);
+    }
+  }
 </style>
 
 <div class="bc">
