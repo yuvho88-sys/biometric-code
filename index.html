@@ -1786,6 +1786,36 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   @media (max-width:700px) and (prefers-reduced-motion: reduce){
     html.skin-f .bc .decode-bg { background:url(media/hands-poster.jpg) center 6% / 100% auto no-repeat, var(--bg-hero); }
   }
+
+  /* ══════════ הארת הדף ══════════
+     הכהה נשאר, אבל עולה מדרגה: הקרקע בהירה יותר, וסקשני הטקסט הארוך
+     מקבלים משטח נוסף מעליה כדי שהעין תזהה פרקים. הפתיחה והאבחון
+     נשארים הכהים ביותר, כי שם יושבים הצילום והסרטון. */
+  html.skin-f, html.skin-f body { background:#102227; }
+  html.skin-f .bc {
+    --bg-dark:#102227; --bg-dark-deep:#0A181B; --bg-dark-elevated:#162C32;
+    --bg-light:#162C32; --bg-light-2:#132830;
+    --surface-light-bg:#162C32;
+    --text-on-dark-muted:#BCD4D0; --text-on-light-muted:#BCD4D0;
+    --surface-light-muted:#BCD4D0; --muted-d:#BCD4D0; --muted-l:#BCD4D0;
+    --surface-light-card:rgba(255,255,255,.07);
+  }
+  /* קצב: סקשני הטקסט הארוך על משטח מעט בהיר יותר מהקרקע */
+  html.skin-f .bc .obj, html.skin-f .bc .who2 { background:#162C32; }
+  /* במכתב הצילום יושב על הרקע עצמו, ולכן כאן משנים רק את צבע הרקע */
+  html.skin-f .bc .about { background-color:#162C32; }
+  html.skin-f .bc .tstm { background:linear-gradient(180deg,#132830 0%,#162C32 46%,#132830 100%); }
+  html.skin-f .bc .pain, html.skin-f .bc .wac, html.skin-f .bc .formsec, html.skin-f .bc .faq { background:#102227; }
+  html.skin-f .bc .hero, html.skin-f .bc .decode { background:#0A181B; }
+  html.skin-f .bc footer { background:#0A181B; }
+  /* הכרטיסים מקבלים נוכחות מול הקרקע הבהירה יותר */
+  html.skin-f .bc .tstm-card, html.skin-f .bc .wz-card,
+  html.skin-f .bc .formsec .card, html.skin-f .bc .form-card { background:rgba(255,255,255,.07); }
+  html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea { background:rgba(255,255,255,.08); }
+
+  /* הרשת של ההמלצות מתכווצת לכרטיס האמיתי היחיד */
+  html.skin-f .bc .tstm-grid { max-width:620px; margin-inline:auto; }
+  @media (min-width:860px){ html.skin-f .bc .tstm-grid { grid-template-columns:1fr; } }
 </style>
 
 <div class="bc">
@@ -1803,14 +1833,14 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <p class="hero-kick fade">אחד מהם הוא הכין מראש.</p>
         <p class="hero-bio fade">את הסיפור השני כפות הידיים כבר מספרות.</p>
         <p class="sub fade">את הפער בין השניים בארגון תמיד מגלים באיחור.</p>
-        <p class="hero-bridge fade">ומה אם הייתם רואים את זה כבר בפגישה הראשונה, ולא בשיחת העזיבה?</p>
-        <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
-        עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
-        -->
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a>
         </div>
+        <p class="hero-bridge fade">ומה אם הייתם רואים את זה כבר בפגישה הראשונה, ולא בשיחת העזיבה?</p>
         <p class="hero-alt fade">שעה וחצי, ובסופה כל אחד בצוות יודע לקרוא את הסיפור השני: מי מתאים באמת, מי כבר עם רגל בחוץ, ואיפה החיכוך שאיש לא מדבר עליו.</p>
+        <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
+        עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
+        -->
       </div>
       </div>
   </header>
@@ -1864,41 +1894,9 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
           </figcaption>
         </figure>
 
-        <figure class="tstm-card is-draft fade">
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>הגעתי ספקן. אחרי עשרים דקות כבר רשמתי לעצמי שאלות ששכחתי לשאול בראיונות. הצוות דיבר על זה שבוע.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">מ</span>
-            <span class="tstm-who">
-              <span class="tstm-org">שם הארגון</span>
-              <span class="tstm-role">מנהל או מנהלת גיוס</span>
-            </span>
-          </figcaption>
-        </figure>
+        
 
-        <figure class="tstm-card is-draft fade">
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>מאז אנחנו מדברים על מועמדים אחרת. יש לנו שפה אחת לתאר אנשים, וזה קיצר לנו ויכוחים בוועדות.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">א</span>
-            <span class="tstm-who">
-              <span class="tstm-org">שם הארגון</span>
-              <span class="tstm-role">משאבי אנוש ופיתוח ארגוני</span>
-            </span>
-          </figcaption>
-        </figure>
+        
 
         
 
@@ -1912,7 +1910,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 <section class="s-dark-2 wac">
     <div class="wrap">
       <h2 class="fade">ההודעות שמגיעות אחרי</h2>
-      <p class="wac-sub fade">צילומי מסך מההתכתבויות. לחיצה מגדילה.</p>
+      <p class="wac-sub fade">תגובות שהגיעו אחרי הרצאות בארגונים. צילומי מסך מההתכתבויות, לחיצה מגדילה.</p>
       <div class="wa-viewport fade" id="waViewport">
         <div class="wa-track" id="waTrack">
           <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" decoding="async"></button></div>
@@ -2025,7 +2023,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="דינמיקה, חיכוכים ותקשורת">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="אחד על אחד">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד">עוד לא בטוחים</option></select></div>
         <button type="submit" class="cta">קבלו תאריכים והצעה להרצאה</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
-        <p class="no-commit">השארת פרטים אינה מחייבת. אחזור אליכם עם פרטים והצעה, וההחלטה כולה שלכם.</p>
+        <p class="no-commit">אחזור אליכם אישית תוך יום או יומיים. השארת פרטים אינה מחייבת, וההחלטה כולה שלכם.</p>
       </form>
       <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:var(--fs-xl);margin-bottom:8px">תודה! קיבלתי את הפרטים שלכם.</h3><p style="color:var(--text-on-light)">אחזור אליכם אישית תוך יום-יומיים. <span id="tyMid">בינתיים, האבחון שעשיתם הוא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235</p></div>
     </div>
