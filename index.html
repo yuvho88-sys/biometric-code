@@ -2119,12 +2119,10 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       <h2 class="fade">הזמינו את ההרצאה שהצוות ידבר עליה, ויישאר בזכותה.</h2>
       <p class="fs-lead fade">מלאו את הפרטים ואחזור אליכם. נבין יחד מה הצוות שלכם צריך, ואשלח לכם תאריכים פנויים ואת כל הפרטים.</p>
       <form id="bcForm" novalidate>
-        <div class="field" data-f="name"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם מלא</div></div>
-        <div class="field" data-f="company"><label for="f-company">ארגון או חברה</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון</div></div>
-        <div class="field" data-f="role"><label for="f-role">התפקיד שלך</label><select id="f-role" name="role"><option value="">בחרו מהרשימה</option><option value="משאבי אנוש">משאבי אנוש או People</option><option value="גיוס">גיוס והשמה</option><option value="רווחה וחוויית עובד">רווחה וחוויית עובד</option><option value="הדרכה ופיתוח ארגוני">הדרכה ופיתוח ארגוני</option><option value="ניהול צוות">ניהול צוות או הנהלה</option><option value="ועד עובדים">ועד עובדים</option><option value="אחר">אחר</option></select><div class="err"></div></div>
+        <div class="field" data-f="company"><label for="f-company">שם הארגון</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון</div></div>
+        <div class="field" data-f="name"><label for="f-name">איש קשר</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם של איש קשר</div></div>
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
-        <div class="field" data-f="interest"><label for="f-interest">מעניין אותי בעיקר</label><select id="f-interest" name="interest"><option value="הרצאה לצוות" data-desc="מפגש אחד">הרצאה לצוות</option><option value="תהליך לצוות" data-desc="דינמיקה, חיכוכים ותקשורת">תהליך עומק לצוות</option><option value="הכשרה אישית" data-desc="אחד על אחד">הכשרה אישית</option><option value="עוד לא בטוח" data-desc="נדבר ונבין יחד">עוד לא בטוחים</option></select></div>
         <button type="submit" class="cta">קבלו תאריכים והצעה להרצאה</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
         <p class="no-commit">אחזור אליכם אישית תוך יום או יומיים. השארת פרטים אינה מחייבת, וההחלטה כולה שלכם.</p>
@@ -2284,9 +2282,11 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       btn.disabled = true; btn.textContent = 'שולח…';
       var payload = { name:f.name.value.trim(), company:f.company.value.trim(), phone:toIntl(f.phone.value), email:f.email.value.trim(), source:(window.BC_CAMPAIGN&&window.BC_CAMPAIGN.utm_source)||'direct', page:location.href };
       var intSel = scope.querySelector('#f-interest');
-      if (intSel) payload.interest = intSel.value;
+      // מוצר אחד בדף. הערך נשלח קבוע כדי שהמיפוי בתרחיש המייק
+      // ימשיך לקבל את אותם מפתחות בדיוק גם אחרי שהשדות ירדו מהמסך
+      payload.interest = intSel ? intSel.value : 'הרצאה לצוות';
       var roleSel = scope.querySelector('#f-role');
-      if (roleSel && roleSel.value) payload.role = roleSel.value;
+      payload.role = (roleSel && roleSel.value) ? roleSel.value : '';
       // הגיליון מקבל טקסט קריא. ה-JSON נשמר כגיבוי רק אם הטקסט לא נבנה משום סיבה.
       if (window.__efshar) payload.efshar = window.__efsharText || JSON.stringify(window.__efshar);
       if (window.__scanMeasure) {           // raw measurements when a camera/upload scan happened
