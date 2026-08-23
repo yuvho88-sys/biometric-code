@@ -1886,6 +1886,20 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .decode .formsec > .wrap {
     border-top:1px solid rgba(95,224,206,.16); padding-top:clamp(26px,5vw,46px);
   }
+
+  /* ══ איזון התאורה בפתיחה, במחשב ══
+     הקהל יושב בצד שמאל של הפריים ורעות בצד ימין. שכבה אופקית מחשיכה
+     את צד הקהל ומשאירה את רעות מוארת, עם נגיעת אור רכה סביבה. */
+  @media (min-width:901px){
+    html.skin-f .bc .hero::after {
+      background:
+        radial-gradient(38% 66% at 84% 52%, rgba(255,214,170,.16) 0%, transparent 70%),
+        linear-gradient(to right, rgba(15,37,44,.92) 0%, rgba(15,37,44,.8) 26%, rgba(15,37,44,.55) 52%, rgba(15,37,44,.28) 76%, rgba(15,37,44,.14) 100%),
+        radial-gradient(ellipse 62% 56% at 50% 42%, rgba(15,37,44,.62) 30%, rgba(15,37,44,.34) 74%, transparent 100%),
+        linear-gradient(180deg, rgba(15,37,44,.7) 0%, rgba(15,37,44,.16) 22%, rgba(15,37,44,.2) 72%, rgba(15,37,44,.78) 100%);
+    }
+    html.skin-f .bc .hero::before { filter:saturate(.9) brightness(1.04); }
+  }
 </style>
 
 <div class="bc">
@@ -1902,7 +1916,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <h1 class="fade">לכל מרואיין יש שני סיפורים.</h1>
         <p class="hero-kick fade">אחד מהם הוא הכין מראש.</p>
         <p class="hero-bio fade">את הסיפור השני כפות הידיים כבר מספרות.</p>
-        <p class="sub fade">את הפער בין השניים בארגון תמיד מגלים באיחור.</p>
+        <p class="sub fade">את הפער בין השניים תגלו בהרצאה שלי.</p>
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">קבלו תאריכים והצעה להרצאה</a>
         </div>
