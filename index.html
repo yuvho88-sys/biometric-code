@@ -1873,6 +1873,19 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       background:linear-gradient(180deg, rgba(32,74,84,.05) 0%, rgba(32,74,84,.3) 34%, rgba(32,74,84,.86) 58%, rgba(32,74,84,.96) 100%);
     }
   }
+
+  /* ══ האבחון והטופס הם בלוק אחד ══
+     הטופס יושב עכשיו בתוך סקשן האבחון, ולכן שכבת הסרטון והשכבה
+     שמעליה מכסות את שניהם. הרקע של הטופס מבוטל כדי שהסרטון יימשך. */
+  html.skin-f .bc .decode .formsec {
+    background:transparent; position:relative; z-index:1;
+    padding-top:clamp(28px,5vw,52px);
+  }
+  html.skin-f .bc .decode .formsec::before, html.skin-f .bc .decode .formsec::after { content:none; }
+  /* קו דק מפריד בין שני החלקים של הבלוק */
+  html.skin-f .bc .decode .formsec > .wrap {
+    border-top:1px solid rgba(95,224,206,.16); padding-top:clamp(26px,5vw,46px);
+  }
 </style>
 
 <div class="bc">
@@ -2111,7 +2124,6 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       </div>
     </div>
   </div>
-</section>
 
 <section class="s-deep formsec surface-light" id="lead-form">
     <div class="wrap">
@@ -2130,6 +2142,9 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:var(--fs-xl);margin-bottom:8px">תודה! קיבלתי את הפרטים שלכם.</h3><p style="color:var(--text-on-light)">אחזור אליכם אישית תוך יום-יומיים. <span id="tyMid">בינתיים, האבחון שעשיתם הוא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235</p></div>
     </div>
   </section>
+  </section>
+
+
 
 <section class="s-dark-2 who2">
     <div class="wrap">
