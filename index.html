@@ -13,12 +13,12 @@
     });
   })();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>הרצאה לארגונים שמלמדת לקרוא אנשים | רעות ביטון</title>
-<meta name="description" content="הרצאה לארגונים בשיטת H.I.P שמלמדת את הצוות לקרוא אנשים באמת: מניעת נשירה, שפה חדשה לתקשורת וכלי ניהולי שנשאר. בלי מיסטיקה: מדידה, שיטה, ותוצאות שאפשר לבדוק.">
+<title>בידיים טובות · הרצאה לארגונים שמלמדת לקרוא אנשים | רעות ביטון</title>
+<meta name="description" content="״בידיים טובות״, הרצאה לארגונים בשיטת H.I.P שמלמדת את הצוות לקרוא אנשים באמת: מניעת נשירה, שפה חדשה לתקשורת וכלי ניהולי שנשאר. בלי מיסטיקה: מדידה, שיטה, ותוצאות שאפשר לבדוק.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
-<meta property="og:title" content="הרצאה לארגונים שמלמדת לקרוא אנשים | רעות ביטון">
-<meta property="og:description" content="כל אדם הוא שני סיפורים: הסיפור שהוא מספר, ומי שהוא באמת. הרצאה בשיטת H.I.P שמלמדת את הצוות שלך לקרוא את הסיפור השני.">
+<meta property="og:title" content="בידיים טובות · הרצאה לארגונים שמלמדת לקרוא אנשים | רעות ביטון">
+<meta property="og:description" content="כל אדם הוא שני סיפורים: הסיפור שהוא מספר, ומי שהוא באמת. ״בידיים טובות״, הרצאה בשיטת H.I.P שמלמדת את הצוות שלך לקרוא את הסיפור השני.">
 <meta property="og:image" content="https://yuvho88-sys.github.io/biometric-code/og-main.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2235,6 +2235,27 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         linear-gradient(180deg, transparent 23%, rgba(var(--scrim-rgb),.32) 58%, rgba(var(--scrim-rgb),.58) 80%, rgba(var(--scrim-rgb),.9) 100%);
     }
   }
+
+  /* ══ שם ההרצאה בפתיחה ══
+     השם נוחת מיד אחרי "כפות הידיים שלו כבר מספרות", ולכן המשחק בשם
+     נסגר מעצמו. הוא יושב בלוחית משלו כדי שיהיה ברור שזה שם המוצר
+     ולא עוד שורת קופי, ובמשקל שנמצא בין הכותרת הראשית לתת־כותרת
+     כך שהוא בולט בלי להתחרות בכותרת. */
+  html.skin-f .bc .hero .lecture-name {
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    width:fit-content; margin:clamp(16px,3vw,26px) auto clamp(13px,2.4vw,20px);
+    padding:clamp(9px,1.7vw,14px) clamp(20px,3.8vw,34px);
+    border:1px solid var(--hair); border-radius:16px;
+    background:rgba(var(--scrim-rgb),.62);
+  }
+  html.skin-f .bc .hero .ln-label {
+    font-size:clamp(12px,3vw,13.5px); font-weight:700; letter-spacing:.7px;
+    color:var(--a-soft);
+  }
+  html.skin-f .bc .hero .ln-title {
+    font-size:clamp(27px,7vw,40px); font-weight:800; line-height:1.16;
+    color:var(--i-main); white-space:nowrap;
+  }
 </style>
 
 <div class="bc">
@@ -2251,7 +2272,11 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <h1 class="fade">לכל מועמד יש סיפור שני.</h1>
         <p class="hero-kick fade">את הראשון הוא הכין מראש.</p>
         <p class="hero-bio fade">את השני כפות הידיים שלו כבר מספרות.</p>
-        <p class="sub fade">בהרצאה אחת הצוות שלכם לומד לקרוא את הסיפור השני, ולדבר על אנשים באותה שפה.</p>
+        <div class="lecture-name fade">
+          <span class="ln-label">הרצאה לארגונים</span>
+          <span class="ln-title">בידיים טובות</span>
+        </div>
+        <p class="sub fade">בסופה הצוות שלכם יודע לקרוא את הסיפור השני, ולדבר על אנשים באותה שפה.</p>
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">בדקו את השיטה לפני שתחליטו</a>
         </div>
@@ -2484,7 +2509,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       <div class="chips fade">
         <span class="chip">חברות הייטק</span><span class="chip">בנקים</span><span class="chip">חברות ביטוח</span><span class="chip">משרדי עורכי דין</span><span class="chip">ארגונים בינוניים וגדולים</span><span class="chip">ועדי עובדים</span><span class="chip">רשויות מקומיות</span><span class="chip">סמינרים וימי עיון</span>
       </div>
-      <p class="format fade">פורמט: 60 עד 75 דקות, מתאים בדיוק למשבצת של ימי עיון, הרמות כוסית, ערבי צוות ופעילויות חברה.</p>
+      <p class="format fade">״בידיים טובות״ היא הרצאה בת 60 עד 75 דקות, שמתאימה בדיוק למשבצת של ימי עיון, הרמות כוסית, ערבי צוות ופעילויות חברה.</p>
     </div>
   </section>
 
