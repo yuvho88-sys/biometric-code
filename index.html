@@ -1930,6 +1930,100 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   @media (min-width:601px){
     html.skin-f .bc .hero .topbar { justify-content:flex-end; }
   }
+
+  /* ══════════════════════════════════════════════════════════════════
+     הידוק הפלטה — שלושה תפקידי צבע, לא יותר
+     נמדד לפני: 6 צבעי טקסט, 13 צבעי רקע, 7 צבעי מסגרת. בין השאר נשארו
+     בדף שאריות מהסקין הקודם: בורדו, שמנת חמה, וכחול־אפור בגבולות.
+     כאן הכל נסגר לשלושה תפקידים: משטח, דיו, פעולה.
+     ══════════════════════════════════════════════════════════════════ */
+  html.skin-f .bc {
+    /* משטחים: שלושה בלבד */
+    --s-page:#1D434E; --s-raise:#245059; --s-deep:#133038;
+    --s-card:rgba(255,255,255,.08);
+    /* דיו: שניים בלבד */
+    --i-main:#EAF3F1; --i-mute:#C6DCD8;
+    /* פעולה: אחד, בשתי עוצמות */
+    --a-main:#12C7B4; --a-soft:#5FE0CE;
+    --hair:rgba(95,224,206,.2);
+  }
+
+  /* ── טקסט: כל הגוונים העודפים מתמזגים לשניים ── */
+  html.skin-f .bc,
+  html.skin-f .bc p, html.skin-f .bc li, html.skin-f .bc span,
+  html.skin-f .bc h1, html.skin-f .bc h2, html.skin-f .bc h3, html.skin-f .bc h4 { color:var(--i-main); }
+  html.skin-f .bc .sub, html.skin-f .bc .fs-lead, html.skin-f .bc .hero-alt,
+  html.skin-f .bc .tstm-sub, html.skin-f .bc .tstm-role, html.skin-f .bc .no-commit,
+  html.skin-f .bc .wac-sub, html.skin-f .bc .rdisc, html.skin-f .bc .legal,
+  html.skin-f .bc .ans, html.skin-f .bc .wz-d { color:var(--i-mute); }
+  html.skin-f .bc .eyebrow, html.skin-f .bc .tstm-stars svg,
+  html.skin-f .bc .hero-proof span, html.skin-f .bc .ef-alt-link { color:var(--a-soft); fill:var(--a-soft); }
+  /* הגוון החם היחיד שנשאר בדף יורד: הוא היה אקסנט שני בלי תפקיד */
+  html.skin-f .bc .hero .hero-bio .hl, html.skin-f .bc .hero-sub .hl-human { color:var(--a-soft); }
+
+  /* ── משטחים: כל הכרטיסים באותה שכבה בדיוק ── */
+  html.skin-f .bc .tstm-card, html.skin-f .bc .wz-card, html.skin-f .bc .rcard,
+  html.skin-f .bc .formsec .card, html.skin-f .bc .form-card, html.skin-f .bc .thankyou,
+  html.skin-f .bc .metric, html.skin-f .bc .entry-btn, html.skin-f .bc details {
+    background:var(--s-card);
+  }
+  html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea { background:rgba(255,255,255,.1); }
+  html.skin-f .bc .obj, html.skin-f .bc .who2 { background:var(--s-raise); }
+  html.skin-f .bc .about { background-color:var(--s-raise); }
+  html.skin-f .bc .tstm { background:var(--s-raise); }
+  html.skin-f .bc .tstm::before { opacity:.28; }
+  html.skin-f .bc .pain, html.skin-f .bc .wac, html.skin-f .bc .faq { background:var(--s-page); }
+  html.skin-f .bc .hero, html.skin-f .bc .decode, html.skin-f .bc footer { background:var(--s-deep); }
+
+  /* ── מסגרות: קו אחד לכל הדף ── */
+  html.skin-f .bc .tstm-card, html.skin-f .bc .wz-card, html.skin-f .bc .entry-btn,
+  html.skin-f .bc details, html.skin-f .bc .metric, html.skin-f .bc .tstm-av,
+  html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea,
+  html.skin-f .bc .wa-arrow, html.skin-f .bc .sticky { border-color:var(--hair); }
+  html.skin-f .bc .tstm-card figcaption { border-top-color:var(--hair); }
+
+  /* ── התג הבורדו יורד: הוא היה הצבע החם היחיד בדף ── */
+  html.skin-f .bc .obj .badge {
+    background:rgba(95,224,206,.12); color:var(--a-soft);
+    border:1px solid var(--hair); font-weight:600;
+  }
+
+  /* ── נקודות הקרוסלה: מהמשפחה של הפעולה, ובשורה אחת ── */
+  html.skin-f .bc .wa-dot::before { background:rgba(198,220,216,.34); }
+  html.skin-f .bc .wa-dot.active::before { background:var(--a-main); }
+  html.skin-f .bc .wa-dots { flex-wrap:nowrap; }
+  html.skin-f .bc .wa-dot { width:38px; }
+  /* במסכים צרים במיוחד השורה גולשת לשתי שורות במקום לדחוף את החצים החוצה */
+  @media (max-width:420px){
+    html.skin-f .bc .wa-dots { flex-wrap:wrap; row-gap:2px; }
+    html.skin-f .bc .wa-dot { width:34px; }
+    html.skin-f .bc .wa-nav { gap:10px; }
+  }
+
+  /* ── הכפתור הצף: אותה משפחה, לא ירוק זרחני ── */
+  html.skin-f .bc .wa {
+    background:var(--s-deep); border:1px solid rgba(95,224,206,.35);
+    box-shadow:0 8px 22px rgba(0,0,0,.4);
+  }
+  html.skin-f .bc .wa svg { fill:var(--a-soft); }
+
+  /* ── הסרגל הדביק ── */
+  html.skin-f .bc .sticky { background:var(--s-deep); border-top:1px solid var(--hair); }
+
+  /* השאריות האחרונות: טוקן הטקסט המעומעם מתאחד, והפוטר, השבבים
+     והכפתורים החברתיים עוברים לאותה משפחה */
+  html.skin-f .bc {
+    --text-on-dark-muted:#C6DCD8; --text-on-light-muted:#C6DCD8;
+    --surface-light-muted:#C6DCD8; --muted-d:#C6DCD8; --muted-l:#C6DCD8;
+    --gold-text-on-dark:#5FE0CE; --gold-text-on-light:#5FE0CE;
+    --accent-text-on-dark:#5FE0CE; --accent-text-on-light:#5FE0CE;
+  }
+  html.skin-f .bc .soc { background:rgba(255,255,255,.08); color:var(--i-mute); border:1px solid var(--hair); }
+  html.skin-f .bc .soc svg, html.skin-f .bc .soc path { fill:currentColor; }
+  html.skin-f .bc .chip { background:rgba(255,255,255,.08); border-color:var(--hair); color:var(--i-mute); }
+  html.skin-f .bc .decode-bg { background-color:var(--s-deep); }
+  html.skin-f .bc form, html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea { background:rgba(255,255,255,.08); }
+  html.skin-f .bc .skip-link { color:var(--s-deep); background:var(--a-main); }
 </style>
 
 <div class="bc">
