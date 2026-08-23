@@ -1900,6 +1900,36 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     }
     html.skin-f .bc .hero::before { filter:saturate(.9) brightness(1.04); }
   }
+
+  /* ══ פס עליון מאחורי הלוגו ══
+     בחלק מרוחבי המסך ראשה של רעות נוחת בדיוק מתחת ללוגו, והסמל יושב
+     לה על הפנים. פס כהה דק בראש הפריים מבטיח שהלוגו תמיד על רקע נקי,
+     ולא על פרצוף. הוא יושב מתחת לטקסט ולכן לא נוגע בקריאוּת. */
+  html.skin-f .bc .hero::after {
+    background:
+      linear-gradient(180deg, rgba(15,37,44,.92) 0%, rgba(15,37,44,.55) 10%, rgba(15,37,44,.12) 18%, transparent 24%),
+      radial-gradient(38% 66% at 84% 52%, rgba(255,214,170,.16) 0%, transparent 70%),
+      linear-gradient(to right, rgba(15,37,44,.9) 0%, rgba(15,37,44,.78) 26%, rgba(15,37,44,.54) 52%, rgba(15,37,44,.3) 76%, rgba(15,37,44,.16) 100%),
+      radial-gradient(ellipse 62% 56% at 50% 44%, rgba(15,37,44,.6) 30%, rgba(15,37,44,.34) 74%, transparent 100%),
+      linear-gradient(180deg, transparent 24%, rgba(15,37,44,.18) 60%, rgba(15,37,44,.8) 100%);
+  }
+  @media (max-width:900px){
+    html.skin-f .bc .hero::after {
+      background:
+        linear-gradient(180deg, rgba(15,37,44,.94) 0%, rgba(15,37,44,.6) 9%, rgba(15,37,44,.14) 17%, transparent 23%),
+        radial-gradient(ellipse 78% 62% at 50% 42%, rgba(15,37,44,.74) 34%, rgba(15,37,44,.44) 72%, rgba(15,37,44,.24) 100%),
+        linear-gradient(180deg, transparent 23%, rgba(15,37,44,.34) 60%, rgba(15,37,44,.88) 100%);
+    }
+  }
+
+
+  /* ══ הלוגו עובר לצד הנגדי לרעות ══
+     רעות מעוגנת לצד ימין של הפריים בכל רוחב, ולכן לוגו בפינה הימנית
+     נוחת לה על הפנים בחלק מהמסכים. במסכים שבהם היא בפריים, הלוגו עובר
+     שמאלה. זה פתרון ודאי ולא כזה שתלוי ברוחב המסך. */
+  @media (min-width:601px){
+    html.skin-f .bc .hero .topbar { justify-content:flex-end; }
+  }
 </style>
 
 <div class="bc">
