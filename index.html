@@ -2132,16 +2132,33 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     }
     html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
-    /* ── האבחון: כפות הידיים ברצועה עליונה, הטופס על משטח נקי ── */
+    /* ── האבחון: הצילום עובר אל מאחורי הטופס ──
+       יובל ביקש שהידיים ירחפו בדיוק באזור השארת הפרטים, ושייראה
+       הפריים המלא. לכן הרצועה העליונה יורדת, והשכבה נקשרת לגובה
+       הטופס עצמו: רוחב מלא, גובה לפי יחס הסרטון (1000×558), ודהייה
+       רכה מלמעלה ומלמטה כך שאין קצה חד על המשטח. */
     html.skin-f .bc .decode { background:var(--s-deep); }
-    html.skin-f .bc .decode-bg {
-      inset:0 0 auto 0; height:clamp(240px,62vw,360px);
-      background:url(media/hands-anim.webp) center 30% / 150% auto no-repeat, var(--s-deep);
-      -webkit-mask-image:linear-gradient(180deg, #000 0, #000 58%, transparent 100%);
-      mask-image:linear-gradient(180deg, #000 0, #000 58%, transparent 100%);
+    html.skin-f .bc .decode > .wrap { padding-top:0; }
+  }
+
+  @media (max-width:700px){
+    html.skin-f .bc .decode-bg { display:none; }
+    html.skin-f .bc .decode .formsec { position:relative; background:var(--s-deep); }
+    html.skin-f .bc .decode .formsec::before {
+      content:""; position:absolute; z-index:0; pointer-events:none;
+      left:0; right:auto; width:100%; max-width:none;
+      /* 63% מגובה הבלוק הוא מרכז הטופס, ולכן השכבה נשארת עליו
+         גם כשהטקסט נשבר אחרת ברוחבים שונים */
+      top:63%; transform:translateY(-50%); height:55.8vw;
+      background:url(media/hands-anim.webp) center center / 100% auto no-repeat;
+      /* הפריים צולם על שחור. במיזוג screen השחור נעלם אל תוך המשטח
+         ונשארות רק הידיים והנקודות הזוהרות — כך זה מרחף ולא מלבן. */
+      mix-blend-mode:screen;
+      opacity:.6;
+      -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
+      mask-image:linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
     }
-    html.skin-f .bc .decode-bg::after { content:none; }
-    html.skin-f .bc .decode > .wrap { padding-top:clamp(210px,54vw,320px); }
+    html.skin-f .bc .decode .formsec > .wrap { position:relative; z-index:1; }
   }
 </style>
 
