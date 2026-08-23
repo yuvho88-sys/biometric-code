@@ -1884,7 +1884,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .decode .formsec::before, html.skin-f .bc .decode .formsec::after { content:none; }
   /* קו דק מפריד בין שני החלקים של הבלוק */
   html.skin-f .bc .decode .formsec > .wrap {
-    border-top:1px solid rgba(95,224,206,.16); padding-top:clamp(26px,5vw,46px);
+    padding-top:0;
   }
 
   /* ══ איזון התאורה בפתיחה, במחשב ══
@@ -2071,11 +2071,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
            autoplay muted loop playsinline preload="metadata"></video>
   </div>
   <div class="wrap">
-    <h2 class="fade">אל תאמינו למילים. תבדקו על עצמכם.</h2>
-    <p class="sub fade">אבחון דיגיטלי קצר, לפני שמחליטים אם השיטה מתאימה לצוות. שלוש דרכים להתחיל: תמונה של כף היד, סריקה חיה במצלמה, או שאלון בלי מצלמה.</p>
     <!-- שער הסריקה: נעול עד שמשאירים פרטים. נפתח מהטופס וגם מ-localStorage בביקור חוזר -->
-    <p class="scan-basis fade"><strong>לא גורלות. לא אסטרולוגיה. לא אנרגיות.</strong>
-      המנוע כאן רץ על בסיס הידע של רעות, באותה שיטה שהיא מלמדת בהרצאה.</p>
     <div class="decoder fade" id="decoder">
       <label class="consent" for="consentChk">
         <input type="checkbox" id="consentChk">
@@ -2130,9 +2126,8 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
 <section class="s-deep formsec surface-light" id="lead-form">
     <div class="wrap">
-      <p class="fs-lead roi-line fade">בואו נמצא תאריך שמתאים לצוות שלכם.</p>
-      <h2 class="fade">הזמינו את ההרצאה שהצוות ידבר עליה, ויישאר בזכותה.</h2>
-      <p class="fs-lead fade">מלאו את הפרטים ואחזור אליכם. נבין יחד מה הצוות שלכם צריך, ואשלח לכם תאריכים פנויים ואת כל הפרטים.</p>
+      <h2 class="fade">אני אבוא לספר לצוות שלכם את הסיפור השני.</h2>
+      <p class="fs-lead fade">השאירו פרטים ואחזור אליכם תוך יום או יומיים עם תאריכים פנויים והצעה מסודרת. בינתיים ייפתח לכם האבחון הדיגיטלי, כדי שתבדקו את השיטה על עצמכם עוד לפני שהחלטתם.</p>
       <form id="bcForm" novalidate>
         <div class="field" data-f="company"><label for="f-company">שם הארגון</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון</div></div>
         <div class="field" data-f="name"><label for="f-name">איש קשר</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם של איש קשר</div></div>
@@ -2140,7 +2135,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
         <button type="submit" class="cta">קבלו תאריכים והצעה להרצאה</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
-        <p class="no-commit">אחזור אליכם אישית תוך יום או יומיים. השארת פרטים אינה מחייבת, וההחלטה כולה שלכם.</p>
+        <p class="no-commit">השארת פרטים אינה מחייבת, וההחלטה כולה שלכם.</p>
       </form>
       <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:var(--fs-xl);margin-bottom:8px">תודה! קיבלתי את הפרטים שלכם.</h3><p style="color:var(--text-on-light)">אחזור אליכם אישית תוך יום-יומיים. <span id="tyMid">בינתיים, האבחון שעשיתם הוא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235</p></div>
     </div>
