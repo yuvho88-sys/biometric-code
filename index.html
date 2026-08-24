@@ -2356,6 +2356,14 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     width:56px; height:2px; border-radius:2px; background:var(--a-soft);
     opacity:.75;
   }
+
+  /* ══ הפאנץ׳ ══
+     שאלת ההיזכרות ואז מילה אחת שעונה עליה. היא עומדת לבד, בגודל של
+     כותרת ובאוויר משלה, כי כל הכוח שלה הוא בשתיקה שלפניה ובקוצר שלה. */
+  html.skin-f .bc .pain .pain-beat {
+    font-size:clamp(1.7rem,4.2vw,2.8rem); font-weight:800; line-height:1.1;
+    color:var(--i-main); margin:clamp(14px,2.2vw,22px) auto 0;
+  }
 </style>
 
 <div class="bc">
@@ -2391,9 +2399,10 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
 <section class="s-ivory pain surface-dark">
     <div class="wrap"><div class="text-col">
-      <h2 class="fade">אתם כבר מכירים את המפגש הזה.</h2>
-      <p class="fade">מישהו עומד מקדימה ומדבר, הקהל מקשיב בנימוס, והטלפונים יוצאים אחרי עשר דקות. בסוף מוחאים כפיים, אוכלים משהו, וכולם חוזרים הביתה בדיוק כמו שהגיעו.</p>
-            <p class="pain-sting fade">שבוע אחרי כבר אף אחד לא זוכר על מה זה היה.</p>
+      <h2 class="fade">אתם מכירים את המפגש הזה.</h2>
+      <p class="fade">מישהו עומד מקדימה ומדבר. הקהל מקשיב בנימוס. אחרי עשר דקות יוצאים הטלפונים. מוחאים כפיים, אוכלים משהו, הולכים הביתה.</p>
+            <p class="pain-sting fade">עכשיו תיזכרו רגע: על מה הייתה ההרצאה האחרונה שהבאתם לארגון?</p>
+      <p class="pain-beat fade">בדיוק.</p>
       <p class="kick fade">ומה אם במקום עוד מישהו שמדבר אליהם, המפגש היה עליהם?</p>
     </div></div>
   </section>
