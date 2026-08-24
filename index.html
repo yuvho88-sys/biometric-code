@@ -864,7 +864,10 @@ window.BC_TRACK = {
 
   /* FORM */
   .bc .formsec h2 { text-align:center; font-size:var(--fs-h2-lead); max-width:28ch; margin:0 auto 16px; }
-  .bc .formsec .fs-lead { text-align:center; color:var(--text-on-dark); max-width:60ch; margin:0 auto 36px; font-size:17px; }
+  /* שלוש פסקאות במקום אחת (24/08). מרווח צמוד ביניהן, והמרווח הגדול לטופס
+     נשמר רק אחרי האחרונה — כך הפריסה מתחת לא זזה. */
+  .bc .formsec .fs-lead { text-align:center; color:var(--text-on-dark); max-width:60ch; margin:0 auto 14px; font-size:17px; }
+  .bc .formsec .fs-lead:last-of-type { margin-bottom:36px; }
   .bc .formsec { padding-top: 84px; }
   .bc form { max-width:560px; margin-inline:auto; background:var(--bg-card); border:1px solid color-mix(in srgb, var(--text-on-light) 11%, transparent); border-radius:20px; padding:32px 28px; box-shadow:0 24px 60px rgba(5,12,26,.4); }
   .bc .field { margin-bottom:17px; }
@@ -2595,13 +2598,15 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 <section class="s-deep formsec surface-light" id="lead-form">
     <div class="wrap">
       <h2 class="fade">אני אבוא לעשות לצוות שלכם מפגש שהוא עליהם.</h2>
-      <p class="fs-lead fade">השאירו פרטים ואחזור אליכם תוך יום או יומיים עם תאריכים פנויים והצעה מסודרת. בינתיים ייפתח לכם האבחון הדיגיטלי, ותוכלו לבדוק את השיטה על עצמכם כבר עכשיו.</p>
+      <p class="fs-lead fade">יום העיון הבא שלכם ייסגר עם הרצאה בכל מקרה. השאלה היחידה היא אם זו תהיה עוד אחת, או אחת שזוכרים.</p>
+      <p class="fs-lead fade">תשאירו פרטים עכשיו — ותוך יום־יומיים יש לכם תאריכים פנויים והצעה מסודרת ביד. משם, ההחלטה שלכם.</p>
+      <p class="fs-lead fade">ורוצים להבין עם מה אתם מתעסקים עוד לפני שדיברנו? תתנסו בשיטה על היד שלכם.</p>
       <form id="bcForm" novalidate>
         <div class="field" data-f="company"><label for="f-company">שם הארגון</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון</div></div>
         <div class="field" data-f="name"><label for="f-name">איש קשר</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם של איש קשר</div></div>
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
-        <button type="submit" class="cta">לבדוק על עצמי עכשיו</button>
+        <button type="submit" class="cta">להתנסות על היד שלי עכשיו</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת, וההחלטה כולה שלכם.</p>
       </form>
