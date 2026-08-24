@@ -2388,6 +2388,16 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
      שהיה מתאים לשני אלמנטים נראה כמו חור. הוא מתהדק לפעימה סוגרת. */
   html.skin-f .bc .faq.closing { padding-block:clamp(30px,4.4vw,44px); }
   html.skin-f .bc .faq.closing .center-cta { margin-top:0; }
+
+  /* ══ המלצה אחת לרוחב ══
+     שני כרטיסי הדוגמה ירדו, ונשאר הציטוט האמיתי היחיד. עמודה אחת
+     במקום שלוש, ברוחב קריאה נוח וממורכזת, כך שהוא נקרא כהמלצה
+     מוצגת ולא כשליש של רשת ריקה. */
+  html.skin-f .bc .tstm-grid { grid-template-columns:1fr; max-width:640px; margin-inline:auto; }
+  @media (min-width:860px){
+    html.skin-f .bc .tstm-grid { grid-template-columns:1fr; }
+    html.skin-f .bc .tstm-card { padding:30px 30px 26px; }
+  }
 </style>
 
 <div class="bc">
@@ -2438,7 +2448,6 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <!-- backup illustrated portrait kept at public/images/reut-portrait-illustration.png -->
         <!--rest of about text below-->
         <div class="fade letter">
-          <div class="eyebrow">מכתב אישי</div>
           <h2>שלום, אני רעות.</h2>
           <p>יש פרק בקורות החיים שלי שאני לא מרחיבה עליו, ואספר ממנו רק דבר אחד: במשך שנים עבדתי במקום שבו טעות בקריאת אדם לא עולה כסף. היא עולה הרבה יותר.</p>
           <p>שם למדתי שאנשים הם שני סיפורים: הסיפור שהם מספרים, ומי שהם באמת. ואת ההבדל בין השניים לא שומעים במילים. רואים אותו.</p>
@@ -2485,41 +2494,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
           </figcaption>
         </figure>
 
-        <figure class="tstm-card is-draft fade">
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>באתי בלי ציפיות ולא הסתכלתי על השעון. גם מי שלא מדבר בדרך כלל נשאר בסוף לשאול שאלות.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">מ</span>
-            <span class="tstm-who">
-              <span class="tstm-org">שם הארגון</span>
-              <span class="tstm-role">אחרי מפגש של ועד העובדים</span>
-            </span>
-          </figcaption>
-        </figure>
 
-        <figure class="tstm-card is-draft fade">
-          <div class="tstm-stars" aria-label="חמישה כוכבים מתוך חמישה">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-          </div>
-          <blockquote>הצחוק היה אמיתי וגם ההפתעה. שבוע אחרי עוד דיברו על זה במסדרון.</blockquote>
-          <figcaption>
-            <span class="tstm-av" aria-hidden="true">א</span>
-            <span class="tstm-who">
-              <span class="tstm-org">שם הארגון</span>
-              <span class="tstm-role">אחרי ערב צוות שנתי</span>
-            </span>
-          </figcaption>
-        </figure>
 
         
 
@@ -2554,7 +2529,6 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
         <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">‹</button>
       </div>
-      <div class="center-cta fade"><a href="#lead-form" class="cta">לבדוק על עצמי עכשיו</a></div>
     </div>
   </section>
 
@@ -2648,10 +2622,6 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     </div>
   </section>
 
-<section class="s-navy faq closing">
-    <div class="wrap">      <div class="center-cta fade"><a href="#lead-form" class="cta">לבדוק על עצמי עכשיו</a></div>
-    </div>
-  </section>
 
   <!-- ═══ המלצות מארגונים ═══
        כרטיס 1 הוא ציטוט אמיתי שכבר מופיע בדף. כרטיסים 2 ו-3 הם דוגמאות
