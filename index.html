@@ -14,7 +14,7 @@
   })();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>בידיים טובות · הרצאה חווייתית לארגונים ולכנסים | רעות ביטון</title>
-<meta name="description" content="״בידיים טובות״, הרצאה חווייתית לארגונים ולכנסים. 60 עד 75 דקות על אנשים, התנהגות ותשומת לב, ועל מה שהידיים מספרות עוד לפני שאדם פותח את הפה. בלי מגע פיזי ובלי מיסטיקה.">
+<meta name="description" content="&quot;בידיים טובות&quot;, הרצאה חווייתית לארגונים ולכנסים. 60 עד 75 דקות על אנשים, התנהגות ותשומת לב, ועל מה שהידיים מספרות עוד לפני שאדם פותח את הפה. בלי מגע פיזי ובלי מיסטיקה.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="בידיים טובות · הרצאה חווייתית לארגונים ולכנסים | רעות ביטון">
@@ -2308,6 +2308,18 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     html.skin-f .bc .hero .hero-invite { margin-top:9px; font-size:1.02rem; line-height:1.4; }
     html.skin-f .bc .hero-copy .hero-ctas { margin-top:11px; }
   }
+
+  /* ══ המרכאות סביב שם ההרצאה ══
+     גופן הגוף מצייר את סימן המרכאות באלכסון, ובגודל הכותרת זה נראה עקום.
+     לכן הסימן לא יושב בטקסט אלא נוצר כאן, מגופן שמצייר אותו ישר לגמרי.
+     כך השם עצמו נשאר טקסט נקי, וניתן להעתקה בלי סימנים. */
+  html.skin-f .bc .ln-title::before, html.skin-f .bc .ln-title::after,
+  html.skin-f .bc .lname::before,   html.skin-f .bc .lname::after {
+    content:'"';
+    font-family:Tahoma,Verdana,"DejaVu Sans",sans-serif;
+    font-size:.92em; letter-spacing:0;
+  }
+  html.skin-f .bc .lname { font-weight:700; }
 </style>
 
 <div class="bc">
@@ -2326,7 +2338,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <p class="hero-bio fade">הרצאה על מה שלא מספרים, ואיך לומדים לראות אותו.</p>
         <div class="lecture-name fade">
           <span class="ln-label">הרצאה חווייתית לארגונים ולכנסים</span>
-          <span class="ln-title">״בידיים טובות״</span>
+          <span class="ln-title">בידיים טובות</span>
         </div>
         <p class="sub fade">60 עד 75 דקות על אנשים, התנהגות ותשומת לב, ועל מה שהידיים מספרות עוד לפני שאדם פותח את הפה.</p>
         <p class="hero-invite fade">אני מזמינה אתכם להכיר את הקוד הביומטרי של האדם.</p>
@@ -2562,7 +2574,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       <div class="chips fade">
         <span class="chip">חברות הייטק</span><span class="chip">בנקים</span><span class="chip">חברות ביטוח</span><span class="chip">משרדי עורכי דין</span><span class="chip">ארגונים בינוניים וגדולים</span><span class="chip">ועדי עובדים</span><span class="chip">רשויות מקומיות</span><span class="chip">סמינרים וימי עיון</span>
       </div>
-      <p class="format fade">״בידיים טובות״ היא הרצאה בת 60 עד 75 דקות, שמתאימה בדיוק למשבצת של ימי עיון, הרמות כוסית, ערבי צוות ופעילויות חברה.</p>
+      <p class="format fade"><span class="lname">בידיים טובות</span> היא הרצאה בת 60 עד 75 דקות, שמתאימה בדיוק למשבצת של ימי עיון, הרמות כוסית, ערבי צוות ופעילויות חברה.</p>
     </div>
   </section>
 
