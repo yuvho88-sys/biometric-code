@@ -2279,6 +2279,35 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   /* שורת הפורמט הפכה ממחרוזת עובדות למשפט שלם, ולכן היא מקבלת רוחב קריאה */
   html.skin-f .bc .hero .hero-bio, html.skin-f .bc .hero .sub { text-wrap:balance; }
   html.skin-f .bc .hero .hero-alt { max-width:58ch; margin-inline:auto; line-height:1.6; text-wrap:balance; }
+
+  /* ══ שורת ההזמנה ══
+     יושבת בין ההסבר לכפתור, וזה הרגע הראשון בדף שבו רעות מדברת בקול
+     שלה. לכן היא בגופן של המכתב ולא בגופן הגוף, במשקל רך יותר משורת
+     הפתיחה, וצמודה לכפתור כדי שההזמנה והלחיצה ייקראו כרצף אחד. */
+  html.skin-f .bc .hero .hero-invite {
+    font-family:'Frank Ruhl Libre','David Libre',serif;
+    font-size:clamp(1.08rem,2.3vw,1.42rem); font-weight:500; line-height:1.45;
+    color:var(--i-main); margin:clamp(10px,1.8vw,16px) auto 0;
+    max-width:34ch; text-wrap:balance;
+  }
+  html.skin-f .bc .hero-copy .hero-ctas { margin-top:clamp(14px,2vw,20px); }
+
+  /* ══ מסכים צרים במיוחד (אייפון SE וכדומה) ══
+     עם שורת ההזמנה הפתיחה גדלה, והכפתור ירד מתחת לקיפול במסך של 568
+     פיקסל גובה. כאן נחסכים כחמישים פיקסל בלי לגעת בהיררכיה: הכותרת,
+     הלוחית והמרווחים יורדים מדרגה, והסדר נשאר זהה. */
+  @media (max-width:360px){
+    html.skin-f .bc .hero h1 { font-size:clamp(1.58rem,6.6vw,2rem); line-height:1.16; }
+    html.skin-f .bc .hero .hero-kick { font-size:clamp(17px,4.9vw,22px); margin-bottom:.4rem; }
+    html.skin-f .bc .hero .hero-bio { font-size:clamp(.98rem,4.1vw,1.18rem); }
+    html.skin-f .bc .hero .lecture-name {
+      margin-top:11px; margin-bottom:10px; padding:7px 16px; gap:1px;
+    }
+    html.skin-f .bc .hero .ln-title { font-size:clamp(23px,6.6vw,29px); }
+    html.skin-f .bc .hero .sub { line-height:1.5; }
+    html.skin-f .bc .hero .hero-invite { margin-top:9px; font-size:1.02rem; line-height:1.4; }
+    html.skin-f .bc .hero-copy .hero-ctas { margin-top:11px; }
+  }
 </style>
 
 <div class="bc">
@@ -2299,11 +2328,12 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
           <span class="ln-label">הרצאה חווייתית לארגונים ולכנסים</span>
           <span class="ln-title">בידיים טובות</span>
         </div>
-        <p class="sub fade">60 עד 75 דקות על אנשים, התנהגות ותשומת לב. אני מזמינה אתכם להכיר.</p>
+        <p class="sub fade">60 עד 75 דקות על אנשים, התנהגות ותשומת לב, ועל מה שהידיים מספרות עוד לפני שאדם פותח את הפה.</p>
+        <p class="hero-invite fade">אני מזמינה אתכם להכיר את הקוד הביומטרי של האדם.</p>
         <div class="hero-ctas fade">
           <a href="#lead-form" class="cta">התנסו בשיטה</a>
         </div>
-        <p class="hero-alt fade">לצוותים, למנהלים ולימי עיון · בלי מגע פיזי ובלי מיסטיקה</p>
+        <p class="hero-alt fade">לצוותים, למנהלים ולימי עיון · בלי מגע פיזי ובלי מיסטיקה</p>
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
         עזיבה של עובד טוב עולה לארגון הרבה יותר ממה שרשום בתלוש: גיוס מחדש, הכשרה, וכל הידע שיוצא מהדלת ולא חוזר. הרצאה אחת בשיטת <span class="ltr">H.I.P</span> מלמדת את הצוות שלך לעשות את הדבר שאף ריאיון לא מלמד: לקרוא אנשים באמת.
         -->
