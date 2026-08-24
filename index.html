@@ -2382,6 +2382,12 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc a.cta:focus-visible, html.skin-f .bc button.cta:focus-visible {
     outline:3px solid var(--a-warm); outline-offset:3px;
   }
+
+  /* ══ הסקשן הסוגר ══
+     אחרי שירדה שורת ההסתייגות נשאר בו כפתור אחד בלבד, ולכן המרווח
+     שהיה מתאים לשני אלמנטים נראה כמו חור. הוא מתהדק לפעימה סוגרת. */
+  html.skin-f .bc .faq.closing { padding-block:clamp(30px,4.4vw,44px); }
+  html.skin-f .bc .faq.closing .center-cta { margin-top:0; }
 </style>
 
 <div class="bc">
@@ -2644,7 +2650,6 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
 <section class="s-navy faq closing">
     <div class="wrap">      <div class="center-cta fade"><a href="#lead-form" class="cta">לבדוק על עצמי עכשיו</a></div>
-      <p class="cta-micro fade">בלי התחייבות, גם אם אתם רק בודקים תקציב לשנה הבאה.</p>
     </div>
   </section>
 
