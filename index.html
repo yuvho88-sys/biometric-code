@@ -2332,6 +2332,30 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
      זו את זו, והמפנה הוא זה שצריך לתפוס את העין. */
   html.skin-f .bc .hero .hero-kick { color:var(--a-warm); }
   html.skin-f .bc .hero .hero-bio { color:var(--i-mute); }
+
+  /* ══ עוצמה לסקשן הזיהוי ══
+     המילים לא השתנו, רק הקצב. הפסקה נחתכת לפני המשפט האחרון, כך שהעוקץ
+     עומד לבד ובמשקל; ואז קו קצר מסמן את נקודת המפנה, והשאלה נפתחת בגודל
+     של כותרת. שלושה פעימות במקום גוש אחד: תיאור, עוקץ, מפנה. */
+  html.skin-f .bc .pain .wrap { padding-block:clamp(8px,1.6vw,18px); }
+  html.skin-f .bc .pain h2 { margin-bottom:clamp(16px,2.4vw,24px); }
+  html.skin-f .bc .pain p { max-width:58ch; }
+  html.skin-f .bc .pain .pain-sting {
+    font-size:clamp(1.12rem,2.3vw,1.45rem); font-weight:700; line-height:1.45;
+    color:var(--i-main); max-width:34ch; margin-top:clamp(14px,2vw,20px);
+    text-wrap:balance;
+  }
+  html.skin-f .bc .pain .kick {
+    position:relative; color:var(--a-soft); font-weight:700;
+    font-size:clamp(1.34rem,3.1vw,2.05rem); line-height:1.36;
+    max-width:30ch; margin-top:clamp(30px,4.6vw,52px);
+    padding-top:clamp(24px,3.4vw,34px); text-wrap:balance;
+  }
+  html.skin-f .bc .pain .kick::before {
+    content:""; position:absolute; top:0; right:50%; transform:translateX(50%);
+    width:56px; height:2px; border-radius:2px; background:var(--a-soft);
+    opacity:.75;
+  }
 </style>
 
 <div class="bc">
@@ -2368,7 +2392,8 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 <section class="s-ivory pain surface-dark">
     <div class="wrap"><div class="text-col">
       <h2 class="fade">אתם כבר מכירים את המפגש הזה.</h2>
-      <p class="fade">מישהו עומד מקדימה ומדבר, הקהל מקשיב בנימוס, והטלפונים יוצאים אחרי עשר דקות. בסוף מוחאים כפיים, אוכלים משהו, וכולם חוזרים הביתה בדיוק כמו שהגיעו. שבוע אחרי כבר אף אחד לא זוכר על מה זה היה.</p>
+      <p class="fade">מישהו עומד מקדימה ומדבר, הקהל מקשיב בנימוס, והטלפונים יוצאים אחרי עשר דקות. בסוף מוחאים כפיים, אוכלים משהו, וכולם חוזרים הביתה בדיוק כמו שהגיעו.</p>
+            <p class="pain-sting fade">שבוע אחרי כבר אף אחד לא זוכר על מה זה היה.</p>
       <p class="kick fade">ומה אם במקום עוד מישהו שמדבר אליהם, המפגש היה עליהם?</p>
     </div></div>
   </section>
