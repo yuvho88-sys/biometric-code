@@ -2427,6 +2427,32 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     text-align:center; text-wrap:balance;
   }
 
+  /* ══ שלב אישור הצילום ══
+     הפריים נעצר, נקודות הזיהוי מצוירות עליו, והלקוח רואה במו עיניו שהמערכת
+     באמת מצאה יד לפני שהיא מדברת. בלי השלב הזה הכלי נסגר בשנייה והסריקה
+     נראית כמו הצגה. */
+  html.skin-f .bc .shot { margin-top:14px; }
+  html.skin-f .bc .shot-frame {
+    border:1px solid var(--hair); border-radius:14px; overflow:hidden;
+    background:var(--s-deep); line-height:0;
+  }
+  html.skin-f .bc .shot-frame canvas { width:100%; height:auto; display:block; }
+  html.skin-f .bc .shot-verdict {
+    margin:12px 0 0; font-size:clamp(.95rem,1.8vw,1.04rem); line-height:1.5;
+    color:var(--i-main); text-align:center; font-weight:600;
+  }
+  html.skin-f .bc .shot-verdict.bad { color:var(--a-warm); }
+  html.skin-f .bc .shot-verdict small { display:block; margin-top:4px; font-weight:400; color:var(--i-mute); }
+  html.skin-f .bc .shot-actions {
+    display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:14px;
+  }
+  html.skin-f .bc .shot-actions .cta { width:100%; max-width:340px; }
+  html.skin-f .bc .shot-again {
+    background:none; border:0; color:var(--a-soft); font:inherit; font-size:.98rem;
+    text-decoration:underline; text-underline-offset:4px; cursor:pointer;
+    min-height:44px; padding:0 12px;
+  }
+
   /* ══ אישור מדיניות הפרטיות ══
      תנאי לשליחה, ולכן היא נבדקת כמו כל שדה חובה ומקבלת את אותה הודעת
      שגיאה. כל השורה היא יעד מגע, כדי שאפשר יהיה לסמן באגודל בלי לכוון
@@ -2612,6 +2638,14 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <button type="button" class="cam-flip" id="camFlip" aria-label="החלפת מצלמה" title="החלפת מצלמה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3"/><path d="M22 12.5a10 10 0 0 1-18.8 4.3"/></svg></button>
         <div class="cam-hint">כף יד פתוחה מול המצלמה, נזהה אוטומטית</div>
         <button type="button" class="cta cam-shoot" id="camShoot">צלמו עכשיו</button>
+      </div>
+      <div class="shot" id="shot" hidden>
+        <div class="shot-frame"><canvas id="shotCanvas"></canvas></div>
+        <div class="shot-verdict" id="shotVerdict"></div>
+        <div class="shot-actions">
+          <button type="button" class="cta" id="shotGo">לנתח את הצילום הזה</button>
+          <button type="button" class="shot-again" id="shotAgain">לצלם שוב</button>
+        </div>
       </div>
       <div class="decode-msg" id="decodeMsg"></div>
       <div class="engine-load" id="engineLoad"><div class="spinner"></div><div>טוען את מנוע הזיהוי. פעם ראשונה בלבד, כמה שניות…</div></div>
@@ -3330,10 +3364,61 @@ async function runDecode(m, mode){
   renderQuestions(mapMeasures(m), m, mode);
 }
 
-function noHand(){ stopProc(); decodeMsg.textContent='לא הצלחנו לזהות כף יד. נסו תמונה מוארת יותר, כף פתוחה מול המצלמה.'; }
+/* ── שלב אישור הצילום ──
+   מקפיאים את הפריים, מציירים עליו את שלד היד שזוהה, ומחכים לאישור.
+   העדשה במצלמה מוצגת הפוכה (scaleX(-1)), ולכן גם הקנבס וגם הנקודות
+   מתהפכים יחד, אחרת מה שהלקוח יראה לא יתאים למה שהוא ראה בתצוגה. */
+const HAND_LINKS=[[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[9,10],[10,11],[11,12],
+                  [13,14],[14,15],[15,16],[0,17],[17,18],[18,19],[19,20],[5,9],[9,13],[13,17]];
+let shotPending=null;
+function hideShot(){ const el=$('shot'); if(el) el.hidden=true; }
+function captureShot(src, lm, q, mode, mirror){
+  const wrap=$('shot'), cv=$('shotCanvas'), verdict=$('shotVerdict'), go=$('shotGo');
+  if(!wrap||!cv) { runDecode(measure(lm), mode); return; }
+  const sw = src.videoWidth || src.naturalWidth || src.width;
+  const sh = src.videoHeight || src.naturalHeight || src.height;
+  if(!sw||!sh){ runDecode(measure(lm), mode); return; }
+  const W = Math.min(720, sw); const H = Math.round(sh * (W/sw));
+  cv.width=W; cv.height=H;
+  const g=cv.getContext('2d');
+  g.save();
+  if(mirror){ g.translate(W,0); g.scale(-1,1); }
+  g.drawImage(src, 0, 0, W, H);
+  g.restore();
+  // שכבת כהות עדינה כדי שהנקודות ייקראו על כל רקע
+  g.fillStyle='rgba(10,26,30,.34)'; g.fillRect(0,0,W,H);
+  if(lm){
+  const px=i=>({ x:(mirror? (1-lm[i].x) : lm[i].x)*W, y:lm[i].y*H });
+  g.strokeStyle='rgba(95,224,206,.85)'; g.lineWidth=Math.max(1.6, W/400); g.lineCap='round';
+  for(const [a,b] of HAND_LINKS){ const p=px(a), r=px(b); g.beginPath(); g.moveTo(p.x,p.y); g.lineTo(r.x,r.y); g.stroke(); }
+  for(let i=0;i<lm.length;i++){ const p=px(i);
+    g.beginPath(); g.arc(p.x,p.y,Math.max(3,W/150),0,Math.PI*2);
+    g.fillStyle = (i===4||i===12||i===5||i===17) ? '#FFA97C' : '#EAF3F1'; g.fill(); }
+  }
+  const m = (q.ok && lm) ? measure(lm) : null;
+  verdict.classList.toggle('bad', !q.ok);
+  verdict.innerHTML = q.ok
+    ? 'זוהתה כף יד, 21 נקודות סימון.<small>זווית אגודל '+m.thumb_angle+'° · יחס אורך אצבע '+m.finger_ratio+' · מרווח אצבעות '+m.spread_ratio+'</small>'
+    : (lm ? q.msg.replace(/^[^ ]+ /,'') : q.msg)+'<small>'+(lm? 'הצילום הזה לא מספיק ברור למדידה.' : 'צריך תאורה טובה, לא חשוכה ולא שרופה, וכף יד פתוחה וישרה.')+' אפשר לצלם שוב.</small>';
+  go.style.display = q.ok ? '' : 'none';
+  shotPending = q.ok ? { m, mode } : null;
+  wrap.hidden=false;
+  decodeMsg.textContent='';
+  wrap.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+(function wireShot(){
+  const go=$('shotGo'), again=$('shotAgain');
+  if(go) go.addEventListener('click', ()=>{ if(!shotPending) return; hideShot(); runDecode(shotPending.m, shotPending.mode); });
+  if(again) again.addEventListener('click', ()=>{ hideShot(); const last=shotLastMode; if(last==='upload') fileInput.click(); else btnCamera.click(); });
+})();
+let shotLastMode=null;
+
+// תמונה חשוכה מדי וגם שרופה מדי נכשלות באותה צורה, ולכן ההודעה מכסה את שני הכיוונים
+const NO_HAND_MSG='לא זיהינו כף יד בצילום הזה.';
+function noHand(){ stopProc(); decodeMsg.textContent=NO_HAND_MSG+' צריך תאורה טובה, לא חשוכה ולא שרופה, וכף יד פתוחה וישרה מול המצלמה.'; }
 
 /* ---- upload path ---- */
-btnUpload.addEventListener('click', ()=>{ if(!consent.checked) return; stopCamera(); fileInput.click(); });
+btnUpload.addEventListener('click', ()=>{ if(!consent.checked) return; hideShot(); stopCamera(); fileInput.click(); });
 fileInput.addEventListener('change', async ()=>{
   const f=fileInput.files&&fileInput.files[0]; if(!f) return;
   engineNoticeShow(); startProc();
@@ -3346,10 +3431,11 @@ fileInput.addEventListener('change', async ()=>{
       const res=lm.detect(img);
       if(res && res.landmarks && res.landmarks.length){
         const q=handQuality(res.landmarks[0]);
-        if(!q.ok){ stopProc(); decodeMsg.textContent=q.msg.replace(/^[^ ]+ /,'')+'. צלמו את כף היד קרוב, פתוחה וישרה, ונסו שוב.'; }
-        else { await runDecode(measure(res.landmarks[0]),'upload'); }
+        stopProc(); shotLastMode='upload';
+        captureShot(img, res.landmarks[0], q, 'upload', false);
       }
-      else { noHand(); }
+      else { stopProc(); shotLastMode='upload';
+        captureShot(img, null, {ok:false, msg:NO_HAND_MSG}, 'upload', false); }
     }catch(e){ noHand(); }
     URL.revokeObjectURL(img.src);
   };
@@ -3391,7 +3477,7 @@ btnCamera.addEventListener('click', async ()=>{
             lastGoodAt=now;
             if(!goodSince) goodSince=now;
             const held=now-goodSince;
-            if(held>=HOLD_MS){ const m=measure(lastHand); stopCamera(); runDecode(m,'camera'); return; }
+            if(held>=HOLD_MS){ shotLastMode='camera'; captureShot(cam, lastHand, q, 'camera', true); stopCamera(); return; }
             decodeMsg.textContent='✓ מצוין, אל תזוזו… '+Math.max(1,Math.ceil((HOLD_MS-held)/1000));
           } else {
             if(now-lastGoodAt>GRACE_MS) goodSince=0;
@@ -3409,7 +3495,7 @@ btnCamera.addEventListener('click', async ()=>{
     }
     camRAF=requestAnimationFrame(loop);
   };
-  camShoot.onclick=()=>{ if(!lastHand) return; const m=measure(lastHand); stopCamera(); runDecode(m,'camera'); };
+  camShoot.onclick=()=>{ if(!lastHand) return; shotLastMode='camera'; captureShot(cam, lastHand, handQuality(lastHand), 'camera', true); stopCamera(); };
   camRAF=requestAnimationFrame(loop);
 });
 
@@ -3430,7 +3516,7 @@ const qsWrap=$('efsharQs');
 const efSel={};
 let efMeasure=null, efMode=null;
 
-$('btnManual').addEventListener('click', ()=>{ if(!consent.checked) return; stopCamera(); decodeMsg.textContent=''; renderQuestions(null, null, 'manual'); });
+$('btnManual').addEventListener('click', ()=>{ if(!consent.checked) return; hideShot(); stopCamera(); decodeMsg.textContent=''; renderQuestions(null, null, 'manual'); });
 
 function renderQuestions(preset, m, mode){
   efMeasure=m||null; efMode=mode;
