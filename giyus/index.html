@@ -144,6 +144,9 @@
   .fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A24B' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 16px center}
   .fld input.bad,.fld select.bad{border-color:#d98a82;background:rgba(217,138,130,.1)}
   form .cta{margin-top:6px}
+  .privacy-note{text-align:center;font-size:13.5px;color:var(--muted-d);margin:2px 0 0}
+  .privacy-note a{color:var(--muted-l);text-decoration:underline;text-underline-offset:3px}
+  .privacy-note a:hover{color:var(--gold-light)}
   .form-msg{text-align:center;font-size:15px;min-height:1.3em}
   .form-msg.err{color:#e7a19a} .form-msg.ok{color:var(--gold-light)}
   #thankyou{display:none;text-align:center;background:#fff;color:var(--ink);border-radius:18px;padding:34px;max-width:520px;margin:0 auto}
@@ -190,7 +193,7 @@
     <div class="decoder fade">
       <label class="consent" for="consentChk">
         <input type="checkbox" id="consentChk">
-        <span>אני מאשר/ת עיבוד של תמונת כף היד. התמונה מעובדת במכשיר שלי בלבד ואינה נשמרת או נשלחת — רק מדידות מספריות.</span>
+        <span>אני מאשר/ת עיבוד של תמונת כף היד. התמונה מעובדת במכשיר שלי בלבד ואינה נשמרת או נשלחת — רק מדידות מספריות. <a href="../privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">מדיניות פרטיות</a></span>
       </label>
       <div class="entries">
         <button class="entry-btn" id="btnUpload" disabled>
@@ -285,6 +288,7 @@
         </select>
       </label>
       <button type="submit" class="cta" id="lf-submit">שלחו לי</button>
+      <p class="privacy-note">שליחת הפרטים כפופה ל<a href="../privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
       <div class="form-msg" id="formMsg"></div>
     </form>
     <div id="thankyou">
@@ -296,7 +300,8 @@
 
 <footer>
   רעות ביטון · בינה אנושית · שיטת <span class="ltr">P.D.A</span><br>
-  הפענוח באתר הוא ראשוני ואוטומטי, ואינו מהווה אבחון אישי או ייעוץ.
+  הפענוח באתר הוא ראשוני ואוטומטי, ואינו מהווה אבחון אישי או ייעוץ.<br>
+  <a href="../privacy.html" target="_blank" rel="noopener" style="color:var(--muted-l);text-decoration:underline;text-underline-offset:3px">מדיניות פרטיות</a>
 </footer>
 
 <script type="module">
