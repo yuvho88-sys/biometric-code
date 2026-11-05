@@ -2709,8 +2709,8 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <div class="field" data-f="company"><label for="f-company">שם הארגון או החברה</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון או חברה</div></div>
         <!-- 05/11: "סוג הפעילות" מהבריף. הערכים נשלחים במפתח interest כדי שתרחיש המייק ימשיך לקבל אותו מפתח; "הרצאה לצוות" ו"עוד לא בטוח" הם ערכים שהתרחיש כבר מכיר. המזהה אינו f-interest בכוונה: f-interest מפעיל את הוויזרד הישן. -->
         <div class="field" data-f="activity"><label for="f-activity">סוג הפעילות</label><select id="f-activity" name="activity" required><option value="">בחרו</option><option value="הרצאה לצוות">הרצאה</option><option value="סדנה לצוות">סדנה</option><option value="עוד לא בטוח">עדיין לא החלטנו</option></select><div class="err">נא לבחור סוג פעילות</div></div>
-        <!-- 05/11: המייל לא ברשימת השדות של רעות. נשאר כרשות, כי ההתראה במייק משתמשת בו לכתובת "השב אל". -->
-        <div class="field" data-f="email"><label for="f-email">כתובת מייל (לא חובה)</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il"><div class="err">נא למלא כתובת מייל תקינה, או להשאיר ריק</div></div>
+        <!-- 05/11: המייל לא ברשימת השדות של רעות. נשאר חובה (הכרעת יובל), כי ההתראה במייק משתמשת בו לכתובת "השב אל". -->
+        <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
         <div class="field field-check" data-f="consent">
           <label class="check" for="f-consent"><input id="f-consent" name="consent" type="checkbox" required><span>קראתי ואני מאשר את <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</span></label>
           <div class="err">צריך לאשר את מדיניות הפרטיות כדי לשלוח</div>
@@ -2876,8 +2876,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       // הארגון הוא עמודה A בגיליון והוא פותח את שורת הנושא בהתראה. ליד בלי ארגון מגיע חסר.
       mark('company', f.company.value.trim().length>1);
       mark('phone', isMobileIL(f.phone.value));
-      // 05/11: המייל רשות. ריק עובר, מלא חייב להיות תקין.
-      mark('email', !f.email.value.trim() || isEmail(f.email.value));
+      mark('email', isEmail(f.email.value));
       mark('activity', !!(f.activity && f.activity.value));
       // הסכמה למדיניות הפרטיות היא תנאי לשליחה, ולכן היא נבדקת כמו שדה חובה
       var consentEl = scope.querySelector('#f-consent');
