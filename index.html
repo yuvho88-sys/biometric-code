@@ -897,6 +897,9 @@ window.BC_TRACK = {
   .bc .no-commit { text-align:center; color:var(--muted-d); font-size:13px; margin-top:12px; }
   .bc .err { display:none; color:#d33; font-size:13px; margin-top:6px; }
   .bc .field.bad input, .bc .field.bad select { border-color:#e56; background:transparent; }
+  /* 05/11: השדה הנפתח נראה כמו שאר השדות: בלי חץ מערכת, חץ משלנו בצד שמאל (ימין לשמאל), ורשימה כהה על לבן */
+  .bc select { -webkit-appearance:none; appearance:none; cursor:pointer; padding-inline-end:15px; padding-inline-start:40px; }
+  .bc select option { color:#0f1c2e; background:#fff; }
   .bc .field.bad .err { display:block; }
   .bc .form-err { display:none; color:#c0392b; background:#fdecea; border-radius:9px; padding:10px 12px; font-size:14px; text-align:center; margin-top:12px; }
   .bc .form-err.show { display:block; }
@@ -2489,6 +2492,13 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .field-check.bad .check { color:var(--i-main); }
   html.skin-f .bc .field-check.bad input[type=checkbox] { outline:2px solid #e56; outline-offset:2px; }
   html.skin-f .bc .field-check .err { text-align:start; }
+  /* 05/11: השדה הנפתח "סוג הפעילות". אחרי כללי הסקין, כי הם מאפסים את background ומוחקים את החץ. */
+  html.skin-f .bc select {
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23C6DCD8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") !important;
+    background-repeat:no-repeat !important; background-position:left 14px center !important; background-size:16px 16px !important;
+  }
+  html.skin-f .bc select:invalid { color:rgba(198,220,216,.7); }
+  html.skin-f .bc select option { color:#0f1c2e; background:#fff; }
 </style>
 
 <div class="bc">
@@ -2706,7 +2716,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
         <div class="field" data-f="company"><label for="f-company">שם הארגון או החברה</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון או חברה</div></div>
         <!-- 05/11: "סוג הפעילות" מהבריף. הערכים נשלחים במפתח interest כדי שתרחיש המייק ימשיך לקבל אותו מפתח; "הרצאה לצוות" ו"עוד לא בטוח" הם ערכים שהתרחיש כבר מכיר. המזהה אינו f-interest בכוונה: f-interest מפעיל את הוויזרד הישן. -->
-        <div class="field" data-f="activity"><label for="f-activity">סוג הפעילות</label><select id="f-activity" name="activity" required><option value="">בחרו</option><option value="הרצאה לצוות">הרצאה</option><option value="סדנה לצוות">סדנה</option><option value="עוד לא בטוח">עדיין לא החלטנו</option></select><div class="err">נא לבחור סוג פעילות</div></div>
+        <div class="field" data-f="activity"><label for="f-activity">סוג הפעילות</label><select id="f-activity" name="activity" required><option value="" selected disabled hidden>בחרו</option><option value="הרצאה לצוות">הרצאה</option><option value="סדנה לצוות">סדנה</option><option value="עוד לא בטוח">עדיין לא החלטנו</option></select><div class="err">נא לבחור סוג פעילות</div></div>
         <!-- 05/11: המייל לא ברשימת השדות של רעות. נשאר חובה (הכרעת יובל), כי ההתראה במייק משתמשת בו לכתובת "השב אל". -->
         <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
         <div class="field field-check" data-f="consent">
