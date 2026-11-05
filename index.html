@@ -13,12 +13,12 @@
     });
   })();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>בידיים טובות · הרצאה חווייתית לארגונים ולכנסים | רעות ביטון</title>
-<meta name="description" content="&quot;בידיים טובות&quot;, הרצאה חווייתית לארגונים ולכנסים. 60 עד 75 דקות על אנשים, התנהגות ותשומת לב לפרטים, ועל מה שהידיים מספרות עוד לפני שאדם פותח את הפה. בלי מגע פיזי ובלי מיסטיקה.">
+<title>בידיים טובות · הרצאות וסדנאות לארגונים, חברות וצוותים | רעות ביטון</title>
+<meta name="description" content="&quot;בידיים טובות&quot;: הרצאות וסדנאות אינטראקטיביות להכרת אנשים דרך מאפייני כפות הידיים. דפוסי פעולה, סגנונות תקשורת, קבלת החלטות ותגובות ללחץ, עם התנסות אישית של המשתתפים. בלי מגע פיזי ובלי מיסטיקה.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
-<meta property="og:title" content="בידיים טובות · הרצאה חווייתית לארגונים ולכנסים | רעות ביטון">
-<meta property="og:description" content="אנשים בוחרים מה לספר על עצמם. את מה שלא, כפות הידיים שלהם מספרות. הרצאה חווייתית לארגונים ולכנסים על מה שלא נאמר, ואיך לומדים לראות אותו.">
+<meta property="og:title" content="בידיים טובות · הרצאות וסדנאות לארגונים, חברות וצוותים | רעות ביטון">
+<meta property="og:description" content="אנשים בוחרים מה לספר על עצמם. את מה שלא, כפות הידיים שלהם מספרות. הרצאות וסדנאות לארגונים, חברות וצוותים על מה שלא נאמר, ואיך לומדים לראות אותו.">
 <meta property="og:url" content="https://hartzaa.reutbitton.com/">
 <!-- תצוגה מקדימה של הקישור: צילום ראש הדף עצמו, 1200 על 630. -->
 <meta property="og:image" content="https://hartzaa.reutbitton.com/og-hero.jpg">
@@ -27,8 +27,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="רעות ביטון על הבמה מול אולם מלא, עם הכותרת: אנשים בוחרים מה לספר על עצמם.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="בידיים טובות · הרצאה חווייתית לארגונים ולכנסים | רעות ביטון">
-<meta name="twitter:description" content="אנשים בוחרים מה לספר על עצמם. את מה שלא, כפות הידיים שלהם מספרות. הרצאה חווייתית לארגונים ולכנסים על מה שלא נאמר, ואיך לומדים לראות אותו.">
+<meta name="twitter:title" content="בידיים טובות · הרצאות וסדנאות לארגונים, חברות וצוותים | רעות ביטון">
+<meta name="twitter:description" content="אנשים בוחרים מה לספר על עצמם. את מה שלא, כפות הידיים שלהם מספרות. הרצאות וסדנאות לארגונים, חברות וצוותים על מה שלא נאמר, ואיך לומדים לראות אותו.">
 <meta name="twitter:image" content="https://hartzaa.reutbitton.com/og-hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -860,6 +860,14 @@ window.BC_TRACK = {
   /* צ'יפים on-dark: רקע לבן שקוף, מסגרת בגוון הטקסט המשני, בלי צל */
   .bc .chip { background:rgba(255,255,255,.07); border:1px solid rgba(175,186,207,.25); color:var(--text-on-dark); font-weight:600; font-size:15.5px; padding:11px 20px; border-radius:11px; }
   .bc .who2 .format { color:var(--text-on-dark-muted); max-width:64ch; margin:0 auto; }
+  /* 05/11: שני סוגי פעילות (הרצאות, סדנאות) ככרטיסים */
+  .bc .who-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px; max-width:860px; margin:8px auto 0; text-align:center; }
+  .bc .who-card { background:rgba(255,255,255,.07); border:1px solid rgba(175,186,207,.25); border-radius:14px; padding:24px 22px; }
+  .bc .who-card h3 { color:var(--gold-text-on-dark, #e0c989); font-size:21px; margin:0 0 10px; font-family:'Frank Ruhl Libre','David Libre',serif; }
+  .bc .who-card p { color:var(--text-on-dark-muted); font-size:15.5px; line-height:1.7; margin:0; }
+  .bc .who-card .who-meta { margin-top:12px; color:var(--text-on-dark); font-weight:600; font-size:14.5px; }
+  /* 05/11: הבהרה בראש ההתנסות */
+  .bc .decode-note { text-align:center; color:var(--gold-light, #e0c989); font-size:14.5px; margin:0 0 14px; }
 
   /* FAQ */
   .bc .faq h2 { text-align:center; font-size:var(--fs-h2); margin-bottom:26px; }
@@ -882,13 +890,13 @@ window.BC_TRACK = {
   .bc form { max-width:560px; margin-inline:auto; background:var(--bg-card); border:1px solid color-mix(in srgb, var(--text-on-light) 11%, transparent); border-radius:20px; padding:32px 28px; box-shadow:0 24px 60px rgba(5,12,26,.4); }
   .bc .field { margin-bottom:17px; }
   .bc label { display:block; font-weight:600; color:var(--text-on-light); font-size:var(--fs-xs); margin-bottom:7px; }
-  .bc input { width:100%; font-family:inherit; font-size:16px; color:var(--ink); padding:13px 15px; border:1px solid var(--measure-hairline); border-radius:11px; background:var(--bg-light-2); }
+  .bc input, .bc select { width:100%; font-family:inherit; font-size:16px; color:var(--ink); padding:13px 15px; border:1px solid var(--measure-hairline); border-radius:11px; background:var(--bg-light-2); }
   /* צבע חיים 3/3: השדה הפעיל מגיב — הטופס מרגיש חי בדיוק ברגע ההקלדה */
   .bc input:focus, .bc select:focus { outline:none; border-color:var(--confirm); box-shadow:0 0 0 3px rgba(31,168,85,.22); }
   .bc form .cta { width:100%; margin-top:6px; font-size:16px; }
   .bc .no-commit { text-align:center; color:var(--muted-d); font-size:13px; margin-top:12px; }
   .bc .err { display:none; color:#d33; font-size:13px; margin-top:6px; }
-  .bc .field.bad input { border-color:#e56; background:transparent; }
+  .bc .field.bad input, .bc .field.bad select { border-color:#e56; background:transparent; }
   .bc .field.bad .err { display:block; }
   .bc .form-err { display:none; color:#c0392b; background:#fdecea; border-radius:9px; padding:10px 12px; font-size:14px; text-align:center; margin-top:12px; }
   .bc .form-err.show { display:block; }
@@ -2498,13 +2506,13 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <p class="hero-kick fade">את מה שלא, כפות הידיים שלהם מספרות.</p>
         <p class="hero-bio fade">הרצאה על מה שלא נאמר, ואיך לומדים לראות אותו.</p>
         <div class="lecture-name fade">
-          <span class="ln-label">הרצאה חווייתית ומקצועית לצוות העובדים</span>
+          <span class="ln-label">הרצאות וסדנאות לארגונים, חברות וצוותים</span>
           <span class="ln-title">בידיים טובות</span>
         </div>
-        <p class="sub fade">60 עד 75 דקות על אנשים, התנהגות ותשומת לב לפרטים, ועל מה שהידיים מספרות עוד לפני שאדם פותח את הפה.</p>
-        <p class="hero-invite fade">אני מזמינה אתכם להכיר את הקוד הביומטרי של האדם.</p>
+        <p class="sub fade">הרצאות וסדנאות אינטראקטיביות שמאפשרות להכיר אנשים מזווית קצת אחרת, דרך מאפייני כפות הידיים. המשתתפים נחשפים לדפוסי פעולה, סגנונות תקשורת, קבלת החלטות ותגובות ללחץ, ומשתתפים בהתנסות אישית שמייצרת עניין ושיח משותף.</p>
+        <!-- 05/11: "אני מזמינה אתכם להכיר את הקוד הביומטרי של האדם" הוסר לבקשת רעות (בלי "קוד ביומטרי") -->
         <div class="hero-ctas fade">
-          <a href="#lead-form" class="cta">להתנסות על היד שלי עכשיו</a>
+          <a href="#lead-form" class="cta">לקבלת הצעה להרצאה או סדנה</a>
         </div>
         <p class="hero-alt fade">חברות, ארגונים, צוותים, סמינרים וערבי צוות</p>
         <!-- טקסט שהועבר מה-Hero, ממתין לשיבוץ בסקשן ייעודי בגוף הדף
@@ -2516,11 +2524,10 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
 <section class="s-ivory pain surface-dark">
     <div class="wrap"><div class="text-col">
-      <h2 class="fade">אתם מכירים את המפגש הזה.</h2>
-      <p class="fade">מישהו עומד על הבמה ומדבר. הקהל מקשיב בנימוס. אחרי עשר דקות יוצאים הטלפונים. מוחאים כפיים, אוכלים משהו, הולכים הביתה.</p>
-            <p class="pain-sting fade">עכשיו תיזכרו רגע: על מה הייתה ההרצאה האחרונה שהבאתם לארגון?</p>
-      <p class="pain-beat fade">בדיוק.</p>
-      <p class="kick fade">ומה אם במקום עוד מישהו שמדבר אליהם, המפגש היה עליהם?</p>
+      <!-- 05/11: סקשן הכאב (23/08) הוחלף בטקסט של רעות מהבריף. הנוסח הקודם בהיסטוריית הגיט. -->
+      <h2 class="fade">מה אפשר ללמוד על אנשים דרך כפות הידיים שלהם?</h2>
+      <p class="fade">בהרצאות ובסדנאות שלי אני מציגה דרך נוספת להתבונן באנשים ובהבדלים ביניהם. דרך מאפיינים בכפות הידיים, דוגמאות מהחיים והתנסות של המשתתפים, אנחנו עוסקים בדרך שבה אנשים פועלים, מתקשרים, מקבלים החלטות ומתמודדים עם מצבים שונים.</p>
+                        <p class="kick fade">התוכן מועבר בצורה נגישה ומשתפת, ומתאים גם למי שמעולם לא נחשף לתחום.</p>
     </div></div>
   </section>
 
@@ -2532,9 +2539,10 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         <!--rest of about text below-->
         <div class="fade letter">
           <h2>שלום, אני רעות.</h2>
-          <p>יש פרק בקורות החיים שלי שאני לא מרחיבה עליו, ואספר ממנו רק דבר אחד: במשך שנים עבדתי במקום שבו טעות בקריאת אדם לא עולה כסף. היא עולה הרבה יותר.</p>
-          <p>שם למדתי שאנשים הם שני סיפורים: הסיפור שהם מספרים, ומי שהם באמת. ואת ההבדל בין השניים לא שומעים במילים. רואים אותו.</p>
-          <p>היום, אחרי 17 שנים של ניתוח ואבחון התנהגות אנושית, הכשרה מבית ד"ר ארנולד הולצמן, והרצאות ואבחונים לאורך השנים, אני עושה את זה בשיטה שפיתחתי, <span class="ltr">H.I.P</span>, בדרך שנשמעת מוזרה בפעם הראשונה שמספרים לכם עליה: אני קוראת אנשים מכפות הידיים שלהם.</p>
+          <!-- 05/11: המכתב (23/08) הוחלף בטקסט של רעות מהבריף. הנוסח הקודם בהיסטוריית הגיט. -->
+            <p>אני רעות ביטון, מייסדת <span class="ltr">REUT BITTON | HUMAN DUE DILIGENCE</span>, מאסטר ומוסמכת בתחום ניתוח מאפייני כפות הידיים.</p>
+          <p>בעבודתי אני עוסקת בהבנת אנשים דרך מאפייני כפות הידיים, תוך התייחסות לדפוסי פעולה, קבלת החלטות, תקשורת, חוזקות והתמודדות עם לחץ.</p>
+          <p>לצד העבודה עם לקוחות פרטיים, אני מעבירה הרצאות וסדנאות לארגונים, חברות וצוותים, ומשלבת בהן ידע מקצועי, דוגמאות והתנסות של המשתתפים.</p>
           <p class="letter-punch">כף היד לא עוברת עריכה. וזה כל היתרון שלה.</p>
           <p class="sign">שלך,<br><strong>רעות ביטון</strong><br>בינה אנושית · שיטת <span class="ltr">H.I.P</span></p>
 
@@ -2546,9 +2554,11 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 <section class="s-deep obj surface-light">
     <div class="wrap"><div class="text-col">
       <span class="badge fade">חשוב שתדעו</span>
-      <h2 class="fade">בלי מיסטיקה ובלי רוחניות. שיטה שאפשר למדוד ולבדוק.</h2>
-      <p class="fade">שיטת <span class="ltr">H.I.P</span> פותחה על ידי רעות ביטון על בסיס הכשרת <span class="ltr">P.D.A</span> מבית ד"ר ארנולד הולצמן ו-17 שנות ניסיון באבחון התנהגות אנושית. זה כלי מדידה של דפוסי התנהגות ואישיות, נקודה. אין פה קריאת עתידות, ואת זה מבינות מהר גם ההנהלות הכי אנליטיות.</p>
-      <p class="obj-stat fade">אבחונים לאורך שנים. אפס מגע פיזי.</p>
+      <!-- 05/11: הטקסט הוחלף בנוסח של רעות מהבריף, בלי טענות על כלי מדעי. הנוסח הקודם בהיסטוריית הגיט. -->
+      <h2 class="fade">בלי מיסטיקה ובלי רוחניות.</h2>
+      <p class="fade">אני עוסקת בהבנת אנשים באמצעות ניתוח מאפייני כפות הידיים. השיטה משמשת אותי כבסיס להתבוננות ולשיחה על דפוסי התנהגות, חוזקות, חסמים, תקשורת וקבלת החלטות.</p>
+      <p class="fade">בהרצאות אני משתפת את הקהל בדרך שבה אני מתבוננת במאפיינים האלה, ומשלבת דוגמאות והתנסות מעשית.</p>
+      <p class="obj-stat fade">אפס מגע פיזי.</p>
     </div></div>
   </section>
 
@@ -2624,7 +2634,8 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   <div class="wrap">
     <!-- שער הסריקה: נעול עד שמשאירים פרטים. נפתח מהטופס וגם מ-localStorage בביקור חוזר -->
     <div class="decoder fade" id="decoder">
-      <label class="consent" for="consentChk">
+      <p class="decode-note">התנסות קצרה להמחשת השיטה. לא אבחון אישי מלא.</p>
+        <label class="consent" for="consentChk">
         <input type="checkbox" id="consentChk">
         <span>אני מאשר/ת עיבוד תמונת כף היד. התמונה מעובדת במכשיר שלי בלבד ואינה נשמרת או נשלחת. המדידות והסימונים יצורפו לפנייה רק אם אבחר להשאיר פרטים. <a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">מדיניות פרטיות</a></span>
       </label>
@@ -2669,14 +2680,15 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
           <h3>הפענוח הראשוני שלך</h3>
           <div class="metrics" id="metrics"></div>
           <div class="reading" id="reading"></div>
-          <div class="rdisc">פענוח ראשוני על בסיס הסימונים שלך. אינו אבחון אישי של רעות ביטון.</div>
+          <div class="rdisc">התנסות קצרה להמחשת השיטה, על בסיס הסימונים שלך. לא אבחון אישי מלא של רעות ביטון.</div>
           <div class="ef-ctas">
             <div class="ef-cta">
               <h4>רוצה שהצוות שלך יחווה את זה על עצמו?</h4>
-              <p>אני מעבירה הרצאות למנהלי/ות ואנשי/נשות משאבי אנוש. חוויה שבה כל משתתף/ת מרגיש/ה שנגעתי במשהו אמיתי אצלו/ה, ולומד/ת כלי מעשי לקריאת אנשים בגיוס, בהשמה ובהחלטות. בדיוק כמו האבחון הזה, רק לעומק ועל כל הצוות.</p>
-              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">להתנסות על היד שלי עכשיו</button>
+              <!-- 05/11: הוסר "כלי מעשי לקריאת אנשים בגיוס, בהשמה ובהחלטות" (ההרצאה לא נמכרת ככלי להחלטות גיוס). הנוסח מהבריף של רעות. -->
+              <p>בהרצאות ובסדנאות שלי הצוות עובר את זה יחד: דוגמאות מהחיים, התנסות אישית, ושיח על הדרך שבה אנשים פועלים, מתקשרים ומקבלים החלטות. בדיוק כמו ההתנסות הזו, רק לעומק ועם כל הצוות.</p>
+              <button type="button" class="cta ef-cta-btn" data-interest="הרצאה לצוות">לקבלת הצעה להרצאה או סדנה</button>
             </div>
-            <p class="ef-alt">מעדיפים ללמוד לקרוא את זה בעצמכם? יש גם <button type="button" class="ef-cta-btn ef-alt-link" data-interest="הכשרה אישית">הכשרה אישית</button>. אפשר לסמן את זה בטופס.</p>
+<!-- 05/11: שורת "הכשרה אישית" הוסרה. האפשרות לא קיימת בטופס מאז 23/08. -->
           </div>
         </div>
       </div>
@@ -2687,23 +2699,27 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     <div class="wrap">
       <!-- 24/08: הכותרת הוסרה לבקשת יובל. שלוש הפסקאות הן ההנעה לפעולה עצמה,
            ולכן הן מודגשות. בלי מקפים בשום צורה. -->
-      <p class="fs-lead fs-head fade">יום העיון הבא שלכם ייסגר עם הרצאה בכל מקרה. <span class="fs-punch">השאלה היחידה היא אם זו תהיה עוד אחת, או אחת שזוכרים.</span></p>
-      <p class="fs-lead fs-how fade">תשאירו פרטים עכשיו ותוך יום יומיים יש לכם תאריכים פנויים והצעה מסודרת ביד. משם, ההחלטה שלכם.</p>
-      <p class="fs-lead fs-try fade">רוצים להבין את השיטה עוד לפני שדיברנו? תתנסו בשיטה על היד שלכם.</p>
+      <!-- 05/11: שלוש הפסקאות של יובל (24/08) הוחלפו בכותרת ובשורה מהבריף של רעות. הנוסח הקודם בהיסטוריית הגיט. -->
+      <h2 class="fs-head fade">בואו נתאים הרצאה או סדנה לאירוע שלכם</h2>
+      <p class="fs-lead fs-how fade">השאירו פרטים ואחזור אליכם כדי להבין מה אתם מתכננים ולהתאים את התוכן לקהל ולסוג האירוע.</p>
+      <p class="fs-lead fs-try fade">אחרי השליחה נפתחת גם התנסות קצרה על היד שלכם, להמחשת השיטה.</p>
       <form id="bcForm" novalidate>
-        <div class="field" data-f="company"><label for="f-company">שם הארגון</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון</div></div>
-        <div class="field" data-f="name"><label for="f-name">איש קשר</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם של איש קשר</div></div>
-        <div class="field" data-f="phone"><label for="f-phone">טלפון נייד</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
-        <div class="field" data-f="email"><label for="f-email">כתובת מייל</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il" required><div class="err">נא למלא כתובת מייל תקינה</div></div>
+        <div class="field" data-f="name"><label for="f-name">שם מלא</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err">נא למלא שם מלא</div></div>
+        <div class="field" data-f="phone"><label for="f-phone">טלפון</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" required><div class="err">נא למלא מספר נייד ישראלי תקין</div></div>
+        <div class="field" data-f="company"><label for="f-company">שם הארגון או החברה</label><input id="f-company" name="company" type="text" autocomplete="organization" required><div class="err">נא למלא שם ארגון או חברה</div></div>
+        <!-- 05/11: "סוג הפעילות" מהבריף. הערכים נשלחים במפתח interest כדי שתרחיש המייק ימשיך לקבל אותו מפתח; "הרצאה לצוות" ו"עוד לא בטוח" הם ערכים שהתרחיש כבר מכיר. המזהה אינו f-interest בכוונה: f-interest מפעיל את הוויזרד הישן. -->
+        <div class="field" data-f="activity"><label for="f-activity">סוג הפעילות</label><select id="f-activity" name="activity" required><option value="">בחרו</option><option value="הרצאה לצוות">הרצאה</option><option value="סדנה לצוות">סדנה</option><option value="עוד לא בטוח">עדיין לא החלטנו</option></select><div class="err">נא לבחור סוג פעילות</div></div>
+        <!-- 05/11: המייל לא ברשימת השדות של רעות. נשאר כרשות, כי ההתראה במייק משתמשת בו לכתובת "השב אל". -->
+        <div class="field" data-f="email"><label for="f-email">כתובת מייל (לא חובה)</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.co.il"><div class="err">נא למלא כתובת מייל תקינה, או להשאיר ריק</div></div>
         <div class="field field-check" data-f="consent">
           <label class="check" for="f-consent"><input id="f-consent" name="consent" type="checkbox" required><span>קראתי ואני מאשר את <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</span></label>
           <div class="err">צריך לאשר את מדיניות הפרטיות כדי לשלוח</div>
         </div>
-        <button type="submit" class="cta">להתנסות על היד שלי עכשיו</button>
+        <button type="submit" class="cta">אני רוצה לקבל הצעה</button>
         <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת, וההחלטה כולה שלכם.</p>
       </form>
-      <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:var(--fs-xl);margin-bottom:8px">תודה! קיבלתי את הפרטים שלכם.</h3><p style="color:var(--text-on-light)">אחזור אליכם אישית תוך יום-יומיים. <span id="tyMid">בינתיים, האבחון שעשיתם הוא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235</p></div>
+      <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:var(--fs-xl);margin-bottom:8px">תודה על הפנייה, הפרטים התקבלו ואחזור אליכם בהקדם.</h3><p style="color:var(--text-on-light)"><span id="tyMid">בינתיים, ההתנסות שעשיתם היא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235</p></div>
     </div>
   </section>
   </section>
@@ -2716,7 +2732,18 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       <div class="chips fade">
         <span class="chip">חברות הייטק</span><span class="chip">בנקים</span><span class="chip">חברות ביטוח</span><span class="chip">משרדי עורכי דין</span><span class="chip">ארגונים בינוניים וגדולים</span><span class="chip">ועדי עובדים</span><span class="chip">רשויות מקומיות</span><span class="chip">סמינרים וימי עיון</span>
       </div>
-      <p class="format fade"><span class="lname">בידיים טובות</span> היא הרצאה בת 60 עד 75 דקות, שמתאימה בדיוק למשבצת של ימי עיון, הרמות כוסית, ערבי צוות ופעילויות חברה.</p>
+      <!-- 05/11: שני סוגי פעילות מהבריף של רעות. שורת המשך "60 עד 75 דקות" נשמרה מהנוסח הקודם. -->
+      <div class="who-cards fade">
+        <div class="who-card">
+          <h3>הרצאות אינטראקטיביות</h3>
+          <p>מתאימות לכנסים, ימי חברה, אירועי עובדים, מפגשי מנהלים ואירועי קהילה. ההרצאות משלבות תוכן, דוגמאות והתנסות של הקהל.</p>
+          <p class="who-meta">"בידיים טובות" · 60 עד 75 דקות</p>
+        </div>
+        <div class="who-card">
+          <h3>סדנאות לצוותים ולמנהלים</h3>
+          <p>מפגשים בקבוצות המאפשרים להעמיק בנושאים כמו תקשורת בין אנשים, דפוסי פעולה, קבלת החלטות והתמודדות עם לחץ. התוכן מותאם לאופי הקבוצה ולמטרת המפגש.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2789,7 +2816,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     <div class="wrap">
       <div class="wordmark foot-wordmark"><img class="wm-hand" src="media/mark.png" width="209" height="160" alt="" aria-hidden="true"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></div>
       <p class="legal">האבחון הדיגיטלי הוא כלי היכרות עצמי המבוסס על שיטת האבחון הפסיכודיאגנוסטי בכף היד של רעות ביטון, ומבוסס גם על שיטת ד"ר ארנולד הולצמן (אינו קורס/שירות רשמי מטעמו). התכנים אינם אבחון רפואי או פסיכולוגי קליני, ואינם ייעוץ תעסוקתי פורמלי.</p>
-      <div>הקוד הביומטרי · הרצאות ביומטריה עסקית לארגונים · שיטת <span class="ltr">H.I.P</span></div>
+      <div>בידיים טובות · הרצאות וסדנאות לארגונים, חברות וצוותים · שיטת <span class="ltr">H.I.P</span></div>
       <!-- הקישור לאתר הוסר: הוא מוביל מדף קמפיין חד־מטרתי לעולם מותגי אחר (קריירה, זוגיות, צמיחה אישית) -->
       <div class="social-row">
         <div class="soc-group">
@@ -2811,7 +2838,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
   <a class="wa" href="https://wa.me/972507459235?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%94%D7%A8%D7%A6%D7%90%D7%94%20%D7%9C%D7%90%D7%A8%D7%92%D7%95%D7%A0%D7%99%D7%9D" target="_blank" rel="noopener" aria-label="וואטסאפ"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.15-1.7-.84-2-.94-.26-.1-.46-.15-.65.15-.2.3-.75.94-.92 1.13-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.5.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.57-.9-2.15-.24-.57-.48-.5-.65-.5h-.56c-.2 0-.5.07-.77.37-.26.3-1 .98-1 2.4 0 1.4 1.03 2.76 1.17 2.95.15.2 2.03 3.1 4.9 4.35.68.3 1.22.47 1.63.6.69.22 1.3.19 1.8.11.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.2-.56-.35zM12 2.2A9.78 9.78 0 0 0 3.6 17.1L2.5 21.5l4.55-1.2A9.78 9.78 0 1 0 12 2.2z"/></svg></a>
 
-  <div class="sticky"><a href="#lead-form" class="cta">להתנסות על היד שלי עכשיו</a></div>
+  <div class="sticky"><a href="#lead-form" class="cta">לקבלת הצעה להרצאה או סדנה</a></div>
 
 </div>
 
@@ -2842,14 +2869,16 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     form.addEventListener('submit', function(ev){
       ev.preventDefault();
       if(formErr) formErr.classList.remove('show');
-      var f = { name:scope.querySelector('#f-name'), company:scope.querySelector('#f-company'), phone:scope.querySelector('#f-phone'), email:scope.querySelector('#f-email') };
+      var f = { name:scope.querySelector('#f-name'), company:scope.querySelector('#f-company'), phone:scope.querySelector('#f-phone'), email:scope.querySelector('#f-email'), activity:scope.querySelector('#f-activity') };
       var ok = true;
       function mark(key, valid){ var w=scope.querySelector('.field[data-f="'+key+'"]'); if(w) w.classList.toggle('bad', !valid); if(!valid) ok=false; }
       mark('name', f.name.value.trim().length>1);
       // הארגון הוא עמודה A בגיליון והוא פותח את שורת הנושא בהתראה. ליד בלי ארגון מגיע חסר.
       mark('company', f.company.value.trim().length>1);
       mark('phone', isMobileIL(f.phone.value));
-      mark('email', isEmail(f.email.value));
+      // 05/11: המייל רשות. ריק עובר, מלא חייב להיות תקין.
+      mark('email', !f.email.value.trim() || isEmail(f.email.value));
+      mark('activity', !!(f.activity && f.activity.value));
       // הסכמה למדיניות הפרטיות היא תנאי לשליחה, ולכן היא נבדקת כמו שדה חובה
       var consentEl = scope.querySelector('#f-consent');
       mark('consent', !!(consentEl && consentEl.checked));
@@ -2858,10 +2887,9 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       var orig = btn.textContent;
       btn.disabled = true; btn.textContent = 'שולח…';
       var payload = { name:f.name.value.trim(), company:f.company.value.trim(), phone:toIntl(f.phone.value), email:f.email.value.trim(), source:(window.BC_CAMPAIGN&&window.BC_CAMPAIGN.utm_source)||'direct', page:location.href };
-      var intSel = scope.querySelector('#f-interest');
-      // מוצר אחד בדף. הערך נשלח קבוע כדי שהמיפוי בתרחיש המייק
-      // ימשיך לקבל את אותם מפתחות בדיוק גם אחרי שהשדות ירדו מהמסך
-      payload.interest = intSel ? intSel.value : 'הרצאה לצוות';
+      // 05/11: "סוג הפעילות" נשלח במפתח interest, שהמיפוי בתרחיש המייק כבר מכיר.
+      var intSel = scope.querySelector('#f-activity');
+      payload.interest = (intSel && intSel.value) ? intSel.value : 'הרצאה לצוות';
       var roleSel = scope.querySelector('#f-role');
       payload.role = (roleSel && roleSel.value) ? roleSel.value : '';
       // תיעוד ההסכמה נשלח כמפתח חדש. מפתחות קיימים לא נגעו, ולכן המיפוי בתרחיש נשמר.
@@ -2885,7 +2913,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       function success(){ if(done) return; done=true;
         var mid=document.getElementById('tyMid');
         // מי שכבר סרק מקבל את הניסוח המקורי. מי שהגיע דרך השער מקבל הפניה לסריקה שנפתחה
-        if(mid && !window.__efshar){ mid.textContent='ובינתיים, האבחון הדיגיטלי נפתח לכם למעלה. תבדקו את השיטה על עצמכם.'; }
+        if(mid && !window.__efshar){ mid.textContent='בינתיים נפתחה לכם למעלה התנסות קצרה על היד שלכם, להמחשת השיטה.'; }
         window.__leadSent = true;
         if(window.bcTrack) window.bcTrack('lead_submit', { interest: payload.interest || '', role: payload.role || '' });
         if(window.__unlockScan) window.__unlockScan(true);
@@ -2897,8 +2925,8 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       setTimeout(success, 1200);
     });
     // clear error state on typing
-    ['#f-name','#f-company','#f-phone','#f-email'].forEach(function(sel){
-      var i=scope.querySelector(sel); if(i){ i.addEventListener('input', function(){ var w=i.closest('.field'); if(w) w.classList.remove('bad'); }); }
+    ['#f-name','#f-company','#f-phone','#f-email','#f-activity'].forEach(function(sel){
+      var i=scope.querySelector(sel); if(i){ ['input','change'].forEach(function(evn){ i.addEventListener(evn, function(){ var w=i.closest('.field'); if(w) w.classList.remove('bad'); }); }); }
     });
 
     // ── ויזרד תלת-שלבי (progressive enhancement) ──
@@ -3330,7 +3358,7 @@ window.__unlockScan = function(scrollBack){
     setTimeout(function(){
       const d=$('decoder'); if(!d) return;
       d.scrollIntoView({behavior:'smooth', block:'center'});
-      const msg=$('decodeMsg'); if(msg) msg.textContent='האבחון נפתח. בחרו איך להתחיל.';
+      const msg=$('decodeMsg'); if(msg) msg.textContent='ההתנסות נפתחה. בחרו איך להתחיל.';
     }, 2600);
   }
 };
@@ -3611,7 +3639,7 @@ document.addEventListener('click', function(ev){
   (()=>{
   // מי שכבר השאיר פרטים בביקור הזה לא צריך למלא שוב: מחזירים אותו למסך התודה
   if(window.__leadSent){ $('lead-form').scrollIntoView({behavior:'smooth'}); return; }
-  const sel=$('f-interest'); if(sel && b.dataset.interest) sel.value=b.dataset.interest;
+  const sel=$('f-activity'); if(sel && b.dataset.interest) sel.value=b.dataset.interest;
   // הסריקה כבר ענתה על שלב 1, פותחים את הוויזרד ישר בשלב 2
   if(window.__wzPick && b.dataset.interest) window.__wzPick(b.dataset.interest);
   $('lead-form').scrollIntoView({behavior:'smooth'});
