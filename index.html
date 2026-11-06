@@ -2522,6 +2522,13 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   /* 06/11, סבב שני: יובל ביקש לבן בולט יותר. לבן כמעט מלא עם נגיעת חום, והמשני בהיר יותר כדי שלא ייראה אפור. */
   html.skin-f .bc { --i-main:#FFFEFB; --i-mute:#F0EEE8; --text-on-dark:#FFFEFB; --text-on-dark-muted:#F0EEE8; }
   html.skin-f .bc .hero h1, html.skin-f .bc .hero .sub { text-shadow:0 2px 16px rgba(6,20,24,.5); }
+  /* 06/11, יובל: הסקשנים שמעל הטופס (קרוסלת הוואטסאפ) ומתחתיו ("מה אפשר ללמוד") על שחור יוקרתי,
+     כמו האזור של הטופס. שחור עמוק עם נגיעת הטורקיז של הדף ומעבר עדין מלמעלה, לא שחור שטוח. */
+  html.skin-f .bc .wac, html.skin-f .bc .pain {
+    background:#0A1619;
+    background-image:radial-gradient(120% 90% at 50% 0%, #112529 0%, #0A1619 55%, #070F12 100%);
+  }
+  html.skin-f .bc .wac .wa-shot { background:rgba(255,255,255,.07); }
   /* רכיבים שלוקחים את הצבע ממשתנה מקומי של הסקשן ולא מהדיו הראשי */
   html.skin-f .bc label, html.skin-f .bc .check span, html.skin-f .bc .tstm blockquote, html.skin-f .bc .tstm-org,
   html.skin-f .bc .thankyou h3, html.skin-f .bc .thankyou p, html.skin-f .bc .ef-cta h4 { color:var(--i-main); }
