@@ -2510,8 +2510,12 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   .bc .skip-link { inset-inline-start:auto; clip-path:inset(50%); width:1px; height:1px; overflow:hidden; white-space:nowrap; }
   .bc .skip-link:focus { clip-path:none; width:auto; height:auto; inset-inline-start:8px; }
   html.skin-f .bc .hero .ln-title { font-size:clamp(22px,6vw,32px); }
-  /* 06/11, יובל: הלוגו חוזר לצד ימין של הפתיח (מבטל את ההעברה שמאלה מ-23/08) */
-  @media (min-width:601px){ html.skin-f .bc .hero .topbar { justify-content:flex-start; } }
+  /* 06/11, יובל: הלוגו חוזר לצד ימין של הפתיח (מבטל את ההעברה שמאלה מ-23/08), וצמוד לקצה המסך ולא לקצה העמודה */
+  @media (min-width:601px){
+    html.skin-f .bc .hero .topbar { justify-content:flex-start; min-height:52px; }
+    /* הבסיס למיקום הוא העמודה (wrap ברוחב עד 1200), ולכן מפחיתים את המרווח שלה מהקצה כדי להגיע ל-28 פיקסל מקצה המסך */
+    html.skin-f .bc .hero .topbar .wordmark { position:absolute; top:22px; inset-inline-start:calc(28px - (100vw - min(100vw, 1200px)) / 2); }
+  }
   /* 06/11, יובל: "לבן יוקרתי" לאותיות. הדיו הראשי מירקרק-בהיר (#EAF3F1) ללבן פנינה חם (#FBF8F1),
      והמשני (#C6DCD8) לפנינה רכה (#E4E0D7). ניגודיות על הקרקע #1E5462: 7.9 ו-6.4, על העמוק גבוה יותר. */
   html.skin-f .bc { --i-main:#FBF8F1; --i-mute:#E4E0D7; --text-on-dark:#FBF8F1; --text-on-dark-muted:#E4E0D7; }
