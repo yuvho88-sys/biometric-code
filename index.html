@@ -21,6 +21,7 @@
 <meta property="og:description" content="אנשים בוחרים מה לספר על עצמם. את מה שלא, כפות הידיים שלהם מספרות. הרצאות וסדנאות לארגונים, חברות וצוותים על מה שלא נאמר, ואיך לומדים לראות אותו.">
 <meta property="og:url" content="https://hartzaa.reutbitton.com/">
 <!-- תצוגה מקדימה של הקישור: צילום ראש הדף עצמו, 1200 על 630. -->
+<link rel="canonical" href="https://hartzaa.reutbitton.com/">
 <meta property="og:image" content="https://hartzaa.reutbitton.com/og-hero.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -97,15 +98,17 @@ window.BC_TRACK = {
   var META_MAP = { lead_submit:'Lead', form_start:'InitiateCheckout', scan_open:'ViewContent' };
   var GA_MAP   = { lead_submit:'generate_lead', form_start:'begin_checkout', scan_open:'view_item' };
   var fired = {};
-  window.bcTrack = function(ev, data){
+  // eventId (רשות): מזהה אירוע שנשלח למטא, כדי ששליחה מהשרת עם אותו מזהה לא תיספר פעמיים
+  window.bcTrack = function(ev, data, eventId){
     data = data || {};
     var payload = Object.assign({event: ev}, window.BC_CAMPAIGN, data);
+    if(eventId) payload.event_id = eventId;
     try { dataLayer.push(payload); } catch(e){}
     // אירועי משפך נורים פעם אחת לביקור, כדי שהספירה תישאר נקייה
     var once = (ev === 'form_start' || ev === 'scan_open');
     if(once && fired[ev]) return;
     fired[ev] = true;
-    try { if(window.fbq && META_MAP[ev]) fbq('track', META_MAP[ev], data); } catch(e){}
+    try { if(window.fbq && META_MAP[ev]) { if(eventId) fbq('track', META_MAP[ev], data, {eventID: eventId}); else fbq('track', META_MAP[ev], data); } } catch(e){}
     try { if(window.gtag && GA_MAP[ev]) gtag('event', GA_MAP[ev], payload); } catch(e){}
   };
 })();
@@ -2499,6 +2502,14 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   }
   html.skin-f .bc select:invalid { color:rgba(198,220,216,.7); }
   html.skin-f .bc select option { color:#0f1c2e; background:#fff; }
+  /* 05/11, בקרת אלכסנדרה לקמפיין: ניגודיות שדות הטופס בנייד (3.2 לגבול, 4.8 להנחיות), הסתרת כותרת הטופס אחרי שליחה, קישור הדילוג, הלוחית בפתיח */
+  html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea { background:rgba(255,255,255,.14); border:1.5px solid rgba(95,224,206,.65); }
+  html.skin-f .bc input::placeholder, html.skin-f .bc textarea::placeholder { color:#D3E4E0; }
+  html.skin-f .bc select:invalid { color:#D3E4E0; }
+  html.skin-f .bc .formsec.sent .fs-head, html.skin-f .bc .formsec.sent .fs-lead { display:none; }
+  .bc .skip-link { inset-inline-start:auto; clip-path:inset(50%); width:1px; height:1px; overflow:hidden; white-space:nowrap; }
+  .bc .skip-link:focus { clip-path:none; width:auto; height:auto; inset-inline-start:8px; }
+  html.skin-f .bc .hero .ln-title { font-size:clamp(22px,6vw,32px); }
 </style>
 
 <div class="bc">
@@ -2529,6 +2540,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       </div>
   </header>
 
+<!-- 05/11: סדר הסקשנים לפי הכרעת אלכסנדרה: פתיח, מה אפשר ללמוד, בלי מיסטיקה, למי זה מתאים, המלצה, הסורק והטופס, אודות, קרוסלת הוואטסאפ, כפתור סוגר. -->
 <section class="s-ivory pain surface-dark">
     <div class="wrap"><div class="text-col">
       <!-- 05/11: סקשן הכאב (23/08) הוחלף בטקסט של רעות מהבריף. הנוסח הקודם בהיסטוריית הגיט. -->
@@ -2536,27 +2548,6 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       <p class="fade">בהרצאות ובסדנאות שלי אני מציגה דרך נוספת להתבונן באנשים ובהבדלים ביניהם. דרך מאפיינים בכפות הידיים, דוגמאות מהחיים והתנסות של המשתתפים, אנחנו עוסקים בדרך שבה אנשים פועלים, מתקשרים, מקבלים החלטות ומתמודדים עם מצבים שונים.</p>
                         <p class="kick fade">התוכן מועבר בצורה נגישה ומשתפת, ומתאים גם למי שמעולם לא נחשף לתחום.</p>
     </div></div>
-  </section>
-
-<section class="s-ivory about">
-    <div class="wrap">
-      <div class="cols">
-        <!-- גיבוי: פורטרט מאויר (רישום עיפרון) שמור ב-public/images/reut-portrait-illustration.png -->
-        <!-- backup illustrated portrait kept at public/images/reut-portrait-illustration.png -->
-        <!--rest of about text below-->
-        <div class="fade letter">
-          <h2>שלום, אני רעות.</h2>
-          <!-- 05/11: המכתב (23/08) הוחלף בטקסט של רעות מהבריף. הנוסח הקודם בהיסטוריית הגיט. -->
-            <!-- 05/11: נוסח ביניים עד שתגיע תעודה. הנוסח המלא של רעות שמור בבריף. -->
-            <p>אני רעות ביטון, מייסדת <span class="ltr">REUT BITTON | HUMAN DUE DILIGENCE</span>, ועוסקת בניתוח מאפייני כפות הידיים.</p>
-          <p>בעבודתי אני עוסקת בהבנת אנשים דרך מאפייני כפות הידיים, תוך התייחסות לדפוסי פעולה, קבלת החלטות, תקשורת, חוזקות והתמודדות עם לחץ.</p>
-          <p>לצד העבודה עם לקוחות פרטיים, אני מעבירה הרצאות וסדנאות לארגונים, חברות וצוותים, ומשלבת בהן ידע מקצועי, דוגמאות והתנסות של המשתתפים.</p>
-          <p class="letter-punch">כף היד לא עוברת עריכה. וזה כל היתרון שלה.</p>
-          <p class="sign">שלך,<br><strong>רעות ביטון</strong><br>בינה אנושית · שיטת <span class="ltr">H.I.P</span></p>
-
-        </div>
-      </div>
-    </div>
   </section>
 
 <section class="s-deep obj surface-light">
@@ -2569,6 +2560,28 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       <p class="obj-stat fade">אפס מגע פיזי.</p>
     </div></div>
   </section>
+
+<section class="s-dark-2 who2">
+    <div class="wrap">
+      <h2 class="fade">למי זה מתאים</h2>
+      <!-- 05/11: שני סוגי פעילות מהבריף של רעות. שורת המשך "60 עד 75 דקות" נשמרה מהנוסח הקודם. -->
+      <div class="who-cards fade">
+        <div class="who-card">
+          <h3>הרצאות אינטראקטיביות</h3>
+          <p>מתאימות לכנסים, ימי חברה, אירועי עובדים, מפגשי מנהלים ואירועי קהילה. ההרצאות משלבות תוכן, דוגמאות והתנסות של הקהל.</p>
+          <p class="who-meta">"בידיים טובות" · 60 עד 75 דקות</p>
+        </div>
+        <div class="who-card">
+          <h3>סדנאות לצוותים ולמנהלים</h3>
+          <p>מפגשים בקבוצות המאפשרים להעמיק בנושאים כמו תקשורת בין אנשים, דפוסי פעולה, קבלת החלטות והתמודדות עם לחץ. התוכן מותאם לאופי הקבוצה ולמטרת המפגש.</p>
+        </div>
+      </div>
+      <div class="chips fade">
+        <span class="chip">חברות הייטק</span><span class="chip">בנקים</span><span class="chip">חברות ביטוח</span><span class="chip">משרדי עורכי דין</span><span class="chip">ארגונים בינוניים וגדולים</span><span class="chip">ועדי עובדים</span><span class="chip">רשויות מקומיות</span><span class="chip">סמינרים וימי עיון</span>
+      </div>
+    </div>
+  </section>
+
 
 <section class="s-ivory tstm" id="tstm">
     <div class="wrap">
@@ -2607,29 +2620,6 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
       </div>
 
-    </div>
-  </section>
-
-<section class="s-dark-2 wac">
-    <div class="wrap">
-      <h2 class="fade">ההודעות שמגיעות אחרי</h2>
-      <p class="wac-sub fade">חלק מארגונים שאירחו הרצאה, וחלק מאנשים שעברו ניתוח אישי.</p>
-      <div class="wa-viewport fade" id="waViewport">
-        <div class="wa-track" id="waTrack">
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="900" height="747" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
-        </div>
-      </div>
-      <div class="wa-nav">
-        <button class="wa-arrow" type="button" data-dir="1" aria-label="השקופית הבאה">›</button>
-        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
-        <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">‹</button>
-      </div>
     </div>
   </section>
 
@@ -2724,7 +2714,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
           <div class="err">צריך לאשר את מדיניות הפרטיות כדי לשלוח</div>
         </div>
         <button type="submit" class="cta">אני רוצה לקבל הצעה</button>
-        <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי וואטסאפ.</p>
+        <p class="form-err" id="formErr" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב, או <a href="https://wa.me/972507459235?text=%D7%94%D7%99%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%94%D7%A8%D7%A6%D7%90%D7%94%20%D7%9C%D7%90%D7%A8%D7%92%D7%95%D7%A0%D7%99%D7%9D" target="_blank" rel="noopener">לשלוח לי וואטסאפ</a>.</p>
         <p class="no-commit">השארת פרטים אינה מחייבת, וההחלטה כולה שלכם.</p>
       </form>
       <div class="thankyou" id="thankyou"><h3 style="color:var(--text-on-light);font-size:var(--fs-xl);margin-bottom:8px">תודה על הפנייה, הפרטים התקבלו ואחזור אליכם בהקדם.</h3><p style="color:var(--text-on-light)"><span id="tyMid">בינתיים, ההתנסות שעשיתם היא בדיוק סוג הרגע שאני יוצרת בהרצאות: כשאדם מרגיש שראו אותו.</span> נדבר בקרוב.</p><p class="ty-sign">רעות ביטון · בינה אנושית · 050-745-9235</p></div>
@@ -2734,27 +2724,52 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
 
 
-<section class="s-dark-2 who2">
+<section class="s-ivory about">
     <div class="wrap">
-      <h2 class="fade">למי זה מתאים</h2>
-      <div class="chips fade">
-        <span class="chip">חברות הייטק</span><span class="chip">בנקים</span><span class="chip">חברות ביטוח</span><span class="chip">משרדי עורכי דין</span><span class="chip">ארגונים בינוניים וגדולים</span><span class="chip">ועדי עובדים</span><span class="chip">רשויות מקומיות</span><span class="chip">סמינרים וימי עיון</span>
-      </div>
-      <!-- 05/11: שני סוגי פעילות מהבריף של רעות. שורת המשך "60 עד 75 דקות" נשמרה מהנוסח הקודם. -->
-      <div class="who-cards fade">
-        <div class="who-card">
-          <h3>הרצאות אינטראקטיביות</h3>
-          <p>מתאימות לכנסים, ימי חברה, אירועי עובדים, מפגשי מנהלים ואירועי קהילה. ההרצאות משלבות תוכן, דוגמאות והתנסות של הקהל.</p>
-          <p class="who-meta">"בידיים טובות" · 60 עד 75 דקות</p>
-        </div>
-        <div class="who-card">
-          <h3>סדנאות לצוותים ולמנהלים</h3>
-          <p>מפגשים בקבוצות המאפשרים להעמיק בנושאים כמו תקשורת בין אנשים, דפוסי פעולה, קבלת החלטות והתמודדות עם לחץ. התוכן מותאם לאופי הקבוצה ולמטרת המפגש.</p>
+      <div class="cols">
+        <!-- גיבוי: פורטרט מאויר (רישום עיפרון) שמור ב-public/images/reut-portrait-illustration.png -->
+        <!-- backup illustrated portrait kept at public/images/reut-portrait-illustration.png -->
+        <!--rest of about text below-->
+        <div class="fade letter">
+          <h2>שלום, אני רעות.</h2>
+          <!-- 05/11: המכתב (23/08) הוחלף בטקסט של רעות מהבריף. הנוסח הקודם בהיסטוריית הגיט. -->
+            <!-- 05/11: נוסח ביניים עד שתגיע תעודה. הנוסח המלא של רעות שמור בבריף. -->
+            <p>אני רעות ביטון, מייסדת <span class="ltr">REUT BITTON | HUMAN DUE DILIGENCE</span>, ועוסקת בניתוח מאפייני כפות הידיים.</p>
+          <p>בעבודתי אני עוסקת בהבנת אנשים דרך מאפייני כפות הידיים, תוך התייחסות לדפוסי פעולה, קבלת החלטות, תקשורת, חוזקות והתמודדות עם לחץ.</p>
+          <p>לצד העבודה עם לקוחות פרטיים, אני מעבירה הרצאות וסדנאות לארגונים, חברות וצוותים, ומשלבת בהן ידע מקצועי, דוגמאות והתנסות של המשתתפים.</p>
+          <p class="letter-punch">כף היד לא עוברת עריכה. וזה כל היתרון שלה.</p>
+          <p class="sign">שלך,<br><strong>רעות ביטון</strong><br>בינה אנושית · שיטת <span class="ltr">H.I.P</span></p>
+
         </div>
       </div>
     </div>
   </section>
 
+<section class="s-dark-2 wac">
+    <div class="wrap">
+      <h2 class="fade">ההודעות שמגיעות אחרי</h2>
+      <p class="wac-sub fade">חלק מארגונים שאירחו הרצאה, וחלק מאנשים שעברו ניתוח אישי.</p>
+      <div class="wa-viewport fade" id="waViewport">
+        <div class="wa-track" id="waTrack">
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="900" height="841" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="900" height="1581" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="900" height="1505" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="900" height="639" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="900" height="859" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="738" height="360" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="900" height="747" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
+        </div>
+      </div>
+      <div class="wa-nav">
+        <button class="wa-arrow" type="button" data-dir="1" aria-label="השקופית הבאה">›</button>
+        <div class="wa-dots" id="waDots" aria-label="ניווט קרוסלת המלצות"></div>
+        <button class="wa-arrow" type="button" data-dir="-1" aria-label="השקופית הקודמת">‹</button>
+      </div>
+    </div>
+  </section>
+
+<!-- 05/11: כפתור סוגר אחרי הקרוסלה (אלכסנדרה). אותו נוסח כפתור, אל הטופס. -->
+<section class="s-ivory faq closing"><div class="wrap"><div class="center-cta"><a href="#lead-form" class="cta">לקבלת הצעה להרצאה או סדנה</a></div></div></section>
 
   <!-- ═══ המלצות מארגונים ═══
        כרטיס 1 הוא ציטוט אמיתי שכבר מופיע בדף. כרטיסים 2 ו-3 הם דוגמאות
@@ -2897,6 +2912,8 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       // 05/11: "סוג הפעילות" נשלח במפתח interest, שהמיפוי בתרחיש המייק כבר מכיר.
       var intSel = scope.querySelector('#f-activity');
       payload.interest = (intSel && intSel.value) ? intSel.value : 'הרצאה לצוות';
+      // 06/11 (מיכאל): מזהה אירוע אחד לליד, נוסע גם לפיקסל וגם לוובהוק, כדי ששליחה מהשרת בהמשך לא תיספר פעמיים
+      payload.event_id = 'lead-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
       var roleSel = scope.querySelector('#f-role');
       payload.role = (roleSel && roleSel.value) ? roleSel.value : '';
       // תיעוד ההסכמה נשלח כמפתח חדש. מפתחות קיימים לא נגעו, ולכן המיפוי בתרחיש נשמר.
@@ -2922,8 +2939,12 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         // מי שכבר סרק מקבל את הניסוח המקורי. מי שהגיע דרך השער מקבל הפניה לסריקה שנפתחה
         if(mid && !window.__efshar){ mid.textContent='בינתיים נפתחה לכם למעלה התנסות קצרה על היד שלכם, להמחשת השיטה.'; }
         window.__leadSent = true;
-        if(window.bcTrack) window.bcTrack('lead_submit', { interest: payload.interest || '', role: payload.role || '' });
+        // 06/11 (מיכאל): בלי role (תמיד ריק), עם קטגוריה לטינית תקנית, ועם מזהה האירוע
+        var CAT = { 'הרצאה לצוות':'lecture', 'סדנה לצוות':'workshop', 'עוד לא בטוח':'undecided' };
+        if(window.bcTrack) window.bcTrack('lead_submit', { interest: payload.interest || '', content_category: CAT[payload.interest] || 'undecided' }, payload.event_id);
         if(window.__unlockScan) window.__unlockScan(true);
+        // 06/11 (אלכסנדרה): הכותרת והשורות מעל הטופס יורדות עם הטופס
+        var sec = scope.querySelector('#lead-form'); if(sec) sec.classList.add('sent');
         form.style.display='none'; if(thanks){ thanks.classList.add('show'); thanks.scrollIntoView({behavior:'smooth', block:'center'}); } }
       function fail(){ if(done) return; done=true; btn.disabled=false; btn.textContent=orig; if(formErr) formErr.classList.add('show'); }
       fetch(WEBHOOK, { method:'POST', mode:'no-cors', keepalive:true, body:new URLSearchParams(payload) })
