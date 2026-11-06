@@ -2536,6 +2536,27 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
      עכשיו באותו שחור כמו שאר הדף, כך שהצילום נשאר בגוון הטבעי שלו מתחת לצעיף כהה ניטרלי. */
   html.skin-f .bc { --scrim-rgb:10,22,25; }
   html.skin-f .bc .hero { background:#0A1619 !important; }
+  /* 06/11, יובל: כל טקסט ומבטא שהיו בטורקיז-מנטה עוברים לכתום של הכפתור (#FF6A3D). הקווים הדקים והמסגרות לניטרלי בהיר. */
+  html.skin-f .bc {
+    --a-main:#FF6A3D; --a-soft:#FF6A3D;
+    --measure-text:#FF6A3D; --measure-on-dark:#FF6A3D; --surface-light-measure:#FF6A3D;
+    --gold-text-on-dark:#FF6A3D; --gold-text-on-light:#FF6A3D; --accent-text-on-dark:#FF6A3D; --accent-text-on-light:#FF6A3D;
+    --cool-focus:#FF6A3D; --cool-lift:#FF8A62;
+    --hair:rgba(255,255,255,.18); --measure-hairline:rgba(255,255,255,.22); --line-gold:rgba(255,255,255,.2);
+    --card-line:rgba(255,255,255,.16); --card-rule:rgba(255,255,255,.12);
+    --av-bg:rgba(255,106,61,.16); --av-line:rgba(255,106,61,.4); --dot-ink:rgba(255,106,61,.2);
+  }
+  html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea { border-color:rgba(255,255,255,.45); }
+  html.skin-f .bc .decode .entry-btn, html.skin-f .bc .decode .scan-lock { border-color:rgba(255,255,255,.3); }
+  html.skin-f .bc .wa { border-color:rgba(255,106,61,.5); }
+  /* 06/11, יובל: "מה זה?" על פס בהיר מתחת לטופס. זה הקצה התחתון של סרטון הידיים שמאחורי הטופס (שני פרקי כף היד),
+     שנחשף כשהסקשן שמתחת הפך לשחור. הסרטון נמוג לשחור בקצה העליון והתחתון של הסקשן. */
+  html.skin-f .bc .decode-bg::after {
+    background:
+      linear-gradient(180deg, #0A1619 0%, rgba(10,22,25,.6) 9%, transparent 20%, transparent 80%, rgba(10,22,25,.75) 92%, #0A1619 100%),
+      radial-gradient(ellipse 46% 58% at 50% 44%, rgba(10,22,25,.88) 40%, rgba(10,22,25,.5) 78%, rgba(10,22,25,.12) 100%),
+      linear-gradient(180deg, rgba(10,22,25,.88) 0%, rgba(10,22,25,.3) 22%, rgba(10,22,25,.3) 76%, rgba(10,22,25,.88) 100%) !important;
+  }
   /* כרטיס ההמלצה על השחור: לבן שקוף במקום הטורקיז המורם */
   html.skin-f .bc .tstm .tstm-card { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.14); }
   html.skin-f .bc .wac .wa-shot { background:rgba(255,255,255,.07); }
