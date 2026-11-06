@@ -2512,6 +2512,13 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   html.skin-f .bc .hero .ln-title { font-size:clamp(22px,6vw,32px); }
   /* 06/11, יובל: הלוגו חוזר לצד ימין של הפתיח (מבטל את ההעברה שמאלה מ-23/08) */
   @media (min-width:601px){ html.skin-f .bc .hero .topbar { justify-content:flex-start; } }
+  /* 06/11, יובל: "לבן יוקרתי" לאותיות. הדיו הראשי מירקרק-בהיר (#EAF3F1) ללבן פנינה חם (#FBF8F1),
+     והמשני (#C6DCD8) לפנינה רכה (#E4E0D7). ניגודיות על הקרקע #1E5462: 7.9 ו-6.4, על העמוק גבוה יותר. */
+  html.skin-f .bc { --i-main:#FBF8F1; --i-mute:#E4E0D7; --text-on-dark:#FBF8F1; --text-on-dark-muted:#E4E0D7; }
+  html.skin-f .bc .hero h1, html.skin-f .bc .hero .sub { text-shadow:0 2px 16px rgba(6,20,24,.5); }
+  /* רכיבים שלוקחים את הצבע ממשתנה מקומי של הסקשן ולא מהדיו הראשי */
+  html.skin-f .bc label, html.skin-f .bc .check span, html.skin-f .bc .tstm blockquote, html.skin-f .bc .tstm-org,
+  html.skin-f .bc .thankyou h3, html.skin-f .bc .thankyou p, html.skin-f .bc .ef-cta h4 { color:var(--i-main); }
 </style>
 
 <div class="bc">
