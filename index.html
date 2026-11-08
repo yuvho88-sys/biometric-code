@@ -2567,6 +2567,112 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   /* רכיבים שלוקחים את הצבע ממשתנה מקומי של הסקשן ולא מהדיו הראשי */
   html.skin-f .bc label, html.skin-f .bc .check span, html.skin-f .bc .tstm blockquote, html.skin-f .bc .tstm-org,
   html.skin-f .bc .thankyou h3, html.skin-f .bc .thankyou p, html.skin-f .bc .ef-cta h4 { color:var(--i-main); }
+
+  /* ══ 08/11, יובל: הצבעים של הדף לפי האתר הראשי reutbitton.com ══
+     המקור נקרא מהאתר החי ב-08/11/2026 (assets/css/styles.css ו-theme-refresh.css):
+     כחול כהה #0f1c2e (navy), #1a2d47 (navy-light), #0a1420 (navy-dark); זהב #c9a962, זהב בהיר #e0c989, זהב כהה #a8893f.
+     רקע הגוף באתר: תמונת בד כחולה (background.jpg, כאן בגרסה מוקטנת media/bg-canvas.jpg) מעל גרדיאנט #101B33 עד #070A12,
+     עם וינייטה שחורה בקצוות. טקסט לבן .95, משני לבן .75. קווים לבן .12, משטחים לבן .05.
+     כפתור ראשי באתר: מילוי זהב, טקסט כחול כהה; בריחוף זהב בהיר, הרמה 2 פיקסל וצל זהב .3.
+     כפתור משני: שקוף, מסגרת לבן .3; בריחוף מסגרת וטקסט זהב. כותרות (hero-tagline, section-title) בזהב.
+     שדות באתר: רקע navy-light, מסגרת לבן .1, בפוקוס מסגרת זהב.
+     רק צבעים ורקע השתנו. התוכן, הפונטים, סדר הסקשנים, הפריסה והטופס כמו שהיו. */
+  html.skin-f { background:#0f1c2e; }
+  html.skin-f body { background:transparent; }
+  html.skin-f body::before {
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(900px 520px at 50% 22%, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 72%, rgba(0,0,0,.65) 100%),
+      url(media/bg-canvas.jpg) center / cover no-repeat,
+      radial-gradient(1200px 700px at 50% 18%, #101B33, #0A1020 55%, #070A12 100%);
+  }
+  html.skin-f .bc { background:transparent; }
+  html.skin-f .bc {
+    --s-deep:#0a1420; --s-page:#0f1c2e; --s-raise:#1a2d47; --s-card:rgba(255,255,255,.05);
+    --bg-hero:#0f1c2e; --bg-dark:#0f1c2e; --bg-dark-deep:#0a1420; --bg-dark-elevated:#1a2d47;
+    --bg-light:#1a2d47; --bg-light-2:#0f1c2e; --surface-light-bg:#0f1c2e; --surface-light-card:rgba(255,255,255,.05);
+    --veil-hero:#0f1c2e; --room-wash:rgba(15,28,46,.5); --room-wash-m:rgba(15,28,46,.56);
+    --scrim-rgb:15,28,46;
+    --i-main:rgba(255,255,255,.95); --i-mute:rgba(255,255,255,.75);
+    --text-on-dark:rgba(255,255,255,.95); --text-on-dark-muted:rgba(255,255,255,.75);
+    --text-on-light:rgba(255,255,255,.95); --text-on-light-muted:rgba(255,255,255,.75);
+    --surface-light-text:rgba(255,255,255,.95); --surface-light-muted:rgba(255,255,255,.75);
+    --ink:rgba(255,255,255,.95); --muted-d:rgba(255,255,255,.75); --muted-l:rgba(255,255,255,.75);
+    --hero-ink:rgba(255,255,255,.95); --hero-ink-muted:rgba(255,255,255,.75); --hero-ink-warm:#e0c989;
+    --a-main:#c9a962; --a-soft:#c9a962; --a-warm:#e0c989; --w-main:#c9a962; --cta-ink:#0f1c2e;
+    --pole-cool:#c9a962; --pole-warm:#c9a962; --cool-lift:#e0c989; --cool-focus:#e0c989; --rail:#c9a962;
+    --measure-text:#c9a962; --measure-on-dark:#c9a962; --measure-line:#a8893f; --surface-light-measure:#c9a962;
+    --gold-text-on-dark:#c9a962; --gold-text-on-light:#c9a962; --accent-text-on-dark:#c9a962; --accent-text-on-light:#c9a962;
+    --surface-light-accent:#e0c989;
+    --hair:rgba(255,255,255,.12); --measure-hairline:rgba(201,169,98,.35); --line-gold:rgba(201,169,98,.35); --accent-hairline:rgba(201,169,98,.35);
+    --card-line:rgba(255,255,255,.12); --card-rule:rgba(255,255,255,.12);
+    --ghost-line:rgba(255,255,255,.3); --ghost-tint:rgba(201,169,98,.06);
+    --av-bg:rgba(201,169,98,.14); --av-line:rgba(201,169,98,.4); --dot-ink:rgba(201,169,98,.2); --tstm-halo:rgba(201,169,98,.08);
+    --star:#c9a962;
+  }
+  /* הסקשנים שקופים כדי שרקע הבד של האתר ייראה דרכם, כמו באתר. הפתיח נשאר עם צילום הקהל על כחול כהה. */
+  html.skin-f .bc .tstm, html.skin-f .bc .wac, html.skin-f .bc .pain, html.skin-f .bc .obj, html.skin-f .bc .who2,
+  html.skin-f .bc .faq, html.skin-f .bc .decode, html.skin-f .bc .decode .formsec, html.skin-f .bc .about,
+  html.skin-f .bc footer, html.skin-f .bc .decode-bg { background-color:transparent !important; }
+  html.skin-f .bc .hero { background:#0f1c2e !important; }
+  html.skin-f .bc footer { border-top:1px solid rgba(255,255,255,.12); }
+  /* כותרות לכותרות: באתר הכותרות בזהב */
+  html.skin-f .bc h1, html.skin-f .bc h2, html.skin-f .bc .formsec .fs-head, html.skin-f .bc .thankyou h3 { color:#c9a962; }
+  html.skin-f .bc .hero h1, html.skin-f .bc .hero .sub { text-shadow:0 2px 16px rgba(7,10,18,.6); }
+  /* כפתור לכפתור: המילוי, הטקסט, המסגרת ומצב הריחוף של האתר */
+  html.skin-f .bc .cta, html.skin-f .bc a.cta, html.skin-f .bc button.cta, html.skin-f .bc .wz-next {
+    background:#c9a962; color:#0f1c2e; box-shadow:none;
+  }
+  html.skin-f .bc a.cta:hover, html.skin-f .bc button.cta:hover, html.skin-f .bc .wz-next:hover {
+    background:#e0c989; color:#0f1c2e; transform:translateY(-2px); box-shadow:0 8px 25px rgba(201,169,98,.3);
+  }
+  html.skin-f .bc a.cta:active, html.skin-f .bc button.cta:active { transform:translateY(0); box-shadow:0 4px 12px rgba(201,169,98,.2); }
+  html.skin-f .bc a.cta:focus-visible, html.skin-f .bc button.cta:focus-visible, html.skin-f .bc .wz-next:focus-visible { outline:3px solid #e0c989; outline-offset:3px; }
+  html.skin-f .bc .cta.ghost, html.skin-f .bc .trial .cta.ghost.trial-cta {
+    background:transparent; color:rgba(255,255,255,.97); border:1px solid rgba(255,255,255,.3); box-shadow:none;
+  }
+  html.skin-f .bc .cta.ghost:hover, html.skin-f .bc .trial .cta.ghost.trial-cta:hover {
+    background:transparent; color:#c9a962; border-color:#c9a962; box-shadow:none; transform:none;
+  }
+  /* שדות: כמו טופס יצירת הקשר באתר */
+  html.skin-f .bc input, html.skin-f .bc select, html.skin-f .bc textarea {
+    background:#1a2d47; border:1.5px solid rgba(255,255,255,.18); color:rgba(255,255,255,.95);
+  }
+  html.skin-f .bc input:focus, html.skin-f .bc select:focus, html.skin-f .bc textarea:focus {
+    border-color:#c9a962; outline:none; box-shadow:0 0 0 3px rgba(201,169,98,.22);
+  }
+  html.skin-f .bc input::placeholder, html.skin-f .bc textarea::placeholder { color:rgba(255,255,255,.65); }
+  html.skin-f .bc select:invalid { color:rgba(255,255,255,.65); }
+  html.skin-f .bc select {
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c9a962' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") !important;
+  }
+  /* משטחים וקווים: לבן .05 ולבן .12 כמו באתר */
+  html.skin-f .bc .who-card, html.skin-f .bc .ef-cta, html.skin-f .bc .tstm .tstm-card, html.skin-f .bc .wac .wa-shot,
+  html.skin-f .bc .wz-card, html.skin-f .bc .rcard, html.skin-f .bc .formsec .card, html.skin-f .bc .form-card, html.skin-f .bc .thankyou,
+  html.skin-f .bc .metric, html.skin-f .bc details, html.skin-f .bc .soc, html.skin-f .bc .chip, html.skin-f .bc form,
+  html.skin-f .bc .decode .entry-btn, html.skin-f .bc .decode .scan-lock {
+    background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.12);
+  }
+  html.skin-f .bc .decode .entry-btn:hover { background:rgba(255,255,255,.1); }
+  html.skin-f .bc .badge, html.skin-f .bc .obj .badge { background:rgba(201,169,98,.12); border-color:rgba(201,169,98,.35); color:#c9a962; }
+  html.skin-f .bc .wa-dot::before { background:rgba(255,255,255,.3); }
+  html.skin-f .bc .wa-dot.active::before { background:#c9a962; }
+  html.skin-f .bc .wa { background:rgba(8,12,22,.9); border-color:rgba(201,169,98,.5); }
+  html.skin-f .bc .wa svg { fill:#c9a962; }
+  html.skin-f .bc .sticky { background:rgba(8,12,22,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-top:1px solid rgba(255,255,255,.12); }
+  html.skin-f .bc .shot-frame { background:#0a1420; }
+  /* סרטון הידיים במחשב: נמוג אל רקע הבד למעלה ולמטה במקום אל צבע אחיד, והכהיה במרכז בכחול כהה */
+  @media (min-width:701px){
+    html.skin-f .bc .decode-bg {
+      -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 16%, #000 72%, transparent 96%);
+      mask-image:linear-gradient(180deg, transparent 0%, #000 16%, #000 72%, transparent 96%);
+    }
+    html.skin-f .bc .decode-bg::after {
+      background:
+        radial-gradient(ellipse 46% 58% at 50% 44%, rgba(15,28,46,.88) 40%, rgba(15,28,46,.5) 78%, rgba(15,28,46,.12) 100%),
+        linear-gradient(180deg, rgba(15,28,46,.4), rgba(15,28,46,.4)) !important;
+    }
+  }
 </style>
 
 <div class="bc">
