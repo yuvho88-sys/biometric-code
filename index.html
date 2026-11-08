@@ -2673,6 +2673,15 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
         linear-gradient(180deg, rgba(15,28,46,.4), rgba(15,28,46,.4)) !important;
     }
   }
+  /* 08/11, יובל: "תשתמש בלוגו הזה": הלוגו של האתר הראשי (assets/images/brand/logo-compact-ondark, הגרסה בלי שורת התיאור,
+     אותו קובץ שהאתר מציג בסרגל ובפוטר) במקום סימן היד והטקסט "רעות ביטון · בינה אנושית". הטקסט נשאר בסימון ומוסתר. */
+  html.skin-f .bc .wm-hand, html.skin-f .bc .hero .wm-hand { content:url(media/logo.webp); width:auto; height:64px; }
+  html.skin-f .bc .wordmark .wm-txt { display:none; }
+  html.skin-f .bc footer .foot-wordmark .wm-hand { height:58px; }
+  @media (max-width:720px){
+    html.skin-f .bc .wm-hand, html.skin-f .bc .hero .wm-hand { width:auto; height:48px; }
+    html.skin-f .bc footer .foot-wordmark .wm-hand { height:48px; }
+  }
 </style>
 
 <div class="bc">
@@ -2683,7 +2692,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
   <header class="hero" id="top">
     <div class="wrap">
       <div class="topbar">
-        <a href="#top" class="wordmark" aria-label="רעות ביטון, לראש הדף"><img class="wm-hand" src="media/mark.png" width="209" height="160" alt="" aria-hidden="true"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></a>
+        <a href="#top" class="wordmark" aria-label="רעות ביטון, לראש הדף"><img class="wm-hand" src="media/logo.webp" width="640" height="209" alt="רעות ביטון"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></a>
       </div>
       <div class="hero-copy">
         <h1 class="fade">אנשים בוחרים מה לספר על עצמם.</h1>
@@ -2998,7 +3007,7 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
 
   <footer>
     <div class="wrap">
-      <div class="wordmark foot-wordmark"><img class="wm-hand" src="media/mark.png" width="209" height="160" alt="" aria-hidden="true"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></div>
+      <div class="wordmark foot-wordmark"><img class="wm-hand" src="media/logo.webp" width="640" height="209" alt="רעות ביטון"><span class="wm-txt"><span class="wm-name">רעות ביטון</span><span class="wm-sub">בינה אנושית · <span class="ltr">H.I.P</span></span></span></div>
       <p class="legal">ההתנסות הדיגיטלית היא כלי היכרות עצמי המבוסס על שיטת ניתוח מאפייני כפות הידיים של רעות ביטון, ומבוסס גם על שיטת ד"ר ארנולד הולצמן (אינו קורס/שירות רשמי מטעמו). התכנים אינם אבחון רפואי או פסיכולוגי קליני, אינם ייעוץ תעסוקתי ואינם בסיס להחלטות על העסקה, קידום או התאמה לתפקיד.</p>
       <div>בידיים טובות · הרצאות וסדנאות לארגונים, חברות וצוותים · שיטת <span class="ltr">H.I.P</span></div>
       <!-- הקישור לאתר הוסר: הוא מוביל מדף קמפיין חד־מטרתי לעולם מותגי אחר (קריירה, זוגיות, צמיחה אישית) -->
