@@ -2682,15 +2682,26 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     html.skin-f .bc .wm-hand, html.skin-f .bc .hero .wm-hand { width:auto; height:48px; }
     html.skin-f .bc footer .foot-wordmark .wm-hand { height:48px; }
   }
-  /* 08/11, יובל: "לא עשית בגירסה של המובייל את הידיים כמו שצריך". שכבת הידיים בנייד נבנתה על מיזוג screen שמעלים את השחור
-     של הפריים אל תוך משטח אחיד. על רקע הבד השקוף המיזוג לא תופס, והשחור נראה כמלבן כהה מאחורי השדות. במקום זה:
-     אותה אנימציה עם רקע שקוף (hands-anim-alpha.webp, נוצרה מ-hands.mp4 עם lumakey), בלי מיזוג. */
+  /* 08/11, יובל: "לא עשית בגירסה של המובייל את הידיים כמו שצריך", ואחר כך: "לא ממוקם במרכז של הטופס וגם האנימציה באיכות נמוכה".
+     שכבת הידיים בנייד נבנתה על מיזוג screen שמעלים את השחור של הפריים אל תוך משטח אחיד; על רקע הבד השקוף המיזוג לא תופס
+     (הסקשן יוצר הקשר ערימה משלו) והשחור נראה כמלבן. במקום זה: פריים אחד חד של הידיים עם רקע שקוף ברזולוציה מלאה
+     (hands-static-alpha.webp, 1000 פיקסל, מ-hands.mp4 עם lumakey; אנימציה שקופה באיכות הזו שוקלת כמה מגה, ולכן נשימה עדינה
+     ב-CSS במקום), מעוגן על כרטיס הטופס עצמו וממורכז בו, רחב מהכרטיס, בלי מיזוג. השכבה הישנה על הסקשן מבוטלת. */
   @media (max-width:700px){
-    html.skin-f .bc .decode .formsec::before {
-      background:url(media/hands-anim-alpha.webp) center center / 100% auto no-repeat;
-      mix-blend-mode:normal; opacity:.78;
+    html.skin-f .bc .decode .formsec::before { content:none; }
+    html.skin-f .bc .decode .formsec form { position:relative; isolation:isolate; overflow:visible; }
+    html.skin-f .bc .decode .formsec form::before {
+      content:""; position:absolute; z-index:-1; pointer-events:none;
+      left:50%; top:50%; width:140%; height:auto; aspect-ratio:1000/558; transform:translate(-50%,-50%);
+      background:url(media/hands-static-alpha.webp) center center / 100% auto no-repeat;
+      opacity:.85;
+      animation:handsBreathe 7s ease-in-out infinite alternate;
+      -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 10%, #000 74%, transparent 100%);
+      mask-image:linear-gradient(180deg, transparent 0, #000 10%, #000 74%, transparent 100%);
     }
   }
+  @keyframes handsBreathe { from { transform:translate(-50%,-50%) scale(1); opacity:.78; } to { transform:translate(-50%,-50%) scale(1.04); opacity:.9; } }
+  @media (max-width:700px) and (prefers-reduced-motion: reduce){ html.skin-f .bc .decode .formsec form::before { animation:none; } }
 </style>
 
 <div class="bc">
