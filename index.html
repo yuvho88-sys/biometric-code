@@ -2695,7 +2695,8 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       /* 08/11, יובל: "האצבעות צריכות להיות בקו של השם המלא": התמונה חתוכה לגבולות הידיים (740 על 534), קצות האצבעות בקצה העליון שלה,
          והיא מוצמדת לראש הכרטיס (30 פיקסל, קו התווית הראשונה) ברוחב המסך כמעט, בלי לחתוך את האגודלים. */
       /* 08/11, יובל: "עברת את הקו של השם, תוריד קצת למטה": מ-30 ל-56 פיקסל, קצות האצבעות הגבוהות בקו תיבת השם המלא */
-      left:50%; top:56px; width:108%; height:auto; aspect-ratio:740/534; transform:translateX(-50%); transform-origin:50% 0;
+      /* ואז: "שקצות האצבעות יראו באזור הזה" (הרווח שבין תיבת השם לתווית הטלפון): 108 פיקסל, מתחת לתיבת השם */
+      left:50%; top:108px; width:108%; height:auto; aspect-ratio:740/534; transform:translateX(-50%); transform-origin:50% 0;
       background:url(media/hands-static-alpha.webp) center top / 100% auto no-repeat;
       opacity:.85;
       animation:handsBreathe 7s ease-in-out infinite alternate;
