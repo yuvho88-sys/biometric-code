@@ -2682,6 +2682,15 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     html.skin-f .bc .wm-hand, html.skin-f .bc .hero .wm-hand { width:auto; height:48px; }
     html.skin-f .bc footer .foot-wordmark .wm-hand { height:48px; }
   }
+  /* 08/11, יובל: "לא עשית בגירסה של המובייל את הידיים כמו שצריך". שכבת הידיים בנייד נבנתה על מיזוג screen שמעלים את השחור
+     של הפריים אל תוך משטח אחיד. על רקע הבד השקוף המיזוג לא תופס, והשחור נראה כמלבן כהה מאחורי השדות. במקום זה:
+     אותה אנימציה עם רקע שקוף (hands-anim-alpha.webp, נוצרה מ-hands.mp4 עם lumakey), בלי מיזוג. */
+  @media (max-width:700px){
+    html.skin-f .bc .decode .formsec::before {
+      background:url(media/hands-anim-alpha.webp) center center / 100% auto no-repeat;
+      mix-blend-mode:normal; opacity:.78;
+    }
+  }
 </style>
 
 <div class="bc">
