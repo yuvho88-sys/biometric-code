@@ -2729,12 +2729,17 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
     box-shadow:0 18px 55px rgba(0,0,0,.55); }
   html.skin-f .bc .wac .wa-shot:hover { transform:translateY(-3px); }
   html.skin-f .bc .wa-shot img { border-radius:14px; }
-  html.skin-f .bc .wa-cap { text-align:center; margin:16px 0 0; opacity:0; transition:opacity .35s ease; }
-  html.skin-f .bc .wa-slide.is-cur .wa-cap { opacity:1; }
-  html.skin-f .bc .wa-cap-rule { display:block; width:34px; height:2px; margin:0 auto 10px; background:#c9a962; }
-  html.skin-f .bc .wa-cap strong { display:block; font-family:'Frank Ruhl Libre','David Libre',serif; font-weight:700; font-size:1.08rem; color:rgba(255,255,255,.95); }
-  html.skin-f .bc .wa-cap span:last-child { display:block; margin-top:3px; font-size:.92rem; color:rgba(255,255,255,.62); }
   @media (prefers-reduced-motion: reduce){ html.skin-f .bc .wa-slide { transition:none; } }
+  /* 09/11, יובל: "במובייל הקרוסלה זזה לאט". הסיבוב התלת-ממדי עם פרספקטיבה והצל הרחב על תשעה כרטיסים כבדים לטלפון;
+     בנייד ובטאבלט נשארים רק הקטנה ועמעום של השכנים, מעבר קצר יותר וצל קל. במחשב בלי שינוי. */
+  @media (max-width:900px){
+    html.skin-f .bc .wa-track { transition:transform .32s ease; }
+    html.skin-f .bc .wa-slide, html.skin-f .bc .wa-slide:has(~ .is-cur), html.skin-f .bc .wa-slide.is-cur ~ .wa-slide {
+      transform:scale(.86); transition:transform .3s ease, opacity .3s ease; will-change:transform, opacity;
+    }
+    html.skin-f .bc .wa-slide.is-cur { transform:none; }
+    html.skin-f .bc .wac .wa-shot { box-shadow:0 10px 26px rgba(0,0,0,.4); }
+  }
   @keyframes handsBreathe { from { transform:translateX(-50%) scale(1); opacity:.8; } to { transform:translateX(-50%) scale(1.03); opacity:.9; } }
   @media (max-width:700px) and (prefers-reduced-motion: reduce){ html.skin-f .bc .decode .formsec form::before { animation:none; } }
 </style>
@@ -2774,14 +2779,14 @@ html.skin-f .bc .about > .wrap { position:relative; z-index:1; }
       <p class="wac-sub fade">חלק מארגונים שאירחו הרצאה, וחלק מאנשים שעברו ניתוח אישי.</p>
       <div class="wa-viewport fade" id="waViewport">
         <div class="wa-track" id="waTrack">
-          <!-- 09/11: סדר חדש, ההודעות אחרי הרצאה קודם (סעיף 7 בבריף של רעות, ממצא 5 של מיכאל); כיתוב הקשר מתחת לכל כרטיס. -->
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="600" height="1003" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" decoding="async"></button><div class="wa-cap" aria-hidden="true"><span class="wa-cap-rule"></span><strong>אחרי הרצאה</strong><span>הודעה שהתקבלה בוואטסאפ</span></div></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="600" height="426" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button><div class="wa-cap" aria-hidden="true"><span class="wa-cap-rule"></span><strong>אחרי הרצאה</strong><span>הודעה שהתקבלה בוואטסאפ</span></div></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="600" height="293" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button><div class="wa-cap" aria-hidden="true"><span class="wa-cap-rule"></span><strong>אחרי הרצאה</strong><span>הודעה שהתקבלה בוואטסאפ</span></div></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="600" height="561" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" loading="lazy" decoding="async"></button><div class="wa-cap" aria-hidden="true"><span class="wa-cap-rule"></span><strong>אחרי ניתוח אישי</strong><span>הודעה שהתקבלה בוואטסאפ</span></div></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="600" height="573" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button><div class="wa-cap" aria-hidden="true"><span class="wa-cap-rule"></span><strong>אחרי ניתוח אישי</strong><span>הודעה שהתקבלה בוואטסאפ</span></div></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="600" height="498" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button><div class="wa-cap" aria-hidden="true"><span class="wa-cap-rule"></span><strong>אחרי ניתוח אישי</strong><span>הודעה שהתקבלה בוואטסאפ</span></div></div>
-          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="600" height="1054" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" loading="lazy" decoding="async"></button><div class="wa-cap" aria-hidden="true"><span class="wa-cap-rule"></span><strong>אחרי ניתוח אישי</strong><span>הודעה שהתקבלה בוואטסאפ</span></div></div>
+          <!-- 09/11: סדר חדש, ההודעות אחרי הרצאה קודם (סעיף 7 בבריף של רעות, ממצא 5 של מיכאל); הכיתוב מתחת לכרטיס הוסר 09/11 לבקשת יובל עד שיהיו שמות מאושרות. -->
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa3.jpg" aria-label="הגדלת צילום המסך: היה מאוד מעניין ומעורר מחשבה, המצגת יפה"><img width="600" height="1003" src="wa/wa3.jpg" alt="צילום מסך מהוואטסאפ: היה מאוד מעניין ומעורר מחשבה, המצגת יפה" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa5.jpg" aria-label="הגדלת צילום המסך: אנשים כתבו תגובות מהממות"><img width="600" height="426" src="wa/wa5.jpg" alt="צילום מסך מהוואטסאפ: אנשים כתבו תגובות מהממות" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa6.jpg" aria-label="הגדלת צילום המסך: הייתה חוויה מרגשת מאוד"><img width="600" height="293" src="wa/wa6.jpg" alt="צילום מסך מהוואטסאפ: הייתה חוויה מרגשת מאוד" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa1.jpg" aria-label="הגדלת צילום המסך: אבחון מעמיק ומרתק, נעשה בצורה מקצועית"><img width="600" height="561" src="wa/wa1.jpg" alt="צילום מסך מהוואטסאפ: אבחון מעמיק ומרתק, נעשה בצורה מקצועית" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa4.jpg" aria-label="הגדלת צילום המסך: תחושת שמחה והעצמה"><img width="600" height="573" src="wa/wa4.jpg" alt="צילום מסך מהוואטסאפ: תחושת שמחה והעצמה" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa7.jpg" aria-label="הגדלת צילום המסך: תגובה אחרי האבחון"><img width="600" height="498" src="wa/wa7.jpg" alt="צילום מסך מהוואטסאפ: תגובה אחרי האבחון" loading="lazy" decoding="async"></button></div>
+          <div class="wa-slide"><button class="wa-shot" type="button" data-full="wa/wa2.jpg" aria-label="הגדלת צילום המסך: תודה על החוויה, הקריאה בכף היד הייתה מדויקת"><img width="600" height="1054" src="wa/wa2.jpg" alt="צילום מסך מהוואטסאפ: תודה על החוויה, הקריאה בכף היד הייתה מדויקת" loading="lazy" decoding="async"></button></div>
         </div>
       </div>
       <div class="wa-nav">
